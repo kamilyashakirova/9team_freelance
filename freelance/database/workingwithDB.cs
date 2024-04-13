@@ -72,7 +72,7 @@ namespace freelance
                     context.users.Add(user);
                     context.SaveChanges();
 
-                    var client = new client { userID = user.uId, clientName = clientName, clientSurname = clientSurname, clientPatronomic = clientPatronomic, NumberInUsersTable = user, email = email };
+                    var client = new client { userID = user.uId, clientName = clientName, clientSurname = clientSurname, clientPatronomic = clientPatronomic,InUsers = user, email = email };
                     context.clients.Add(client);
                     context.SaveChanges();
                 }
