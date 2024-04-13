@@ -21,7 +21,7 @@ public partial class DBcontext : DbContext
                 entity.ToTable("ClientsTable");
 
                 entity.HasIndex(e => e.userID, "IX_ClientsTable_userID").IsUnique();
-                    entity.HasOne(d => d.NumberInUsersTable).WithOne(p => p.clientsTable)
+                    entity.HasOne(d => d.InUsers).WithOne(p => p.clientsTable)
                         .HasForeignKey<client>(d => d.userID)
                         .OnDelete(DeleteBehavior.ClientSetNull);
             });

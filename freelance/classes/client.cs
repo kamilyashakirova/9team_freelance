@@ -13,7 +13,7 @@ namespace freelance
 
         public string clientPatronomic { get; set; } = null!;
         public string email { get; set; } = null!;
-        public virtual user NumberInUsersTable { get; set; } = null!;
+        public virtual user InUsers { get; set; } = null!;
 
     }
 }
