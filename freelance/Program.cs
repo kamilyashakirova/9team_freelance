@@ -9,7 +9,7 @@ namespace freelance
         /// </summary>
         /// <param name="allowed"></param>
         /// <param name="uId"></param>
-        public static void LogInInfo(bool allowed, int uId = -1)
+        public static void LogInInfo(bool allowed, int uId)
         {
             Program.allowed = allowed;
             Program.uId = uId;
