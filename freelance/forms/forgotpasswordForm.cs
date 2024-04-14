@@ -1,13 +1,25 @@
 ﻿using Microsoft.VisualBasic.Logging;
 using System.Diagnostics;
+using System.Drawing.Text;
 using System.Net.Mail;
 namespace freelance
 {
     public partial class forgotpasswordForm : Form
     {
+        PrivateFontCollection fonts = new PrivateFontCollection();
         public forgotpasswordForm()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
+            this.Font = new Font(fonts.Families[0], 10);
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.Font = new Font(fonts.Families[0], 10); ;
+            }
+            passwordrecovery_lbl.Font = new Font(fonts.Families[0], 18);
+            login_lbl.Font = new Font(fonts.Families[0], 12);
+            writepassword_lbl.Font = new Font(fonts.Families[0], 12);
         }
         /// <summary>
         /// метод для отправки сообщения с паролем от аккаунта пользователя на его почту 

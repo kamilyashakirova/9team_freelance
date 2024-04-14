@@ -1,13 +1,22 @@
-﻿
-using Microsoft.VisualBasic.ApplicationServices;
+﻿using System.Drawing.Text;
 
 namespace freelance
 {
     public partial class registrationForm : Form
     {
+        PrivateFontCollection fonts = new PrivateFontCollection();
         public registrationForm()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
+            this.Font = new Font(fonts.Families[0], 10);
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.Font = new Font(fonts.Families[0], 10); ;
+            }
+            reg_lbl.Font = new Font(fonts.Families[0], 18);
+            registration_btn.Font = new Font(fonts.Families[0], 12);
         }
 
         private void hide_picb_Click(object sender, EventArgs e)

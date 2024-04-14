@@ -56,7 +56,6 @@
             login_txtb.Size = new Size(225, 24);
             login_txtb.TabIndex = 0;
             login_txtb.TextAlign = HorizontalAlignment.Center;
-            login_txtb.TextChanged += login_txtb_TextChanged;
             // 
             // password_txtb
             // 

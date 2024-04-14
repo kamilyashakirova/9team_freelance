@@ -1,18 +1,31 @@
 
 using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace freelance
 {
     public partial class Enter : Form
     {
-        public Enter()
+        PrivateFontCollection fonts = new PrivateFontCollection();
+    public Enter()
         {
             InitializeComponent();
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
+            this.Font = new Font(fonts.Families[0], 12);
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.Font = new Font(fonts.Families[0], 12); ;
+            }
+            login_txtb.Font = new Font(fonts.Families[0], 11);
+            password_txtb.Font = new Font(fonts.Families[0],11);
+            hi_lbl.Font = new Font(fonts.Families[0], 16);
+            enter_btn.Font = new Font(fonts.Families[0], 11);
         }
-
         private void hide_picb_Click(object sender, EventArgs e)
         {
             password_txtb.PasswordChar = '*';
+            password_txtb.Font = new Font(fonts.Families[0], 11);
             hide_picb.Visible = false;
             show_pic.Visible = true;
         }
@@ -34,6 +47,7 @@ namespace freelance
         private void show_pic_Click(object sender, EventArgs e)
         {
             password_txtb.PasswordChar = '\0';
+            password_txtb.Font = new Font(fonts.Families[0], 11);
             hide_picb.Visible = true;
             show_pic.Visible = false;
         }
@@ -48,11 +62,6 @@ namespace freelance
         {
             registrationForm registration = new registrationForm();
             registration.Show();
-        }
-
-        private void login_txtb_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
