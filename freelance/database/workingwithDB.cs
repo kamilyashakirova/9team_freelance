@@ -1,17 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using System.Xml.Linq;
-using Microsoft.VisualBasic.ApplicationServices;
-using System.Security.Principal;
-using Microsoft.VisualBasic.Logging;
-namespace freelance
+﻿namespace freelance
 {
     public static class workingwithDB
     {
         /// <summary>
-        /// метож, для авторизации
+        /// метод для авторизации
         /// </summary>
         /// <param name="login"></param>
         /// <param name="passw"></param>
@@ -34,7 +26,7 @@ namespace freelance
             }
         }
         /// <summary>
-        /// метод для загрузки данных о пользователях
+        /// загрузка данных о "клиентах"
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
@@ -51,6 +43,11 @@ namespace freelance
                 return null;
             }
         }
+        /// <summary>
+        /// проверка уникальности логина
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public static bool IsUsernameUnique(string login)
         {
             using (var context = new DBcontext())
@@ -60,6 +57,15 @@ namespace freelance
                 return !context.users.Any(u => u.uLogin == elog);
             }
         }
+        /// <summary>
+        /// метод для добавления в бд новых пользователей и клиентов
+        /// </summary>
+        /// <param name="uLogin"></param>
+        /// <param name="uPassword"></param>
+        /// <param name="email"></param>
+        /// <param name="clientName"></param>
+        /// <param name="clientSurname"></param>
+        /// <param name="clientPatronomic"></param>
         public static void AddUserAndClient(string uLogin, string uPassword, string email, string clientName, string clientSurname, string clientPatronomic)
         {
             if (IsUsernameUnique(uLogin))

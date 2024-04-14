@@ -1,20 +1,20 @@
 ﻿using System.Security.Cryptography;
-using System.Text;
 namespace freelance
 {
     public static class hashing
     {
         public static string hash(string data)
         {
-            StringBuilder hashed = new StringBuilder();
-            byte[] inbytes = Encoding.ASCII.GetBytes(data);
-            MD5 encryp = MD5.Create();
-            byte[] res = encryp.ComputeHash(inbytes);
-            foreach (var r in res)
+            using (SHA256 sha256 = SHA256.Create())
             {
-                hashed.Append(r.ToString("X2"));
+                byte[] bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(data));
+                System.Text.StringBuilder builder = new System.Text.StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
-            return Convert.ToString(hashed)??String.Empty;
         }
     }
 }
