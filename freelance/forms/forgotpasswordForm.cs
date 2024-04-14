@@ -60,10 +60,17 @@ namespace freelance
             {
                 var elog = hashing.hash(login_txt.Text);
                 var user = db.users.Where(user => user.uLogin == elog).FirstOrDefault();
-                sendemail(user.email, user.uPasswordHash);
-                writepassword_lbl.Visible = true;
-                newpassword_txt.Visible = true;
-                newenter_btn.Visible = true;
+                if (user != null)
+                {
+                    sendemail(user.email, user.uPasswordHash);
+                    writepassword_lbl.Visible = true;
+                    newpassword_txt.Visible = true;
+                    newenter_btn.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("неверный логин");
+                }
             }
         }
         private void newenter_btn_Click(object sender, EventArgs e)
