@@ -21,6 +21,7 @@ namespace freelance
             password_txtb.Font = new Font(fonts.Families[0],11);
             hi_lbl.Font = new Font(fonts.Families[0], 16);
             enter_btn.Font = new Font(fonts.Families[0], 11);
+            forgotpassword_lbl.Font = new Font(fonts.Families[0], 12, FontStyle.Underline);
         }
         private void hide_picb_Click(object sender, EventArgs e)
         {
