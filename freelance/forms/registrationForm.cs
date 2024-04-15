@@ -42,6 +42,7 @@ namespace freelance
                     context.Database.EnsureCreated();
                 }
                 workingwithDB.AddUserAndClient(rlogin_txtb.Text, rpassword_txtb.Text, rEmail_txtb.Text, rname_txtb.Text, rsurname_txtb.Text, rpatronomic_txtb.Text);
+                MessageBox.Show("вы успешно зарегистрировались");
             }
             else 
             {
