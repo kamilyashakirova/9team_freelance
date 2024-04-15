@@ -299,6 +299,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
             Font = new Font("Didact Gothic", 10.1999989F);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "registrationForm";
             Text = "Регистрация";

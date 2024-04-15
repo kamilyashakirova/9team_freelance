@@ -2,19 +2,14 @@
 {
     public partial class performer
     {
-        public int performerID { get; set; }
-
-        public int userID{ get; set; }
-
-        public string performerName { get; set; } = null!;
-
-        public string performerSurname { get; set; } = null!;
-
-        public string performerPatronymic { get; set; } = null!;
-
-        public virtual user NumberInUsersTable { get; set; } = null!;
-
-        public virtual ICollection<bookmark> clientsBookmarksTable { get; set; } = new List<bookmark>();
-        public virtual ICollection<characteristic> performerCharacteristicsTable { get; set; } = new List<characteristic>();
+        public int ID { get; set; }
+        public string pname { get; set; } = null!;
+        public string pstatus { get; set; } = null!;
+        public string pspecialization { get; set; } = null!;
+        public string ptime { get; set; } = null!;    
+        public string ppriceofwork { get; set; } = null!;
+        public string pExperience { get; set; } = null !;
+        public string prating { get; set; } = null!;
+        public string ppicture { get; set; } = null!;
     }
 }

@@ -1,7 +1,5 @@
-
+using freelance.forms;
 using System.Drawing.Text;
-using System.Windows.Forms;
-
 namespace freelance
 {
     public partial class Enter : Form
@@ -39,7 +37,8 @@ namespace freelance
                 if (enter)
                 {
                     MessageBox.Show("вы успешно вошли");
-                    Close();
+                    listOfRecomendations main = new listOfRecomendations();
+                    main.Show();
                 }
                 entererror_lbl.Text = "неверный логин или пароль";
             }

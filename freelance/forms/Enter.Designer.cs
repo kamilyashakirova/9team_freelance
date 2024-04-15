@@ -140,7 +140,7 @@
             athoriz_pic.Image = (Image)resources.GetObject("athoriz_pic.Image");
             athoriz_pic.Location = new Point(369, 27);
             athoriz_pic.Name = "athoriz_pic";
-            athoriz_pic.Size = new Size(522, 513);
+            athoriz_pic.Size = new Size(493, 480);
             athoriz_pic.SizeMode = PictureBoxSizeMode.Zoom;
             athoriz_pic.TabIndex = 7;
             athoriz_pic.TabStop = false;
@@ -183,6 +183,7 @@
             Controls.Add(password_txtb);
             Controls.Add(login_txtb);
             Controls.Add(athoriz_pic);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Enter";
             Text = "Авторизация";
             ((System.ComponentModel.ISupportInitialize)hide_picb).EndInit();

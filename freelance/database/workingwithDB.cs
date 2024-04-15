@@ -37,8 +37,43 @@
                 var client = db.clients.Where(client => client.userID == userId).FirstOrDefault();
                 if (client != null)
                 {
-                    return [client.ID.ToString(), client.clientName, client.clientSurname,
-                            client.clientPatronomic, client.email];
+                    return [client.ID.ToString(), client.clientName, client.clientSurname, client.clientPatronomic, client.email];
+                }
+                return null;
+            }
+        }
+        /// <summary>
+        /// метод для загрузки данных об интересах клиентов
+        /// </summary>
+        /// <param name="clientId"></param>
+        /// <returns></returns>
+        public static string[]? interestsloaddata(int clientId)
+        {
+            using (var db = new DBcontext())
+            {
+                var interest = db.interests.Where(i => i.clientID == clientId).FirstOrDefault();
+                if (interest != null)
+                {
+                    return [interest.ID.ToString(), interest.ispecialization, interest.itime,interest.ipriceofwork,
+                            interest.iExperience, interest.irating];
+                }
+                return null;
+            }
+        }
+        /// <summary>
+        /// метод для загрузки данных об исполнителях
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static string[]? performersloaddata(string name)
+        {
+            using (var db = new DBcontext())
+            {
+                var performer = db.performers.Where(p => p.pname == name).FirstOrDefault();
+                if (performer != null)
+                {
+                    return [performer.ID.ToString(), performer.pstatus,performer.pname, performer.pstatus, performer.pspecialization,
+                            performer.ptime,performer.ppriceofwork, performer.pExperience, performer.prating, performer.ppicture];
                 }
                 return null;
             }
