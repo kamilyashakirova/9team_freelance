@@ -1,32 +1,17 @@
-﻿using Microsoft.VisualBasic.Logging;
-using System.Diagnostics;
-using System.Drawing.Text;
-using System.Net.Mail;
-namespace freelance
+﻿using System.Net.Mail;
+namespace freelance.forms
 {
     public partial class forgotpasswordForm : Form
     {
-        PrivateFontCollection fonts = new PrivateFontCollection();
         public forgotpasswordForm()
         {
             InitializeComponent();
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
-            this.Font = new Font(fonts.Families[0], 10);
-            foreach (Control ctrl in this.Controls)
-            {
-                ctrl.Font = new Font(fonts.Families[0], 10); ;
-            }
-            passwordrecovery_lbl.Font = new Font(fonts.Families[0], 18);
-            login_lbl.Font = new Font(fonts.Families[0], 12);
-            writepassword_lbl.Font = new Font(fonts.Families[0], 12);
+            FontClass.SetCustomFont(this, 10);
+            FontClass.SetCustomFont(passwordrecovery_lbl, 18);
+            FontClass.SetCustomFont(login_lbl,12);
+            FontClass.SetCustomFont(writepassword_lbl, 12);
         }
-        /// <summary>
-        /// метод для отправки сообщения с паролем от аккаунта пользователя на его почту 
-        /// </summary>
-        /// <param name="email"></param>
-        /// <param name="password"></param>
-        private void sendemail(string? email, string? password)
+        private void sendemail(string email, string? password)
         {
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("9teamfreelance@mail.ru", "freelance");
@@ -58,11 +43,10 @@ namespace freelance
         {
             using (var db = new DBcontext())
             {
-                var elog = hashing.hash(login_txt.Text);
-                var user = db.users.Where(user => user.uLogin == elog).FirstOrDefault();
+                var user = db.Users.Where(user => user.ULogin == login_txt.Text).FirstOrDefault();
                 if (user != null)
                 {
-                    sendemail(user.email, user.uPasswordHash);
+                    sendemail(user.Email, user.UPasswordHash);
                     writepassword_lbl.Visible = true;
                     newpassword_txt.Visible = true;
                     newenter_btn.Visible = true;

@@ -1,12 +1,11 @@
 ﻿namespace freelance
 {
-    public partial class user
-        {
-            public int uId { get; set; }
-            public string uLogin { get; set; } = null!;
-            public string uPasswordHash { get; set; } = null!;
-        public string email { get; set; } = null!;
-        public client clientsTable { get; set; } = null!;
-
+    public class User
+    {
+        public int UId { get; set; }
+        public string ULogin { get; set; } = null!;
+        public string UPasswordHash { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public Client ClientsTable { get; set; } = null!;
     }
 }

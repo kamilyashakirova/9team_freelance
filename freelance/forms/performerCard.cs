@@ -1,11 +1,12 @@
-﻿using System.Drawing.Text;
-
+﻿using System.Data;
+using System.Drawing.Text;
+using System.Net.PeerToPeer;
 namespace freelance.forms
 {
-    public partial class performerCard : Form
+    public partial class PerformerCard : Form
     {
         PrivateFontCollection fonts = new PrivateFontCollection();
-        public performerCard()
+        public PerformerCard()
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
@@ -36,6 +37,31 @@ namespace freelance.forms
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
-
+        private void dislike_btn_Click(object sender, EventArgs e)
+        {
+            using (var db = new DBcontext())
+            {
+                var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
+                if (performer != null)
+                {
+                    performer.PStatus = "не нравится";
+                    db.Performers.Update(performer);
+                    db.SaveChanges();
+                }
+            }
+        }
+        private void like_btn_Click(object sender, EventArgs e)
+        {
+            using (var db = new DBcontext())
+            {
+                var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
+                if (performer != null)
+                {
+                    performer.PStatus = "нравится";
+                    db.Performers.Update(performer);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

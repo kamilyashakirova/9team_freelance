@@ -1,15 +1,15 @@
 ﻿namespace freelance
 {
-    public partial class performer
+    public class Performer
     {
         public int ID { get; set; }
-        public string pname { get; set; } = null!;
-        public string pstatus { get; set; } = null!;
-        public string pspecialization { get; set; } = null!;
-        public string ptime { get; set; } = null!;    
-        public string ppriceofwork { get; set; } = null!;
-        public string pExperience { get; set; } = null !;
-        public string prating { get; set; } = null!;
-        public string ppicture { get; set; } = null!;
+        public string PName { get; set; } = null!;
+        public string PStatus { get; set; } = null!;
+        public string PSpecialization { get; set; } = null!;
+        public string PTime { get; set; } = null!;    
+        public string PPriceofwork { get; set; } = null!;
+        public string PExperience { get; set; } = null !;
+        public string PRating { get; set; } = null!;
+        public string PPicture { get; set; } = null!;
     }
 }

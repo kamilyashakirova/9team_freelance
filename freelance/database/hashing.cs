@@ -1,7 +1,7 @@
 ﻿using System.Security.Cryptography;
 namespace freelance
 {
-    public static class hashing
+    public static class Hashing
     {
         public static string hash(string data)
         {

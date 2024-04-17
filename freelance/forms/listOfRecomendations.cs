@@ -1,23 +1,29 @@
-﻿using System.Data;
-using System.Drawing.Text;
 
+using System.Data;
 namespace freelance.forms
 {
-    public partial class listOfRecomendations : Form
+    public partial class ListOfRecomendations : Form
     {
-        PrivateFontCollection fonts = new PrivateFontCollection();
-        public listOfRecomendations()
+        ClientProfile p = new ClientProfile();
+        public ListOfRecomendations(int userID)
         {
             InitializeComponent();
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
-            this.Font = new Font(fonts.Families[0], 10);
-            foreach (Control ctrl in this.Controls)
+            var client = workingwithDB.clientsloaddata(userID);
+            if (client != null)
             {
-                ctrl.Font = new Font(fonts.Families[0], 10); ;
+                p.id_txt.Text = client[0];
+                p.cname_txt.Text = client[1];
+                p.csurname_txt.Text = client[2];
+                p.cpatronymic_txt.Text = client[3];
+                p.cemail_txt.Text = client[4];
+                if (client[5] != null)
+                {
+                    Bitmap image = new Bitmap(client[5]);
+                    p.clientpicture.Image = image;
+                }
             }
+            FontClass.SetCustomFont(this, 10);
         }
-
         private void settings_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
@@ -65,44 +71,57 @@ namespace freelance.forms
 
         private void settings_btn_Click(object sender, EventArgs e)
         {
-
+            p.Show();
         }
-
         private void likedlist_btn_Click(object sender, EventArgs e)
         {
-
+            var likedperformers = new Likedperformers();
+            likedperformers.Show();
         }
-
         private void like_btn_Click(object sender, EventArgs e)
         {
+            if (listofrecs_dgv.SelectedRows.Count > 0)
+            {
+                var performer = listofrecs_dgv.SelectedRows[0].DataBoundItem as Performer;
 
+                if (performer != null)
+                {
+                    performer.PStatus = "нравится";
+                }
+            }
         }
-
         private void dislike_btn_Click(object sender, EventArgs e)
         {
+            if (listofrecs_dgv.SelectedRows.Count > 0)
+            {
+                var performer = listofrecs_dgv.SelectedRows[0].DataBoundItem as Performer;
 
+                if (performer != null)
+                {
+                    performer.PStatus = "не нравится";
+                }
+            }
         }
         private void listofrecs_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            performerCard card = new performerCard();
+            var card = new PerformerCard();
             if (!(this.listofrecs_dgv.CurrentRow is null))
             {
-                card.pnameCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[0].Value.ToString();
-                card.pspecializationCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[1].Value.ToString();
-                card.ptimeCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[2].Value.ToString();
-                card.ppriceCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[3].Value.ToString();
-                card.pExpipienceCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[4].Value.ToString();
-                card.pratingCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[5].Value.ToString();
+                card.ID_Card_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[0].Value.ToString();
+                card.pnameCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[1].Value.ToString();
+                card.pspecializationCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[2].Value.ToString();
+                card.ptimeCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[3].Value.ToString();
+                card.ppriceCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[4].Value.ToString();
+                card.pExpipienceCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[5].Value.ToString();
+                card.pratingCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[6].Value.ToString();
                 using (var db = new DBcontext())
                 {
-
-                    var performer = db.performers.Where(p => p.pname == card.pnameCard_txt.Text).FirstOrDefault();
+                    var performer = db.Performers.Where(p => p.PName == card.pnameCard_txt.Text).FirstOrDefault();
                     if (performer != null)
                     {
-                        Bitmap image = new Bitmap("../../../images/" + performer.ppicture);
+                        Bitmap image = new Bitmap("../../../images/" + performer.PPicture);
                         card.ppictureCard_pic.Image = image;
                     }
-
                 }
                 card.Show();
             }
@@ -116,13 +135,15 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var performers = db.performers.ToList();
+                var performers = db.Performers.ToList();
                 listofrecs_dgv.Rows.Clear();
                 foreach (var performer in performers)
                 {
-                    listofrecs_dgv.Rows.Add(performer.pname, performer.pspecialization, performer.ptime, performer.ppriceofwork, performer.pExperience, performer.prating);
+                    listofrecs_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                        performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
                 }
             }
         }
     }
 }
+

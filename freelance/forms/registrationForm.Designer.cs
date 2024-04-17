@@ -1,4 +1,4 @@
-﻿namespace freelance
+﻿namespace freelance.forms
 {
     partial class registrationForm
     {

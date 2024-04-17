@@ -1,6 +1,6 @@
 ﻿namespace freelance.forms
 {
-    partial class performerCard
+    partial class PerformerCard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(performerCard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PerformerCard));
             ppictureCard_pic = new PictureBox();
             pnameCard_txt = new TextBox();
             pspecializationCard_txt = new TextBox();
@@ -47,6 +47,7 @@
             rating_lbl = new Label();
             like_btn = new PictureBox();
             dislike_btn = new PictureBox();
+            ID_Card_txt = new TextBox();
             ((System.ComponentModel.ISupportInitialize)ppictureCard_pic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -226,6 +227,7 @@
             like_btn.SizeMode = PictureBoxSizeMode.Zoom;
             like_btn.TabIndex = 16;
             like_btn.TabStop = false;
+            like_btn.Click += like_btn_Click;
             like_btn.MouseEnter += like_btn_MouseEnter;
             like_btn.MouseLeave += like_btn_MouseLeave;
             // 
@@ -242,8 +244,17 @@
             dislike_btn.SizeMode = PictureBoxSizeMode.Zoom;
             dislike_btn.TabIndex = 17;
             dislike_btn.TabStop = false;
+            dislike_btn.Click += dislike_btn_Click;
             dislike_btn.MouseEnter += dislike_btn_MouseEnter;
             dislike_btn.MouseLeave += dislike_btn_MouseLeave;
+            // 
+            // ID_Card_txt
+            // 
+            ID_Card_txt.Location = new Point(48, 515);
+            ID_Card_txt.Name = "ID_Card_txt";
+            ID_Card_txt.Size = new Size(125, 30);
+            ID_Card_txt.TabIndex = 18;
+            ID_Card_txt.Visible = false;
             // 
             // performerCard
             // 
@@ -251,6 +262,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(970, 610);
+            Controls.Add(ID_Card_txt);
             Controls.Add(dislike_btn);
             Controls.Add(like_btn);
             Controls.Add(rating_lbl);
@@ -301,7 +313,8 @@
         public Label srprice_lbl;
         public Label experiense_lbl;
         public Label rating_lbl;
-        private PictureBox like_btn;
-        private PictureBox dislike_btn;
+        public PictureBox like_btn;
+        public PictureBox dislike_btn;
+        public TextBox ID_Card_txt;
     }
 }

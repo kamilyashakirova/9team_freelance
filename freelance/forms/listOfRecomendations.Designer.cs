@@ -1,6 +1,6 @@
 ﻿namespace freelance.forms
 {
-    partial class listOfRecomendations
+    partial class ListOfRecomendations
     {
         /// <summary>
         /// Required designer variable.
@@ -32,8 +32,9 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(listOfRecomendations));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListOfRecomendations));
             listofrecs_dgv = new DataGridView();
+            ID = new DataGridViewTextBoxColumn();
             pname = new DataGridViewTextBoxColumn();
             pspecialization = new DataGridViewTextBoxColumn();
             ptime = new DataGridViewTextBoxColumn();
@@ -73,7 +74,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             listofrecs_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             listofrecs_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            listofrecs_dgv.Columns.AddRange(new DataGridViewColumn[] { pname, pspecialization, ptime, ppriceofwork, pExperience, prating });
+            listofrecs_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialization, ptime, ppriceofwork, pExperience, prating });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -102,6 +103,15 @@
             listofrecs_dgv.Size = new Size(763, 527);
             listofrecs_dgv.TabIndex = 0;
             listofrecs_dgv.CellDoubleClick += listofrecs_dgv_CellDoubleClick;
+            // 
+            // ID
+            // 
+            ID.Frozen = true;
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.Visible = false;
+            ID.Width = 57;
             // 
             // pname
             // 
@@ -244,7 +254,7 @@
             pictureBox6.TabIndex = 24;
             pictureBox6.TabStop = false;
             // 
-            // listOfRecomendations
+            // ListOfRecomendations
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -259,7 +269,7 @@
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "listOfRecomendations";
+            Name = "ListOfRecomendations";
             Text = "Главная";
             Load += listOfRecomendations_Load;
             ((System.ComponentModel.ISupportInitialize)listofrecs_dgv).EndInit();
@@ -283,6 +293,7 @@
         private PictureBox pictureBox4;
         private PictureBox pictureBox5;
         private PictureBox pictureBox6;
+        private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn pname;
         private DataGridViewTextBoxColumn pspecialization;
         private DataGridViewTextBoxColumn ptime;

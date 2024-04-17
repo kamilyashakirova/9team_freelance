@@ -12,13 +12,12 @@
         {
             using (var db = new DBcontext())
             {
-                var elog = hashing.hash(login);
-                var user = db.users.Where(user => user.uLogin == elog).FirstOrDefault();
+                var user = db.Users.FirstOrDefault(user => user.ULogin == login);
                 if (user != null)
                 {
-                    if (user.uPasswordHash == hashing.hash(passw))
+                    if (user.UPasswordHash == Hashing.hash(passw))
                     {
-                        Program.LogInInfo(true, user.uId);
+                        Program.LogInInfo(true, user.UId);
                         return true;
                     }
                 }
@@ -34,10 +33,11 @@
         {
             using (var db=  new DBcontext())
             {
-                var client = db.clients.Where(client => client.userID == userId).FirstOrDefault();
+                var client = db.Clients.FirstOrDefault(client => client.UserID == userId);
                 if (client != null)
                 {
-                    return [client.ID.ToString(), client.clientName, client.clientSurname, client.clientPatronomic, client.email];
+                    return [client.ID.ToString(), client.ClientName, client.ClientSurname, client.ClientPatronomic,
+                        client.Email, client.ClientPicture.ToString()];
                 }
                 return null;
             }
@@ -51,11 +51,10 @@
         {
             using (var db = new DBcontext())
             {
-                var interest = db.interests.Where(i => i.clientID == clientId).FirstOrDefault();
+                var interest = db.Interests.FirstOrDefault(i => i.ClientID == clientId);
                 if (interest != null)
                 {
-                    return [interest.ID.ToString(), interest.ispecialization, interest.itime,interest.ipriceofwork,
-                            interest.iExperience, interest.irating];
+                    return [interest.ID.ToString(), interest.IName, interest.IsLiked];
                 }
                 return null;
             }
@@ -65,15 +64,16 @@
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string[]? performersloaddata(string name)
+        public static string[]? performersloaddata(int id)
         {
             using (var db = new DBcontext())
             {
-                var performer = db.performers.Where(p => p.pname == name).FirstOrDefault();
+                var performer = db.Performers.FirstOrDefault(p => p.ID == id);
                 if (performer != null)
                 {
-                    return [performer.ID.ToString(), performer.pstatus,performer.pname, performer.pstatus, performer.pspecialization,
-                            performer.ptime,performer.ppriceofwork, performer.pExperience, performer.prating, performer.ppicture];
+                    return [performer.ID.ToString(), performer.PStatus,performer.PName, performer.PStatus, 
+                        performer.PSpecialization,performer.PTime,performer.PPriceofwork, performer.PExperience,
+                        performer.PRating, performer.PPicture];
                 }
                 return null;
             }
@@ -87,9 +87,7 @@
         {
             using (var context = new DBcontext())
             {
-
-                var elog = hashing.hash(login);
-                return !context.users.Any(u => u.uLogin == elog);
+                return !context.Users.Any(u => u.ULogin == login);
             }
         }
         /// <summary>
@@ -101,26 +99,27 @@
         /// <param name="clientName"></param>
         /// <param name="clientSurname"></param>
         /// <param name="clientPatronomic"></param>
-        public static void AddUserAndClient(string uLogin, string uPassword, string email, string clientName, string clientSurname, string clientPatronomic)
+        public static void AddUserAndClient(string uLogin, string uPassword, string email, string clientName,
+            string clientSurname, string clientPatronomic)
         {
             if (IsUsernameUnique(uLogin))
             {
                 using (var context = new DBcontext())
                 {
-                    var elog = hashing.hash(uLogin);
-                    var epassw = hashing.hash(uPassword);
-                    var user = new user { uLogin = elog, uPasswordHash = epassw, email = email };
-                    context.users.Add(user);
+                    var epassw = Hashing.hash(uPassword);
+                    var user = new User { ULogin = uLogin, UPasswordHash = epassw, Email = email };
+                    context.Users.Add(user);
                     context.SaveChanges();
 
-                    var client = new client { userID = user.uId, clientName = clientName, clientSurname = clientSurname, clientPatronomic = clientPatronomic,InUsers = user, email = email };
-                    context.clients.Add(client);
+                    var client = new Client { UserID = user.UId, ClientName = clientName, ClientSurname = clientSurname,
+                    ClientPatronomic = clientPatronomic,InUsers = user, Email = email , ClientPicture = String.Empty};
+                    context.Clients.Add(client);
                     context.SaveChanges();
                 }
             }
             else
             {
-                MessageBox.Show("пользователь с таким логином уже существует");
+                MessageBox.Show("Пользователь с таким логином уже существует");
             }
         }
     }

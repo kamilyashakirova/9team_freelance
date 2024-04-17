@@ -1,20 +1,21 @@
 ﻿using System.Collections.Generic;
 namespace freelance
 {
-    public partial class client
+    public class Client
     {
         public int ID { get; set; }
 
-        public int userID { get; set; }
+        public int UserID { get; set; }
 
-        public string clientName { get; set; } = null!;
+        public string ClientName { get; set; } = null!;
 
-        public string clientSurname { get; set; } = null!;
+        public string ClientSurname { get; set; } = null!;
 
-        public string clientPatronomic { get; set; } = null!;
-        public string email { get; set; } = null!;
-        public virtual user InUsers { get; set; } = null!;
-        public interest interestsTable { get; set; } = null!;
+        public string ClientPatronomic { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string ClientPicture { get; set; } = null!;
+        public virtual User InUsers { get; set; } = null!;
+        public Interest InterestsTable { get; set; } = null!;
 
     }
 }
