@@ -16,10 +16,14 @@ namespace freelance.forms
                 p.csurname_txt.Text = client[2];
                 p.cpatronymic_txt.Text = client[3];
                 p.cemail_txt.Text = client[4];
-                if (client[5] != null)
+                if (client[5] != String.Empty)
                 {
                     Bitmap image = new Bitmap(client[5]);
                     p.clientpicture.Image = image;
+                }
+                else
+                {
+                    p.clientpicture.Image = null;
                 }
             }
             FontClass.SetCustomFont(this, 10);
