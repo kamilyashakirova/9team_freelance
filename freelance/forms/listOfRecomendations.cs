@@ -130,7 +130,6 @@ namespace freelance.forms
                 MessageBox.Show("выберите всю строку в таблице");
             }
         }
-
         private void listOfRecomendations_Load(object sender, EventArgs e)
         {
             using (var db = new DBcontext())
