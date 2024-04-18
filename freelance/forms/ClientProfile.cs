@@ -40,7 +40,7 @@ namespace freelance.forms
                     selectedFile = fileDialog.FileName;
                     Image userImage = Image.FromFile(selectedFile);
                     string fileName = Guid.NewGuid().ToString() + ".jpg";
-                    string filePath = Path.Combine("C:\\Users\\user\\source\\repos\\9team_freelance11\\freelance\\images\\", fileName);
+                    string filePath = Path.Combine("../../../images/", fileName);
                     userImage.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
                     using (var db = new DBcontext())
                     {
