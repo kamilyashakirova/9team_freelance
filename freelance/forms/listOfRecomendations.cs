@@ -3,27 +3,19 @@ namespace freelance.forms
 {
     public partial class ListOfRecomendations : Form
     {
-        ClientProfile p = new ClientProfile();
+        public int clientID;
+        public string clientName;
+        public string clientSurname;
+        public string clientPatronymic;
+        public string clientEmail;
+        public string clientPicture;
         public ListOfRecomendations(int userID)
         {
             InitializeComponent();
             var client = workingwithDB.clientsloaddata(userID);
             if (client != null)
             {
-                p.id_txt.Text = client[0];
-                p.cname_txt.Text = client[1];
-                p.csurname_txt.Text = client[2];
-                p.cpatronymic_txt.Text = client[3];
-                p.cemail_txt.Text = client[4];
-                if (client[5] != String.Empty)
-                {
-                    Bitmap image = new Bitmap(client[5]);
-                    p.clientpicture.Image = image;
-                }
-                else
-                {
-                    p.clientpicture.Image = null;
-                }
+                clientID = int.Parse(client[0]);
             }
             FontClass.SetCustomFont(this, 10);
         }
@@ -74,6 +66,7 @@ namespace freelance.forms
 
         private void settings_btn_Click(object sender, EventArgs e)
         {
+            var p = new ClientProfile(clientID);
             p.Show();
         }
         private void likedlist_btn_Click(object sender, EventArgs e)
@@ -83,25 +76,27 @@ namespace freelance.forms
         }
         private void like_btn_Click(object sender, EventArgs e)
         {
-            if (listofrecs_dgv.SelectedRows.Count > 0)
+            using (var db = new DBcontext())
             {
-                var performer = listofrecs_dgv.SelectedRows[0].DataBoundItem as Performer;
-
+                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
                 if (performer != null)
                 {
                     performer.PStatus = "нравится";
+                    db.Performers.Update(performer);
+                    db.SaveChanges();
                 }
             }
         }
         private void dislike_btn_Click(object sender, EventArgs e)
         {
-            if (listofrecs_dgv.SelectedRows.Count > 0)
+            using (var db = new DBcontext())
             {
-                var performer = listofrecs_dgv.SelectedRows[0].DataBoundItem as Performer;
-
+                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
                 if (performer != null)
                 {
                     performer.PStatus = "не нравится";
+                    db.Performers.Update(performer);
+                    db.SaveChanges();
                 }
             }
         }

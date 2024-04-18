@@ -9,7 +9,8 @@ namespace freelance.forms
         public PerformerCard()
         {
             InitializeComponent();
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | 
+                ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
             this.Font = new Font(fonts.Families[0], 10);
             foreach (Control ctrl in this.Controls)
