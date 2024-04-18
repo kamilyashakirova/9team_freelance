@@ -1,23 +1,23 @@
 using System.Data;
+using System.Drawing.Text;
 namespace freelance.forms
 {
     public partial class ListOfRecomendations : Form
     {
-        public int clientID;
-        public string clientName;
-        public string clientSurname;
-        public string clientPatronymic;
-        public string clientEmail;
-        public string clientPicture;
+        public int userID;
+
+        PrivateFontCollection fonts = new PrivateFontCollection();
         public ListOfRecomendations(int userID)
         {
             InitializeComponent();
-            var client = workingwithDB.clientsloaddata(userID);
-            if (client != null)
+            this.userID = userID;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
+            this.Font = new Font(fonts.Families[0], 10);
+            foreach (Control ctrl in this.Controls)
             {
-                clientID = int.Parse(client[0]);
+                ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
-            FontClass.SetCustomFont(this, 10);
         }
         private void settings_btn_MouseEnter(object sender, EventArgs e)
         {
@@ -66,7 +66,7 @@ namespace freelance.forms
 
         private void settings_btn_Click(object sender, EventArgs e)
         {
-            var p = new ClientProfile(clientID);
+            var p = new ClientProfile(userID);
             p.Show();
         }
         private void likedlist_btn_Click(object sender, EventArgs e)

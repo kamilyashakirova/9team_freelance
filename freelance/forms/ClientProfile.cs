@@ -6,10 +6,10 @@ namespace freelance.forms
     {
         private bool ImageSelect = false;
         private string selectedFile = String.Empty;
-        public ClientProfile(int clientID)
+        public ClientProfile(int userID)
         {
             InitializeComponent();
-            var client = workingwithDB.clientsloaddata(clientID);
+            var client = workingwithDB.clientsloaddata(userID);
             if (client != null)
             {
                 id_txt.Text = client[0];
@@ -38,12 +38,16 @@ namespace freelance.forms
                 {
                     ImageSelect = true;
                     selectedFile = fileDialog.FileName;
+                    Image userImage = Image.FromFile(selectedFile);
+                    string fileName = Guid.NewGuid().ToString() + ".jpg";
+                    string filePath = Path.Combine("C:\\Users\\user\\source\\repos\\9team_freelance11\\freelance\\images\\", fileName);
+                    userImage.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
                     using (var db = new DBcontext())
                     {
                         var client = db.Clients.FirstOrDefault(u => u.ID.ToString() == id_txt.Text);
                         if (client != null)
                         {
-                            client.ClientPicture = selectedFile;
+                            client.ClientPicture = Path.GetFullPath(filePath);
                             db.SaveChanges();
                             Bitmap image = new Bitmap(client.ClientPicture);
                             clientpicture.Image = image;

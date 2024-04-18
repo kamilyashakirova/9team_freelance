@@ -16,5 +16,10 @@ namespace freelance.forms
         {
             InitializeComponent();
         }
+
+        private void CustomizePreferences_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
