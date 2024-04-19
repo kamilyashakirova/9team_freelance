@@ -1,5 +1,4 @@
-﻿using freelance.classes;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 namespace freelance;
 public partial class DBcontext : DbContext
 {

@@ -55,18 +55,25 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var disliked = db.DislikedPerformers.FirstOrDefault(u => u.ClientID == clientID);
+                var disliked = db.DislikedPerformers.Where(u => u.ClientID == clientID);
                 if(disliked != null)
                 {
-                    var performer = db.Performers.FirstOrDefault(u => u.ID == disliked.PerformerID);
-                    if (performer != null)
+                    foreach (var dis in disliked)
                     {
-                        disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                            performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
-                    }}
-                    
+                        var performer = db.Performers.FirstOrDefault(u => u.ID == dis.PerformerID);
+                        if (performer != null)
+                        {
+                            disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("ошибка");
                 }
             }
         }
     }
 }
+
