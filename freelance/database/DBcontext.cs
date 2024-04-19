@@ -40,7 +40,7 @@ public partial class DBcontext : DbContext
             с.HasKey(e => e.ID);
             с.ToTable("LikedPerformers");
             с.HasIndex(e => e.ClientID, "IX_LikedPerformers_ClientID").IsUnique();
-            с.HasOne(e => e.InClients).WithOne(e => e.LikedTable).HasForeignKey<DislikedPerformers>(e => e.ClientID).OnDelete(DeleteBehavior.ClientSetNull);
+            с.HasOne(e => e.InClients).WithOne(e => e.LikedTable).HasForeignKey<LikedPerformers>(e => e.ClientID).OnDelete(DeleteBehavior.ClientSetNull);
             с.HasOne(e => e.InPerformers).WithOne(e => e.LikedTable).HasForeignKey<LikedPerformers>(e => e.PerformerID).OnDelete(DeleteBehavior.ClientSetNull);
         });
         mbuilder.Entity<Interest>(с =>

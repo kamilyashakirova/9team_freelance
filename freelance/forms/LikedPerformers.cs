@@ -5,8 +5,10 @@ namespace freelance.forms
     public partial class Likedperformers : Form
     {
         PrivateFontCollection fonts = new PrivateFontCollection();
-        public Likedperformers()
+        private int clientID;
+        public Likedperformers(int clientID)
         {
+            this.clientID = clientID;
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
@@ -35,7 +37,7 @@ namespace freelance.forms
         }
         private void liked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard();
+            var card = new PerformerCard(clientID);
             if (!(this.liked_dgv.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.liked_dgv.CurrentRow.Cells[0].Value.ToString();

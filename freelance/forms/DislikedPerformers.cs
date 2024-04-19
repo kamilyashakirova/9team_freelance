@@ -5,7 +5,8 @@ namespace freelance.forms
     public partial class Dislikedperformers : Form
     {
         PrivateFontCollection fonts = new PrivateFontCollection();
-        public Dislikedperformers()
+        private int clientID;
+        public Dislikedperformers(int clientID)
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
@@ -16,10 +17,11 @@ namespace freelance.forms
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
             disliked_lbl.Font = new Font(fonts.Families[0], 16);
+            this.clientID = clientID;
         }
         private void disliked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard();
+            var card = new PerformerCard(clientID);
             if (!(this.disliked_dgv.CurrentRow is null))
             {
 

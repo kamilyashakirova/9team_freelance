@@ -6,12 +6,14 @@ namespace freelance.forms
     {
         private bool ImageSelect = false;
         private string selectedFile = String.Empty;
+        private int clientID;
         public ClientProfile(int userID)
         {
             InitializeComponent();
             var client = workingwithDB.clientsloaddata(userID);
             if (client != null)
             {
+                clientID = int.Parse(client[0]);
                 id_txt.Text = client[0];
                 cname_txt.Text = client[1];
                 csurname_txt.Text = client[2];
@@ -68,7 +70,7 @@ namespace freelance.forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Dislikedperformers dislikedperformers = new Dislikedperformers();
+            Dislikedperformers dislikedperformers = new Dislikedperformers(clientID);
             dislikedperformers.Show();
         }
 

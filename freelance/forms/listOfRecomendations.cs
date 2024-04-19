@@ -79,7 +79,7 @@ namespace freelance.forms
         }
         private void likedlist_btn_Click(object sender, EventArgs e)
         {
-            var likedperformers = new Likedperformers();
+            var likedperformers = new Likedperformers(clientID);
             likedperformers.Show();
         }
         private void like_btn_Click(object sender, EventArgs e)
