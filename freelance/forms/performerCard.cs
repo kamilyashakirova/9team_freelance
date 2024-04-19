@@ -60,7 +60,16 @@ namespace freelance.forms
                         }
                         if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            db.LikedPerformers.Remove(db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            if (u != null)
+                            {
+                                db.LikedPerformers.Remove(u);
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ошибка.");
+                            }
                         }
                     }
                 }
@@ -86,7 +95,16 @@ namespace freelance.forms
                         }
                         if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            db.DislikedPerformers.Remove(db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            if (u != null)
+                            {
+                                db.DislikedPerformers.Remove(u);
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ошибка.");
+                            }
                         }
                     }
                 }

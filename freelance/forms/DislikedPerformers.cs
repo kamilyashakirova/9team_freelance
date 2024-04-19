@@ -55,15 +55,16 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var disliked = db.DislikedPerformers.ToList();
-                foreach (var dislike in disliked)
+                var disliked = db.DislikedPerformers.FirstOrDefault(u => u.ClientID == clientID);
+                if(disliked != null)
                 {
-                    var performer = db.Performers.FirstOrDefault(u => u.ID == dislike.PerformerID);
+                    var performer = db.Performers.FirstOrDefault(u => u.ID == disliked.PerformerID);
                     if (performer != null)
                     {
                         disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
                             performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
-                    }
+                    }}
+                    
                 }
             }
         }

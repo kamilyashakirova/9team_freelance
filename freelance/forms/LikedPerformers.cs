@@ -23,10 +23,10 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var liked = db.LikedPerformers.ToList();
-                foreach (var like in liked)
+                var liked = db.LikedPerformers.FirstOrDefault(u => u.ClientID == clientID);
+                if(liked != null )
                 {
-                    var performer = db.Performers.FirstOrDefault(u => u.ID == like.PerformerID);
+                    var performer = db.Performers.FirstOrDefault(u => u.ID == liked.PerformerID);
                     if (performer != null)
                     {
                         liked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
