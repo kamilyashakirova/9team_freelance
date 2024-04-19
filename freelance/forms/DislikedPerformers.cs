@@ -8,6 +8,7 @@ namespace freelance.forms
         private int clientID;
         public Dislikedperformers(int clientID)
         {
+            this.clientID = clientID;
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");

@@ -1,6 +1,4 @@
-﻿using freelance.classes;
-using System.Collections.Generic;
-namespace freelance
+﻿namespace freelance
 {
     public class Client
     {

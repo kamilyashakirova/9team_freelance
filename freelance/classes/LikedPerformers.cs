@@ -1,4 +1,4 @@
-﻿namespace freelance.classes
+﻿namespace freelance
 {
     public class LikedPerformers
     {

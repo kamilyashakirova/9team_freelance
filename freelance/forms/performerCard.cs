@@ -47,18 +47,21 @@ namespace freelance.forms
                 var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
                 if (performer != null)
                 {
-                    if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
-                    {
-                        workingwithDB.AddDislike(clientID, performer.ID);
-                        MessageBox.Show("Добавлен в скрытое");
-                    }
                     if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                     {
                         MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
                     }
-                    if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    else 
                     {
-                        db.LikedPerformers.Remove(db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                        if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                        {
+                            workingwithDB.AddDislike(clientID, performer.ID);
+                            MessageBox.Show("Добавлен в скрытое");
+                        }
+                        if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        {
+                            db.LikedPerformers.Remove(db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                        }
                     }
                 }
             }
@@ -70,18 +73,21 @@ namespace freelance.forms
                 var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
                 if (performer != null)
                 {
-                    if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
-                    {
-                        workingwithDB.AddLike(clientID, performer.ID);
-                        MessageBox.Show("Добавлен в скрытое");
-                    }
                     if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                     {
-                        MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
+                        MessageBox.Show("Вы уже добавляли фрилансера в избранное");
                     }
-                    if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    else
                     {
-                        db.DislikedPerformers.Remove(db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                        if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                        {
+                            workingwithDB.AddLike(clientID, performer.ID);
+                            MessageBox.Show("Добавлен в избранное");
+                        }
+                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        {
+                            db.DislikedPerformers.Remove(db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                        }
                     }
                 }
             }

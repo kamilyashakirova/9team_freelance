@@ -1,6 +1,4 @@
-﻿using freelance.classes;
-
-namespace freelance
+﻿namespace freelance
 {
     public class Performer
     {
