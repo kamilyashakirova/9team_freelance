@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dislikedperformers));
             disliked_dgv = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
@@ -56,49 +56,50 @@
             // 
             // disliked_dgv
             // 
-            dataGridViewCellStyle6.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText;
-            disliked_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
+            disliked_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             disliked_dgv.BackgroundColor = SystemColors.Window;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = SystemColors.Control;
-            dataGridViewCellStyle7.Font = new Font("Didact Gothic", 10.1999989F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            disliked_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            disliked_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             disliked_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             disliked_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialisation, ptime, pprice, pExperience, prating });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Window;
-            dataGridViewCellStyle8.Font = new Font("Didact Gothic", 10.1999989F);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            disliked_dgv.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            disliked_dgv.DefaultCellStyle = dataGridViewCellStyle3;
             disliked_dgv.GridColor = Color.DarkSeaGreen;
             disliked_dgv.Location = new Point(0, 200);
             disliked_dgv.Name = "disliked_dgv";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Control;
-            dataGridViewCellStyle9.Font = new Font("Didact Gothic", 10.1999989F);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            disliked_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            disliked_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             disliked_dgv.RowHeadersWidth = 51;
-            dataGridViewCellStyle10.Font = new Font("Didact Gothic", 10.1999989F);
-            dataGridViewCellStyle10.ForeColor = Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
-            disliked_dgv.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            disliked_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
             disliked_dgv.Size = new Size(750, 514);
             disliked_dgv.TabIndex = 1;
+            disliked_dgv.CellDoubleClick += disliked_dgv_CellDoubleClick;
             // 
             // ID
             // 
@@ -220,6 +221,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Dislikedperformers";
             Text = "Скрытое";
+            Load += Dislikedperformers_Load_1;
             ((System.ComponentModel.ISupportInitialize)disliked_dgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

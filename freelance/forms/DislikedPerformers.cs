@@ -4,29 +4,20 @@ namespace freelance.forms
 {
     public partial class Dislikedperformers : Form
     {
+        PrivateFontCollection fonts = new PrivateFontCollection();
         public Dislikedperformers()
         {
             InitializeComponent();
-            FontClass.SetCustomFont(this, 10);
-            FontClass.SetCustomFont(disliked_lbl, 16);
-        }
-        private void likedperformers_Load(object sender, EventArgs e)
-        {
-            using (var db = new DBcontext())
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
+            this.Font = new Font(fonts.Families[0], 10);
+            foreach (Control ctrl in this.Controls)
             {
-                var performers = db.Performers.ToList();
-                disliked_dgv.Rows.Clear();
-                foreach (var performer in performers)
-                {
-                    if (performer.PStatus == "не нравится")
-                    {
-                        disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                            performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
-                    }
-                }
+                ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
+            disliked_lbl.Font = new Font(fonts.Families[0], 16);
         }
-        private void liked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void disliked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var card = new PerformerCard();
             if (!(this.disliked_dgv.CurrentRow is null))
@@ -48,12 +39,29 @@ namespace freelance.forms
                         card.ppictureCard_pic.Image = image;
                     }
                 }
-                card.like_btn.Visible = false;
+                card.dislike_btn.Visible = false;
                 card.Show();
             }
             else if ((this.disliked_dgv.CurrentRow is null))
             {
                 MessageBox.Show("Нажмите необходимую строку в таблице.");
+            }
+        }
+
+        private void Dislikedperformers_Load_1(object sender, EventArgs e)
+        {
+            using (var db = new DBcontext())
+            {
+                var disliked = db.DislikedPerformers.ToList();
+                foreach (var dislike in disliked)
+                {
+                    var performer = db.Performers.FirstOrDefault(u => u.ID == dislike.PerformerID);
+                    if (performer != null)
+                    {
+                        disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                            performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
+                    }
+                }
             }
         }
     }

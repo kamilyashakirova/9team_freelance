@@ -1,4 +1,6 @@
-﻿namespace freelance
+﻿using freelance.classes;
+
+namespace freelance
 {
     public static class workingwithDB
     {
@@ -64,16 +66,52 @@
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string[]? performersloaddata(int id)
+        public static string[]? performersloaddata(int ID)
         {
             using (var db = new DBcontext())
             {
-                var performer = db.Performers.FirstOrDefault(p => p.ID == id);
+                var performer = db.Performers.FirstOrDefault(p => p.ID == ID);
                 if (performer != null)
                 {
-                    return [performer.ID.ToString(), performer.PStatus,performer.PName, performer.PStatus, 
+                    return [performer.ID.ToString(), performer.PName, 
                         performer.PSpecialization,performer.PTime,performer.PPriceofwork, performer.PExperience,
                         performer.PRating, performer.PPicture];
+                }
+                return null;
+            }
+        }
+        /// <summary>
+        /// метод для загрузки данных о понравившихся фрилансерах
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public static string[]? Likedperformersloaddata(int clientId)
+        {
+            using (var db = new DBcontext())
+            {
+                var liked = db.LikedPerformers.FirstOrDefault(p => p.ClientID == clientId);
+                if (liked != null)
+                {
+                    return [liked.ID.ToString(), liked.ClientID.ToString(),
+                        liked.PerformerID.ToString()];
+                }
+                return null;
+            }
+        }
+        /// <summary>
+        /// метод для загрузки данных о не понравившихся фрилансерах
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public static string[]?Dislikedperformersloaddata(int clientId)
+        {
+            using (var db = new DBcontext())
+            {
+                var disliked = db.DislikedPerformers.FirstOrDefault(p => p.ClientID == clientId);
+                if (disliked != null)
+                {
+                    return [disliked.ID.ToString(), disliked.ClientID.ToString(),
+                        disliked.PerformerID.ToString()];
                 }
                 return null;
             }
@@ -120,6 +158,24 @@
             else
             {
                 MessageBox.Show("Пользователь с таким логином уже существует");
+            }
+        }
+        public static void AddLike(int ClientID, int performerID)
+        {
+            using (var context = new DBcontext())
+            {
+                var liked = new LikedPerformers { ClientID = ClientID, PerformerID = performerID };
+                context.LikedPerformers.Add(liked);
+                context.SaveChanges();
+            }
+        }
+        public static void AddDislike(int ClientID, int performerID)
+        {
+            using (var context = new DBcontext())
+            {
+                var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
+                context.DislikedPerformers.Add(disliked);
+                context.SaveChanges();
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using freelance.classes;
+using System.Collections.Generic;
 namespace freelance
 {
     public class Client
@@ -16,6 +17,8 @@ namespace freelance
         public string ClientPicture { get; set; } = null!;
         public virtual User InUsers { get; set; } = null!;
         public Interest InterestsTable { get; set; } = null!;
+        public DislikedPerformers DislikedTable { get; set; } = null!;
+        public LikedPerformers LikedTable { get; set; } = null!;
 
     }
 }

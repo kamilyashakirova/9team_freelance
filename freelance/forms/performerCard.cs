@@ -6,8 +6,10 @@ namespace freelance.forms
     public partial class PerformerCard : Form
     {
         PrivateFontCollection fonts = new PrivateFontCollection();
-        public PerformerCard()
+        private int clientID;
+        public PerformerCard(int clientID)
         {
+            this.clientID = clientID;
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | 
                 ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
@@ -45,9 +47,19 @@ namespace freelance.forms
                 var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
                 if (performer != null)
                 {
-                    performer.PStatus = "не нравится";
-                    db.Performers.Update(performer);
-                    db.SaveChanges();
+                    if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                    {
+                        workingwithDB.AddDislike(clientID, performer.ID);
+                        MessageBox.Show("Добавлен в скрытое");
+                    }
+                    if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    {
+                        MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
+                    }
+                    if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    {
+                        db.LikedPerformers.Remove(db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                    }
                 }
             }
         }
@@ -58,9 +70,19 @@ namespace freelance.forms
                 var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
                 if (performer != null)
                 {
-                    performer.PStatus = "нравится";
-                    db.Performers.Update(performer);
-                    db.SaveChanges();
+                    if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                    {
+                        workingwithDB.AddLike(clientID, performer.ID);
+                        MessageBox.Show("Добавлен в скрытое");
+                    }
+                    if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    {
+                        MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
+                    }
+                    if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    {
+                        db.DislikedPerformers.Remove(db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID));
+                    }
                 }
             }
         }

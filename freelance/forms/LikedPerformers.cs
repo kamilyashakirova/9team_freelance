@@ -21,14 +21,14 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var performers = db.Performers.ToList();
-                liked_dgv.Rows.Clear();
-                foreach (var performer in performers)
+                var liked = db.LikedPerformers.ToList();
+                foreach (var like in liked)
                 {
-                    if (performer.PStatus == "нравится")
+                    var performer = db.Performers.FirstOrDefault(u => u.ID == like.PerformerID);
+                    if (performer != null)
                     {
-                        liked_dgv.Rows.Add(performer.ID ,performer.PName, performer.PSpecialization, performer.PTime,
-                            performer.PPriceofwork, performer.PExperience, performer.PRating);
+                        liked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                            performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
                     }
                 }
             }

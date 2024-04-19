@@ -65,5 +65,17 @@ namespace freelance.forms
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dislikedperformers dislikedperformers = new Dislikedperformers();
+            dislikedperformers.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomizePreferences customizePreferences = new CustomizePreferences();
+            customizePreferences.Show();
+        }
     }
 }

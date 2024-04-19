@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using freelance.classes;
+using Microsoft.EntityFrameworkCore;
 namespace freelance;
 public partial class DBcontext : DbContext
 {
@@ -6,6 +7,8 @@ public partial class DBcontext : DbContext
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Performer> Performers { get; set; }
     public virtual DbSet<Interest> Interests { get; set; }
+    public virtual DbSet<DislikedPerformers> DislikedPerformers { get; set; }
+    public virtual DbSet<LikedPerformers> LikedPerformers { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder obuilder)
     {
             obuilder.UseSqlite("Data Source=../../../database/DB9freelance.db");
@@ -23,6 +26,22 @@ public partial class DBcontext : DbContext
         {
             с.HasKey(e => e.ID);
             с.ToTable("Performers");
+        });
+        mbuilder.Entity<DislikedPerformers>(с =>
+        {
+            с.HasKey(e => e.ID);
+            с.ToTable("DislikedPerformers");
+            с.HasIndex(e => e.ClientID, "IX_DislikedPerformers_ClientID").IsUnique();
+            с.HasOne(e => e.InClients).WithOne(e => e.DislikedTable).HasForeignKey<DislikedPerformers>(e => e.ClientID).OnDelete(DeleteBehavior.ClientSetNull);
+            с.HasOne(e => e.InPerformers).WithOne(e => e.DislikedTable).HasForeignKey<DislikedPerformers>(e => e.PerformerID).OnDelete(DeleteBehavior.ClientSetNull);
+        });
+        mbuilder.Entity<LikedPerformers>(с =>
+        {
+            с.HasKey(e => e.ID);
+            с.ToTable("LikedPerformers");
+            с.HasIndex(e => e.ClientID, "IX_LikedPerformers_ClientID").IsUnique();
+            с.HasOne(e => e.InClients).WithOne(e => e.LikedTable).HasForeignKey<DislikedPerformers>(e => e.ClientID).OnDelete(DeleteBehavior.ClientSetNull);
+            с.HasOne(e => e.InPerformers).WithOne(e => e.LikedTable).HasForeignKey<LikedPerformers>(e => e.PerformerID).OnDelete(DeleteBehavior.ClientSetNull);
         });
         mbuilder.Entity<Interest>(с =>
         {
