@@ -168,11 +168,18 @@ namespace freelance.forms
                 card.pproduct_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[6].Value.ToString();
                 using (var db = new DBcontext())
                 {
-                    var performer = db.Performers.Where(p => p.PName == card.pnameCard_txt.Text).FirstOrDefault();
+                    var performer = db.Performers.Where(p => p.ID == int.Parse(card.ID_Card_txt.Text)).FirstOrDefault();
                     if (performer != null)
                     {
-                        Bitmap image = new Bitmap("../../../images/" + performer.PPicture);
-                        card.ppictureCard_pic.Image = image;
+                        if (performer.PPicture != String.Empty)
+                        {
+                            Bitmap image = new Bitmap("../../../images/" + performer.PPicture);
+                            card.ppictureCard_pic.Image = image;
+                        }
+                        else
+                        {
+                            card.ppictureCard_pic.Image = null;
+                        }
                     }
                 }
                 card.Show();

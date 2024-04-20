@@ -45,8 +45,10 @@
             addservice_btn = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
+            updatedgv_pic = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)myservices_dgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)updatedgv_pic).BeginInit();
             SuspendLayout();
             // 
             // myservices_dgv
@@ -179,12 +181,24 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
+            // updatedgv_pic
+            // 
+            updatedgv_pic.Image = (Image)resources.GetObject("updatedgv_pic.Image");
+            updatedgv_pic.Location = new Point(0, 1);
+            updatedgv_pic.Name = "updatedgv_pic";
+            updatedgv_pic.Size = new Size(89, 71);
+            updatedgv_pic.SizeMode = PictureBoxSizeMode.Zoom;
+            updatedgv_pic.TabIndex = 26;
+            updatedgv_pic.TabStop = false;
+            updatedgv_pic.Click += updatedgv_pic_Click;
+            // 
             // Myservices
             // 
             AutoScaleDimensions = new SizeF(9F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(1194, 744);
+            Controls.Add(updatedgv_pic);
             Controls.Add(label1);
             Controls.Add(addservice_btn);
             Controls.Add(myservices_dgv);
@@ -197,6 +211,7 @@
             Load += Myservices_Load;
             ((System.ComponentModel.ISupportInitialize)myservices_dgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)updatedgv_pic).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,5 +229,6 @@
         private Button addservice_btn;
         private Label label1;
         private PictureBox pictureBox1;
+        private PictureBox updatedgv_pic;
     }
 }
