@@ -1,4 +1,5 @@
 using Microsoft.VisualBasic.Logging;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
@@ -15,7 +16,7 @@ namespace freelance.forms
             InitializeComponent();
             this.userID = userID;
             var client = workingwithDB.clientsloaddata(userID);
-            if (client != null ) 
+            if (client != null)
             {
                 clientID = int.Parse(client[0]);
             }
@@ -86,7 +87,7 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
                 if (performer != null)
                 {
                     if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -99,8 +100,8 @@ namespace freelance.forms
                         {
                             workingwithDB.AddLike(clientID, performer.ID);
                             MessageBox.Show("Добавлен в избранное");
-                        } 
-                        if(db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        }
+                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
                             var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
                             if (u != null)
@@ -122,7 +123,7 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
                 if (performer != null)
                 {
                     if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -153,18 +154,18 @@ namespace freelance.forms
                 }
             }
         }
-        private void listofrecs_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void listofrecs_dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var card = new PerformerCard(clientID);
-            if (!(this.listofrecs_dgv.CurrentRow is null))
+            if (!(this.listofrecs_dgv1.CurrentRow is null))
             {
-                card.ID_Card_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[0].Value.ToString();
-                card.pnameCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[1].Value.ToString();
-                card.pspecializationCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[2].Value.ToString();
-                card.ptimeCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[3].Value.ToString();
-                card.ppriceCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[4].Value.ToString();
-                card.pExpipienceCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[5].Value.ToString();
-                card.pratingCard_txt.Text = this.listofrecs_dgv.CurrentRow.Cells[6].Value.ToString();
+                card.ID_Card_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString();
+                card.pnameCard_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[1].Value.ToString();
+                card.pspecializationCard_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[2].Value.ToString();
+                card.ptimeCard_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[3].Value.ToString();
+                card.planguage_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[4].Value.ToString();
+                card.pExpipienceCard_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[5].Value.ToString();
+                card.pproduct_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[6].Value.ToString();
                 using (var db = new DBcontext())
                 {
                     var performer = db.Performers.Where(p => p.PName == card.pnameCard_txt.Text).FirstOrDefault();
@@ -176,23 +177,75 @@ namespace freelance.forms
                 }
                 card.Show();
             }
-            else if ((this.listofrecs_dgv.CurrentRow is null))
+            else if ((this.listofrecs_dgv1.CurrentRow is null))
             {
                 MessageBox.Show("выберите всю строку в таблице");
             }
         }
         private void listOfRecomendations_Load(object sender, EventArgs e)
         {
+            Updatelist(clientID, listofrecs_dgv1);
+        }
+        public static void Updatelist(int clientID, DataGridView list)
+        {
             using (var db = new DBcontext())
             {
-                var performers = db.Performers.ToList();
-                listofrecs_dgv.Rows.Clear();
-                foreach (var performer in performers)
+                var interestss = db.Interests.Where(u => u.ClientID == clientID);
+                if (interestss != null)
                 {
-                    listofrecs_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                        performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
+                    foreach (var interests in interestss)
+                    {
+                        if (interests != null)
+                        {
+                            if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
+                            {
+                                var performers = db.Performers.ToList();
+                                list.Rows.Clear();
+                                foreach (var performer in performers)
+                                {
+                                    list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                        performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                                }
+                            }
+                            else
+                            {
+                                var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization |
+                                p.PExperience == interests.IExperience |
+                                p.PLanguage == interests.ILanguage |
+                                p.PProduct == interests.IProduct | p.PTime == interests.ITime)
+                                .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
+                                    + (p.PTime == interests.IExperience ? 1 : 0)
+                                    + (p.PLanguage == interests.ILanguage ? 1 : 0)
+                                    + (p.PSpecialization == interests.ISpecialization ? 1 : 0)
+                                    + (p.PProduct == interests.IProduct ? 1 : 0))
+                                .ToList();
+                                if (performers != null)
+                                {
+                                    foreach (var performer in performers)
+                                    {
+                                        list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                            performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ошибка.");
+                                }
+                            }
+                        }
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Ошибка.");
+                }
+
             }
+        }
+        private void updatedgv_pic_Click(object sender, EventArgs e)
+        {
+            listofrecs_dgv1.Rows.Clear();
+            Updatelist(clientID, listofrecs_dgv1);
         }
     }
 }

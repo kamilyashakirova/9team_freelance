@@ -1,6 +1,6 @@
 ﻿namespace freelance.forms
 {
-    partial class Dislikedperformers
+    partial class Myservices
     {
         /// <summary>
         /// Required designer variable.
@@ -33,13 +33,8 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dislikedperformers));
-            disliked_dgv = new DataGridView();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox1 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            disliked_lbl = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Myservices));
+            myservices_dgv = new DataGridView();
             ID = new DataGridViewTextBoxColumn();
             pname = new DataGridViewTextBoxColumn();
             pspecialisation = new DataGridViewTextBoxColumn();
@@ -47,32 +42,32 @@
             planguage = new DataGridViewTextBoxColumn();
             pExperience = new DataGridViewTextBoxColumn();
             pproduct = new DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)disliked_dgv).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            addservice_btn = new Button();
+            label1 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)myservices_dgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
-            // disliked_dgv
+            // myservices_dgv
             // 
-            disliked_dgv.AllowUserToAddRows = false;
+            myservices_dgv.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            disliked_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            disliked_dgv.BackgroundColor = SystemColors.Window;
+            myservices_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            myservices_dgv.BackgroundColor = SystemColors.Window;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            disliked_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            disliked_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            disliked_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialisation, ptime, planguage, pExperience, pproduct });
+            myservices_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            myservices_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            myservices_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialisation, ptime, planguage, pExperience, pproduct });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
@@ -80,10 +75,10 @@
             dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            disliked_dgv.DefaultCellStyle = dataGridViewCellStyle3;
-            disliked_dgv.GridColor = Color.DarkSeaGreen;
-            disliked_dgv.Location = new Point(0, 200);
-            disliked_dgv.Name = "disliked_dgv";
+            myservices_dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            myservices_dgv.GridColor = Color.DarkSeaGreen;
+            myservices_dgv.Location = new Point(0, 198);
+            myservices_dgv.Name = "myservices_dgv";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
             dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.1999989F);
@@ -91,71 +86,16 @@
             dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            disliked_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            disliked_dgv.RowHeadersWidth = 51;
+            myservices_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            myservices_dgv.RowHeadersWidth = 51;
             dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.1999989F);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            disliked_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            disliked_dgv.Size = new Size(750, 514);
-            disliked_dgv.TabIndex = 1;
-            disliked_dgv.CellDoubleClick += disliked_dgv_CellDoubleClick;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(778, 446);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(452, 403);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 15;
-            pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(778, 153);
-            pictureBox3.Margin = new Padding(3, 4, 3, 4);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(134, 130);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 14;
-            pictureBox3.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(479, -106);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(312, 242);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 13;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(911, -140);
-            pictureBox4.Margin = new Padding(3, 4, 3, 4);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(280, 408);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 16;
-            pictureBox4.TabStop = false;
-            // 
-            // disliked_lbl
-            // 
-            disliked_lbl.AutoSize = true;
-            disliked_lbl.BorderStyle = BorderStyle.FixedSingle;
-            disliked_lbl.Font = new Font("Didact Gothic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            disliked_lbl.Location = new Point(0, 141);
-            disliked_lbl.Name = "disliked_lbl";
-            disliked_lbl.Size = new Size(126, 42);
-            disliked_lbl.TabIndex = 17;
-            disliked_lbl.Text = "Скрытое";
+            myservices_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            myservices_dgv.Size = new Size(680, 545);
+            myservices_dgv.TabIndex = 2;
+            myservices_dgv.CellDoubleClick += myservices_dgv_CellDoubleClick;
             // 
             // ID
             // 
@@ -207,39 +147,63 @@
             pproduct.Name = "pproduct";
             pproduct.Width = 125;
             // 
-            // Dislikedperformers
+            // addservice_btn
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            addservice_btn.BackColor = Color.LightBlue;
+            addservice_btn.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            addservice_btn.Location = new Point(842, 620);
+            addservice_btn.Name = "addservice_btn";
+            addservice_btn.Size = new Size(296, 78);
+            addservice_btn.TabIndex = 3;
+            addservice_btn.Text = "Создать объявление";
+            addservice_btn.UseVisualStyleBackColor = false;
+            addservice_btn.Click += addservice_btn_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Didact Gothic", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            label1.Location = new Point(0, 152);
+            label1.Name = "label1";
+            label1.Size = new Size(175, 43);
+            label1.TabIndex = 4;
+            label1.Text = "Мои заказы";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(572, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(666, 439);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // Myservices
+            // 
+            AutoScaleDimensions = new SizeF(9F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(1120, 711);
-            Controls.Add(disliked_lbl);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox3);
+            ClientSize = new Size(1194, 744);
+            Controls.Add(label1);
+            Controls.Add(addservice_btn);
+            Controls.Add(myservices_dgv);
             Controls.Add(pictureBox1);
-            Controls.Add(pictureBox4);
-            Controls.Add(disliked_dgv);
+            Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Dislikedperformers";
-            Text = "Скрытое";
-            Load += Dislikedperformers_Load_1;
-            ((System.ComponentModel.ISupportInitialize)disliked_dgv).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Myservices";
+            Text = "Мои заказы";
+            Load += Myservices_Load;
+            ((System.ComponentModel.ISupportInitialize)myservices_dgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        internal DataGridView disliked_dgv;
-        private PictureBox pictureBox2;
-        private PictureBox pictureBox3;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox4;
-        private Label disliked_lbl;
+        internal DataGridView myservices_dgv;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn pname;
         private DataGridViewTextBoxColumn pspecialisation;
@@ -247,5 +211,8 @@
         private DataGridViewTextBoxColumn planguage;
         private DataGridViewTextBoxColumn pExperience;
         private DataGridViewTextBoxColumn pproduct;
+        private Button addservice_btn;
+        private Label label1;
+        private PictureBox pictureBox1;
     }
 }

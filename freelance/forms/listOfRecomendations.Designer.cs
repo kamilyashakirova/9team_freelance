@@ -28,19 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListOfRecomendations));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListOfRecomendations));
-            listofrecs_dgv = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            pname = new DataGridViewTextBoxColumn();
-            pspecialization = new DataGridViewTextBoxColumn();
-            ptime = new DataGridViewTextBoxColumn();
-            ppriceofwork = new DataGridViewTextBoxColumn();
-            pExperience = new DataGridViewTextBoxColumn();
-            prating = new DataGridViewTextBoxColumn();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             settings_btn = new PictureBox();
             likedlist_btn = new PictureBox();
             like_btn = new PictureBox();
@@ -48,7 +41,15 @@
             pictureBox4 = new PictureBox();
             pictureBox5 = new PictureBox();
             pictureBox6 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)listofrecs_dgv).BeginInit();
+            updatedgv_pic = new PictureBox();
+            listofrecs_dgv1 = new DataGridView();
+            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
+            pspecialisation = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)settings_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)likedlist_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)like_btn).BeginInit();
@@ -56,119 +57,17 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)updatedgv_pic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)listofrecs_dgv1).BeginInit();
             SuspendLayout();
-            // 
-            // listofrecs_dgv
-            // 
-            listofrecs_dgv.AllowUserToAddRows = false;
-            listofrecs_dgv.AllowUserToDeleteRows = false;
-            listofrecs_dgv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            listofrecs_dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            listofrecs_dgv.BackgroundColor = SystemColors.Window;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            listofrecs_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            listofrecs_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            listofrecs_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialization, ptime, ppriceofwork, pExperience, prating });
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            listofrecs_dgv.DefaultCellStyle = dataGridViewCellStyle2;
-            listofrecs_dgv.GridColor = Color.DarkSeaGreen;
-            listofrecs_dgv.Location = new Point(180, 184);
-            listofrecs_dgv.Name = "listofrecs_dgv";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            listofrecs_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            listofrecs_dgv.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
-            listofrecs_dgv.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            listofrecs_dgv.Size = new Size(763, 527);
-            listofrecs_dgv.TabIndex = 0;
-            listofrecs_dgv.CellDoubleClick += listofrecs_dgv_CellDoubleClick;
-            // 
-            // ID
-            // 
-            ID.Frozen = true;
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.Visible = false;
-            ID.Width = 57;
-            // 
-            // pname
-            // 
-            pname.Frozen = true;
-            pname.HeaderText = "ФИО";
-            pname.MinimumWidth = 6;
-            pname.Name = "pname";
-            pname.Width = 77;
-            // 
-            // pspecialization
-            // 
-            pspecialization.Frozen = true;
-            pspecialization.HeaderText = "Специализация";
-            pspecialization.MinimumWidth = 6;
-            pspecialization.Name = "pspecialization";
-            pspecialization.Width = 158;
-            // 
-            // ptime
-            // 
-            ptime.Frozen = true;
-            ptime.HeaderText = "Время выполнения";
-            ptime.MinimumWidth = 6;
-            ptime.Name = "ptime";
-            ptime.Width = 167;
-            // 
-            // ppriceofwork
-            // 
-            ppriceofwork.Frozen = true;
-            ppriceofwork.HeaderText = "Цена";
-            ppriceofwork.MinimumWidth = 6;
-            ppriceofwork.Name = "ppriceofwork";
-            ppriceofwork.Width = 80;
-            // 
-            // pExperience
-            // 
-            pExperience.Frozen = true;
-            pExperience.HeaderText = "Опыт работы";
-            pExperience.MinimumWidth = 6;
-            pExperience.Name = "pExperience";
-            pExperience.Width = 130;
-            // 
-            // prating
-            // 
-            prating.Frozen = true;
-            prating.HeaderText = "Рейтинг";
-            prating.MinimumWidth = 6;
-            prating.Name = "prating";
-            prating.Width = 101;
             // 
             // settings_btn
             // 
-            settings_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             settings_btn.BackColor = Color.DarkSeaGreen;
             settings_btn.Image = (Image)resources.GetObject("settings_btn.Image");
             settings_btn.Location = new Point(9, 17);
             settings_btn.Name = "settings_btn";
-            settings_btn.Size = new Size(61, 42);
+            settings_btn.Size = new Size(85, 55);
             settings_btn.SizeMode = PictureBoxSizeMode.Zoom;
             settings_btn.TabIndex = 1;
             settings_btn.TabStop = false;
@@ -178,12 +77,11 @@
             // 
             // likedlist_btn
             // 
-            likedlist_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             likedlist_btn.BackColor = Color.DarkSeaGreen;
             likedlist_btn.Image = (Image)resources.GetObject("likedlist_btn.Image");
             likedlist_btn.Location = new Point(96, 17);
             likedlist_btn.Name = "likedlist_btn";
-            likedlist_btn.Size = new Size(61, 42);
+            likedlist_btn.Size = new Size(85, 55);
             likedlist_btn.SizeMode = PictureBoxSizeMode.Zoom;
             likedlist_btn.TabIndex = 2;
             likedlist_btn.TabStop = false;
@@ -193,12 +91,12 @@
             // 
             // like_btn
             // 
-            like_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            like_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             like_btn.BackColor = Color.DarkSeaGreen;
             like_btn.Image = (Image)resources.GetObject("like_btn.Image");
             like_btn.Location = new Point(1007, 336);
             like_btn.Name = "like_btn";
-            like_btn.Size = new Size(84, 67);
+            like_btn.Size = new Size(93, 68);
             like_btn.SizeMode = PictureBoxSizeMode.Zoom;
             like_btn.TabIndex = 4;
             like_btn.TabStop = false;
@@ -208,12 +106,12 @@
             // 
             // dislike_btn
             // 
-            dislike_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dislike_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             dislike_btn.BackColor = Color.DarkSeaGreen;
             dislike_btn.Image = (Image)resources.GetObject("dislike_btn.Image");
             dislike_btn.Location = new Point(1007, 448);
             dislike_btn.Name = "dislike_btn";
-            dislike_btn.Size = new Size(84, 67);
+            dislike_btn.Size = new Size(93, 75);
             dislike_btn.SizeMode = PictureBoxSizeMode.Zoom;
             dislike_btn.TabIndex = 5;
             dislike_btn.TabStop = false;
@@ -223,7 +121,7 @@
             // 
             // pictureBox4
             // 
-            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox4.Anchor = AnchorStyles.Left;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
             pictureBox4.Location = new Point(18, 512);
             pictureBox4.Name = "pictureBox4";
@@ -234,7 +132,7 @@
             // 
             // pictureBox5
             // 
-            pictureBox5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox5.Anchor = AnchorStyles.Left;
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
             pictureBox5.Location = new Point(-121, 105);
             pictureBox5.Name = "pictureBox5";
@@ -245,7 +143,7 @@
             // 
             // pictureBox6
             // 
-            pictureBox6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pictureBox6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
             pictureBox6.Location = new Point(891, -71);
             pictureBox6.Name = "pictureBox6";
@@ -254,17 +152,127 @@
             pictureBox6.TabIndex = 24;
             pictureBox6.TabStop = false;
             // 
+            // updatedgv_pic
+            // 
+            updatedgv_pic.Image = (Image)resources.GetObject("updatedgv_pic.Image");
+            updatedgv_pic.Location = new Point(530, 12);
+            updatedgv_pic.Name = "updatedgv_pic";
+            updatedgv_pic.Size = new Size(89, 71);
+            updatedgv_pic.SizeMode = PictureBoxSizeMode.Zoom;
+            updatedgv_pic.TabIndex = 25;
+            updatedgv_pic.TabStop = false;
+            updatedgv_pic.Click += updatedgv_pic_Click;
+            // 
+            // listofrecs_dgv1
+            // 
+            listofrecs_dgv1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
+            listofrecs_dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            listofrecs_dgv1.BackgroundColor = SystemColors.Window;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            listofrecs_dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            listofrecs_dgv1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            listofrecs_dgv1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, pspecialisation, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            listofrecs_dgv1.DefaultCellStyle = dataGridViewCellStyle3;
+            listofrecs_dgv1.GridColor = Color.DarkSeaGreen;
+            listofrecs_dgv1.Location = new Point(180, 160);
+            listofrecs_dgv1.Name = "listofrecs_dgv1";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            listofrecs_dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            listofrecs_dgv1.RowHeadersWidth = 51;
+            dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            listofrecs_dgv1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            listofrecs_dgv1.Size = new Size(775, 552);
+            listofrecs_dgv1.TabIndex = 26;
+            listofrecs_dgv1.CellDoubleClick += listofrecs_dgv1_CellDoubleClick;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            dataGridViewTextBoxColumn1.HeaderText = "ID";
+            dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.Visible = false;
+            dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            dataGridViewTextBoxColumn2.HeaderText = "ФИО";
+            dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            dataGridViewTextBoxColumn2.Width = 125;
+            // 
+            // pspecialisation
+            // 
+            pspecialisation.HeaderText = "Специализация";
+            pspecialisation.MinimumWidth = 6;
+            pspecialisation.Name = "pspecialisation";
+            pspecialisation.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            dataGridViewTextBoxColumn3.HeaderText = "Срок";
+            dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            dataGridViewTextBoxColumn4.HeaderText = "Знание языков";
+            dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            dataGridViewTextBoxColumn4.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewTextBoxColumn5.HeaderText = "Опыт";
+            dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            dataGridViewTextBoxColumn5.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            dataGridViewTextBoxColumn6.HeaderText = "Продукт";
+            dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dataGridViewTextBoxColumn6.Width = 125;
+            // 
             // ListOfRecomendations
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(1153, 712);
+            Controls.Add(listofrecs_dgv1);
+            Controls.Add(updatedgv_pic);
             Controls.Add(dislike_btn);
             Controls.Add(like_btn);
             Controls.Add(likedlist_btn);
             Controls.Add(settings_btn);
-            Controls.Add(listofrecs_dgv);
             Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
@@ -272,7 +280,6 @@
             Name = "ListOfRecomendations";
             Text = "Главная";
             Load += listOfRecomendations_Load;
-            ((System.ComponentModel.ISupportInitialize)listofrecs_dgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)settings_btn).EndInit();
             ((System.ComponentModel.ISupportInitialize)likedlist_btn).EndInit();
             ((System.ComponentModel.ISupportInitialize)like_btn).EndInit();
@@ -280,12 +287,12 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)updatedgv_pic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)listofrecs_dgv1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView listofrecs_dgv;
         private PictureBox settings_btn;
         private PictureBox likedlist_btn;
         private PictureBox like_btn;
@@ -297,8 +304,17 @@
         private DataGridViewTextBoxColumn pname;
         private DataGridViewTextBoxColumn pspecialization;
         private DataGridViewTextBoxColumn ptime;
-        private DataGridViewTextBoxColumn ppriceofwork;
+        private DataGridViewTextBoxColumn planguage;
         private DataGridViewTextBoxColumn pExperience;
-        private DataGridViewTextBoxColumn prating;
+        private DataGridViewTextBoxColumn pproduct;
+        private PictureBox updatedgv_pic;
+        public DataGridView listofrecs_dgv1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn pspecialisation;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
     }
 }

@@ -55,7 +55,7 @@ namespace freelance
                 var interest = db.Interests.FirstOrDefault(i => i.ClientID == clientId);
                 if (interest != null)
                 {
-                    return [interest.ID.ToString(), interest.IName, interest.IsLiked];
+                    return [interest.ID.ToString(), interest.ISpecialization, interest.IExperience, interest.ITime, interest.ILanguage, interest.IProduct];
                 }
                 return null;
             }
@@ -72,9 +72,9 @@ namespace freelance
                 var performer = db.Performers.FirstOrDefault(p => p.ID == ID);
                 if (performer != null)
                 {
-                    return [performer.ID.ToString(), performer.PName, 
-                        performer.PSpecialization,performer.PTime,performer.PPriceofwork, performer.PExperience,
-                        performer.PRating, performer.PPicture];
+                    return [performer.ClientID.ToString(), performer.ID.ToString(), performer.PName, 
+                        performer.PSpecialization,performer.PTime, performer.PLanguage,performer.PExperience,
+                        performer.PProduct, performer.PPicture];
                 }
                 return null;
             }
@@ -175,6 +175,54 @@ namespace freelance
                 var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
                 context.DislikedPerformers.Add(disliked);
                 context.SaveChanges();
+            }
+        }
+        public static void AddInterest(int clientID, string ISpecialization, string ITime, string IExperience,
+            string ILanguage, string IProduct)
+        {
+            using (var context = new DBcontext())
+            { 
+                var client = context.Clients.FirstOrDefault(u => u.ID == clientID);
+                if (client != null)
+                {
+                    var interest = new Interest { ClientID = clientID, ISpecialization = ISpecialization, ITime = ITime, 
+                        IExperience = IExperience, ILanguage = ILanguage, IProduct = IProduct};
+                    context.Interests.Add(interest);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь не существует");
+                }
+            }
+        }
+        public static void AddPerformer(int clientID, string MyName, string MySpecialization, string MyTime, string MyExperience,
+            string MyLanguage, string MyProduct, string MyPicture)
+        {
+            using (var context = new DBcontext())
+            {
+                var client = context.Clients.FirstOrDefault(u => u.ID == clientID);
+                if (client != null)
+                {
+                    var performer = new Performer
+                    {
+                        ClientID = clientID,
+                        PName = MyName,
+                        PSpecialization = MySpecialization,
+                        PTime = MyTime,
+                        PExperience = MyExperience,
+                        PLanguage = MyLanguage,
+                        PProduct = MyProduct,
+                        PPicture = MyPicture,
+                        InClients = client
+                    };
+                    context.Performers.Add(performer);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    MessageBox.Show("Пользователь не существует");
+                }
             }
         }
     }

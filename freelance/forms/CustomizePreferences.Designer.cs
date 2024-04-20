@@ -29,275 +29,33 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomizePreferences));
-            Sweb_design_rbtn = new RadioButton();
-            Sadvertisement_rbtn = new RadioButton();
-            Sgraphic_design_rbtn = new RadioButton();
-            SthreeD_rbtn = new RadioButton();
-            Eonethreeyears_rbtn = new RadioButton();
-            Eyear_rbtn = new RadioButton();
-            Emore_rbtn = new RadioButton();
-            Enone_rbtn = new RadioButton();
-            Tweek_rbtn = new RadioButton();
-            Tthreedays_rbtn = new RadioButton();
-            Tmonth_rbtn = new RadioButton();
-            Tday_rbtn = new RadioButton();
-            Padvertisement_rbtn = new RadioButton();
-            Plogo_rbtn = new RadioButton();
-            Ptranselate_rbtn = new RadioButton();
-            Rwebsite_rbtn = new RadioButton();
-            Lchineese_rbtn = new RadioButton();
-            Ldeu_rbtn = new RadioButton();
-            Leng_rbtn = new RadioButton();
-            Preport_rbtn = new RadioButton();
             button1 = new Button();
             button2 = new Button();
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
             savechanges_btn = new Button();
+            Pwebsite_check = new CheckBox();
+            Preport_check = new CheckBox();
+            Ptranselate_check = new CheckBox();
+            Padvertisement_check = new CheckBox();
+            Stext_check = new CheckBox();
+            Sweb_design_check = new CheckBox();
+            Plogo_check = new CheckBox();
+            Ldeu_check = new CheckBox();
+            Leng_check = new CheckBox();
+            Sadvertisement_check = new CheckBox();
+            Sgraphic_design_check = new CheckBox();
+            Tweek_check = new CheckBox();
+            Tday_ = new CheckBox();
+            Lchineese_check = new CheckBox();
+            Enone_check = new CheckBox();
+            Tthreedays_check = new CheckBox();
+            Tmonth_check = new CheckBox();
+            Emore_check = new CheckBox();
+            Eonethreeyears_check = new CheckBox();
+            Eyear_check = new CheckBox();
             SuspendLayout();
-            // 
-            // Sweb_design_rbtn
-            // 
-            Sweb_design_rbtn.AutoSize = true;
-            Sweb_design_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Sweb_design_rbtn.Location = new Point(24, 79);
-            Sweb_design_rbtn.Name = "Sweb_design_rbtn";
-            Sweb_design_rbtn.Size = new Size(120, 29);
-            Sweb_design_rbtn.TabIndex = 0;
-            Sweb_design_rbtn.TabStop = true;
-            Sweb_design_rbtn.Text = "Веб-дизайн";
-            Sweb_design_rbtn.UseVisualStyleBackColor = true;
-            Sweb_design_rbtn.CheckedChanged += radioButton1_CheckedChanged;
-            // 
-            // Sadvertisement_rbtn
-            // 
-            Sadvertisement_rbtn.AutoSize = true;
-            Sadvertisement_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Sadvertisement_rbtn.Location = new Point(142, 109);
-            Sadvertisement_rbtn.Name = "Sadvertisement_rbtn";
-            Sadvertisement_rbtn.Size = new Size(296, 29);
-            Sadvertisement_rbtn.TabIndex = 1;
-            Sadvertisement_rbtn.TabStop = true;
-            Sadvertisement_rbtn.Text = "Интернет продвижение и реклама";
-            Sadvertisement_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Sgraphic_design_rbtn
-            // 
-            Sgraphic_design_rbtn.AutoSize = true;
-            Sgraphic_design_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Sgraphic_design_rbtn.Location = new Point(142, 79);
-            Sgraphic_design_rbtn.Name = "Sgraphic_design_rbtn";
-            Sgraphic_design_rbtn.Size = new Size(190, 29);
-            Sgraphic_design_rbtn.TabIndex = 2;
-            Sgraphic_design_rbtn.TabStop = true;
-            Sgraphic_design_rbtn.Text = "Графический дизайн";
-            Sgraphic_design_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // SthreeD_rbtn
-            // 
-            SthreeD_rbtn.AutoSize = true;
-            SthreeD_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            SthreeD_rbtn.Location = new Point(24, 109);
-            SthreeD_rbtn.Name = "SthreeD_rbtn";
-            SthreeD_rbtn.Size = new Size(124, 29);
-            SthreeD_rbtn.TabIndex = 3;
-            SthreeD_rbtn.TabStop = true;
-            SthreeD_rbtn.Text = "3D-графика";
-            SthreeD_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Eonethreeyears_rbtn
-            // 
-            Eonethreeyears_rbtn.AutoSize = true;
-            Eonethreeyears_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Eonethreeyears_rbtn.Location = new Point(516, 282);
-            Eonethreeyears_rbtn.Name = "Eonethreeyears_rbtn";
-            Eonethreeyears_rbtn.Size = new Size(94, 29);
-            Eonethreeyears_rbtn.TabIndex = 7;
-            Eonethreeyears_rbtn.TabStop = true;
-            Eonethreeyears_rbtn.Text = "1-3 года";
-            Eonethreeyears_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Eyear_rbtn
-            // 
-            Eyear_rbtn.AutoSize = true;
-            Eyear_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Eyear_rbtn.Location = new Point(634, 252);
-            Eyear_rbtn.Name = "Eyear_rbtn";
-            Eyear_rbtn.Size = new Size(103, 29);
-            Eyear_rbtn.TabIndex = 6;
-            Eyear_rbtn.TabStop = true;
-            Eyear_rbtn.Text = "До 1 года";
-            Eyear_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Emore_rbtn
-            // 
-            Emore_rbtn.AutoSize = true;
-            Emore_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Emore_rbtn.Location = new Point(634, 282);
-            Emore_rbtn.Name = "Emore_rbtn";
-            Emore_rbtn.Size = new Size(104, 29);
-            Emore_rbtn.TabIndex = 5;
-            Emore_rbtn.TabStop = true;
-            Emore_rbtn.Text = "От 3х лет";
-            Emore_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Enone_rbtn
-            // 
-            Enone_rbtn.AutoSize = true;
-            Enone_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Enone_rbtn.Location = new Point(516, 252);
-            Enone_rbtn.Name = "Enone_rbtn";
-            Enone_rbtn.Size = new Size(110, 29);
-            Enone_rbtn.TabIndex = 4;
-            Enone_rbtn.TabStop = true;
-            Enone_rbtn.Text = "Без опыта";
-            Enone_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Tweek_rbtn
-            // 
-            Tweek_rbtn.AutoSize = true;
-            Tweek_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Tweek_rbtn.Location = new Point(515, 109);
-            Tweek_rbtn.Name = "Tweek_rbtn";
-            Tweek_rbtn.Size = new Size(111, 29);
-            Tweek_rbtn.TabIndex = 11;
-            Tweek_rbtn.TabStop = true;
-            Tweek_rbtn.Text = "До недели";
-            Tweek_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Tthreedays_rbtn
-            // 
-            Tthreedays_rbtn.AutoSize = true;
-            Tthreedays_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Tthreedays_rbtn.Location = new Point(633, 79);
-            Tthreedays_rbtn.Name = "Tthreedays_rbtn";
-            Tthreedays_rbtn.Size = new Size(106, 29);
-            Tthreedays_rbtn.TabIndex = 10;
-            Tthreedays_rbtn.TabStop = true;
-            Tthreedays_rbtn.Text = "До 3 дней";
-            Tthreedays_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Tmonth_rbtn
-            // 
-            Tmonth_rbtn.AutoSize = true;
-            Tmonth_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Tmonth_rbtn.Location = new Point(633, 109);
-            Tmonth_rbtn.Name = "Tmonth_rbtn";
-            Tmonth_rbtn.Size = new Size(112, 29);
-            Tmonth_rbtn.TabIndex = 9;
-            Tmonth_rbtn.TabStop = true;
-            Tmonth_rbtn.Text = "До месяца";
-            Tmonth_rbtn.UseVisualStyleBackColor = true;
-            Tmonth_rbtn.CheckedChanged += radioButton11_CheckedChanged;
-            // 
-            // Tday_rbtn
-            // 
-            Tday_rbtn.AutoSize = true;
-            Tday_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Tday_rbtn.Location = new Point(515, 79);
-            Tday_rbtn.Name = "Tday_rbtn";
-            Tday_rbtn.Size = new Size(79, 29);
-            Tday_rbtn.TabIndex = 8;
-            Tday_rbtn.TabStop = true;
-            Tday_rbtn.Text = "1 день";
-            Tday_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Padvertisement_rbtn
-            // 
-            Padvertisement_rbtn.AutoSize = true;
-            Padvertisement_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Padvertisement_rbtn.Location = new Point(24, 282);
-            Padvertisement_rbtn.Name = "Padvertisement_rbtn";
-            Padvertisement_rbtn.Size = new Size(99, 29);
-            Padvertisement_rbtn.TabIndex = 15;
-            Padvertisement_rbtn.TabStop = true;
-            Padvertisement_rbtn.Text = "Реклама";
-            Padvertisement_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Plogo_rbtn
-            // 
-            Plogo_rbtn.AutoSize = true;
-            Plogo_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Plogo_rbtn.Location = new Point(265, 282);
-            Plogo_rbtn.Name = "Plogo_rbtn";
-            Plogo_rbtn.Size = new Size(162, 29);
-            Plogo_rbtn.TabIndex = 14;
-            Plogo_rbtn.TabStop = true;
-            Plogo_rbtn.Text = "Дизайн логотипа";
-            Plogo_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Ptranselate_rbtn
-            // 
-            Ptranselate_rbtn.AutoSize = true;
-            Ptranselate_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Ptranselate_rbtn.Location = new Point(142, 282);
-            Ptranselate_rbtn.Name = "Ptranselate_rbtn";
-            Ptranselate_rbtn.Size = new Size(98, 29);
-            Ptranselate_rbtn.TabIndex = 13;
-            Ptranselate_rbtn.TabStop = true;
-            Ptranselate_rbtn.Text = "Перевод";
-            Ptranselate_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Rwebsite_rbtn
-            // 
-            Rwebsite_rbtn.AutoSize = true;
-            Rwebsite_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Rwebsite_rbtn.Location = new Point(24, 252);
-            Rwebsite_rbtn.Name = "Rwebsite_rbtn";
-            Rwebsite_rbtn.Size = new Size(70, 29);
-            Rwebsite_rbtn.TabIndex = 12;
-            Rwebsite_rbtn.TabStop = true;
-            Rwebsite_rbtn.Text = "Сайт";
-            Rwebsite_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Lchineese_rbtn
-            // 
-            Lchineese_rbtn.AutoSize = true;
-            Lchineese_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Lchineese_rbtn.Location = new Point(265, 415);
-            Lchineese_rbtn.Name = "Lchineese_rbtn";
-            Lchineese_rbtn.Size = new Size(113, 29);
-            Lchineese_rbtn.TabIndex = 19;
-            Lchineese_rbtn.TabStop = true;
-            Lchineese_rbtn.Text = "Китайский";
-            Lchineese_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Ldeu_rbtn
-            // 
-            Ldeu_rbtn.AutoSize = true;
-            Ldeu_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Ldeu_rbtn.Location = new Point(142, 415);
-            Ldeu_rbtn.Name = "Ldeu_rbtn";
-            Ldeu_rbtn.Size = new Size(108, 29);
-            Ldeu_rbtn.TabIndex = 18;
-            Ldeu_rbtn.TabStop = true;
-            Ldeu_rbtn.Text = "Немецкий";
-            Ldeu_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Leng_rbtn
-            // 
-            Leng_rbtn.AutoSize = true;
-            Leng_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Leng_rbtn.Location = new Point(24, 415);
-            Leng_rbtn.Name = "Leng_rbtn";
-            Leng_rbtn.Size = new Size(120, 29);
-            Leng_rbtn.TabIndex = 16;
-            Leng_rbtn.TabStop = true;
-            Leng_rbtn.Text = "Английский";
-            Leng_rbtn.UseVisualStyleBackColor = true;
-            // 
-            // Preport_rbtn
-            // 
-            Preport_rbtn.AutoSize = true;
-            Preport_rbtn.Font = new Font("Didact Gothic", 10.1999989F);
-            Preport_rbtn.Location = new Point(142, 252);
-            Preport_rbtn.Name = "Preport_rbtn";
-            Preport_rbtn.Size = new Size(85, 29);
-            Preport_rbtn.TabIndex = 20;
-            Preport_rbtn.TabStop = true;
-            Preport_rbtn.Text = "Статья";
-            Preport_rbtn.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -309,7 +67,6 @@
             button1.TabIndex = 21;
             button1.Text = "Сфера деятельности";
             button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -365,6 +122,207 @@
             savechanges_btn.TabIndex = 26;
             savechanges_btn.Text = "Изменить";
             savechanges_btn.UseVisualStyleBackColor = false;
+            savechanges_btn.Click += savechanges_btn_Click;
+            // 
+            // Pwebsite_check
+            // 
+            Pwebsite_check.AutoSize = true;
+            Pwebsite_check.Location = new Point(25, 257);
+            Pwebsite_check.Name = "Pwebsite_check";
+            Pwebsite_check.Size = new Size(63, 24);
+            Pwebsite_check.TabIndex = 34;
+            Pwebsite_check.Text = "Сайт";
+            Pwebsite_check.UseVisualStyleBackColor = true;
+            // 
+            // Preport_check
+            // 
+            Preport_check.AutoSize = true;
+            Preport_check.Location = new Point(174, 257);
+            Preport_check.Name = "Preport_check";
+            Preport_check.Size = new Size(76, 24);
+            Preport_check.TabIndex = 35;
+            Preport_check.Text = "Статья";
+            Preport_check.UseVisualStyleBackColor = true;
+            // 
+            // Ptranselate_check
+            // 
+            Ptranselate_check.AutoSize = true;
+            Ptranselate_check.Location = new Point(174, 282);
+            Ptranselate_check.Name = "Ptranselate_check";
+            Ptranselate_check.Size = new Size(92, 24);
+            Ptranselate_check.TabIndex = 36;
+            Ptranselate_check.Text = "Перевод";
+            Ptranselate_check.UseVisualStyleBackColor = true;
+            // 
+            // Padvertisement_check
+            // 
+            Padvertisement_check.AutoSize = true;
+            Padvertisement_check.Location = new Point(25, 287);
+            Padvertisement_check.Name = "Padvertisement_check";
+            Padvertisement_check.Size = new Size(89, 24);
+            Padvertisement_check.TabIndex = 37;
+            Padvertisement_check.Text = "Реклама";
+            Padvertisement_check.UseVisualStyleBackColor = true;
+            // 
+            // Stext_check
+            // 
+            Stext_check.AutoSize = true;
+            Stext_check.Location = new Point(24, 109);
+            Stext_check.Name = "Stext_check";
+            Stext_check.Size = new Size(123, 24);
+            Stext_check.TabIndex = 38;
+            Stext_check.Text = "Копирайтинг";
+            Stext_check.UseVisualStyleBackColor = true;
+            // 
+            // Sweb_design_check
+            // 
+            Sweb_design_check.AutoSize = true;
+            Sweb_design_check.Location = new Point(24, 84);
+            Sweb_design_check.Name = "Sweb_design_check";
+            Sweb_design_check.Size = new Size(143, 24);
+            Sweb_design_check.TabIndex = 39;
+            Sweb_design_check.Text = "Веб-разработка";
+            Sweb_design_check.UseVisualStyleBackColor = true;
+            // 
+            // Plogo_check
+            // 
+            Plogo_check.AutoSize = true;
+            Plogo_check.Location = new Point(287, 257);
+            Plogo_check.Name = "Plogo_check";
+            Plogo_check.Size = new Size(151, 24);
+            Plogo_check.TabIndex = 40;
+            Plogo_check.Text = "Дизайн логотипа";
+            Plogo_check.UseVisualStyleBackColor = true;
+            // 
+            // Ldeu_check
+            // 
+            Ldeu_check.AutoSize = true;
+            Ldeu_check.Location = new Point(174, 416);
+            Ldeu_check.Name = "Ldeu_check";
+            Ldeu_check.Size = new Size(103, 24);
+            Ldeu_check.TabIndex = 41;
+            Ldeu_check.Text = "Немецкий";
+            Ldeu_check.UseVisualStyleBackColor = true;
+            // 
+            // Leng_check
+            // 
+            Leng_check.AutoSize = true;
+            Leng_check.Location = new Point(25, 416);
+            Leng_check.Name = "Leng_check";
+            Leng_check.Size = new Size(114, 24);
+            Leng_check.TabIndex = 42;
+            Leng_check.Text = "Английский";
+            Leng_check.UseVisualStyleBackColor = true;
+            // 
+            // Sadvertisement_check
+            // 
+            Sadvertisement_check.AutoSize = true;
+            Sadvertisement_check.Location = new Point(174, 109);
+            Sadvertisement_check.Name = "Sadvertisement_check";
+            Sadvertisement_check.Size = new Size(274, 24);
+            Sadvertisement_check.TabIndex = 43;
+            Sadvertisement_check.Text = "Интернет продвижение и реклама";
+            Sadvertisement_check.UseVisualStyleBackColor = true;
+            // 
+            // Sgraphic_design_check
+            // 
+            Sgraphic_design_check.AutoSize = true;
+            Sgraphic_design_check.Location = new Point(174, 84);
+            Sgraphic_design_check.Name = "Sgraphic_design_check";
+            Sgraphic_design_check.Size = new Size(176, 24);
+            Sgraphic_design_check.TabIndex = 44;
+            Sgraphic_design_check.Text = "Графический дизайн";
+            Sgraphic_design_check.UseVisualStyleBackColor = true;
+            // 
+            // Tweek_check
+            // 
+            Tweek_check.AutoSize = true;
+            Tweek_check.Location = new Point(662, 80);
+            Tweek_check.Name = "Tweek_check";
+            Tweek_check.Size = new Size(104, 24);
+            Tweek_check.TabIndex = 45;
+            Tweek_check.Text = "До недели";
+            Tweek_check.UseVisualStyleBackColor = true;
+            // 
+            // Tday_
+            // 
+            Tday_.AutoSize = true;
+            Tday_.Location = new Point(526, 80);
+            Tday_.Name = "Tday_";
+            Tday_.Size = new Size(76, 24);
+            Tday_.TabIndex = 46;
+            Tday_.Text = "1 день";
+            Tday_.UseVisualStyleBackColor = true;
+            // 
+            // Lchineese_check
+            // 
+            Lchineese_check.AutoSize = true;
+            Lchineese_check.Location = new Point(287, 416);
+            Lchineese_check.Name = "Lchineese_check";
+            Lchineese_check.Size = new Size(104, 24);
+            Lchineese_check.TabIndex = 47;
+            Lchineese_check.Text = "Китайский";
+            Lchineese_check.UseVisualStyleBackColor = true;
+            // 
+            // Enone_check
+            // 
+            Enone_check.AutoSize = true;
+            Enone_check.Location = new Point(516, 253);
+            Enone_check.Name = "Enone_check";
+            Enone_check.Size = new Size(102, 24);
+            Enone_check.TabIndex = 48;
+            Enone_check.Text = "Без опыта";
+            Enone_check.UseVisualStyleBackColor = true;
+            // 
+            // Tthreedays_check
+            // 
+            Tthreedays_check.AutoSize = true;
+            Tthreedays_check.Location = new Point(526, 109);
+            Tthreedays_check.Name = "Tthreedays_check";
+            Tthreedays_check.Size = new Size(107, 24);
+            Tthreedays_check.TabIndex = 49;
+            Tthreedays_check.Text = "До 3х дней";
+            Tthreedays_check.UseVisualStyleBackColor = true;
+            // 
+            // Tmonth_check
+            // 
+            Tmonth_check.AutoSize = true;
+            Tmonth_check.Location = new Point(662, 109);
+            Tmonth_check.Name = "Tmonth_check";
+            Tmonth_check.Size = new Size(105, 24);
+            Tmonth_check.TabIndex = 50;
+            Tmonth_check.Text = "До месяца";
+            Tmonth_check.UseVisualStyleBackColor = true;
+            // 
+            // Emore_check
+            // 
+            Emore_check.AutoSize = true;
+            Emore_check.Location = new Point(662, 280);
+            Emore_check.Name = "Emore_check";
+            Emore_check.Size = new Size(91, 24);
+            Emore_check.TabIndex = 51;
+            Emore_check.Text = "от 3х лет";
+            Emore_check.UseVisualStyleBackColor = true;
+            // 
+            // Eonethreeyears_check
+            // 
+            Eonethreeyears_check.AutoSize = true;
+            Eonethreeyears_check.Location = new Point(516, 282);
+            Eonethreeyears_check.Name = "Eonethreeyears_check";
+            Eonethreeyears_check.Size = new Size(88, 24);
+            Eonethreeyears_check.TabIndex = 52;
+            Eonethreeyears_check.Text = "1-3 года";
+            Eonethreeyears_check.UseVisualStyleBackColor = true;
+            // 
+            // Eyear_check
+            // 
+            Eyear_check.AutoSize = true;
+            Eyear_check.Location = new Point(662, 250);
+            Eyear_check.Name = "Eyear_check";
+            Eyear_check.Size = new Size(95, 24);
+            Eyear_check.TabIndex = 53;
+            Eyear_check.Text = "до 1 года";
+            Eyear_check.UseVisualStyleBackColor = true;
             // 
             // CustomizePreferences
             // 
@@ -372,67 +330,65 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 508);
+            Controls.Add(Eyear_check);
+            Controls.Add(Eonethreeyears_check);
+            Controls.Add(Emore_check);
+            Controls.Add(Tmonth_check);
+            Controls.Add(Tthreedays_check);
+            Controls.Add(Enone_check);
+            Controls.Add(Lchineese_check);
+            Controls.Add(Tday_);
+            Controls.Add(Tweek_check);
+            Controls.Add(Sgraphic_design_check);
+            Controls.Add(Sadvertisement_check);
+            Controls.Add(Leng_check);
+            Controls.Add(Ldeu_check);
+            Controls.Add(Plogo_check);
+            Controls.Add(Sweb_design_check);
+            Controls.Add(Stext_check);
+            Controls.Add(Padvertisement_check);
+            Controls.Add(Ptranselate_check);
+            Controls.Add(Preport_check);
+            Controls.Add(Pwebsite_check);
             Controls.Add(savechanges_btn);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(Sgraphic_design_rbtn);
-            Controls.Add(Sadvertisement_rbtn);
-            Controls.Add(Preport_rbtn);
-            Controls.Add(Lchineese_rbtn);
-            Controls.Add(Ldeu_rbtn);
-            Controls.Add(Leng_rbtn);
-            Controls.Add(Padvertisement_rbtn);
-            Controls.Add(Plogo_rbtn);
-            Controls.Add(Ptranselate_rbtn);
-            Controls.Add(Rwebsite_rbtn);
-            Controls.Add(Tweek_rbtn);
-            Controls.Add(Tthreedays_rbtn);
-            Controls.Add(Tmonth_rbtn);
-            Controls.Add(Tday_rbtn);
-            Controls.Add(Eonethreeyears_rbtn);
-            Controls.Add(Eyear_rbtn);
-            Controls.Add(Emore_rbtn);
-            Controls.Add(Enone_rbtn);
-            Controls.Add(SthreeD_rbtn);
-            Controls.Add(Sweb_design_rbtn);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CustomizePreferences";
             Text = "Редактировать предпочтения";
-            Load += CustomizePreferences_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private RadioButton Sweb_design_rbtn;
-        private RadioButton Sadvertisement_rbtn;
-        private RadioButton Sgraphic_design_rbtn;
-        private RadioButton SthreeD_rbtn;
-        private RadioButton Eonethreeyears_rbtn;
-        private RadioButton Eyear_rbtn;
-        private RadioButton Emore_rbtn;
-        private RadioButton Enone_rbtn;
-        private RadioButton Tweek_rbtn;
-        private RadioButton Tthreedays_rbtn;
-        private RadioButton Tmonth_rbtn;
-        private RadioButton Tday_rbtn;
-        private RadioButton Padvertisement_rbtn;
-        private RadioButton Plogo_rbtn;
-        private RadioButton Ptranselate_rbtn;
-        private RadioButton Rwebsite_rbtn;
-        private RadioButton Lchineese_rbtn;
-        private RadioButton Ldeu_rbtn;
-        private RadioButton Leng_rbtn;
-        private RadioButton Preport_rbtn;
         private Button button1;
         private Button button2;
         private Button button3;
         private Button button4;
         private Button button5;
         private Button savechanges_btn;
+        private CheckBox Pwebsite_check;
+        private CheckBox Preport_check;
+        private CheckBox Ptranselate_check;
+        private CheckBox Padvertisement_check;
+        private CheckBox Stext_check;
+        private CheckBox Sweb_design_check;
+        private CheckBox Plogo_check;
+        private CheckBox Ldeu_check;
+        private CheckBox Leng_check;
+        private CheckBox Sadvertisement_check;
+        private CheckBox Sgraphic_design_check;
+        private CheckBox Tweek_check;
+        private CheckBox Tday_;
+        private CheckBox Lchineese_check;
+        private CheckBox Enone_check;
+        private CheckBox Tthreedays_check;
+        private CheckBox Tmonth_check;
+        private CheckBox Emore_check;
+        private CheckBox Eonethreeyears_check;
+        private CheckBox Eyear_check;
     }
 }

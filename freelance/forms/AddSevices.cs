@@ -1,14 +1,16 @@
 ﻿namespace freelance.forms
 {
-    public partial class CustomizePreferences : Form
+    public partial class AddSevices : Form
     {
         private int clientID;
+        private string fotofile = String.Empty;
+        private string fotofilepath = String.Empty;
         private string selectedSpecialization = String.Empty;
         private string selectedExperience = String.Empty;
         private string selectedLanguage = String.Empty;
         private string selectedTime = String.Empty;
         private string selectedProduct = String.Empty;
-        public CustomizePreferences(int clientID)
+        public AddSevices(int clientID)
         {
             this.clientID = clientID;
             InitializeComponent();
@@ -56,32 +58,48 @@
             if (Enone_check.Checked)
                 selectedExperience = "Без опыта";
         }
-        private void savechanges_btn_Click(object sender, EventArgs e)
+        private void create_btn_Click(object sender, EventArgs e)
         {
-            using (var db = new DBcontext())
+            try
             {
-                if (db.Interests.Any(u => u.ClientID == clientID))
+                GetSelectedSpecialization();
+                using (var db = new DBcontext())
                 {
                     GetSelectedSpecialization();
-                    var clientInterest = db.Interests.FirstOrDefault(u => u.ClientID == clientID);
-                    clientInterest.IExperience = selectedExperience;
-                    clientInterest.IProduct = selectedProduct;
-                    clientInterest.ILanguage = selectedLanguage;
-                    clientInterest.ITime = selectedTime;
-                    clientInterest.ISpecialization = selectedSpecialization;
-                    db.SaveChanges();
-                    MessageBox.Show("Ваши предпочтения успешно изменены");
-                }
-                else
-                {
-                    var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
-                    if (client != null)
-                    {
-                        workingwithDB.AddInterest(clientID, selectedSpecialization, selectedExperience, selectedTime,
-                            selectedLanguage, selectedProduct);
-                    }
+                    workingwithDB.AddPerformer(clientID, name_txt.Text, selectedSpecialization, selectedTime,
+                        selectedExperience, selectedLanguage, selectedProduct, fotofilepath);
+                    MessageBox.Show("Вы успешно создали объявление.");
                 }
             }
+            catch
+            {
+                MessageBox.Show("Не удалось создать объявление.");
+            }
+
         }
+        private void addfoto_btn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog fileDialog = new OpenFileDialog();
+                fileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    fotofile = fileDialog.FileName;
+                    Image userImage = Image.FromFile(fotofile);
+                    string fileName = Guid.NewGuid().ToString() + ".jpg";
+                    string filePath = Path.Combine("../../../images/", fileName);
+                    userImage.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    fotofilepath = fileName;
+                    Bitmap image = new Bitmap(Path.GetFullPath(filePath));
+                    foto_pic.Image = image;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
     }
 }

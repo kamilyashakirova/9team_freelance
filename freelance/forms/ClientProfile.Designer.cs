@@ -196,6 +196,7 @@
             button2.TabIndex = 2;
             button2.Text = "Мои заказы";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button3
             // 

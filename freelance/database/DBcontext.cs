@@ -25,7 +25,9 @@ public partial class DBcontext : DbContext
         {
             с.HasKey(e => e.ID);
             с.ToTable("Performers");
-        });
+            с.HasIndex(e => e.ID, "IX_Performers_ID").IsUnique();
+            с.HasOne(e => e.InClients).WithOne(e => e.Myservices).HasForeignKey<Performer>(e => e.ClientID).OnDelete(DeleteBehavior.ClientSetNull);
+    });
         mbuilder.Entity<DislikedPerformers>(с =>
         {
             с.HasKey(e => e.ID);

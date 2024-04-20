@@ -4,7 +4,6 @@ namespace freelance.forms
 {
     public partial class ClientProfile : Form
     {
-        private bool ImageSelect = false;
         private string selectedFile = String.Empty;
         private int clientID;
         public ClientProfile(int userID)
@@ -38,7 +37,6 @@ namespace freelance.forms
                 fileDialog.Filter = "Image Files(*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG|All files (*.*)|*.*";
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    ImageSelect = true;
                     selectedFile = fileDialog.FileName;
                     Image userImage = Image.FromFile(selectedFile);
                     string fileName = Guid.NewGuid().ToString() + ".jpg";
@@ -70,14 +68,20 @@ namespace freelance.forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Dislikedperformers dislikedperformers = new Dislikedperformers(clientID);
+            var dislikedperformers = new Dislikedperformers(clientID);
             dislikedperformers.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CustomizePreferences customizePreferences = new CustomizePreferences();
+            var customizePreferences = new CustomizePreferences(clientID);
             customizePreferences.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var myservices = new Myservices(clientID);
+            myservices.Show();
         }
     }
 }

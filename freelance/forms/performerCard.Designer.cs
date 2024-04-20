@@ -33,8 +33,8 @@
             pnameCard_txt = new TextBox();
             pspecializationCard_txt = new TextBox();
             ptimeCard_txt = new TextBox();
-            ppriceCard_txt = new TextBox();
-            pratingCard_txt = new TextBox();
+            planguage_txt = new TextBox();
+            pproduct_txt = new TextBox();
             pExpipienceCard_txt = new TextBox();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -94,23 +94,23 @@
             ptimeCard_txt.Size = new Size(304, 30);
             ptimeCard_txt.TabIndex = 3;
             // 
-            // ppriceCard_txt
+            // planguage_txt
             // 
-            ppriceCard_txt.Font = new Font("Didact Gothic", 10.1999989F);
-            ppriceCard_txt.Location = new Point(335, 315);
-            ppriceCard_txt.Margin = new Padding(3, 4, 3, 4);
-            ppriceCard_txt.Name = "ppriceCard_txt";
-            ppriceCard_txt.Size = new Size(194, 30);
-            ppriceCard_txt.TabIndex = 4;
+            planguage_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            planguage_txt.Location = new Point(335, 315);
+            planguage_txt.Margin = new Padding(3, 4, 3, 4);
+            planguage_txt.Name = "planguage_txt";
+            planguage_txt.Size = new Size(194, 30);
+            planguage_txt.TabIndex = 4;
             // 
-            // pratingCard_txt
+            // pproduct_txt
             // 
-            pratingCard_txt.Font = new Font("Didact Gothic", 10.1999989F);
-            pratingCard_txt.Location = new Point(335, 490);
-            pratingCard_txt.Margin = new Padding(3, 4, 3, 4);
-            pratingCard_txt.Name = "pratingCard_txt";
-            pratingCard_txt.Size = new Size(177, 30);
-            pratingCard_txt.TabIndex = 5;
+            pproduct_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            pproduct_txt.Location = new Point(335, 490);
+            pproduct_txt.Margin = new Padding(3, 4, 3, 4);
+            pproduct_txt.Name = "pproduct_txt";
+            pproduct_txt.Size = new Size(177, 30);
+            pproduct_txt.TabIndex = 5;
             // 
             // pExpipienceCard_txt
             // 
@@ -190,9 +190,9 @@
             srprice_lbl.Font = new Font("Didact Gothic", 10.1999989F);
             srprice_lbl.Location = new Point(335, 286);
             srprice_lbl.Name = "srprice_lbl";
-            srprice_lbl.Size = new Size(191, 25);
+            srprice_lbl.Size = new Size(126, 25);
             srprice_lbl.TabIndex = 13;
-            srprice_lbl.Text = "Средняя цена за заказ :";
+            srprice_lbl.Text = "Знание языков:";
             // 
             // experiense_lbl
             // 
@@ -210,9 +210,9 @@
             rating_lbl.Font = new Font("Didact Gothic", 10.1999989F);
             rating_lbl.Location = new Point(335, 461);
             rating_lbl.Name = "rating_lbl";
-            rating_lbl.Size = new Size(80, 25);
+            rating_lbl.Size = new Size(79, 25);
             rating_lbl.TabIndex = 15;
-            rating_lbl.Text = "Рейтинг :";
+            rating_lbl.Text = "Продукт:";
             // 
             // like_btn
             // 
@@ -256,7 +256,7 @@
             ID_Card_txt.TabIndex = 18;
             ID_Card_txt.Visible = false;
             // 
-            // performerCard
+            // PerformerCard
             // 
             AutoScaleDimensions = new SizeF(9F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -272,8 +272,8 @@
             Controls.Add(spec_lbl);
             Controls.Add(fio_lbl);
             Controls.Add(pExpipienceCard_txt);
-            Controls.Add(pratingCard_txt);
-            Controls.Add(ppriceCard_txt);
+            Controls.Add(pproduct_txt);
+            Controls.Add(planguage_txt);
             Controls.Add(ptimeCard_txt);
             Controls.Add(pspecializationCard_txt);
             Controls.Add(pnameCard_txt);
@@ -284,7 +284,7 @@
             Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
-            Name = "performerCard";
+            Name = "PerformerCard";
             Text = "Карточка фрилансера";
             ((System.ComponentModel.ISupportInitialize)ppictureCard_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -304,8 +304,8 @@
         public TextBox pnameCard_txt;
         public TextBox pspecializationCard_txt;
         public TextBox ptimeCard_txt;
-        public TextBox ppriceCard_txt;
-        public TextBox pratingCard_txt;
+        public TextBox planguage_txt;
+        public TextBox pproduct_txt;
         public TextBox pExpipienceCard_txt;
         public Label fio_lbl;
         public Label spec_lbl;

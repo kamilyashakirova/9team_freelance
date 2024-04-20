@@ -32,7 +32,7 @@ namespace freelance.forms
                         if (performer != null)
                         {
                             liked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                performer.PTime, performer.PPriceofwork, performer.PExperience, performer.PRating);
+                                performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
                         }
                     }
                 }
@@ -51,9 +51,9 @@ namespace freelance.forms
                 card.pnameCard_txt.Text = this.liked_dgv.CurrentRow.Cells[1].Value.ToString();
                 card.pspecializationCard_txt.Text = this.liked_dgv.CurrentRow.Cells[2].Value.ToString();
                 card.ptimeCard_txt.Text = this.liked_dgv.CurrentRow.Cells[3].Value.ToString();
-                card.ppriceCard_txt.Text = this.liked_dgv.CurrentRow.Cells[4].Value.ToString();
+                card.planguage_txt.Text = this.liked_dgv.CurrentRow.Cells[4].Value.ToString();
                 card.pExpipienceCard_txt.Text = this.liked_dgv.CurrentRow.Cells[5].Value.ToString();
-                card.pratingCard_txt.Text = this.liked_dgv.CurrentRow.Cells[6].Value.ToString();
+                card.pproduct_txt.Text = this.liked_dgv.CurrentRow.Cells[6].Value.ToString();
                 using (var db = new DBcontext())
                 {
                     var performer = db.Performers.Where(p => p.PName == card.pnameCard_txt.Text).FirstOrDefault();

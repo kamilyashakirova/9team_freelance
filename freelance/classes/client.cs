@@ -2,7 +2,7 @@
 {
     public class Client
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
 
         public int UserID { get; set; }
 
@@ -17,6 +17,7 @@
         public Interest InterestsTable { get; set; } = null!;
         public DislikedPerformers DislikedTable { get; set; } = null!;
         public LikedPerformers LikedTable { get; set; } = null!;
+        public Performer Myservices { get; set; } = null!;
 
     }
 }

@@ -35,18 +35,18 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Likedperformers));
             liked_dgv = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            pname = new DataGridViewTextBoxColumn();
-            pspecialisation = new DataGridViewTextBoxColumn();
-            ptime = new DataGridViewTextBoxColumn();
-            pprice = new DataGridViewTextBoxColumn();
-            pExperience = new DataGridViewTextBoxColumn();
-            prating = new DataGridViewTextBoxColumn();
             liked_lbl = new Label();
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox4 = new PictureBox();
+            ID = new DataGridViewTextBoxColumn();
+            pname = new DataGridViewTextBoxColumn();
+            pspecialisation = new DataGridViewTextBoxColumn();
+            ptime = new DataGridViewTextBoxColumn();
+            planguage = new DataGridViewTextBoxColumn();
+            pExperience = new DataGridViewTextBoxColumn();
+            pproduct = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)liked_dgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -56,6 +56,7 @@
             // 
             // liked_dgv
             // 
+            liked_dgv.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
@@ -71,7 +72,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             liked_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             liked_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            liked_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialisation, ptime, pprice, pExperience, prating });
+            liked_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialisation, ptime, planguage, pExperience, pproduct });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
@@ -100,56 +101,6 @@
             liked_dgv.Size = new Size(750, 514);
             liked_dgv.TabIndex = 0;
             liked_dgv.CellDoubleClick += liked_dgv_CellDoubleClick;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.Visible = false;
-            ID.Width = 125;
-            // 
-            // pname
-            // 
-            pname.HeaderText = "ФИО";
-            pname.MinimumWidth = 6;
-            pname.Name = "pname";
-            pname.Width = 125;
-            // 
-            // pspecialisation
-            // 
-            pspecialisation.HeaderText = "Специализация";
-            pspecialisation.MinimumWidth = 6;
-            pspecialisation.Name = "pspecialisation";
-            pspecialisation.Width = 125;
-            // 
-            // ptime
-            // 
-            ptime.HeaderText = "Срок";
-            ptime.MinimumWidth = 6;
-            ptime.Name = "ptime";
-            ptime.Width = 125;
-            // 
-            // pprice
-            // 
-            pprice.HeaderText = "Цена";
-            pprice.MinimumWidth = 6;
-            pprice.Name = "pprice";
-            pprice.Width = 125;
-            // 
-            // pExperience
-            // 
-            pExperience.HeaderText = "Опыт";
-            pExperience.MinimumWidth = 6;
-            pExperience.Name = "pExperience";
-            pExperience.Width = 125;
-            // 
-            // prating
-            // 
-            prating.HeaderText = "Рейтинг";
-            prating.MinimumWidth = 6;
-            prating.Name = "prating";
-            prating.Width = 125;
             // 
             // liked_lbl
             // 
@@ -206,7 +157,57 @@
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
             // 
-            // likedperformers
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.Visible = false;
+            ID.Width = 125;
+            // 
+            // pname
+            // 
+            pname.HeaderText = "ФИО";
+            pname.MinimumWidth = 6;
+            pname.Name = "pname";
+            pname.Width = 125;
+            // 
+            // pspecialisation
+            // 
+            pspecialisation.HeaderText = "Специализация";
+            pspecialisation.MinimumWidth = 6;
+            pspecialisation.Name = "pspecialisation";
+            pspecialisation.Width = 125;
+            // 
+            // ptime
+            // 
+            ptime.HeaderText = "Срок";
+            ptime.MinimumWidth = 6;
+            ptime.Name = "ptime";
+            ptime.Width = 125;
+            // 
+            // planguage
+            // 
+            planguage.HeaderText = "Знание языков";
+            planguage.MinimumWidth = 6;
+            planguage.Name = "planguage";
+            planguage.Width = 125;
+            // 
+            // pExperience
+            // 
+            pExperience.HeaderText = "Опыт";
+            pExperience.MinimumWidth = 6;
+            pExperience.Name = "pExperience";
+            pExperience.Width = 125;
+            // 
+            // pproduct
+            // 
+            pproduct.HeaderText = "Продукт";
+            pproduct.MinimumWidth = 6;
+            pproduct.Name = "pproduct";
+            pproduct.Width = 125;
+            // 
+            // Likedperformers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -220,7 +221,7 @@
             Controls.Add(pictureBox4);
             ForeColor = SystemColors.WindowText;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "likedperformers";
+            Name = "Likedperformers";
             Text = "Избранное";
             Load += likedperformers_Load;
             ((System.ComponentModel.ISupportInitialize)liked_dgv).EndInit();
@@ -238,13 +239,13 @@
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;
         private PictureBox pictureBox4;
+        internal DataGridView liked_dgv;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn pname;
         private DataGridViewTextBoxColumn pspecialisation;
         private DataGridViewTextBoxColumn ptime;
-        private DataGridViewTextBoxColumn pprice;
+        private DataGridViewTextBoxColumn planguage;
         private DataGridViewTextBoxColumn pExperience;
-        private DataGridViewTextBoxColumn prating;
-        internal DataGridView liked_dgv;
+        private DataGridViewTextBoxColumn pproduct;
     }
 }
