@@ -17,7 +17,7 @@ namespace freelance.forms
             {
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
-            liked_lbl.Font = new Font(fonts.Families[0],16);
+            liked_lbl.Font = new Font(fonts.Families[0], 16);
         }
         private void likedperformers_Load(object sender, EventArgs e)
         {
@@ -77,6 +77,10 @@ namespace freelance.forms
             {
                 MessageBox.Show("Выберите необходимую строку в таблице.");
             }
+        }
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

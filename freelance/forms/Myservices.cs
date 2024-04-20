@@ -76,5 +76,9 @@ namespace freelance.forms
             myservices_dgv.Rows.Clear();
             Update(clientID, myservices_dgv);
         }
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

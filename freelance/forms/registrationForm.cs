@@ -29,10 +29,15 @@ namespace freelance.forms
                 workingwithDB.AddUserAndClient(rlogin_txtb.Text, rpassword_txtb.Text, rEmail_txtb.Text, rname_txtb.Text, rsurname_txtb.Text, rpatronomic_txtb.Text);
                 MessageBox.Show("Вы успешно зарегистрировались.");
             }
-            else 
+            else
             {
                 MessageBox.Show("Ошибка. Проверьте, правильно ли Вы повторили пароль.");
             }
+        }
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

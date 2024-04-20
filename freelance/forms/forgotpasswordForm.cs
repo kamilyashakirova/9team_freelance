@@ -8,7 +8,7 @@ namespace freelance.forms
             InitializeComponent();
             FontClass.SetCustomFont(this, 10);
             FontClass.SetCustomFont(passwordrecovery_lbl, 18);
-            FontClass.SetCustomFont(login_lbl,12);
+            FontClass.SetCustomFont(login_lbl, 12);
             FontClass.SetCustomFont(writepassword_lbl, 12);
         }
         private void sendemail(string email, string? password)
@@ -69,6 +69,10 @@ namespace freelance.forms
                 }
                 errorRepeatnewp_lbl.Visible = true;
             }
+        }
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

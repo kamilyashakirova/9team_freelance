@@ -55,13 +55,15 @@
             Emore_check = new CheckBox();
             Eonethreeyears_check = new CheckBox();
             Eyear_check = new CheckBox();
+            exit_btn = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // button1
             // 
             button1.BackColor = Color.LightSteelBlue;
             button1.Font = new Font("Didact Gothic", 10.8F);
-            button1.Location = new Point(25, 32);
+            button1.Location = new Point(25, 80);
             button1.Name = "button1";
             button1.Size = new Size(403, 42);
             button1.TabIndex = 21;
@@ -72,7 +74,7 @@
             // 
             button2.BackColor = Color.LightSteelBlue;
             button2.Font = new Font("Didact Gothic", 10.8F);
-            button2.Location = new Point(516, 205);
+            button2.Location = new Point(516, 220);
             button2.Name = "button2";
             button2.Size = new Size(403, 42);
             button2.TabIndex = 22;
@@ -94,7 +96,7 @@
             // 
             button4.BackColor = Color.CadetBlue;
             button4.Font = new Font("Didact Gothic", 10.8F);
-            button4.Location = new Point(25, 205);
+            button4.Location = new Point(25, 220);
             button4.Name = "button4";
             button4.Size = new Size(403, 42);
             button4.TabIndex = 24;
@@ -105,7 +107,7 @@
             // 
             button5.BackColor = Color.IndianRed;
             button5.Font = new Font("Didact Gothic", 10.8F);
-            button5.Location = new Point(516, 32);
+            button5.Location = new Point(516, 80);
             button5.Name = "button5";
             button5.Size = new Size(403, 42);
             button5.TabIndex = 25;
@@ -127,7 +129,7 @@
             // Pwebsite_check
             // 
             Pwebsite_check.AutoSize = true;
-            Pwebsite_check.Location = new Point(25, 257);
+            Pwebsite_check.Location = new Point(25, 272);
             Pwebsite_check.Name = "Pwebsite_check";
             Pwebsite_check.Size = new Size(63, 24);
             Pwebsite_check.TabIndex = 34;
@@ -137,7 +139,7 @@
             // Preport_check
             // 
             Preport_check.AutoSize = true;
-            Preport_check.Location = new Point(174, 257);
+            Preport_check.Location = new Point(174, 272);
             Preport_check.Name = "Preport_check";
             Preport_check.Size = new Size(76, 24);
             Preport_check.TabIndex = 35;
@@ -147,7 +149,7 @@
             // Ptranselate_check
             // 
             Ptranselate_check.AutoSize = true;
-            Ptranselate_check.Location = new Point(174, 282);
+            Ptranselate_check.Location = new Point(174, 297);
             Ptranselate_check.Name = "Ptranselate_check";
             Ptranselate_check.Size = new Size(92, 24);
             Ptranselate_check.TabIndex = 36;
@@ -157,7 +159,7 @@
             // Padvertisement_check
             // 
             Padvertisement_check.AutoSize = true;
-            Padvertisement_check.Location = new Point(25, 287);
+            Padvertisement_check.Location = new Point(25, 302);
             Padvertisement_check.Name = "Padvertisement_check";
             Padvertisement_check.Size = new Size(89, 24);
             Padvertisement_check.TabIndex = 37;
@@ -167,7 +169,7 @@
             // Stext_check
             // 
             Stext_check.AutoSize = true;
-            Stext_check.Location = new Point(24, 109);
+            Stext_check.Location = new Point(24, 157);
             Stext_check.Name = "Stext_check";
             Stext_check.Size = new Size(123, 24);
             Stext_check.TabIndex = 38;
@@ -177,7 +179,7 @@
             // Sweb_design_check
             // 
             Sweb_design_check.AutoSize = true;
-            Sweb_design_check.Location = new Point(24, 84);
+            Sweb_design_check.Location = new Point(24, 132);
             Sweb_design_check.Name = "Sweb_design_check";
             Sweb_design_check.Size = new Size(143, 24);
             Sweb_design_check.TabIndex = 39;
@@ -187,7 +189,7 @@
             // Plogo_check
             // 
             Plogo_check.AutoSize = true;
-            Plogo_check.Location = new Point(287, 257);
+            Plogo_check.Location = new Point(287, 272);
             Plogo_check.Name = "Plogo_check";
             Plogo_check.Size = new Size(151, 24);
             Plogo_check.TabIndex = 40;
@@ -217,7 +219,7 @@
             // Sadvertisement_check
             // 
             Sadvertisement_check.AutoSize = true;
-            Sadvertisement_check.Location = new Point(174, 109);
+            Sadvertisement_check.Location = new Point(174, 157);
             Sadvertisement_check.Name = "Sadvertisement_check";
             Sadvertisement_check.Size = new Size(274, 24);
             Sadvertisement_check.TabIndex = 43;
@@ -227,7 +229,7 @@
             // Sgraphic_design_check
             // 
             Sgraphic_design_check.AutoSize = true;
-            Sgraphic_design_check.Location = new Point(174, 84);
+            Sgraphic_design_check.Location = new Point(174, 132);
             Sgraphic_design_check.Name = "Sgraphic_design_check";
             Sgraphic_design_check.Size = new Size(176, 24);
             Sgraphic_design_check.TabIndex = 44;
@@ -237,7 +239,7 @@
             // Tweek_check
             // 
             Tweek_check.AutoSize = true;
-            Tweek_check.Location = new Point(662, 80);
+            Tweek_check.Location = new Point(662, 128);
             Tweek_check.Name = "Tweek_check";
             Tweek_check.Size = new Size(104, 24);
             Tweek_check.TabIndex = 45;
@@ -247,7 +249,7 @@
             // Tday_
             // 
             Tday_.AutoSize = true;
-            Tday_.Location = new Point(526, 80);
+            Tday_.Location = new Point(526, 128);
             Tday_.Name = "Tday_";
             Tday_.Size = new Size(76, 24);
             Tday_.TabIndex = 46;
@@ -267,7 +269,7 @@
             // Enone_check
             // 
             Enone_check.AutoSize = true;
-            Enone_check.Location = new Point(516, 253);
+            Enone_check.Location = new Point(516, 268);
             Enone_check.Name = "Enone_check";
             Enone_check.Size = new Size(102, 24);
             Enone_check.TabIndex = 48;
@@ -277,7 +279,7 @@
             // Tthreedays_check
             // 
             Tthreedays_check.AutoSize = true;
-            Tthreedays_check.Location = new Point(526, 109);
+            Tthreedays_check.Location = new Point(526, 157);
             Tthreedays_check.Name = "Tthreedays_check";
             Tthreedays_check.Size = new Size(107, 24);
             Tthreedays_check.TabIndex = 49;
@@ -287,7 +289,7 @@
             // Tmonth_check
             // 
             Tmonth_check.AutoSize = true;
-            Tmonth_check.Location = new Point(662, 109);
+            Tmonth_check.Location = new Point(662, 157);
             Tmonth_check.Name = "Tmonth_check";
             Tmonth_check.Size = new Size(105, 24);
             Tmonth_check.TabIndex = 50;
@@ -297,7 +299,7 @@
             // Emore_check
             // 
             Emore_check.AutoSize = true;
-            Emore_check.Location = new Point(662, 280);
+            Emore_check.Location = new Point(662, 295);
             Emore_check.Name = "Emore_check";
             Emore_check.Size = new Size(91, 24);
             Emore_check.TabIndex = 51;
@@ -307,7 +309,7 @@
             // Eonethreeyears_check
             // 
             Eonethreeyears_check.AutoSize = true;
-            Eonethreeyears_check.Location = new Point(516, 282);
+            Eonethreeyears_check.Location = new Point(516, 297);
             Eonethreeyears_check.Name = "Eonethreeyears_check";
             Eonethreeyears_check.Size = new Size(88, 24);
             Eonethreeyears_check.TabIndex = 52;
@@ -317,12 +319,23 @@
             // Eyear_check
             // 
             Eyear_check.AutoSize = true;
-            Eyear_check.Location = new Point(662, 250);
+            Eyear_check.Location = new Point(662, 265);
             Eyear_check.Name = "Eyear_check";
             Eyear_check.Size = new Size(95, 24);
             Eyear_check.TabIndex = 53;
             Eyear_check.Text = "до 1 года";
             Eyear_check.UseVisualStyleBackColor = true;
+            // 
+            // exit_btn
+            // 
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(3, 3);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(50, 71);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 54;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
             // 
             // CustomizePreferences
             // 
@@ -330,6 +343,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(945, 508);
+            Controls.Add(exit_btn);
             Controls.Add(Eyear_check);
             Controls.Add(Eonethreeyears_check);
             Controls.Add(Emore_check);
@@ -359,6 +373,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CustomizePreferences";
             Text = "Редактировать предпочтения";
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -390,5 +405,6 @@
         private CheckBox Emore_check;
         private CheckBox Eonethreeyears_check;
         private CheckBox Eyear_check;
+        private PictureBox exit_btn;
     }
 }

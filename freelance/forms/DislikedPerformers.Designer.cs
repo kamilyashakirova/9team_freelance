@@ -35,11 +35,6 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dislikedperformers));
             disliked_dgv = new DataGridView();
-            pictureBox2 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            pictureBox1 = new PictureBox();
-            pictureBox4 = new PictureBox();
-            disliked_lbl = new Label();
             ID = new DataGridViewTextBoxColumn();
             pname = new DataGridViewTextBoxColumn();
             pspecialisation = new DataGridViewTextBoxColumn();
@@ -47,11 +42,18 @@
             planguage = new DataGridViewTextBoxColumn();
             pExperience = new DataGridViewTextBoxColumn();
             pproduct = new DataGridViewTextBoxColumn();
+            pictureBox2 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            pictureBox1 = new PictureBox();
+            pictureBox4 = new PictureBox();
+            disliked_lbl = new Label();
+            exit_btn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)disliked_dgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // disliked_dgv
@@ -101,6 +103,56 @@
             disliked_dgv.Size = new Size(750, 514);
             disliked_dgv.TabIndex = 1;
             disliked_dgv.CellDoubleClick += disliked_dgv_CellDoubleClick;
+            // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.Visible = false;
+            ID.Width = 125;
+            // 
+            // pname
+            // 
+            pname.HeaderText = "ФИО";
+            pname.MinimumWidth = 6;
+            pname.Name = "pname";
+            pname.Width = 125;
+            // 
+            // pspecialisation
+            // 
+            pspecialisation.HeaderText = "Специализация";
+            pspecialisation.MinimumWidth = 6;
+            pspecialisation.Name = "pspecialisation";
+            pspecialisation.Width = 125;
+            // 
+            // ptime
+            // 
+            ptime.HeaderText = "Срок";
+            ptime.MinimumWidth = 6;
+            ptime.Name = "ptime";
+            ptime.Width = 125;
+            // 
+            // planguage
+            // 
+            planguage.HeaderText = "Знание языков";
+            planguage.MinimumWidth = 6;
+            planguage.Name = "planguage";
+            planguage.Width = 125;
+            // 
+            // pExperience
+            // 
+            pExperience.HeaderText = "Опыт";
+            pExperience.MinimumWidth = 6;
+            pExperience.Name = "pExperience";
+            pExperience.Width = 125;
+            // 
+            // pproduct
+            // 
+            pproduct.HeaderText = "Продукт";
+            pproduct.MinimumWidth = 6;
+            pproduct.Name = "pproduct";
+            pproduct.Width = 125;
             // 
             // pictureBox2
             // 
@@ -157,55 +209,16 @@
             disliked_lbl.TabIndex = 17;
             disliked_lbl.Text = "Скрытое";
             // 
-            // ID
+            // exit_btn
             // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.Visible = false;
-            ID.Width = 125;
-            // 
-            // pname
-            // 
-            pname.HeaderText = "ФИО";
-            pname.MinimumWidth = 6;
-            pname.Name = "pname";
-            pname.Width = 125;
-            // 
-            // pspecialisation
-            // 
-            pspecialisation.HeaderText = "Специализация";
-            pspecialisation.MinimumWidth = 6;
-            pspecialisation.Name = "pspecialisation";
-            pspecialisation.Width = 125;
-            // 
-            // ptime
-            // 
-            ptime.HeaderText = "Срок";
-            ptime.MinimumWidth = 6;
-            ptime.Name = "ptime";
-            ptime.Width = 125;
-            // 
-            // planguage
-            // 
-            planguage.HeaderText = "Знание языков";
-            planguage.MinimumWidth = 6;
-            planguage.Name = "planguage";
-            planguage.Width = 125;
-            // 
-            // pExperience
-            // 
-            pExperience.HeaderText = "Опыт";
-            pExperience.MinimumWidth = 6;
-            pExperience.Name = "pExperience";
-            pExperience.Width = 125;
-            // 
-            // pproduct
-            // 
-            pproduct.HeaderText = "Продукт";
-            pproduct.MinimumWidth = 6;
-            pproduct.Name = "pproduct";
-            pproduct.Width = 125;
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(0, 0);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(46, 62);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 29;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
             // 
             // Dislikedperformers
             // 
@@ -213,6 +226,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(1120, 711);
+            Controls.Add(exit_btn);
             Controls.Add(disliked_lbl);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
@@ -228,6 +242,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -247,5 +262,6 @@
         private DataGridViewTextBoxColumn planguage;
         private DataGridViewTextBoxColumn pExperience;
         private DataGridViewTextBoxColumn pproduct;
+        private PictureBox exit_btn;
     }
 }

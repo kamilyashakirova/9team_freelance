@@ -42,8 +42,10 @@
             pictureBox2 = new PictureBox();
             sendpassword_btn = new Button();
             newenter_btn = new Button();
+            exit_btn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // newpassword_txt
@@ -183,12 +185,24 @@
             newenter_btn.Visible = false;
             newenter_btn.Click += newenter_btn_Click;
             // 
+            // exit_btn
+            // 
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(2, 1);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(52, 58);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 30;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
+            // 
             // forgotpasswordForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(558, 412);
+            Controls.Add(exit_btn);
             Controls.Add(newenter_btn);
             Controls.Add(sendpassword_btn);
             Controls.Add(login_lbl);
@@ -207,6 +221,7 @@
             Text = "восстановление пароля";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -225,5 +240,6 @@
         private PictureBox pictureBox2;
         private Button sendpassword_btn;
         private Button newenter_btn;
+        private PictureBox exit_btn;
     }
 }

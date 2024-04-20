@@ -50,11 +50,13 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             registration_btn = new Button();
+            exit_btn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)show_pic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hide_picb).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // reg_lbl
@@ -271,12 +273,24 @@
             registration_btn.UseVisualStyleBackColor = false;
             registration_btn.Click += registration_btb_click;
             // 
+            // exit_btn
+            // 
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(1, 0);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(44, 65);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 31;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
+            // 
             // registrationForm
             // 
             AutoScaleDimensions = new SizeF(9F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(579, 740);
+            Controls.Add(exit_btn);
             Controls.Add(registration_btn);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -308,6 +322,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -335,5 +350,6 @@
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
         private Button registration_btn;
+        private PictureBox exit_btn;
     }
 }

@@ -46,9 +46,11 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             updatedgv_pic = new PictureBox();
+            exit_btn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)myservices_dgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)updatedgv_pic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // myservices_dgv
@@ -184,7 +186,7 @@
             // updatedgv_pic
             // 
             updatedgv_pic.Image = (Image)resources.GetObject("updatedgv_pic.Image");
-            updatedgv_pic.Location = new Point(0, 1);
+            updatedgv_pic.Location = new Point(58, 1);
             updatedgv_pic.Name = "updatedgv_pic";
             updatedgv_pic.Size = new Size(89, 71);
             updatedgv_pic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -192,12 +194,24 @@
             updatedgv_pic.TabStop = false;
             updatedgv_pic.Click += updatedgv_pic_Click;
             // 
+            // exit_btn
+            // 
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(0, 1);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(52, 71);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 27;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
+            // 
             // Myservices
             // 
             AutoScaleDimensions = new SizeF(9F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(1194, 744);
+            Controls.Add(exit_btn);
             Controls.Add(updatedgv_pic);
             Controls.Add(label1);
             Controls.Add(addservice_btn);
@@ -212,6 +226,7 @@
             ((System.ComponentModel.ISupportInitialize)myservices_dgv).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)updatedgv_pic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,5 +245,6 @@
         private Label label1;
         private PictureBox pictureBox1;
         private PictureBox updatedgv_pic;
+        private PictureBox exit_btn;
     }
 }

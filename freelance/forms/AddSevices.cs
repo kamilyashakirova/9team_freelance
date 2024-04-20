@@ -101,5 +101,9 @@
             }
         }
 
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

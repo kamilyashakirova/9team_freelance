@@ -45,14 +45,17 @@
             button2 = new Button();
             button3 = new Button();
             pictureBox1 = new PictureBox();
+            exit_btn = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)clientpicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(exit_btn);
             panel1.Controls.Add(cemail_txt);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(id_txt);
@@ -221,6 +224,17 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
+            // exit_btn
+            // 
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(-1, -1);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(47, 69);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 29;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
+            // 
             // ClientProfile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -239,6 +253,7 @@
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)clientpicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
         }
 
@@ -260,5 +275,6 @@
         private Button button2;
         private Button button3;
         private PictureBox pictureBox1;
+        private PictureBox exit_btn;
     }
 }

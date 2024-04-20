@@ -83,5 +83,10 @@ namespace freelance.forms
             var myservices = new Myservices(clientID);
             myservices.Show();
         }
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

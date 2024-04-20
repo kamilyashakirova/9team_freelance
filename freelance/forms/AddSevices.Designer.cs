@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSevices));
             Eyear_check = new CheckBox();
             Eonethreeyears_check = new CheckBox();
             Emore_check = new CheckBox();
@@ -58,7 +59,9 @@
             add_lbl = new Label();
             addfoto_btn = new Button();
             foto_pic = new PictureBox();
+            exit_btn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)foto_pic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // Eyear_check
@@ -367,12 +370,24 @@
             foto_pic.TabIndex = 83;
             foto_pic.TabStop = false;
             // 
+            // exit_btn
+            // 
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(3, 9);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(52, 58);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 84;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
+            // 
             // AddSevices
             // 
             AutoScaleDimensions = new SizeF(9F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(960, 739);
+            Controls.Add(exit_btn);
             Controls.Add(foto_pic);
             Controls.Add(addfoto_btn);
             Controls.Add(add_lbl);
@@ -408,6 +423,7 @@
             Name = "AddSevices";
             Text = "Создать объявление";
             ((System.ComponentModel.ISupportInitialize)foto_pic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -444,5 +460,6 @@
         private Label add_lbl;
         private Button addfoto_btn;
         private PictureBox foto_pic;
+        private PictureBox exit_btn;
     }
 }

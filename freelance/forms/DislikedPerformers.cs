@@ -63,7 +63,7 @@ namespace freelance.forms
             using (var db = new DBcontext())
             {
                 var disliked = db.DislikedPerformers.Where(u => u.ClientID == clientID);
-                if(disliked != null)
+                if (disliked != null)
                 {
                     foreach (var dis in disliked)
                     {
@@ -80,6 +80,11 @@ namespace freelance.forms
                     MessageBox.Show("ошибка");
                 }
             }
+        }
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
