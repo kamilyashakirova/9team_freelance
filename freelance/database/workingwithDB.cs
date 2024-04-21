@@ -25,7 +25,7 @@ namespace freelance
                 return false;
             }
         }
-        public static bool NewLogIn(string login, string passw)
+        public static bool AfterForgotPasswordForm(string login, string passw)
         {
             using (var db = new DBcontext())
             {
