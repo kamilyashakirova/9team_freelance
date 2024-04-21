@@ -44,34 +44,41 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
-                if (performer != null)
+                try
                 {
-                    if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
+                    if (performer != null)
                     {
-                        MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
-                    }
-                    else 
-                    {
-                        if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            workingwithDB.AddDislike(clientID, performer.ID);
-                            MessageBox.Show("Добавлен в скрытое");
+                            MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
                         }
-                        if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        else
                         {
-                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                            if (u != null)
+                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
                             {
-                                db.LikedPerformers.Remove(u);
-                                db.SaveChanges();
+                                workingwithDB.AddDislike(clientID, performer.ID);
+                                MessageBox.Show("Добавлен в скрытое");
                             }
-                            else
+                            if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
-                                MessageBox.Show("Ошибка.");
+                                var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
+                                {
+                                    db.LikedPerformers.Remove(u);
+                                    db.SaveChanges();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ошибка.");
+                                }
                             }
                         }
                     }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -79,34 +86,41 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
-                if (performer != null)
+                try
                 {
-                    if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
+                    if (performer != null)
                     {
-                        MessageBox.Show("Вы уже добавляли фрилансера в избранное");
-                    }
-                    else
-                    {
-                        if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                        if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            workingwithDB.AddLike(clientID, performer.ID);
-                            MessageBox.Show("Добавлен в избранное");
+                            MessageBox.Show("Вы уже добавляли фрилансера в избранное");
                         }
-                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        else
                         {
-                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                            if (u != null)
+                            if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
                             {
-                                db.DislikedPerformers.Remove(u);
-                                db.SaveChanges();
+                                workingwithDB.AddLike(clientID, performer.ID);
+                                MessageBox.Show("Добавлен в избранное");
                             }
-                            else
+                            if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
-                                MessageBox.Show("Ошибка.");
+                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
+                                {
+                                    db.DislikedPerformers.Remove(u);
+                                    db.SaveChanges();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ошибка.");
+                                }
                             }
                         }
                     }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

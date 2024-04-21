@@ -1,9 +1,5 @@
-using Microsoft.VisualBasic.Logging;
-using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics.Eventing.Reader;
 using System.Drawing.Text;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 namespace freelance.forms
 {
     public partial class ListOfRecomendations : Form
@@ -87,70 +83,84 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
-                if (performer != null)
+                try
                 {
-                    if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                    if (performer != null)
                     {
-                        MessageBox.Show("Вы уже добавляли фрилансера в избранное");
-                    }
-                    else
-                    {
-                        if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                        if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            workingwithDB.AddLike(clientID, performer.ID);
-                            MessageBox.Show("Добавлен в избранное");
+                            MessageBox.Show("Вы уже добавляли фрилансера в избранное");
                         }
-                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        else
                         {
-                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                            if (u != null)
+                            if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
                             {
-                                db.DislikedPerformers.Remove(u);
-                                db.SaveChanges();
+                                workingwithDB.AddLike(clientID, performer.ID);
+                                MessageBox.Show("Добавлен в избранное");
                             }
-                            else
+                            if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
-                                MessageBox.Show("Ошибка.");
+                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
+                                {
+                                    db.DislikedPerformers.Remove(u);
+                                    db.SaveChanges();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ошибка.");
+                                }
                             }
                         }
                     }
-
                 }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
         }
         private void dislike_btn_Click(object sender, EventArgs e)
         {
             using (var db = new DBcontext())
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
-                if (performer != null)
+                try
                 {
-                    if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                    if (performer != null)
                     {
-                        MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
-                    }
-                    else
-                    {
-                        if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            workingwithDB.AddDislike(clientID, performer.ID);
-                            MessageBox.Show("Добавлен в скрытое");
+                            MessageBox.Show("Вы уже добавляли фрилансера в скрытое");
                         }
-                        if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        else
                         {
-                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                            if (u != null)
+                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
                             {
-                                db.LikedPerformers.Remove(u);
-                                db.SaveChanges();
+                                workingwithDB.AddDislike(clientID, performer.ID);
+                                MessageBox.Show("Добавлен в скрытое");
                             }
-                            else
+                            if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
-                                MessageBox.Show("Ошибка.");
+                                var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
+                                {
+                                    db.LikedPerformers.Remove(u);
+                                    db.SaveChanges();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ошибка.");
+                                }
                             }
                         }
                     }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
@@ -186,65 +196,68 @@ namespace freelance.forms
             }
             else if ((this.listofrecs_dgv1.CurrentRow is null))
             {
-                MessageBox.Show("выберите всю строку в таблице");
+                MessageBox.Show("Выберите всю строку в таблице");
             }
         }
         private void listOfRecomendations_Load(object sender, EventArgs e)
         {
             Updatelist(clientID, listofrecs_dgv1);
         }
+        public static void Showperformers(DataGridView list)
+        {
+            using (var db = new DBcontext())
+            {
+                var performers = db.Performers.ToList();
+                foreach (var performer in performers)
+                {
+                    list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                        performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                }
+            }
+        }
         public static void Updatelist(int clientID, DataGridView list)
         {
             using (var db = new DBcontext())
             {
+                Showperformers(list);
                 var interestss = db.Interests.Where(u => u.ClientID == clientID);
                 if (interestss != null)
                 {
                     foreach (var interests in interestss)
                     {
-                        if (interests != null)
+                        if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
                         {
-                            if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
+                            list.Rows.Clear();
+                            var performers = db.Performers.ToList();
+                            foreach (var performer in performers)
                             {
-                                var performers = db.Performers.ToList();
-                                list.Rows.Clear();
+                                list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                            }
+                        }
+                        else
+                        {
+                            list.Rows.Clear();
+                            var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization |
+                            p.PExperience == interests.IExperience |
+                            p.PLanguage == interests.ILanguage |
+                            p.PProduct == interests.IProduct | p.PTime == interests.ITime)
+                            .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
+                                + (p.PTime == interests.IExperience ? 1 : 0)
+                                + (p.PLanguage == interests.ILanguage ? 1 : 0)
+                                + (p.PSpecialization == interests.ISpecialization ? 1 : 0)
+                                + (p.PProduct == interests.IProduct ? 1 : 0))
+                                .ToList();
+                            if (performers != null)
+                            {
                                 foreach (var performer in performers)
                                 {
                                     list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                        performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
-                                }
-                            }
-                            else
-                            {
-                                var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization |
-                                p.PExperience == interests.IExperience |
-                                p.PLanguage == interests.ILanguage |
-                                p.PProduct == interests.IProduct | p.PTime == interests.ITime)
-                                .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
-                                    + (p.PTime == interests.IExperience ? 1 : 0)
-                                    + (p.PLanguage == interests.ILanguage ? 1 : 0)
-                                    + (p.PSpecialization == interests.ISpecialization ? 1 : 0)
-                                    + (p.PProduct == interests.IProduct ? 1 : 0))
-                                .ToList();
-                                if (performers != null)
-                                {
-                                    foreach (var performer in performers)
-                                    {
-                                        list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                            performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
-                                    }
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Ошибка.");
+                                    performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
                                 }
                             }
                         }
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Ошибка.");
                 }
 
             }
