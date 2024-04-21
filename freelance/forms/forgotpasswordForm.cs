@@ -61,7 +61,7 @@ namespace freelance.forms
         {
             if ((newpassword_txt.Text != String.Empty))
             {
-                var enter = workingwithDB.LogIn(login_txt.Text, newpassword_txt.Text);
+                var enter = workingwithDB.NewLogIn(login_txt.Text, newpassword_txt.Text);
                 if (enter)
                 {
                     MessageBox.Show("вы успешно вошли");
@@ -73,6 +73,11 @@ namespace freelance.forms
         private void exit_btn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void newpassword_txt_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

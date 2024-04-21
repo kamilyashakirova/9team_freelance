@@ -28,7 +28,13 @@ namespace freelance.forms
             if ((password_txtb.Text != String.Empty))
             {
                 var enter = workingwithDB.LogIn(login_txtb.Text, password_txtb.Text);
+                var enterr = workingwithDB.NewLogIn(login_txtb.Text, password_txtb.Text);
                 if (enter)
+                {
+                    MessageBox.Show("вы успешно вошли");
+                    this.Close();
+                }
+                if (enterr)
                 {
                     MessageBox.Show("вы успешно вошли");
                     this.Close();
