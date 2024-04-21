@@ -228,12 +228,7 @@ namespace freelance.forms
                         if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
                         {
                             list.Rows.Clear();
-                            var performers = db.Performers.ToList();
-                            foreach (var performer in performers)
-                            {
-                                list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
-                            }
+                            Showperformers(list);
                         }
                         else
                         {
