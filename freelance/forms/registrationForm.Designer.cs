@@ -1,6 +1,6 @@
 ﻿namespace freelance.forms
 {
-    partial class registrationForm
+    partial class RegistrationForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(registrationForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
             reg_lbl = new Label();
             rname_txtb = new TextBox();
             rlogin_txtb = new TextBox();
@@ -89,6 +89,7 @@
             rlogin_txtb.PlaceholderText = "Логин";
             rlogin_txtb.Size = new Size(417, 30);
             rlogin_txtb.TabIndex = 2;
+            rlogin_txtb.TextChanged += rlogin_txtb_TextChanged;
             // 
             // rpatronomic_txtb
             // 
@@ -99,6 +100,7 @@
             rpatronomic_txtb.PlaceholderText = "Отчество (при наличии)";
             rpatronomic_txtb.Size = new Size(417, 30);
             rpatronomic_txtb.TabIndex = 3;
+            rpatronomic_txtb.TextChanged += rpatronomic_txtb_TextChanged;
             // 
             // rsurname_txtb
             // 
@@ -109,6 +111,7 @@
             rsurname_txtb.PlaceholderText = "Фамилия ";
             rsurname_txtb.Size = new Size(417, 30);
             rsurname_txtb.TabIndex = 4;
+            rsurname_txtb.TextChanged += rsurname_txtb_TextChanged;
             // 
             // rpasswordrepeat_txtb
             // 
@@ -290,6 +293,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(579, 740);
+            Controls.Add(show_pic);
             Controls.Add(exit_btn);
             Controls.Add(registration_btn);
             Controls.Add(label6);
@@ -299,8 +303,6 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(rnae_lbl);
-            Controls.Add(show_pic);
-            Controls.Add(hide_picb);
             Controls.Add(rEmail_txtb);
             Controls.Add(rpassword_txtb);
             Controls.Add(rpasswordrepeat_txtb);
@@ -312,6 +314,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
+            Controls.Add(hide_picb);
             Font = new Font("Didact Gothic", 10.1999989F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);

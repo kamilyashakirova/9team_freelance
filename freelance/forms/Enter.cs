@@ -47,13 +47,13 @@ namespace freelance.forms
 
         private void forgotpassword_lbl_Click(object sender, EventArgs e)
         {
-            var forgotpasswordForm = new forgotpasswordForm();
+            var forgotpasswordForm = new ForgotpasswordForm();
             forgotpasswordForm.Show();
         }
 
         private void registration_lbl_Click(object sender, EventArgs e)
         {
-            var registration = new registrationForm();
+            var registration = new RegistrationForm();
             registration.Show();
         }
     }

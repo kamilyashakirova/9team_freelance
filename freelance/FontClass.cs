@@ -21,7 +21,7 @@ namespace freelance
             {
                 var fonts = new PrivateFontCollection();
                 fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
-                font = new Font(fonts.Families[0], fontsize, FontStyle.Regular);
+                font = new Font(fonts.Families[0], fontsize);
             }
             catch (Exception ex)
             {

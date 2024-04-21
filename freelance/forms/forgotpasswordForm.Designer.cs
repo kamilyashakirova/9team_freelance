@@ -1,6 +1,6 @@
 ﻿namespace freelance.forms
 {
-    partial class forgotpasswordForm
+    partial class ForgotpasswordForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(forgotpasswordForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotpasswordForm));
             newpassword_txt = new TextBox();
             errorEXp_lbl = new Label();
             errorRepeatnewp_lbl = new Label();

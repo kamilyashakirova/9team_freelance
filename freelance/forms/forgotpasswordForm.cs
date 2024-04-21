@@ -1,9 +1,9 @@
 ﻿using System.Net.Mail;
 namespace freelance.forms
 {
-    public partial class forgotpasswordForm : Form
+    public partial class ForgotpasswordForm : Form
     {
-        public forgotpasswordForm()
+        public ForgotpasswordForm()
         {
             InitializeComponent();
             FontClass.SetCustomFont(this, 10);
