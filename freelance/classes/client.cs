@@ -2,7 +2,7 @@
 {
     public class Client
     {
-        public int? ID { get; set; }
+        public int ID { get; set; }
 
         public int UserID { get; set; }
 

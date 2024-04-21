@@ -3,11 +3,11 @@
     public partial class CustomizePreferences : Form
     {
         private int clientID;
-        private string selectedSpecialization = String.Empty;
-        private string selectedExperience = String.Empty;
-        private string selectedLanguage = String.Empty;
-        private string selectedTime = String.Empty;
-        private string selectedProduct = String.Empty;
+        private string selectedSpecialization = null!;
+        private string selectedExperience = null!;
+        private string selectedLanguage = null!;
+        private string selectedTime = null!;
+        private string selectedProduct = null!;
         public CustomizePreferences(int clientID)
         {
             this.clientID = clientID;
