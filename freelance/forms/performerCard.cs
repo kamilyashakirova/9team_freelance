@@ -55,7 +55,7 @@ namespace freelance.forms
                         }
                         else
                         {
-                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) 
                             {
                                 workingwithDB.AddDislike(clientID, performer.ID);
                                 MessageBox.Show("Добавлен в скрытое");
@@ -97,7 +97,7 @@ namespace freelance.forms
                         }
                         else
                         {
-                            if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID)) ;
+                            if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
                                 workingwithDB.AddLike(clientID, performer.ID);
                                 MessageBox.Show("Добавлен в избранное");
