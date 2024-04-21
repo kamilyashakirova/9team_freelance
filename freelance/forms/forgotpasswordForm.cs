@@ -61,7 +61,7 @@ namespace freelance.forms
         {
             if ((newpassword_txt.Text != String.Empty))
             {
-                var enter = workingwithDB.NewLogIn(login_txt.Text, newpassword_txt.Text);
+                var enter = workingwithDB.AfterForgotPasswordForm(login_txt.Text, newpassword_txt.Text);
                 if (enter)
                 {
                     MessageBox.Show("вы успешно вошли");
