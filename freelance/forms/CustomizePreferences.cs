@@ -14,6 +14,8 @@ namespace freelance.forms
         {
             this.clientID = clientID;
             InitializeComponent();
+
+            Localization.LanguageChanged += UpdateLocalization;
         }
         private void GetSelectedSpecialization()
         {
