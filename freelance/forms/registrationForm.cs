@@ -36,14 +36,13 @@
         }
         private void registration_btb_click(object sender, EventArgs e)
         {
-            mutex.WaitOne();
             if (!string.IsNullOrWhiteSpace(rEmail_txtb.Text))
             {
                 if (rpasswordrepeat_txtb.Text == rpassword_txtb.Text)
                 {
                     workingwithDB.AddUserAndClient(rlogin_txtb.Text, rpassword_txtb.Text, rEmail_txtb.Text, rname_txtb.Text, rsurname_txtb.Text, rpatronomic_txtb.Text);
                     MessageBox.Show(message1_reg);
-                    mutex.ReleaseMutex();
+
                 }
                 else
                 {
@@ -54,7 +53,6 @@
             {
                 MessageBox.Show(message3_reg);
             }
-            mutex.ReleaseMutex();
         }
 
         private void exit_btn_Click(object sender, EventArgs e)

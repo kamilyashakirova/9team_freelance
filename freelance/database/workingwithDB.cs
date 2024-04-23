@@ -145,15 +145,7 @@ namespace freelance
                 return !context.Users.Any(u => u.ULogin == login);
             }
         }
-        /// <summary>
-        /// Метод, выполняющий блокировку БД
-        /// </summary>
-        /// <param name="db"></param>
-        public static void LockDb(DBcontext db)
-        {
-            db.Database.ExecuteSqlRaw("BEGIN IMMEDIATE TRANSACTION;");
-        }
-        /// <summary>
+
         /// метод для добавления в бд новых пользователей и клиентов
         /// </summary>
         /// <param name="uLogin"></param>
@@ -171,7 +163,6 @@ namespace freelance
                 {
                     using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                     {
-                        LockDb(db);
                         try
                         {
                             var epassw = Hashing.hash(uPassword);
@@ -212,7 +203,6 @@ namespace freelance
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    LockDb(db);
                     try
                     {
                         var liked = new LikedPerformers { ClientID = ClientID, PerformerID = performerID };
@@ -234,7 +224,6 @@ namespace freelance
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    LockDb(db);
                     try
                     {
                         var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
@@ -257,7 +246,6 @@ namespace freelance
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    LockDb(db);
                     try
                     {
                         var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
@@ -289,7 +277,6 @@ namespace freelance
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    LockDb(db);
                     try
                     {
                         var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
