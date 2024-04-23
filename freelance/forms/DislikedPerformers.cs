@@ -19,6 +19,8 @@ namespace freelance.forms
             }
             disliked_lbl.Font = new Font(fonts.Families[0], 16);
             this.clientID = clientID;
+
+            Localization.LanguageChanged += UpdateLocalization;
         }
         private void disliked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -85,6 +87,17 @@ namespace freelance.forms
         private void exit_btn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void UpdateLocalization(object sender, EventArgs e)
+        {
+            this.Text = Localization.GetLocalizedString("Dislikedperformers");
+            pname_disliked.HeaderText = Localization.GetLocalizedString("pname_my");
+            pspecialisation_disliked.HeaderText = Localization.GetLocalizedString("pspecialisation_my");
+            ptime_disliked.HeaderText = Localization.GetLocalizedString("ptime_my");
+            planguage_disliked.HeaderText = Localization.GetLocalizedString("planguage_my");
+            pExperience_disliked.HeaderText = Localization.GetLocalizedString("pExperience_my");
+            pproduct_disliked.HeaderText = Localization.GetLocalizedString("pproduct_my");
+            disliked_lbl.Text = Localization.GetLocalizedString("disliked_lbl");
         }
     }
 }

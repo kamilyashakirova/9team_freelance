@@ -40,12 +40,12 @@
             show_pic = new PictureBox();
             hide_picb = new PictureBox();
             rnae_lbl = new Label();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
+            rpasswordrepeat_lbl = new Label();
+            rpassword_lbl = new Label();
+            rlogin_lbl = new Label();
+            rpatronymic_lbl = new Label();
+            rsurname_lbl = new Label();
+            rEmail_lbl = new Label();
             pictureBox1 = new PictureBox();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -155,7 +155,6 @@
             show_pic.SizeMode = PictureBoxSizeMode.Zoom;
             show_pic.TabIndex = 10;
             show_pic.TabStop = false;
-            show_pic.Visible = false;
             show_pic.Click += show_pic_Click;
             // 
             // hide_picb
@@ -180,59 +179,59 @@
             rnae_lbl.TabIndex = 12;
             rnae_lbl.Text = "Введите имя";
             // 
-            // label1
+            // rpasswordrepeat_lbl
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(82, 422);
-            label1.Name = "label1";
-            label1.Size = new Size(152, 25);
-            label1.TabIndex = 13;
-            label1.Text = "Повторите пароль";
+            rpasswordrepeat_lbl.AutoSize = true;
+            rpasswordrepeat_lbl.Location = new Point(82, 422);
+            rpasswordrepeat_lbl.Name = "rpasswordrepeat_lbl";
+            rpasswordrepeat_lbl.Size = new Size(152, 25);
+            rpasswordrepeat_lbl.TabIndex = 13;
+            rpasswordrepeat_lbl.Text = "Повторите пароль";
             // 
-            // label2
+            // rpassword_lbl
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(82, 353);
-            label2.Name = "label2";
-            label2.Size = new Size(165, 25);
-            label2.TabIndex = 14;
-            label2.Text = "Придумайте пароль";
+            rpassword_lbl.AutoSize = true;
+            rpassword_lbl.Location = new Point(82, 353);
+            rpassword_lbl.Name = "rpassword_lbl";
+            rpassword_lbl.Size = new Size(165, 25);
+            rpassword_lbl.TabIndex = 14;
+            rpassword_lbl.Text = "Придумайте пароль";
             // 
-            // label3
+            // rlogin_lbl
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(82, 282);
-            label3.Name = "label3";
-            label3.Size = new Size(121, 25);
-            label3.TabIndex = 15;
-            label3.Text = "Введите логин";
+            rlogin_lbl.AutoSize = true;
+            rlogin_lbl.Location = new Point(82, 282);
+            rlogin_lbl.Name = "rlogin_lbl";
+            rlogin_lbl.Size = new Size(121, 25);
+            rlogin_lbl.TabIndex = 15;
+            rlogin_lbl.Text = "Введите логин";
             // 
-            // label4
+            // rpatronymic_lbl
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(82, 212);
-            label4.Name = "label4";
-            label4.Size = new Size(146, 25);
-            label4.TabIndex = 16;
-            label4.Text = "Введите отчество";
+            rpatronymic_lbl.AutoSize = true;
+            rpatronymic_lbl.Location = new Point(82, 212);
+            rpatronymic_lbl.Name = "rpatronymic_lbl";
+            rpatronymic_lbl.Size = new Size(146, 25);
+            rpatronymic_lbl.TabIndex = 16;
+            rpatronymic_lbl.Text = "Введите отчество";
             // 
-            // label5
+            // rsurname_lbl
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(82, 143);
-            label5.Name = "label5";
-            label5.Size = new Size(149, 25);
-            label5.TabIndex = 17;
-            label5.Text = "Введите фамилию";
+            rsurname_lbl.AutoSize = true;
+            rsurname_lbl.Location = new Point(82, 143);
+            rsurname_lbl.Name = "rsurname_lbl";
+            rsurname_lbl.Size = new Size(149, 25);
+            rsurname_lbl.TabIndex = 17;
+            rsurname_lbl.Text = "Введите фамилию";
             // 
-            // label6
+            // rEmail_lbl
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(82, 493);
-            label6.Name = "label6";
-            label6.Size = new Size(124, 25);
-            label6.TabIndex = 18;
-            label6.Text = "Введите e-mail";
+            rEmail_lbl.AutoSize = true;
+            rEmail_lbl.Location = new Point(82, 493);
+            rEmail_lbl.Name = "rEmail_lbl";
+            rEmail_lbl.Size = new Size(124, 25);
+            rEmail_lbl.TabIndex = 18;
+            rEmail_lbl.Text = "Введите e-mail";
             // 
             // pictureBox1
             // 
@@ -287,7 +286,7 @@
             exit_btn.TabStop = false;
             exit_btn.Click += exit_btn_Click;
             // 
-            // registrationForm
+            // RegistrationForm
             // 
             AutoScaleDimensions = new SizeF(9F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -296,12 +295,12 @@
             Controls.Add(show_pic);
             Controls.Add(exit_btn);
             Controls.Add(registration_btn);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(rEmail_lbl);
+            Controls.Add(rsurname_lbl);
+            Controls.Add(rpatronymic_lbl);
+            Controls.Add(rlogin_lbl);
+            Controls.Add(rpassword_lbl);
+            Controls.Add(rpasswordrepeat_lbl);
             Controls.Add(rnae_lbl);
             Controls.Add(rEmail_txtb);
             Controls.Add(rpassword_txtb);
@@ -318,7 +317,7 @@
             Font = new Font("Didact Gothic", 10.1999989F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
-            Name = "registrationForm";
+            Name = "RegistrationForm";
             Text = "Регистрация";
             ((System.ComponentModel.ISupportInitialize)show_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)hide_picb).EndInit();
@@ -343,12 +342,12 @@
         private PictureBox show_pic;
         private PictureBox hide_picb;
         private Label rnae_lbl;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
+        private Label rpasswordrepeat_lbl;
+        private Label rpassword_lbl;
+        private Label rlogin_lbl;
+        private Label rpatronymic_lbl;
+        private Label rsurname_lbl;
+        private Label rEmail_lbl;
         private PictureBox pictureBox1;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;

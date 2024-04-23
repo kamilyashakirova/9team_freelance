@@ -39,6 +39,8 @@
             athoriz_pic = new PictureBox();
             entererror_lbl = new Label();
             show_pic = new PictureBox();
+            rus_change_btn = new Button();
+            tat_change_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)hide_picb).BeginInit();
             ((System.ComponentModel.ISupportInitialize)athoriz_pic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)show_pic).BeginInit();
@@ -76,11 +78,11 @@
             // 
             hi_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hi_lbl.AutoSize = true;
-            hi_lbl.Font = new Font("Didact Gothic", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            hi_lbl.Font = new Font("Didact Gothic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             hi_lbl.ForeColor = Color.Teal;
             hi_lbl.Location = new Point(124, 187);
             hi_lbl.Name = "hi_lbl";
-            hi_lbl.Size = new Size(127, 40);
+            hi_lbl.Size = new Size(120, 40);
             hi_lbl.TabIndex = 2;
             hi_lbl.Text = "ПРИВЕТ!";
             // 
@@ -138,7 +140,7 @@
             // 
             athoriz_pic.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             athoriz_pic.Image = (Image)resources.GetObject("athoriz_pic.Image");
-            athoriz_pic.Location = new Point(369, 27);
+            athoriz_pic.Location = new Point(356, 33);
             athoriz_pic.Name = "athoriz_pic";
             athoriz_pic.Size = new Size(493, 480);
             athoriz_pic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -164,8 +166,34 @@
             show_pic.SizeMode = PictureBoxSizeMode.Zoom;
             show_pic.TabIndex = 9;
             show_pic.TabStop = false;
-            show_pic.Visible = false;
             show_pic.Click += show_pic_Click;
+            // 
+            // rus_change_btn
+            // 
+            rus_change_btn.BackColor = Color.DarkSeaGreen;
+            rus_change_btn.FlatStyle = FlatStyle.Flat;
+            rus_change_btn.Font = new Font("Didact Gothic", 12F);
+            rus_change_btn.Location = new Point(1, 1);
+            rus_change_btn.Name = "rus_change_btn";
+            rus_change_btn.Size = new Size(99, 39);
+            rus_change_btn.TabIndex = 28;
+            rus_change_btn.Text = "Русский";
+            rus_change_btn.UseVisualStyleBackColor = false;
+            rus_change_btn.Click += rus_change_btn_Click;
+            // 
+            // tat_change_btn
+            // 
+            tat_change_btn.BackColor = Color.DarkSeaGreen;
+            tat_change_btn.FlatStyle = FlatStyle.Flat;
+            tat_change_btn.Font = new Font("Didact Gothic", 12F);
+            tat_change_btn.Location = new Point(1, 1);
+            tat_change_btn.Name = "tat_change_btn";
+            tat_change_btn.Size = new Size(99, 39);
+            tat_change_btn.TabIndex = 29;
+            tat_change_btn.Text = "Татарча";
+            tat_change_btn.UseVisualStyleBackColor = false;
+            tat_change_btn.Visible = false;
+            tat_change_btn.Click += tat_change_btn_Click;
             // 
             // Enter
             // 
@@ -173,6 +201,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(887, 535);
+            Controls.Add(rus_change_btn);
             Controls.Add(show_pic);
             Controls.Add(hide_picb);
             Controls.Add(entererror_lbl);
@@ -183,6 +212,7 @@
             Controls.Add(password_txtb);
             Controls.Add(login_txtb);
             Controls.Add(athoriz_pic);
+            Controls.Add(tat_change_btn);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Enter";
             Text = "Авторизация";
@@ -205,5 +235,7 @@
         private PictureBox athoriz_pic;
         private Label entererror_lbl;
         private PictureBox show_pic;
+        private Button rus_change_btn;
+        private Button tat_change_btn;
     }
 }

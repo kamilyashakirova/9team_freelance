@@ -1,19 +1,29 @@
+using NLog;
+using NLog.Config;
 using System.Drawing.Text;
 namespace freelance.forms
 {
     public partial class Enter : Form
     {
         PrivateFontCollection fonts = new PrivateFontCollection();
-    public Enter()
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+        private string message1 = "Вы успешно вошли";
+        private string message2 = "Неверный логин или пароль.";
+        public Enter()
         {
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
             InitializeComponent();
+            LogManager.Configuration = new XmlLoggingConfiguration("../../../logg/NLog.config");
             FontClass.SetCustomFont(this, 12);
             FontClass.SetCustomFont(login_txtb, 11);
             FontClass.SetCustomFont(password_txtb, 11);
-            FontClass.SetCustomFont(hi_lbl, 18);
+            hi_lbl.Font = new Font(fonts.Families[0], 16, FontStyle.Bold);
+            hi_lbl.Location = new Point(125, 187);
             FontClass.SetCustomFont(enter_btn, 11);
             forgotpassword_lbl.Font = new Font(fonts.Families[0], 12, FontStyle.Underline);
+
+            Localization.LanguageChanged += UpdateLocalization;
+            logger.Info("Успешно открыта форма 'Enter'");
         }
         private void hide_picb_Click(object sender, EventArgs e)
         {
@@ -25,21 +35,20 @@ namespace freelance.forms
 
         private void enter_btn_Click(object sender, EventArgs e)
         {
-            if ((password_txtb.Text != String.Empty))
+            logger.Info("Нажата кнопка 'Вход'");
+            if (password_txtb.Text != String.Empty)
             {
+                logger.Info("Проверка логина и пароля");
                 var enter = workingwithDB.LogIn(login_txtb.Text, password_txtb.Text);
                 var enterr = workingwithDB.AfterForgotPasswordForm(login_txtb.Text, password_txtb.Text);
-                if (enter)
+                if (enter || enterr)
                 {
-                    MessageBox.Show("вы успешно вошли");
+                    logger.Info("Пользователь успешно вошёл");
+                    MessageBox.Show(message1);
                     this.Close();
                 }
-                if (enterr)
-                {
-                    MessageBox.Show("вы успешно вошли");
-                    this.Close();
-                }
-                entererror_lbl.Text = "неверный логин или пароль";
+                entererror_lbl.Text = message2;
+                logger.Error("неверный логин или пароль");
             }
         }
 
@@ -56,11 +65,36 @@ namespace freelance.forms
             var forgotpasswordForm = new ForgotpasswordForm();
             forgotpasswordForm.Show();
         }
-
         private void registration_lbl_Click(object sender, EventArgs e)
         {
             var registration = new RegistrationForm();
             registration.Show();
+        }
+        private void UpdateLocalization(object sender, EventArgs e)
+        {
+            this.Text = Localization.GetLocalizedString("Enter");
+            hi_lbl.Text = Localization.GetLocalizedString("hi_lbl");
+            login_txtb.PlaceholderText = Localization.GetLocalizedString("login_txtb");
+            password_txtb.PlaceholderText = Localization.GetLocalizedString("password_txtb");
+            enter_btn.Text = Localization.GetLocalizedString("enter_btn");
+            forgotpassword_lbl.Text = Localization.GetLocalizedString("forgotpassword_lbl");
+            registration_lbl.Text = Localization.GetLocalizedString("registration_lbl");
+            message2 = Localization.GetLocalizedString("message2enter");
+            message1 = Localization.GetLocalizedString("message1enter");
+        }
+
+        private void rus_change_btn_Click(object sender, EventArgs e)
+        {
+            Localization.UpdateLocalizedStrings("../../../Localization/newLocalization.csv");
+            rus_change_btn.Visible = false;
+            tat_change_btn.Visible = true;
+        }
+
+        private void tat_change_btn_Click(object sender, EventArgs e)
+        {
+            Localization.UpdateLocalizedStrings("../../../Localization/Localization.csv");
+            tat_change_btn.Visible = false;
+            rus_change_btn.Visible = true;
         }
     }
 }

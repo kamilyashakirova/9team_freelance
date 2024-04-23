@@ -1,0 +1,116 @@
+﻿Enter,Авторизацияләү
+hi_lbl,СӘЛАМ!
+login_txtb,Логин кертегез
+password_txtb,Серсүз кертегез
+enter_btn,КЕРҮ
+forgotpassword_lbl,Серсүзне оныттыгызмы?
+registration_lbl,Теркәлү
+message1enter,Сез уңышлы кердегез.
+message2enter,Дөрес булмаган логин яки серсүз.
+ForgotpasswordForm,Серсүзне искә төшерү
+passwordrecovery_lbl,Серсүзне искә төшерү
+login_lbl,Логин кертегез
+loginerror_lbl,Логин дөрес түгел
+sendpassword_btn,Серсүзне почтага җибәрергә
+writepassword_lbl,Без сезнең почтага җибәргән серсүзне кертегез
+newpassword_txt,Серсүз кертегез
+passworderror_lbl,Логин дөрес түгел
+newenter_btn,КЕРҮ
+RegistrationForm,Теркәлү
+reg_lbl,Теркәлү
+rnae_lbl,Исем кертегез
+rname_txtb,Исем
+rsurname_lbl,Фамилия кертегез
+rsurname_txtb,Фамилия
+rpatronymic_lbl,Ата исемен кертегез
+rpatronomic_txtb,Ата исеме
+rlogin_lbl,Логин кертегез
+rlogin_txtb,Логин
+rpassword_lbl,Серсүз кертегез
+rpassword_txtb,Серсүз
+rpasswordrepeat_lbl,Серсүзне кабатлагыз
+rpasswordrepeat_txtb,Серсүз
+rEmail_lbl,E-mail кертегез
+rEmail_txtb,E-mail
+registration_btn,Теркәлү
+Likedperformers,Сайланма
+liked_lbl,Сайланма  
+Dislikedperformers,Яшерен
+disliked_lbl,Яшерен
+ListOfRecomendations,Төп
+pname_list,ФИО
+pspecialisation_list,Махсуслаштыру
+ptime_list,Вакыт
+planguage_list,Телләрне белү
+pExperience_list,Тәҗрибә
+pproduct_list,Продукт
+Myservices,Минем заказларым
+myservices_lbl,Минем заказларым
+pname_my,ФИО
+pspecialisation_my,Махсуслаштыру
+ptime_my,Вакыт
+planguage_my,Телләрне белү
+pExperience_my,Тәҗрибә
+pproduct_my,Продукт
+PerformerCard,Фрилансер картасы
+fio_lbl,ФИО:
+spec_lbl,Махсуслаштыру:
+srtime_lbl,Уртача эш вакыты:
+srprice_lbl,Телләрне белү:
+experiense_lbl,Тәҗрибә:
+rating_lbl,Продукт: 
+CustomizePreferences,Өстенлекләрне редакцияләү
+button1,Эшчәнлек өлкәсе
+button4,Продукциянең төре
+button3,Телләрне белү
+button5,Башкару вакыты
+button2,Тәҗрибә
+Sweb_design_check,Веб-разработка
+Stext_check,Копирайтинг
+Sgraphic_design_check,График дизайн
+Sadvertisement_check,Интернетта реклама
+Pwebsite_check,Сайт
+Padvertisement_check,Реклама
+Preport_check,Мәкалә
+Ptranselate_check,Тәрҗемә
+Plogo_check,Логотип дизайны
+Leng_check,Инглиз теле
+Ldeu_check,Немец теле
+Lchineese_check,Кытай теле
+Tday_,1 көн
+Tthreedays_check,3 көнгә кадәр
+Tweek_check,Бер атнага кадәр
+Tmonth_check,Бер айга кадәр
+Enone_check,Тәҗрибәсез
+Eyear_check,1 елга кадәр
+Eonethreeyears_check,1-3 ел
+Emore_check,3 елдан артык
+savechanges_btn,Үзгәртергә
+ClientProfile,Профиль
+fotodownload_btn,Фотоны йөкләү
+surname_lbl,Фамилия
+name_lbl,Исем
+patronomyc_lbl,Ата исеме
+email_lbl,E-mail
+customize_btn,Өстенлекләрне редакцияләү
+my_btn,Минем заказларым
+disliked_btn,Яшерен профильләр
+like,Ошый
+dislike,Ошамый
+message1,Сезнең әлегә игъланнарыгыз юк
+message1liked_list,Сез инде фрилансерны сайлаганыгызга өстәдегез
+message2liked_list,Сайланганга өстәлгән
+message1_list,Хата
+message2_list,Таблицада кирәкле юлны сайлагыз.
+message1disliked_list,Сез инде фрилансерны яшерен урынга өстәдегез.
+message2disliked_list,Яшеренгә өстәлгән.
+message1_reg,Сез уңышлы теркәлдегез.
+message2_reg,Хата. Серсүзне дөрес кабатлаганыгызны тикшерегез.
+message3_reg,Почта кырын тутырыгыз
+message1_regname,Исем кыры буш булырга тиеш түгел.
+message2_regname,Исемдә саннар булырга тиеш түгел.
+message1_reqsurname,Фамилия кыры буш булырга тиеш түгел.
+message2_regsurname,Фамилиядә саннар булырга тиеш түгел.
+message1_regpatronymic,Ата исеме саннар кертергә тиеш түгел.
+message1_work,Мондый логинлы кулланучы инде бар
+message2_work,Мондый кулланучы юк

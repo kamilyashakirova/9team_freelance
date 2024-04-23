@@ -44,12 +44,14 @@
             updatedgv_pic = new PictureBox();
             listofrecs_dgv1 = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            pspecialisation = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            pname_list = new DataGridViewTextBoxColumn();
+            pspecialisation_list = new DataGridViewTextBoxColumn();
+            ptime_list = new DataGridViewTextBoxColumn();
+            planguage_list = new DataGridViewTextBoxColumn();
+            pExperience_list = new DataGridViewTextBoxColumn();
+            pproduct_list = new DataGridViewTextBoxColumn();
+            rus_change_btn = new Button();
+            tat_change_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)settings_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)likedlist_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)like_btn).BeginInit();
@@ -174,17 +176,17 @@
             listofrecs_dgv1.BackgroundColor = SystemColors.Window;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             listofrecs_dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             listofrecs_dgv1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            listofrecs_dgv1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, pspecialisation, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
+            listofrecs_dgv1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, pname_list, pspecialisation_list, ptime_list, planguage_list, pExperience_list, pproduct_list });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
@@ -195,14 +197,14 @@
             listofrecs_dgv1.Name = "listofrecs_dgv1";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             listofrecs_dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             listofrecs_dgv1.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle5.SelectionForeColor = Color.Black;
@@ -219,47 +221,74 @@
             dataGridViewTextBoxColumn1.Visible = false;
             dataGridViewTextBoxColumn1.Width = 125;
             // 
-            // dataGridViewTextBoxColumn2
+            // pname_list
             // 
-            dataGridViewTextBoxColumn2.HeaderText = "ФИО";
-            dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.Width = 125;
+            pname_list.HeaderText = "ФИО";
+            pname_list.MinimumWidth = 6;
+            pname_list.Name = "pname_list";
+            pname_list.Width = 125;
             // 
-            // pspecialisation
+            // pspecialisation_list
             // 
-            pspecialisation.HeaderText = "Специализация";
-            pspecialisation.MinimumWidth = 6;
-            pspecialisation.Name = "pspecialisation";
-            pspecialisation.Width = 125;
+            pspecialisation_list.HeaderText = "Специализация";
+            pspecialisation_list.MinimumWidth = 6;
+            pspecialisation_list.Name = "pspecialisation_list";
+            pspecialisation_list.Width = 125;
             // 
-            // dataGridViewTextBoxColumn3
+            // ptime_list
             // 
-            dataGridViewTextBoxColumn3.HeaderText = "Срок";
-            dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.Width = 125;
+            ptime_list.HeaderText = "Срок";
+            ptime_list.MinimumWidth = 6;
+            ptime_list.Name = "ptime_list";
+            ptime_list.Width = 125;
             // 
-            // dataGridViewTextBoxColumn4
+            // planguage_list
             // 
-            dataGridViewTextBoxColumn4.HeaderText = "Знание языков";
-            dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.Width = 125;
+            planguage_list.HeaderText = "Знание языков";
+            planguage_list.MinimumWidth = 6;
+            planguage_list.Name = "planguage_list";
+            planguage_list.Width = 125;
             // 
-            // dataGridViewTextBoxColumn5
+            // pExperience_list
             // 
-            dataGridViewTextBoxColumn5.HeaderText = "Опыт";
-            dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.Width = 125;
+            pExperience_list.HeaderText = "Опыт";
+            pExperience_list.MinimumWidth = 6;
+            pExperience_list.Name = "pExperience_list";
+            pExperience_list.Width = 125;
             // 
-            // dataGridViewTextBoxColumn6
+            // pproduct_list
             // 
-            dataGridViewTextBoxColumn6.HeaderText = "Продукт";
-            dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.Width = 125;
+            pproduct_list.HeaderText = "Продукт";
+            pproduct_list.MinimumWidth = 6;
+            pproduct_list.Name = "pproduct_list";
+            pproduct_list.Width = 125;
+            // 
+            // rus_change_btn
+            // 
+            rus_change_btn.BackColor = Color.LightCoral;
+            rus_change_btn.FlatStyle = FlatStyle.Flat;
+            rus_change_btn.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            rus_change_btn.Location = new Point(973, 12);
+            rus_change_btn.Name = "rus_change_btn";
+            rus_change_btn.Size = new Size(168, 60);
+            rus_change_btn.TabIndex = 27;
+            rus_change_btn.Text = "Русский";
+            rus_change_btn.UseVisualStyleBackColor = false;
+            rus_change_btn.Click += rus_change_btn_Click;
+            // 
+            // tat_change_btn
+            // 
+            tat_change_btn.BackColor = Color.LightCoral;
+            tat_change_btn.FlatStyle = FlatStyle.Flat;
+            tat_change_btn.Font = new Font("Didact Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            tat_change_btn.Location = new Point(973, 12);
+            tat_change_btn.Name = "tat_change_btn";
+            tat_change_btn.Size = new Size(168, 55);
+            tat_change_btn.TabIndex = 28;
+            tat_change_btn.Text = "Татарча";
+            tat_change_btn.UseVisualStyleBackColor = false;
+            tat_change_btn.Visible = false;
+            tat_change_btn.Click += tat_change_btn_Click;
             // 
             // ListOfRecomendations
             // 
@@ -267,15 +296,17 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(1153, 712);
+            Controls.Add(rus_change_btn);
             Controls.Add(listofrecs_dgv1);
             Controls.Add(updatedgv_pic);
             Controls.Add(dislike_btn);
             Controls.Add(like_btn);
             Controls.Add(likedlist_btn);
             Controls.Add(settings_btn);
-            Controls.Add(pictureBox6);
             Controls.Add(pictureBox5);
             Controls.Add(pictureBox4);
+            Controls.Add(tat_change_btn);
+            Controls.Add(pictureBox6);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ListOfRecomendations";
             Text = "Главная";
@@ -310,11 +341,13 @@
         private PictureBox updatedgv_pic;
         public DataGridView listofrecs_dgv1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn pspecialisation;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn pname_list;
+        private DataGridViewTextBoxColumn pspecialisation_list;
+        private DataGridViewTextBoxColumn ptime_list;
+        private DataGridViewTextBoxColumn planguage_list;
+        private DataGridViewTextBoxColumn pExperience_list;
+        private DataGridViewTextBoxColumn pproduct_list;
+        private Button rus_change_btn;
+        private Button tat_change_btn;
     }
 }

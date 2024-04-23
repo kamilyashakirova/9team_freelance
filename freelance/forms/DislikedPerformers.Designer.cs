@@ -35,19 +35,19 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dislikedperformers));
             disliked_dgv = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            pname = new DataGridViewTextBoxColumn();
-            pspecialisation = new DataGridViewTextBoxColumn();
-            ptime = new DataGridViewTextBoxColumn();
-            planguage = new DataGridViewTextBoxColumn();
-            pExperience = new DataGridViewTextBoxColumn();
-            pproduct = new DataGridViewTextBoxColumn();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             pictureBox1 = new PictureBox();
             pictureBox4 = new PictureBox();
             disliked_lbl = new Label();
             exit_btn = new PictureBox();
+            ID = new DataGridViewTextBoxColumn();
+            pname_disliked = new DataGridViewTextBoxColumn();
+            pspecialisation_disliked = new DataGridViewTextBoxColumn();
+            ptime_disliked = new DataGridViewTextBoxColumn();
+            planguage_disliked = new DataGridViewTextBoxColumn();
+            pExperience_disliked = new DataGridViewTextBoxColumn();
+            pproduct_disliked = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)disliked_dgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -74,7 +74,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             disliked_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             disliked_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            disliked_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialisation, ptime, planguage, pExperience, pproduct });
+            disliked_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname_disliked, pspecialisation_disliked, ptime_disliked, planguage_disliked, pExperience_disliked, pproduct_disliked });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
             dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
@@ -103,56 +103,6 @@
             disliked_dgv.Size = new Size(750, 514);
             disliked_dgv.TabIndex = 1;
             disliked_dgv.CellDoubleClick += disliked_dgv_CellDoubleClick;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.Visible = false;
-            ID.Width = 125;
-            // 
-            // pname
-            // 
-            pname.HeaderText = "ФИО";
-            pname.MinimumWidth = 6;
-            pname.Name = "pname";
-            pname.Width = 125;
-            // 
-            // pspecialisation
-            // 
-            pspecialisation.HeaderText = "Специализация";
-            pspecialisation.MinimumWidth = 6;
-            pspecialisation.Name = "pspecialisation";
-            pspecialisation.Width = 125;
-            // 
-            // ptime
-            // 
-            ptime.HeaderText = "Срок";
-            ptime.MinimumWidth = 6;
-            ptime.Name = "ptime";
-            ptime.Width = 125;
-            // 
-            // planguage
-            // 
-            planguage.HeaderText = "Знание языков";
-            planguage.MinimumWidth = 6;
-            planguage.Name = "planguage";
-            planguage.Width = 125;
-            // 
-            // pExperience
-            // 
-            pExperience.HeaderText = "Опыт";
-            pExperience.MinimumWidth = 6;
-            pExperience.Name = "pExperience";
-            pExperience.Width = 125;
-            // 
-            // pproduct
-            // 
-            pproduct.HeaderText = "Продукт";
-            pproduct.MinimumWidth = 6;
-            pproduct.Name = "pproduct";
-            pproduct.Width = 125;
             // 
             // pictureBox2
             // 
@@ -220,6 +170,56 @@
             exit_btn.TabStop = false;
             exit_btn.Click += exit_btn_Click;
             // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.Visible = false;
+            ID.Width = 125;
+            // 
+            // pname_disliked
+            // 
+            pname_disliked.HeaderText = "ФИО";
+            pname_disliked.MinimumWidth = 6;
+            pname_disliked.Name = "pname_disliked";
+            pname_disliked.Width = 125;
+            // 
+            // pspecialisation_disliked
+            // 
+            pspecialisation_disliked.HeaderText = "Специализация";
+            pspecialisation_disliked.MinimumWidth = 6;
+            pspecialisation_disliked.Name = "pspecialisation_disliked";
+            pspecialisation_disliked.Width = 125;
+            // 
+            // ptime_disliked
+            // 
+            ptime_disliked.HeaderText = "Срок";
+            ptime_disliked.MinimumWidth = 6;
+            ptime_disliked.Name = "ptime_disliked";
+            ptime_disliked.Width = 125;
+            // 
+            // planguage_disliked
+            // 
+            planguage_disliked.HeaderText = "Знание языков";
+            planguage_disliked.MinimumWidth = 6;
+            planguage_disliked.Name = "planguage_disliked";
+            planguage_disliked.Width = 125;
+            // 
+            // pExperience_disliked
+            // 
+            pExperience_disliked.HeaderText = "Опыт";
+            pExperience_disliked.MinimumWidth = 6;
+            pExperience_disliked.Name = "pExperience_disliked";
+            pExperience_disliked.Width = 125;
+            // 
+            // pproduct_disliked
+            // 
+            pproduct_disliked.HeaderText = "Продукт";
+            pproduct_disliked.MinimumWidth = 6;
+            pproduct_disliked.Name = "pproduct_disliked";
+            pproduct_disliked.Width = 125;
+            // 
             // Dislikedperformers
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -255,13 +255,13 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox4;
         private Label disliked_lbl;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn pname;
-        private DataGridViewTextBoxColumn pspecialisation;
-        private DataGridViewTextBoxColumn ptime;
-        private DataGridViewTextBoxColumn planguage;
-        private DataGridViewTextBoxColumn pExperience;
-        private DataGridViewTextBoxColumn pproduct;
         private PictureBox exit_btn;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn pname_disliked;
+        private DataGridViewTextBoxColumn pspecialisation_disliked;
+        private DataGridViewTextBoxColumn ptime_disliked;
+        private DataGridViewTextBoxColumn planguage_disliked;
+        private DataGridViewTextBoxColumn pExperience_disliked;
+        private DataGridViewTextBoxColumn pproduct_disliked;
     }
 }

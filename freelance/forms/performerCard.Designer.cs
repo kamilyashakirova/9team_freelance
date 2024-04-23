@@ -160,9 +160,9 @@
             fio_lbl.Font = new Font("Didact Gothic", 10.1999989F);
             fio_lbl.Location = new Point(335, 28);
             fio_lbl.Name = "fio_lbl";
-            fio_lbl.Size = new Size(56, 25);
+            fio_lbl.Size = new Size(52, 25);
             fio_lbl.TabIndex = 10;
-            fio_lbl.Text = "ФИО :";
+            fio_lbl.Text = "ФИО:";
             // 
             // spec_lbl
             // 
@@ -170,9 +170,9 @@
             spec_lbl.Font = new Font("Didact Gothic", 10.1999989F);
             spec_lbl.Location = new Point(335, 107);
             spec_lbl.Name = "spec_lbl";
-            spec_lbl.Size = new Size(137, 25);
+            spec_lbl.Size = new Size(133, 25);
             spec_lbl.TabIndex = 11;
-            spec_lbl.Text = "Специализация :";
+            spec_lbl.Text = "Специализация:";
             // 
             // srtime_lbl
             // 
@@ -180,9 +180,9 @@
             srtime_lbl.Font = new Font("Didact Gothic", 10.1999989F);
             srtime_lbl.Location = new Point(335, 193);
             srtime_lbl.Name = "srtime_lbl";
-            srtime_lbl.Size = new Size(290, 25);
+            srtime_lbl.Size = new Size(286, 25);
             srtime_lbl.TabIndex = 12;
-            srtime_lbl.Text = "Среднее время выполнения работы :";
+            srtime_lbl.Text = "Среднее время выполнения работы:";
             // 
             // srprice_lbl
             // 
@@ -200,9 +200,9 @@
             experiense_lbl.Font = new Font("Didact Gothic", 10.1999989F);
             experiense_lbl.Location = new Point(335, 372);
             experiense_lbl.Name = "experiense_lbl";
-            experiense_lbl.Size = new Size(60, 25);
+            experiense_lbl.Size = new Size(56, 25);
             experiense_lbl.TabIndex = 14;
-            experiense_lbl.Text = "Опыт :";
+            experiense_lbl.Text = "Опыт:";
             // 
             // rating_lbl
             // 

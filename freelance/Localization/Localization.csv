@@ -1,0 +1,117 @@
+﻿Enter,Авторизация
+hi_lbl,ПРИВЕТ!
+login_txtb,Введите логин
+password_txtb,Введите пароль
+enter_btn,ВОЙТИ
+forgotpassword_lbl,Забыли пароль?
+registration_lbl,Зарегистрироваться
+message1enter,Вы успешно вошли.
+message2enter,Неверный логин или пароль.
+ForgotpasswordForm,Восстановление пароля
+passwordrecovery_lbl,Восстановление пароля
+login_lbl,Введите логин
+loginerror_lbl,Неверный логин
+sendpassword_btn,Отправить пароль на почту
+writepassword_lbl,Введите пароль, который мы отправили на вашу почту
+newpassword_txt,Введите пароль
+passworderror_lbl,Неверный пароль
+newenter_btn,Войти
+RegistrationForm,Регистрация
+reg_lbl,Регистрация
+rnae_lbl,Введите имя
+rname_txtb,Имя
+rsurname_lbl,Введите фамилию
+rsurname_txtb,Фамилия
+rpatronymic_lbl,Введите отчество
+rpatronomic_txtb,Отчество
+rlogin_lbl,Введите логин
+rlogin_txtb,Логин
+rpassword_lbl,Введите пароль
+rpassword_txtb,Пароль
+rpasswordrepeat_lbl,Повторите пароль
+rpasswordrepeat_txtb,Пароль
+rEmail_lbl,Введите e-mail
+rEmail_txtb,E-mail
+registration_btn,Зарегистрироваться
+Likedperformers,Избранное
+liked_lbl,Избранное  
+Dislikedperformers,Скрытое
+disliked_lbl,Скрытое
+ListOfRecomendations,Главная
+pname_list,ФИО
+pspecialisation_list,Специализация
+ptime_list,Срок
+planguage_list,Знание языков
+pExperience_list,Опыт
+pproduct_list,Продукт
+Myservices,Мои заказы 
+myservices_lbl,Мои заказы
+pname_my,ФИО
+pspecialisation_my,Специализация
+ptime_my,Срок
+planguage_my,Знание языков
+pExperience_my,Опыт
+pproduct_my,Продукт
+message1,У Вас пока нет своих объявлений
+PerformerCard,Карточка фрилансера
+fio_lbl,ФИО:
+spec_lbl,Специализация:
+srtime_lbl,Среднее время выполнения работы:
+srprice_lbl,Знание языков:
+experiense_lbl,Опыт:
+rating_lbl,Продукт: 
+CustomizePreferences,Редактировать предпочтения
+button1,Сфера деятельности
+button4,Тип продукта
+button3,Знание языков
+button5,Время выполнения
+button2,Опыт исполнителя
+Sweb_design_check,Веб-разработка
+Stext_check,Копирайтинг
+Sgraphic_design_check,Графический дизайн
+Sadvertisement_check,Интернет продвижение и реклама
+Pwebsite_check,Сайт
+Padvertisement_check,Реклама
+Preport_check,Статья
+Ptranselate_check,Перевод
+Plogo_check,Дизайн логотипа
+Leng_check,Английский
+Ldeu_check,Немецкий
+Lchineese_check,Китайский
+Tday_,1 день
+Tthreedays_check,До 3х дней
+Tweek_check,До недели
+Tmonth_check,До месяца
+Enone_check,Без опыта
+Eyear_check,до 1 года
+Eonethreeyears_check,1-3 года
+Emore_check,от 3х лет
+savechanges_btn,Изменить
+ClientProfile,Профиль
+fotodownload_btn,Загрузить фотографию
+surname_lbl,Фамилия
+name_lbl,Имя
+patronomyc_lbl,Отчество
+email_lbl,E-mail
+customize_btn,Редактировать предпочтения
+my_btn,Мои заказы
+disliked_btn,Скрытые профили
+like,Нравится
+dislike,Не нравится
+message1, У Вас пока нет своих объявлений
+message1liked_list, Вы уже добавляли фрилансера в избранное
+message2liked_list, Добавлен в избранное
+message1_list, Ошибка
+message2_list, Выберите необходимую строку в таблице.
+message1disliked_list, Вы уже добавляли фрилансера в скрытое.
+message2disliked_list, Добавлен в скрытое.
+message1_reg, Вы успешно зарегистрировались.
+message2_reg, Ошибка. Проверьте, правильно ли Вы повторили пароль.
+message3_reg, Заполните поле для почты
+message1_regname, Поле имени не должно быть пустым.
+message2_regname, Имя не должно содержать цифры.
+message1_regsurname, Поле фамилии не должно быть пустым.
+message2_regsurname, Фамилия не должна содержать цифры.
+message1_regpatronymic, Отчество не должно содержать цифры.
+message1_work,Пользователь с таким логином уже существует
+message2_work,Пользователь не существует

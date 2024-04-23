@@ -30,26 +30,26 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientProfile));
             panel1 = new Panel();
+            exit_btn = new PictureBox();
             cemail_txt = new TextBox();
-            label4 = new Label();
+            email_lbl = new Label();
             id_txt = new TextBox();
-            label3 = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            name_lbl = new Label();
+            patronomyc_lbl = new Label();
+            surname_lbl = new Label();
             cpatronymic_txt = new TextBox();
             csurname_txt = new TextBox();
             cname_txt = new TextBox();
             fotodownload_btn = new Button();
             clientpicture = new PictureBox();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            customize_btn = new Button();
+            my_btn = new Button();
+            disliked_btn = new Button();
             pictureBox1 = new PictureBox();
-            exit_btn = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clientpicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -57,11 +57,11 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(exit_btn);
             panel1.Controls.Add(cemail_txt);
-            panel1.Controls.Add(label4);
+            panel1.Controls.Add(email_lbl);
             panel1.Controls.Add(id_txt);
-            panel1.Controls.Add(label3);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(name_lbl);
+            panel1.Controls.Add(patronomyc_lbl);
+            panel1.Controls.Add(surname_lbl);
             panel1.Controls.Add(cpatronymic_txt);
             panel1.Controls.Add(csurname_txt);
             panel1.Controls.Add(cname_txt);
@@ -73,6 +73,17 @@
             panel1.Size = new Size(350, 711);
             panel1.TabIndex = 0;
             // 
+            // exit_btn
+            // 
+            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
+            exit_btn.Location = new Point(-1, -1);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(47, 69);
+            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            exit_btn.TabIndex = 29;
+            exit_btn.TabStop = false;
+            exit_btn.Click += exit_btn_Click;
+            // 
             // cemail_txt
             // 
             cemail_txt.Font = new Font("Didact Gothic", 10.1999989F);
@@ -81,15 +92,15 @@
             cemail_txt.Size = new Size(323, 30);
             cemail_txt.TabIndex = 10;
             // 
-            // label4
+            // email_lbl
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Didact Gothic", 10.1999989F);
-            label4.Location = new Point(16, 586);
-            label4.Name = "label4";
-            label4.Size = new Size(58, 25);
-            label4.TabIndex = 9;
-            label4.Text = "E-mail";
+            email_lbl.AutoSize = true;
+            email_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            email_lbl.Location = new Point(16, 586);
+            email_lbl.Name = "email_lbl";
+            email_lbl.Size = new Size(58, 25);
+            email_lbl.TabIndex = 9;
+            email_lbl.Text = "E-mail";
             // 
             // id_txt
             // 
@@ -100,35 +111,35 @@
             id_txt.TabIndex = 8;
             id_txt.Visible = false;
             // 
-            // label3
+            // name_lbl
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Didact Gothic", 10.1999989F);
-            label3.Location = new Point(16, 425);
-            label3.Name = "label3";
-            label3.Size = new Size(42, 25);
-            label3.TabIndex = 7;
-            label3.Text = "Имя";
+            name_lbl.AutoSize = true;
+            name_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            name_lbl.Location = new Point(16, 425);
+            name_lbl.Name = "name_lbl";
+            name_lbl.Size = new Size(42, 25);
+            name_lbl.TabIndex = 7;
+            name_lbl.Text = "Имя";
             // 
-            // label2
+            // patronomyc_lbl
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Didact Gothic", 10.1999989F);
-            label2.Location = new Point(16, 508);
-            label2.Name = "label2";
-            label2.Size = new Size(83, 25);
-            label2.TabIndex = 6;
-            label2.Text = "Отчество";
+            patronomyc_lbl.AutoSize = true;
+            patronomyc_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            patronomyc_lbl.Location = new Point(16, 508);
+            patronomyc_lbl.Name = "patronomyc_lbl";
+            patronomyc_lbl.Size = new Size(83, 25);
+            patronomyc_lbl.TabIndex = 6;
+            patronomyc_lbl.Text = "Отчество";
             // 
-            // label1
+            // surname_lbl
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Didact Gothic", 10.1999989F);
-            label1.Location = new Point(16, 348);
-            label1.Name = "label1";
-            label1.Size = new Size(81, 25);
-            label1.TabIndex = 5;
-            label1.Text = "Фамилия";
+            surname_lbl.AutoSize = true;
+            surname_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            surname_lbl.Location = new Point(16, 348);
+            surname_lbl.Name = "surname_lbl";
+            surname_lbl.Size = new Size(81, 25);
+            surname_lbl.TabIndex = 5;
+            surname_lbl.Text = "Фамилия";
             // 
             // cpatronymic_txt
             // 
@@ -175,44 +186,43 @@
             clientpicture.SizeMode = PictureBoxSizeMode.Zoom;
             clientpicture.TabIndex = 0;
             clientpicture.TabStop = false;
-            clientpicture.Click += clientpicture_Click;
             // 
-            // button1
+            // customize_btn
             // 
-            button1.BackColor = Color.MediumAquamarine;
-            button1.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button1.Location = new Point(356, 47);
-            button1.Name = "button1";
-            button1.Size = new Size(250, 107);
-            button1.TabIndex = 1;
-            button1.Text = "Редактировать предпочтения";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            customize_btn.BackColor = Color.MediumAquamarine;
+            customize_btn.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            customize_btn.Location = new Point(356, 47);
+            customize_btn.Name = "customize_btn";
+            customize_btn.Size = new Size(250, 107);
+            customize_btn.TabIndex = 1;
+            customize_btn.Text = "Редактировать предпочтения";
+            customize_btn.UseVisualStyleBackColor = false;
+            customize_btn.Click += button1_Click;
             // 
-            // button2
+            // my_btn
             // 
-            button2.BackColor = Color.LightSkyBlue;
-            button2.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button2.Location = new Point(625, 47);
-            button2.Name = "button2";
-            button2.Size = new Size(250, 107);
-            button2.TabIndex = 2;
-            button2.Text = "Мои заказы";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            my_btn.BackColor = Color.LightSkyBlue;
+            my_btn.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            my_btn.Location = new Point(625, 47);
+            my_btn.Name = "my_btn";
+            my_btn.Size = new Size(250, 107);
+            my_btn.TabIndex = 2;
+            my_btn.Text = "Мои заказы";
+            my_btn.UseVisualStyleBackColor = false;
+            my_btn.Click += button2_Click;
             // 
-            // button3
+            // disliked_btn
             // 
-            button3.BackColor = Color.SteelBlue;
-            button3.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            button3.ForeColor = SystemColors.ButtonFace;
-            button3.Location = new Point(891, 47);
-            button3.Name = "button3";
-            button3.Size = new Size(250, 107);
-            button3.TabIndex = 3;
-            button3.Text = "Скрытые профили";
-            button3.UseVisualStyleBackColor = false;
-            button3.Click += button3_Click;
+            disliked_btn.BackColor = Color.SteelBlue;
+            disliked_btn.Font = new Font("Didact Gothic", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            disliked_btn.ForeColor = SystemColors.ButtonFace;
+            disliked_btn.Location = new Point(891, 47);
+            disliked_btn.Name = "disliked_btn";
+            disliked_btn.Size = new Size(250, 107);
+            disliked_btn.TabIndex = 3;
+            disliked_btn.Text = "Скрытые профили";
+            disliked_btn.UseVisualStyleBackColor = false;
+            disliked_btn.Click += button3_Click;
             // 
             // pictureBox1
             // 
@@ -224,26 +234,15 @@
             pictureBox1.TabIndex = 4;
             pictureBox1.TabStop = false;
             // 
-            // exit_btn
-            // 
-            exit_btn.Image = (Image)resources.GetObject("exit_btn.Image");
-            exit_btn.Location = new Point(-1, -1);
-            exit_btn.Name = "exit_btn";
-            exit_btn.Size = new Size(47, 69);
-            exit_btn.SizeMode = PictureBoxSizeMode.Zoom;
-            exit_btn.TabIndex = 29;
-            exit_btn.TabStop = false;
-            exit_btn.Click += exit_btn_Click;
-            // 
             // ClientProfile
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1148, 711);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(disliked_btn);
+            Controls.Add(my_btn);
+            Controls.Add(customize_btn);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -251,9 +250,9 @@
             Text = "Профиль";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ((System.ComponentModel.ISupportInitialize)clientpicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
         }
 
@@ -261,19 +260,19 @@
 
         private Panel panel1;
         private Button fotodownload_btn;
-        private Label label3;
-        private Label label2;
-        private Label label1;
-        private Label label4;
+        private Label name_lbl;
+        private Label patronomyc_lbl;
+        private Label surname_lbl;
+        private Label email_lbl;
         public PictureBox clientpicture;
         public TextBox cpatronymic_txt;
         public TextBox csurname_txt;
         public TextBox cname_txt;
         public TextBox id_txt;
         public TextBox cemail_txt;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button customize_btn;
+        private Button my_btn;
+        private Button disliked_btn;
         private PictureBox pictureBox1;
         private PictureBox exit_btn;
     }

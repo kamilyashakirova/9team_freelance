@@ -59,7 +59,6 @@
             newpassword_txt.Size = new Size(243, 30);
             newpassword_txt.TabIndex = 2;
             newpassword_txt.Visible = false;
-            newpassword_txt.TextChanged += newpassword_txt_TextChanged;
             // 
             // errorEXp_lbl
             // 

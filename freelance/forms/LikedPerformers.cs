@@ -18,6 +18,8 @@ namespace freelance.forms
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
             liked_lbl.Font = new Font(fonts.Families[0], 16);
+
+            Localization.LanguageChanged += UpdateLocalization;
         }
         private void likedperformers_Load(object sender, EventArgs e)
         {
@@ -81,6 +83,17 @@ namespace freelance.forms
         private void exit_btn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void UpdateLocalization(object sender, EventArgs e)
+        {
+            this.Text = Localization.GetLocalizedString("Likedperformers");
+            liked_lbl.Text = Localization.GetLocalizedString("liked_lbl");
+            pname_liked.HeaderText = Localization.GetLocalizedString("pname_my");
+            pspecialisation_liked.HeaderText = Localization.GetLocalizedString("pspecialisation_my");
+            ptime_liked.HeaderText = Localization.GetLocalizedString("ptime_my");
+            planguage_liked.HeaderText = Localization.GetLocalizedString("planguage_my");
+            pExperience_liked.HeaderText = Localization.GetLocalizedString("pExperience_my");
+            pproduct_liked.HeaderText = Localization.GetLocalizedString("pproduct_my");
         }
     }
 }

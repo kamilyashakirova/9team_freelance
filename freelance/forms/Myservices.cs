@@ -4,10 +4,12 @@ namespace freelance.forms
     public partial class Myservices : Form
     {
         private int clientID;
+        private string message_my = "У Вас пока нет своих объявлений";
         public Myservices(int clientID)
         {
             this.clientID = clientID;
             InitializeComponent();
+            Localization.LanguageChanged += UpdateLocalization;
         }
         private void Myservices_Load(object sender, EventArgs e)
         {
@@ -28,7 +30,7 @@ namespace freelance.forms
                 }
                 else
                 {
-                    MessageBox.Show("У Вас пока нет своих объявлений");
+                    MessageBox.Show(message_my);
                     mylist.Rows.Clear();
                 }
             }
@@ -79,6 +81,18 @@ namespace freelance.forms
         private void exit_btn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void UpdateLocalization(object sender, EventArgs e)
+        {
+            this.Text = Localization.GetLocalizedString("Myservices");
+            myservices_lbl.Text = Localization.GetLocalizedString("myservices_lbl");
+            pname_my.HeaderText = Localization.GetLocalizedString("pname_my");
+            pspecialisation_my.HeaderText = Localization.GetLocalizedString("pspecialisation_my");
+            ptime_my.HeaderText = Localization.GetLocalizedString("ptime_my");
+            planguage_my.HeaderText = Localization.GetLocalizedString("planguage_my");
+            pExperience_my.HeaderText = Localization.GetLocalizedString("pExperience_my");
+            pproduct_my.HeaderText = Localization.GetLocalizedString("pproduct_my");
+            message_my = Localization.GetLocalizedString("message_my");
         }
     }
 }

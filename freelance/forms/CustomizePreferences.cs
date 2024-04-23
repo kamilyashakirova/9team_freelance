@@ -1,4 +1,6 @@
-﻿namespace freelance.forms
+﻿using System.Windows.Forms;
+
+namespace freelance.forms
 {
     public partial class CustomizePreferences : Form
     {
@@ -86,6 +88,37 @@
         private void exit_btn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        //Локализация
+        private void UpdateLocalization(object sender, EventArgs e)
+        {
+            this.Text = Localization.GetLocalizedString("CustomizePreferences");
+            button1.Text = Localization.GetLocalizedString("button1");
+            button4.Text = Localization.GetLocalizedString("button4");
+            button3.Text = Localization.GetLocalizedString("button3");
+            button5.Text = Localization.GetLocalizedString("button5");
+            button2.Text = Localization.GetLocalizedString("button2");
+            Sweb_design_check.Text = Localization.GetLocalizedString("Sweb_design_check");
+            Stext_check.Text = Localization.GetLocalizedString("Stext_check");
+            Sgraphic_design_check.Text = Localization.GetLocalizedString("Sgraphic_design_check");
+            Sadvertisement_check.Text = Localization.GetLocalizedString("Sadvertisement_check");
+            Pwebsite_check.Text = Localization.GetLocalizedString("Pwebsite_check");
+            Padvertisement_check.Text = Localization.GetLocalizedString("Padvertisement_check");
+            Preport_check.Text = Localization.GetLocalizedString("Preport_check");
+            Ptranselate_check.Text = Localization.GetLocalizedString("Ptranselate_check");
+            Plogo_check.Text = Localization.GetLocalizedString("Plogo_check");
+            Leng_check.Text = Localization.GetLocalizedString("Leng_check");
+            Ldeu_check.Text = Localization.GetLocalizedString("Ldeu_check");
+            Lchineese_check.Text = Localization.GetLocalizedString("Lchineese_check");
+            Tday_.Text = Localization.GetLocalizedString("Tday_");
+            Tthreedays_check.Text = Localization.GetLocalizedString("Tthreedays_check");
+            Tweek_check.Text = Localization.GetLocalizedString("Tweek_check");
+            Tmonth_check.Text = Localization.GetLocalizedString("Tmonth_check");
+            Enone_check.Text = Localization.GetLocalizedString("Enone_check");
+            Eyear_check.Text = Localization.GetLocalizedString("Eyear_check");
+            Eonethreeyears_check.Text = Localization.GetLocalizedString("Eonethreeyears_check");
+            Emore_check.Text = Localization.GetLocalizedString("Emore_check");
+            savechanges_btn.Text = Localization.GetLocalizedString("savechanges_btn");
         }
     }
 }

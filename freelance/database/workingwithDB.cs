@@ -1,8 +1,12 @@
-﻿
+﻿using freelance.forms;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 namespace freelance
 {
     public static class workingwithDB
     {
+        private static string message1_work = "Пользователь с таким логином уже существует";
+        private static string message2_work = "Пользователь не существует";
         /// <summary>
         /// метод для авторизации
         /// </summary>
@@ -11,6 +15,7 @@ namespace freelance
         /// <returns></returns>
         public static bool LogIn(string login, string passw)
         {
+
             using (var db = new DBcontext())
             {
                 var user = db.Users.FirstOrDefault(user => user.ULogin == login);
@@ -141,6 +146,14 @@ namespace freelance
             }
         }
         /// <summary>
+        /// Метод, выполняющий блокировку БД
+        /// </summary>
+        /// <param name="db"></param>
+        public static void LockDb(DBcontext db)
+        {
+            db.Database.ExecuteSqlRaw("BEGIN IMMEDIATE TRANSACTION;");
+        }
+        /// <summary>
         /// метод для добавления в бд новых пользователей и клиентов
         /// </summary>
         /// <param name="uLogin"></param>
@@ -154,87 +167,160 @@ namespace freelance
         {
             if (IsUsernameUnique(uLogin))
             {
-                using (var context = new DBcontext())
+                using (var db = new DBcontext())
                 {
-                    var epassw = Hashing.hash(uPassword);
-                    var user = new User { ULogin = uLogin, UPasswordHash = epassw, Email = email };
-                    context.Users.Add(user);
-                    context.SaveChanges();
+                    using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
+                    {
+                        LockDb(db);
+                        try
+                        {
+                            var epassw = Hashing.hash(uPassword);
+                            var user = new User { ULogin = uLogin, UPasswordHash = epassw, Email = email };
+                            db.Users.Add(user);
+                            db.SaveChanges();
 
-                    var client = new Client { UserID = user.UId, ClientName = clientName, ClientSurname = clientSurname,
-                    ClientPatronomic = clientPatronomic,InUsers = user, Email = email , ClientPicture = String.Empty};
-                    context.Clients.Add(client);
-                    context.SaveChanges();
+                            var client = new Client
+                            {
+                                UserID = user.UId,
+                                ClientName = clientName,
+                                ClientSurname = clientSurname,
+                                ClientPatronomic = clientPatronomic,
+                                InUsers = user,
+                                Email = email,
+                                ClientPicture = String.Empty
+                            };
+                            db.Clients.Add(client);
+                            db.SaveChanges();
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.ToString());
+                            transaction.Rollback();
+                        }
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Пользователь с таким логином уже существует");
+                MessageBox.Show(message1_work);
             }
         }
         public static void AddLike(int ClientID, int performerID)
         {
-            using (var context = new DBcontext())
+            using (var db = new DBcontext())
             {
-                var liked = new LikedPerformers { ClientID = ClientID, PerformerID = performerID };
-                context.LikedPerformers.Add(liked);
-                context.SaveChanges();
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
+                {
+                    LockDb(db);
+                    try
+                    {
+                        var liked = new LikedPerformers { ClientID = ClientID, PerformerID = performerID };
+                        db.LikedPerformers.Add(liked);
+                        db.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        transaction.Rollback();
+                    }
+                }
             }
         }
         public static void AddDislike(int ClientID, int performerID)
         {
-            using (var context = new DBcontext())
+            using (var db = new DBcontext())
             {
-                var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
-                context.DislikedPerformers.Add(disliked);
-                context.SaveChanges();
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
+                {
+                    LockDb(db);
+                    try
+                    {
+                        var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
+                        db.DislikedPerformers.Add(disliked);
+                        db.SaveChanges();
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        transaction.Rollback();
+                    }
+                }
             }
         }
         public static void AddInterest(int clientID, string ISpecialization, string ITime, string IExperience,
             string ILanguage, string IProduct)
         {
-            using (var context = new DBcontext())
-            { 
-                var client = context.Clients.FirstOrDefault(u => u.ID == clientID);
-                if (client != null)
+            using (var db = new DBcontext())
+            {
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    var interest = new Interest { ClientID = clientID, ISpecialization = ISpecialization, ITime = ITime, 
-                        IExperience = IExperience, ILanguage = ILanguage, IProduct = IProduct};
-                    context.Interests.Add(interest);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    MessageBox.Show("Пользователь не существует");
-                }
+                    LockDb(db);
+                    try
+                    {
+                        var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
+                        if (client != null)
+                        {
+                            var interest = new Interest { ClientID = clientID, ISpecialization = ISpecialization, ITime = ITime,
+                                IExperience = IExperience, ILanguage = ILanguage, IProduct = IProduct };
+                            db.Interests.Add(interest);
+                            db.SaveChanges();
+                            transaction.Commit();
+                        }
+                        else
+                        {
+                            MessageBox.Show(message2_work);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        transaction.Rollback();
+                    }
+                }  
             }
         }
         public static void AddPerformer(int clientID, string MyName, string MySpecialization, string MyTime, string MyExperience,
             string MyLanguage, string MyProduct, string MyPicture)
         {
-            using (var context = new DBcontext())
+            using (var db = new DBcontext())
             {
-                var client = context.Clients.FirstOrDefault(u => u.ID == clientID);
-                if (client != null)
+                using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    var performer = new Performer
+                    LockDb(db);
+                    try
                     {
-                        ClientID = clientID,
-                        PName = MyName,
-                        PSpecialization = MySpecialization,
-                        PTime = MyTime,
-                        PExperience = MyExperience,
-                        PLanguage = MyLanguage,
-                        PProduct = MyProduct,
-                        PPicture = MyPicture,
-                        InClients = client
-                    };
-                    context.Performers.Add(performer);
-                    context.SaveChanges();
-                }
-                else
-                {
-                    MessageBox.Show("Пользователь не существует");
+                        var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
+                        if (client != null)
+                        {
+                            var performer = new Performer
+                            {
+                                ClientID = clientID,
+                                PName = MyName,
+                                PSpecialization = MySpecialization,
+                                PTime = MyTime,
+                                PExperience = MyExperience,
+                                PLanguage = MyLanguage,
+                                PProduct = MyProduct,
+                                PPicture = MyPicture,
+                                InClients = client
+                            };
+                            db.Performers.Add(performer);
+                            db.SaveChanges();
+                            transaction.Commit();
+                        }
+                        else
+                        {
+                            MessageBox.Show(message2_work);
+                        }
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.ToString());
+                        transaction.Rollback();
+                    }
                 }
             }
         }

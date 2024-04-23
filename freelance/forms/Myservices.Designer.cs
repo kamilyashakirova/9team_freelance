@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Myservices));
             myservices_dgv = new DataGridView();
-            ID = new DataGridViewTextBoxColumn();
-            pname = new DataGridViewTextBoxColumn();
-            pspecialisation = new DataGridViewTextBoxColumn();
-            ptime = new DataGridViewTextBoxColumn();
-            planguage = new DataGridViewTextBoxColumn();
-            pExperience = new DataGridViewTextBoxColumn();
-            pproduct = new DataGridViewTextBoxColumn();
             addservice_btn = new Button();
-            label1 = new Label();
+            myservices_lbl = new Label();
             pictureBox1 = new PictureBox();
             updatedgv_pic = new PictureBox();
             exit_btn = new PictureBox();
+            ID = new DataGridViewTextBoxColumn();
+            pname_my = new DataGridViewTextBoxColumn();
+            pspecialisation_my = new DataGridViewTextBoxColumn();
+            ptime_my = new DataGridViewTextBoxColumn();
+            planguage_my = new DataGridViewTextBoxColumn();
+            pExperience_my = new DataGridViewTextBoxColumn();
+            pproduct_my = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)myservices_dgv).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)updatedgv_pic).BeginInit();
@@ -56,100 +56,50 @@
             // myservices_dgv
             // 
             myservices_dgv.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            myservices_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText;
+            myservices_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             myservices_dgv.BackgroundColor = SystemColors.Window;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            myservices_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            myservices_dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             myservices_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            myservices_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname, pspecialisation, ptime, planguage, pExperience, pproduct });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            myservices_dgv.DefaultCellStyle = dataGridViewCellStyle3;
+            myservices_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname_my, pspecialisation_my, ptime_my, planguage_my, pExperience_my, pproduct_my });
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            myservices_dgv.DefaultCellStyle = dataGridViewCellStyle8;
             myservices_dgv.GridColor = Color.DarkSeaGreen;
             myservices_dgv.Location = new Point(0, 198);
             myservices_dgv.Name = "myservices_dgv";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.1999989F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            myservices_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            myservices_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             myservices_dgv.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.1999989F);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            myservices_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+            myservices_dgv.RowsDefaultCellStyle = dataGridViewCellStyle10;
             myservices_dgv.Size = new Size(680, 545);
             myservices_dgv.TabIndex = 2;
             myservices_dgv.CellDoubleClick += myservices_dgv_CellDoubleClick;
-            // 
-            // ID
-            // 
-            ID.HeaderText = "ID";
-            ID.MinimumWidth = 6;
-            ID.Name = "ID";
-            ID.Visible = false;
-            ID.Width = 125;
-            // 
-            // pname
-            // 
-            pname.HeaderText = "ФИО";
-            pname.MinimumWidth = 6;
-            pname.Name = "pname";
-            pname.Width = 125;
-            // 
-            // pspecialisation
-            // 
-            pspecialisation.HeaderText = "Специализация";
-            pspecialisation.MinimumWidth = 6;
-            pspecialisation.Name = "pspecialisation";
-            pspecialisation.Width = 125;
-            // 
-            // ptime
-            // 
-            ptime.HeaderText = "Срок";
-            ptime.MinimumWidth = 6;
-            ptime.Name = "ptime";
-            ptime.Width = 125;
-            // 
-            // planguage
-            // 
-            planguage.HeaderText = "Знание языков";
-            planguage.MinimumWidth = 6;
-            planguage.Name = "planguage";
-            planguage.Width = 125;
-            // 
-            // pExperience
-            // 
-            pExperience.HeaderText = "Опыт";
-            pExperience.MinimumWidth = 6;
-            pExperience.Name = "pExperience";
-            pExperience.Width = 125;
-            // 
-            // pproduct
-            // 
-            pproduct.HeaderText = "Продукт";
-            pproduct.MinimumWidth = 6;
-            pproduct.Name = "pproduct";
-            pproduct.Width = 125;
             // 
             // addservice_btn
             // 
@@ -163,15 +113,15 @@
             addservice_btn.UseVisualStyleBackColor = false;
             addservice_btn.Click += addservice_btn_Click;
             // 
-            // label1
+            // myservices_lbl
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Didact Gothic", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            label1.Location = new Point(0, 152);
-            label1.Name = "label1";
-            label1.Size = new Size(175, 43);
-            label1.TabIndex = 4;
-            label1.Text = "Мои заказы";
+            myservices_lbl.AutoSize = true;
+            myservices_lbl.Font = new Font("Didact Gothic", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            myservices_lbl.Location = new Point(0, 152);
+            myservices_lbl.Name = "myservices_lbl";
+            myservices_lbl.Size = new Size(175, 43);
+            myservices_lbl.TabIndex = 4;
+            myservices_lbl.Text = "Мои заказы";
             // 
             // pictureBox1
             // 
@@ -205,6 +155,56 @@
             exit_btn.TabStop = false;
             exit_btn.Click += exit_btn_Click;
             // 
+            // ID
+            // 
+            ID.HeaderText = "ID";
+            ID.MinimumWidth = 6;
+            ID.Name = "ID";
+            ID.Visible = false;
+            ID.Width = 125;
+            // 
+            // pname_my
+            // 
+            pname_my.HeaderText = "ФИО";
+            pname_my.MinimumWidth = 6;
+            pname_my.Name = "pname_my";
+            pname_my.Width = 125;
+            // 
+            // pspecialisation_my
+            // 
+            pspecialisation_my.HeaderText = "Специализация";
+            pspecialisation_my.MinimumWidth = 6;
+            pspecialisation_my.Name = "pspecialisation_my";
+            pspecialisation_my.Width = 125;
+            // 
+            // ptime_my
+            // 
+            ptime_my.HeaderText = "Срок";
+            ptime_my.MinimumWidth = 6;
+            ptime_my.Name = "ptime_my";
+            ptime_my.Width = 125;
+            // 
+            // planguage_my
+            // 
+            planguage_my.HeaderText = "Знание языков";
+            planguage_my.MinimumWidth = 6;
+            planguage_my.Name = "planguage_my";
+            planguage_my.Width = 125;
+            // 
+            // pExperience_my
+            // 
+            pExperience_my.HeaderText = "Опыт";
+            pExperience_my.MinimumWidth = 6;
+            pExperience_my.Name = "pExperience_my";
+            pExperience_my.Width = 125;
+            // 
+            // pproduct_my
+            // 
+            pproduct_my.HeaderText = "Продукт";
+            pproduct_my.MinimumWidth = 6;
+            pproduct_my.Name = "pproduct_my";
+            pproduct_my.Width = 125;
+            // 
             // Myservices
             // 
             AutoScaleDimensions = new SizeF(9F, 25F);
@@ -213,7 +213,7 @@
             ClientSize = new Size(1194, 744);
             Controls.Add(exit_btn);
             Controls.Add(updatedgv_pic);
-            Controls.Add(label1);
+            Controls.Add(myservices_lbl);
             Controls.Add(addservice_btn);
             Controls.Add(myservices_dgv);
             Controls.Add(pictureBox1);
@@ -234,17 +234,17 @@
         #endregion
 
         internal DataGridView myservices_dgv;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn pname;
-        private DataGridViewTextBoxColumn pspecialisation;
-        private DataGridViewTextBoxColumn ptime;
-        private DataGridViewTextBoxColumn planguage;
-        private DataGridViewTextBoxColumn pExperience;
-        private DataGridViewTextBoxColumn pproduct;
         private Button addservice_btn;
-        private Label label1;
+        private Label myservices_lbl;
         private PictureBox pictureBox1;
         private PictureBox updatedgv_pic;
         private PictureBox exit_btn;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn pname_my;
+        private DataGridViewTextBoxColumn pspecialisation_my;
+        private DataGridViewTextBoxColumn ptime_my;
+        private DataGridViewTextBoxColumn planguage_my;
+        private DataGridViewTextBoxColumn pExperience_my;
+        private DataGridViewTextBoxColumn pproduct_my;
     }
 }
