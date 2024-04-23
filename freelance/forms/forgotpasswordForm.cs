@@ -1,15 +1,21 @@
-﻿using System.Net.Mail;
+﻿using NLog;
+using NLog.Config;
+using System.Net.Mail;
 namespace freelance.forms
 {
     public partial class ForgotpasswordForm : Form
     {
+        public static Logger logger = LogManager.GetCurrentClassLogger();
         public ForgotpasswordForm()
         {
             InitializeComponent();
+            LogManager.Configuration = new XmlLoggingConfiguration("../../../logg/NLog.config");
             FontClass.SetCustomFont(this, 10);
             FontClass.SetCustomFont(passwordrecovery_lbl, 18);
             FontClass.SetCustomFont(login_lbl, 12);
             FontClass.SetCustomFont(writepassword_lbl, 12);
+
+            Localization.LanguageChanged += UpdateLocalization;
         }
         private void sendemail(string email, string? password)
         {
@@ -74,10 +80,17 @@ namespace freelance.forms
         {
             this.Close();
         }
-
-        private void newpassword_txt_TextChanged(object sender, EventArgs e)
+        private void UpdateLocalization(object sender, EventArgs e)
         {
-
+            this.Text = Localization.GetLocalizedString("ForgotpasswordForm");
+            passwordrecovery_lbl.Text = Localization.GetLocalizedString("passwordrecovery_lbl");
+            login_lbl.Text = Localization.GetLocalizedString("login_lbl");
+            loginerror_lbl.Text = Localization.GetLocalizedString("loginerror_lbl");
+            sendpassword_btn.Text = Localization.GetLocalizedString("sendpassword_btn");
+            writepassword_lbl.Text = Localization.GetLocalizedString("writepassword_lbl");
+            newpassword_txt.Text = Localization.GetLocalizedString("newpassword_txt");
+            passworderror_lbl.Text = Localization.GetLocalizedString("passworderror_lbl");
+            newenter_btn.Text = Localization.GetLocalizedString("newenter_btn");
         }
     }
 }
