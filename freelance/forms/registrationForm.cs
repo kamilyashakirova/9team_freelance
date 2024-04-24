@@ -16,7 +16,6 @@ namespace freelance.forms
         private string message1_regpatronymic = "Отчество не должно содержать цифры.";
 
         private static Mutex mutex = new Mutex();
-
         public RegistrationForm()
         {
             InitializeComponent();
