@@ -144,6 +144,7 @@
             rEmail_txtb.PlaceholderText = "E-mail";
             rEmail_txtb.Size = new Size(417, 30);
             rEmail_txtb.TabIndex = 7;
+            rEmail_txtb.TextChanged += rEmail_txtb_TextChanged;
             // 
             // show_pic
             // 

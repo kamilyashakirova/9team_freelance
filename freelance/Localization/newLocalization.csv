@@ -116,3 +116,5 @@ message2_regsurname,Фамилиядә саннар булырга тиеш тү
 message1_regpatronymic,Ата исеме саннар кертергә тиеш түгел.
 message1_work,Мондый логинлы кулланучы инде бар
 message2_work,Мондый кулланучы юк
+message1_regLogin,Логин кыры буш булырга тиеш түгел.
+message1_regPassword,Серсүз кыры буш булырга тиеш түгел.

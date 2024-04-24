@@ -14,6 +14,8 @@ namespace freelance.forms
         private string message1_regsurname = "Поле фамилии не должно быть пустым.";
         private string message2_regsurname = "Фамилия не должна содержать цифры.";
         private string message1_regpatronymic = "Отчество не должно содержать цифры.";
+        private string message1_regLogin = "Поле логин не должно быть пустым.";
+        private string message1_regPassword = "Поле пароль не должно быть пустым.";
 
         private static Mutex mutex = new Mutex();
         public RegistrationForm()
@@ -33,7 +35,7 @@ namespace freelance.forms
             hide_picb.Visible = true;
         }
         private void hide_picb_Click(object sender, EventArgs e)
-        {           
+        {
             rpassword_txtb.PasswordChar = '*';
             hide_picb.Visible = false;
             show_pic.Visible = true;
@@ -125,6 +127,20 @@ namespace freelance.forms
             message1_regsurname = Localization.GetLocalizedString("message1_regsurname");
             message2_regsurname = Localization.GetLocalizedString("message2_regsurname");
             message1_regpatronymic = Localization.GetLocalizedString("message1_regpatronymic");
+            message1_regLogin = Localization.GetLocalizedString("message1_regLogin");
+            message1_regPassword = Localization.GetLocalizedString("message1_regPassword");
+        }
+
+        private void rEmail_txtb_TextChanged(object sender, EventArgs e)
+        {
+            if (rlogin_txtb.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show(message1_regLogin);
+            }
+            if (rpassword_lbl.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show(message1_regPassword);
+            }
         }
     }
 }
