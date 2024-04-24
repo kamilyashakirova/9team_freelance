@@ -16,6 +16,8 @@ namespace freelance.forms
             FontClass.SetCustomFont(writepassword_lbl, 12);
 
             Localization.LanguageChanged += UpdateLocalization;
+
+            logger.Info("Успешно открылось форма 'ForgotpasswordForm'.");
         }
         private void sendemail(string email, string? password)
         {
@@ -38,6 +40,8 @@ namespace freelance.forms
             try
             {
                 smtp.Send(mail);
+                logger.Info("Пользователю успешно отправилось письмо на почту.");
+
             }
             catch
             {
@@ -65,6 +69,8 @@ namespace freelance.forms
         }
         private void newenter_btn_Click(object sender, EventArgs e)
         {
+
+            logger.Info("Нажата кнопка 'Войти' для формы 'ForgotpasswordForm'");
             if ((newpassword_txt.Text != String.Empty))
             {
                 var enter = workingwithDB.AfterForgotPasswordForm(login_txt.Text, newpassword_txt.Text);
@@ -78,6 +84,7 @@ namespace freelance.forms
         }
         private void exit_btn_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Назад'");
             this.Close();
         }
         private void UpdateLocalization(object sender, EventArgs e)

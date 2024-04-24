@@ -1,3 +1,4 @@
+using NLog;
 using System.Data;
 using System.Drawing.Text;
 namespace freelance.forms
@@ -7,8 +8,12 @@ namespace freelance.forms
         public int userID;
         public int clientID;
         PrivateFontCollection fonts = new PrivateFontCollection();
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+
         private string dislike = "Не нравится";
         private string like = "Нравится";
+        private string liked = "Избранное";
+        private string settings = "Настройки";
         private string message1liked_list = "Вы уже добавляли фрилансера в избранное";
         private string message2liked_list = "Добавлен в избранное";
         private string message1_list = "Ошибка.";
@@ -32,6 +37,8 @@ namespace freelance.forms
             {
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
+
+            logger.Info("Успешно открылось форма 'ListOfRecomendations'.");
         }
         //загрузка данных из БД в таблицу
         private void listOfRecomendations_Load(object sender, EventArgs e)
@@ -94,6 +101,7 @@ namespace freelance.forms
         }
         private void updatedgv_pic_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Обновить'.");
             listofrecs_dgv1.Rows.Clear();
             Updatelist(clientID, listofrecs_dgv1);
         }
@@ -136,6 +144,7 @@ namespace freelance.forms
         //Кнопка "Нравится"
         private void like_btn_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Нравится'");
             using (var db = new DBcontext())
             {
                 try
@@ -152,6 +161,7 @@ namespace freelance.forms
                             if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
                                 workingwithDB.AddLike(clientID, performer.ID);
+                                logger.Info("Фрилансер успешно добавлен в 'Избранное'");
                                 MessageBox.Show(message2liked_list);
                             }
                             if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -160,6 +170,7 @@ namespace freelance.forms
                                 if (u != null)
                                 {
                                     db.DislikedPerformers.Remove(u);
+                                    logger.Info("Фрилансер успешно удалён из списка 'Скрытое'");
                                     db.SaveChanges();
                                 }
                                 else
@@ -174,12 +185,12 @@ namespace freelance.forms
                 {
                     MessageBox.Show(ex.Message);
                 }
-
             }
         }
        //Кнопка "Не нравится"
         private void dislike_btn_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Не нравится'");
             using (var db = new DBcontext())
             {
                 try
@@ -196,6 +207,7 @@ namespace freelance.forms
                             if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
                                 workingwithDB.AddDislike(clientID, performer.ID);
+                                logger.Info("Фрилансер успешно добавлен в 'Скрытое'");
                                 MessageBox.Show(message2disliked_list);
                             }
                             if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -204,6 +216,7 @@ namespace freelance.forms
                                 if (u != null)
                                 {
                                     db.LikedPerformers.Remove(u);
+                                    logger.Info("Фрилансер успешно удалён из списка 'Избранное'");
                                     db.SaveChanges();
                                 }
                                 else
@@ -232,6 +245,8 @@ namespace freelance.forms
             pproduct_list.HeaderText = Localization.GetLocalizedString("pproduct_list");
             like = Localization.GetLocalizedString("like");
             dislike = Localization.GetLocalizedString("dislike");
+            liked = Localization.GetLocalizedString("liked");
+            settings = Localization.GetLocalizedString("settings");
             message1_list = Localization.GetLocalizedString("message1_list");
             message2_list = Localization.GetLocalizedString("message2_list");
             message1liked_list = Localization.GetLocalizedString("message1liked_list");
@@ -267,7 +282,7 @@ namespace freelance.forms
         private void settings_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
-            tooltip.Show("Настройки", settings_btn, 0, 40, 800);
+            tooltip.Show(settings, settings_btn, 0, 40, 800);
         }
         private void settings_btn_MouseLeave(object sender, EventArgs e)
         {
@@ -277,7 +292,7 @@ namespace freelance.forms
         private void likedlist_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
-            tooltip.Show("Избранное", likedlist_btn, 0, 40, 800);
+            tooltip.Show(liked, likedlist_btn, 0, 40, 800);
         }
         private void likedlist_btn_MouseLeave(object sender, EventArgs e)
         {
