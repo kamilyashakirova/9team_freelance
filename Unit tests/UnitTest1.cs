@@ -1,17 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Unit_tests
+﻿using System.Windows.Forms;
+namespace freelance
 {
     [TestClass]
     public class UnitTest1
     {
         [TestMethod]
-        public static void CheckIfPerformersAlreadyDislikedID_ShowMessageBox()
+        public void CheckLocalisated()
         {
-            int id = 1;
-            
-
+            string key = "hello";
+            var ressult = "Bonjour"
+            string filepath = "../../../Localization/check.csv";
+            var res = ForUnitTests.CheckBoxLocalizated(filepath, key);
+            Assert.AreEqual(ressult, res);
         }
-
     }
 }
