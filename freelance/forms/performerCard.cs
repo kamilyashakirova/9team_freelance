@@ -1,10 +1,13 @@
-﻿using System.Data;
+﻿using NLog;
+using System.Data;
 using System.Drawing.Text;
 using System.Net.PeerToPeer;
 namespace freelance.forms
 {
     public partial class PerformerCard : Form
     {
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+
         PrivateFontCollection fonts = new PrivateFontCollection();
         string dislike = "Не нравится";
         string like = "Нравится";
@@ -28,6 +31,8 @@ namespace freelance.forms
             }
 
             Localization.LanguageChanged += UpdateLocalization;
+
+            logger.Info("Успешно открыта карточка фрилансера.");
         }
         private void like_btn_MouseEnter(object sender, EventArgs e)
         {
@@ -51,6 +56,8 @@ namespace freelance.forms
         }
         private void dislike_btn_Click(object sender, EventArgs e)
         {
+
+            logger.Info("Нажата кнопка 'Не нравится'");
             using (var db = new DBcontext())
             {
                 try
@@ -64,9 +71,10 @@ namespace freelance.forms
                         }
                         else
                         {
-                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID)) 
+                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
                                 workingwithDB.AddDislike(clientID, performer.ID);
+                                logger.Info("Фрилансер успешно добавлен в 'Скрытое'");
                                 MessageBox.Show(message2disliked);
                             }
                             if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -75,6 +83,7 @@ namespace freelance.forms
                                 if (u != null)
                                 {
                                     db.LikedPerformers.Remove(u);
+                                    logger.Info("Фрилансер успешно удалён из списка 'Избранное'");
                                     db.SaveChanges();
                                 }
                                 else
@@ -93,6 +102,7 @@ namespace freelance.forms
         }
         private void like_btn_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Нравится'");
             using (var db = new DBcontext())
             {
                 try
@@ -109,6 +119,7 @@ namespace freelance.forms
                             if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
                                 workingwithDB.AddLike(clientID, performer.ID);
+                                logger.Info("Фрилансер успешно добавлен в 'Избранное'");
                                 MessageBox.Show(message2liked);
                             }
                             if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -117,6 +128,7 @@ namespace freelance.forms
                                 if (u != null)
                                 {
                                     db.DislikedPerformers.Remove(u);
+                                    logger.Info("Фрилансер успешно удалён из списка 'Скрытое'");
                                     db.SaveChanges();
                                 }
                                 else

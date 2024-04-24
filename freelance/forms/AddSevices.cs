@@ -1,4 +1,6 @@
-﻿namespace freelance.forms
+﻿using NLog;
+
+namespace freelance.forms
 {
     public partial class AddSevices : Form
     {
@@ -10,10 +12,14 @@
         private string selectedLanguage = String.Empty;
         private string selectedTime = String.Empty;
         private string selectedProduct = String.Empty;
+
+        public static Logger logger = LogManager.GetCurrentClassLogger();
         public AddSevices(int clientID)
         {
             this.clientID = clientID;
             InitializeComponent();
+
+            logger.Info("Успешно открылось форма 'AddSevices'.");
         }
         private void GetSelectedSpecialization()
         {

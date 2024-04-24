@@ -98,6 +98,8 @@ my_btn,Мои заказы
 disliked_btn,Скрытые профили
 like,Нравится
 dislike,Не нравится
+liked,Избранное
+settings,Настройки
 message1, У Вас пока нет своих объявлений
 message1liked_list, Вы уже добавляли фрилансера в избранное
 message2liked_list, Добавлен в избранное

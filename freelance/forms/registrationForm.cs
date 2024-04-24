@@ -1,7 +1,11 @@
-﻿namespace freelance.forms
+﻿using NLog;
+
+namespace freelance.forms
 {
     public partial class RegistrationForm : Form
     {
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+
         private string message1_reg = "Вы успешно зарегистрировались.";
         private string message2_reg = "Ошибка. Проверьте, правильно ли Вы повторили пароль.";
         private string message3_reg = "Заполните поле для почты";
@@ -21,6 +25,7 @@
             FontClass.SetCustomFont(registration_btn, 18);
 
             Localization.LanguageChanged += UpdateLocalization;
+            logger.Info("Успешно открылось форма 'RegistrationForm'.");
         }
         private void show_pic_Click(object sender, EventArgs e)
         {
@@ -42,11 +47,12 @@
                 {
                     workingwithDB.AddUserAndClient(rlogin_txtb.Text, rpassword_txtb.Text, rEmail_txtb.Text, rname_txtb.Text, rsurname_txtb.Text, rpatronomic_txtb.Text);
                     MessageBox.Show(message1_reg);
-
+                    logger.Info("Пользователь успешно зарегистрировался.");
                 }
                 else
                 {
                     MessageBox.Show(message2_reg);
+                    logger.Error("Ошибка в регистрации");
                 }
             }
             else
@@ -57,6 +63,8 @@
 
         private void exit_btn_Click(object sender, EventArgs e)
         {
+
+            logger.Info("Пользователь успешно зарегистрировался.");
             this.Close();
         }
 

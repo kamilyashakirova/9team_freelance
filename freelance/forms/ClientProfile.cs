@@ -4,11 +4,11 @@
     {
         private string selectedFile = String.Empty;
         private int clientID;
+        string loc = String.Empty;
         public ClientProfile(int userID)
         {
             InitializeComponent();
             AddInfo(userID);
-
             Localization.LanguageChanged += UpdateLocalization;
         }
         //Загрузка данных о клиенте

@@ -6,6 +6,7 @@ namespace freelance
     {
         public static bool allowed;
         public static int uId;
+        public static string localizationDefaultfileName = "../../../Localization/Localization.csv";
         /// <summary>
         /// метод, для входа в аккаунт
         /// </summary>
@@ -24,7 +25,7 @@ namespace freelance
             ApplicationConfiguration.Initialize();
             do
             {
-                Application.Run(new Enter());
+                Application.Run(new Enter(localizationDefaultfileName));
                 if (allowed)
                 {
                     allowed = false;

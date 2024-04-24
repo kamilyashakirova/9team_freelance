@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using NLog;
+using System.Windows.Forms;
 
 namespace freelance.forms
 {
@@ -10,12 +11,16 @@ namespace freelance.forms
         private string selectedLanguage = null!;
         private string selectedTime = null!;
         private string selectedProduct = null!;
+
+        public static Logger logger = LogManager.GetCurrentClassLogger();
         public CustomizePreferences(int clientID)
         {
             this.clientID = clientID;
             InitializeComponent();
 
             Localization.LanguageChanged += UpdateLocalization;
+
+            logger.Info("Успешно открылось форма 'CustomizePreferences'.");
         }
         private void GetSelectedSpecialization()
         {
@@ -64,31 +69,43 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                if (db.Interests.Any(u => u.ClientID == clientID))
+                try
                 {
-                    GetSelectedSpecialization();
-                    var clientInterest = db.Interests.FirstOrDefault(u => u.ClientID == clientID);
-                    clientInterest.IExperience = selectedExperience;
-                    clientInterest.IProduct = selectedProduct;
-                    clientInterest.ILanguage = selectedLanguage;
-                    clientInterest.ITime = selectedTime;
-                    clientInterest.ISpecialization = selectedSpecialization;
-                    db.SaveChanges();
-                    MessageBox.Show("Ваши предпочтения успешно изменены");
-                }
-                else
-                {
-                    var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
-                    if (client != null)
+                    if (db.Interests.Any(u => u.ClientID == clientID))
                     {
-                        workingwithDB.AddInterest(clientID, selectedSpecialization, selectedExperience, selectedTime,
-                            selectedLanguage, selectedProduct);
+                        GetSelectedSpecialization();
+                        var clientInterest = db.Interests.FirstOrDefault(u => u.ClientID == clientID);
+                        clientInterest.IExperience = selectedExperience;
+                        clientInterest.IProduct = selectedProduct;
+                        clientInterest.ILanguage = selectedLanguage;
+                        clientInterest.ITime = selectedTime;
+                        clientInterest.ISpecialization = selectedSpecialization;
+                        db.SaveChanges();
+                        MessageBox.Show("Ваши предпочтения успешно изменены");
+                        logger.Info("Успешно изменились предпочтения пользователя.");
                     }
+                    else
+                    {
+                        var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
+                        if (client != null)
+                        {
+                            workingwithDB.AddInterest(clientID, selectedSpecialization, selectedExperience, selectedTime,
+                                selectedLanguage, selectedProduct);
+                            MessageBox.Show("Ваши предпочтения успешно изменены");
+                            logger.Info("Успешно изменились предпочтения пользователя.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                    logger.Error("Ошибка в редактировании предпочтений пользователя.");
                 }
             }
         }
         private void exit_btn_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Назад'");
             this.Close();
         }
         //Локализация

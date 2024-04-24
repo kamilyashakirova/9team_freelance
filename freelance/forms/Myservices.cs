@@ -1,8 +1,11 @@
-﻿using System.Data;
+﻿using NLog;
+using System.Data;
 namespace freelance.forms
 {
     public partial class Myservices : Form
     {
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+
         private int clientID;
         private string message_my = "У Вас пока нет своих объявлений";
         public Myservices(int clientID)
@@ -10,6 +13,8 @@ namespace freelance.forms
             this.clientID = clientID;
             InitializeComponent();
             Localization.LanguageChanged += UpdateLocalization;
+
+            logger.Info("Успешно открыта форма 'Myservices'");
         }
         private void Myservices_Load(object sender, EventArgs e)
         {
@@ -80,6 +85,7 @@ namespace freelance.forms
         }
         private void exit_btn_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Назад'");
             this.Close();
         }
         private void UpdateLocalization(object sender, EventArgs e)

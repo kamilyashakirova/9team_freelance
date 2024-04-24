@@ -1,9 +1,12 @@
-﻿using System.Data;
+﻿using NLog;
+using System.Data;
 using System.Drawing.Text;
 namespace freelance.forms
 {
     public partial class Likedperformers : Form
     {
+        public static Logger logger = LogManager.GetCurrentClassLogger();
+
         PrivateFontCollection fonts = new PrivateFontCollection();
         private int clientID;
         public Likedperformers(int clientID)
@@ -20,7 +23,11 @@ namespace freelance.forms
             liked_lbl.Font = new Font(fonts.Families[0], 16);
 
             Localization.LanguageChanged += UpdateLocalization;
+
+            logger.Info("Успешно открыта форма 'Likedperformers'");
         }
+
+        //загрузка данных из БД в таблицу
         private void likedperformers_Load(object sender, EventArgs e)
         {
             using (var db = new DBcontext())
@@ -40,10 +47,12 @@ namespace freelance.forms
                 }
                 else
                 {
-                    MessageBox.Show("ошибка");
+                    MessageBox.Show("Ошибка.");
+                    logger.Error("Ошибка в загрузке данных из БД для формы 'Likedperformers'.");
                 }
             }
         }
+        //Для карточки фрилансера
         private void liked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var card = new PerformerCard(clientID);
@@ -82,8 +91,10 @@ namespace freelance.forms
         }
         private void exit_btn_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Назад'");
             this.Close();
         }
+        //Локализация
         private void UpdateLocalization(object sender, EventArgs e)
         {
             this.Text = Localization.GetLocalizedString("Likedperformers");

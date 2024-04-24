@@ -9,11 +9,14 @@ namespace freelance.forms
         public static Logger logger = LogManager.GetCurrentClassLogger();
         private string message1 = "Вы успешно вошли";
         private string message2 = "Неверный логин или пароль.";
-        public Enter()
+        string localizationfile;
+        public Enter(string localizationfilename)
         {
+            localizationfile = localizationfilename;
+            Localization.UpdateLocalizedStrings(localizationfile);
+            Localization.LanguageChanged += UpdateLocalization;
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
             InitializeComponent();
-            LogManager.Configuration = new XmlLoggingConfiguration("../../../logg/NLog.config");
             FontClass.SetCustomFont(this, 12);
             FontClass.SetCustomFont(login_txtb, 11);
             FontClass.SetCustomFont(password_txtb, 11);
@@ -21,18 +24,9 @@ namespace freelance.forms
             hi_lbl.Location = new Point(125, 187);
             FontClass.SetCustomFont(enter_btn, 11);
             forgotpassword_lbl.Font = new Font(fonts.Families[0], 12, FontStyle.Underline);
-
-            Localization.LanguageChanged += UpdateLocalization;
+            LogManager.Configuration = new XmlLoggingConfiguration("../../../logg/NLog.config");
             logger.Info("Успешно открыта форма 'Enter'");
         }
-        private void hide_picb_Click(object sender, EventArgs e)
-        {
-            password_txtb.PasswordChar = '*';
-            password_txtb.Font = new Font(fonts.Families[0], 11);
-            hide_picb.Visible = false;
-            show_pic.Visible = true;
-        }
-
         private void enter_btn_Click(object sender, EventArgs e)
         {
             logger.Info("Нажата кнопка 'Вход'");
@@ -47,13 +41,24 @@ namespace freelance.forms
                     MessageBox.Show(message1);
                     this.Close();
                 }
-                entererror_lbl.Text = message2;
-                logger.Error("неверный логин или пароль");
+                else if(!enter && !enterr)
+                {
+                    entererror_lbl.Text = message2;
+                    logger.Error("неверный логин или пароль");
+                }
             }
         }
-
+        private void hide_picb_Click(object sender, EventArgs e)
+        {
+            logger.Info("Нажата кнопка 'Спрятать пароль'");
+            password_txtb.PasswordChar = '*';
+            password_txtb.Font = new Font(fonts.Families[0], 11);
+            hide_picb.Visible = false;
+            show_pic.Visible = true;
+        }
         private void show_pic_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Увидеть пароль'");
             password_txtb.PasswordChar = '\0';
             password_txtb.Font = new Font(fonts.Families[0], 11);
             hide_picb.Visible = true;
@@ -62,11 +67,13 @@ namespace freelance.forms
 
         private void forgotpassword_lbl_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Забыли пароль?'");
             var forgotpasswordForm = new ForgotpasswordForm();
             forgotpasswordForm.Show();
         }
         private void registration_lbl_Click(object sender, EventArgs e)
         {
+            logger.Info("Нажата кнопка 'Зарегистрироваться'");
             var registration = new RegistrationForm();
             registration.Show();
         }
@@ -82,17 +89,20 @@ namespace freelance.forms
             message2 = Localization.GetLocalizedString("message2enter");
             message1 = Localization.GetLocalizedString("message1enter");
         }
-
         private void rus_change_btn_Click(object sender, EventArgs e)
         {
-            Localization.UpdateLocalizedStrings("../../../Localization/newLocalization.csv");
+            logger.Info("Нажата кнопка 'Русский', изменение языка на татарский");
+            localizationfile = "../../../Localization/newLocalization.csv";
+            Localization.UpdateLocalizedStrings(localizationfile);
             rus_change_btn.Visible = false;
             tat_change_btn.Visible = true;
         }
 
         private void tat_change_btn_Click(object sender, EventArgs e)
         {
-            Localization.UpdateLocalizedStrings("../../../Localization/Localization.csv");
+            logger.Info("Нажата кнопка 'Татарча', изменение языка на русский");
+            localizationfile = "../../../Localization/Localization.csv";
+            Localization.UpdateLocalizedStrings(localizationfile);
             tat_change_btn.Visible = false;
             rus_change_btn.Visible = true;
         }
