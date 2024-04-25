@@ -164,9 +164,7 @@ namespace freelance.forms
                                 logger.Info("Фрилансер успешно добавлен в 'Избранное'");
                                 MessageBox.Show(message2liked_list);
                             }
-                            if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
-                            {
-                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
                                 if (u != null)
                                 {
                                     db.DislikedPerformers.Remove(u);
@@ -177,7 +175,7 @@ namespace freelance.forms
                                 {
                                     MessageBox.Show(message1_list);
                                 }
-                            }
+
                         }
                     }
                 }
@@ -210,9 +208,7 @@ namespace freelance.forms
                                 logger.Info("Фрилансер успешно добавлен в 'Скрытое'");
                                 MessageBox.Show(message2disliked_list);
                             }
-                            if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
-                            {
-                                var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
                                 if (u != null)
                                 {
                                     db.LikedPerformers.Remove(u);
@@ -223,7 +219,6 @@ namespace freelance.forms
                                 {
                                     MessageBox.Show(message1_list);
                                 }
-                            }
                         }
                     }
                 }

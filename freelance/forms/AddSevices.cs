@@ -104,6 +104,7 @@ namespace freelance.forms
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
+                logger.Error(ex.ToString);
             }
         }
 

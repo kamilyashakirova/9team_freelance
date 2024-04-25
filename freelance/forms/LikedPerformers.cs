@@ -32,23 +32,26 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var liked = db.LikedPerformers.Where(u => u.ClientID == clientID);
-                if (liked != null)
-                {
-                    foreach (var like in liked)
+                try
                     {
-                        var performer = db.Performers.FirstOrDefault(u => u.ID == like.PerformerID);
-                        if (performer != null)
+                    var liked = db.LikedPerformers.Where(u => u.ClientID == clientID);
+                    if (liked != null)
+                    {
+                        foreach (var like in liked)
                         {
-                            liked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                            var performer = db.Performers.FirstOrDefault(u => u.ID == like.PerformerID);
+                            if (performer != null)
+                            {
+                                liked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                    performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                            }
                         }
                     }
                 }
-                else
+                catch(Exception ex)
                 {
                     MessageBox.Show("Ошибка.");
-                    logger.Error("Ошибка в загрузке данных из БД для формы 'Likedperformers'.");
+                    logger.Error($"Ошибка в загрузке данных из БД для формы 'Likedperformers'.{ex.ToString}");
                 }
             }
         }

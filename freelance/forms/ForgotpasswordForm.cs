@@ -27,9 +27,10 @@ namespace freelance.forms
             {
                 mail.To.Add(new MailAddress(email));
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("не годится для адреса электронной почты");
+                MessageBox.Show("Некорректный адрес электронной почты");
+                logger.Error(ex.ToString());
             }
             mail.Subject = "frelance: восстановление пароля";
             mail.Body = $"ваш пароль: {password}. пожалуйста, никому его не сообщайте";
@@ -43,9 +44,10 @@ namespace freelance.forms
                 logger.Info("Пользователю успешно отправилось письмо на почту.");
 
             }
-            catch
+            catch(Exception ex) 
             {
-                MessageBox.Show("такого почтового ящика не существует");
+                MessageBox.Show("Такого почтового ящика не существует");
+                logger.Error(ex.ToString());
             }
         }
 

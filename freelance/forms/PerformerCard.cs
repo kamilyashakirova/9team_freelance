@@ -77,9 +77,7 @@ namespace freelance.forms
                                 logger.Info("Фрилансер успешно добавлен в 'Скрытое'");
                                 MessageBox.Show(message2disliked);
                             }
-                            if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
-                            {
-                                var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
                                 if (u != null)
                                 {
                                     db.LikedPerformers.Remove(u);
@@ -90,13 +88,13 @@ namespace freelance.forms
                                 {
                                     MessageBox.Show(message1);
                                 }
-                            }
                         }
                     }
                 }
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
+                    logger.Error(ex.ToString());
                 }
             }
         }
@@ -122,8 +120,6 @@ namespace freelance.forms
                                 logger.Info("Фрилансер успешно добавлен в 'Избранное'");
                                 MessageBox.Show(message2liked);
                             }
-                            if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
-                            {
                                 var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
                                 if (u != null)
                                 {
@@ -135,13 +131,14 @@ namespace freelance.forms
                                 {
                                     MessageBox.Show(message1);
                                 }
-                            }
+
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    logger.Error(ex.ToString());
                 }
 
             }

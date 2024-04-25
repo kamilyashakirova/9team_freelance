@@ -33,23 +33,26 @@ namespace freelance.forms
         {
             using (var db = new DBcontext())
             {
-                var disliked = db.DislikedPerformers.Where(u => u.ClientID == clientID);
-                if (disliked != null)
+                try
                 {
-                    foreach (var dis in disliked)
+                    var disliked = db.DislikedPerformers.Where(u => u.ClientID == clientID);
+                    if (disliked != null)
                     {
-                        var performer = db.Performers.FirstOrDefault(u => u.ID == dis.PerformerID);
-                        if (performer != null)
+                        foreach (var dis in disliked)
                         {
-                            disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                            var performer = db.Performers.FirstOrDefault(u => u.ID == dis.PerformerID);
+                            if (performer != null)
+                            {
+                                disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                    performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                            }
                         }
                     }
                 }
-                else
+                catch(Exception ex) 
                 {
                     MessageBox.Show("Ошибка.");
-                    logger.Error("Ошибка в загрузке данных из БД для формы 'Dislikedperformers'.");
+                    logger.Error($"Ошибка в загрузке данных из БД для формы 'Dislikedperformers'.{ex.ToString}");
                 }
             }
         }

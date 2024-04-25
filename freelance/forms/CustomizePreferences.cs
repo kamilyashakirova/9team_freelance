@@ -126,7 +126,7 @@ namespace freelance.forms
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
-                    logger.Error("Ошибка в редактировании предпочтений пользователя.");
+                    logger.Error($"Ошибка в редактировании предпочтений пользователя.{ex.ToString}");
                 }
             }
         }
