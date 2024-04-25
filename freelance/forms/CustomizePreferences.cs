@@ -33,38 +33,65 @@ namespace freelance.forms
             if (Sadvertisement_check.Checked)
                 selectedSpecialization = "Интернет продвижение и реклама";
             if (Pwebsite_check.Checked)
-                selectedProduct = "Сайт";
+                selectedProduct += ";Сайт";
             if (Padvertisement_check.Checked)
-                selectedProduct = "Реклама";
+                selectedProduct += ";Реклама";
             if (Preport_check.Checked)
-                selectedProduct = "Статья";
+                selectedProduct += ";Статья";
             if (Ptranselate_check.Checked)
-                selectedProduct = "Перевод";
+                selectedProduct += ";Перевод";
             if (Plogo_check.Checked)
-                selectedProduct = "Дизайн логотипа";
+                selectedProduct += ";Дизайн логотипа";
             if (Leng_check.Checked)
-                selectedLanguage = "Английский";
+            {
+                if (selectedLanguage != null)
+                {
+                    selectedLanguage += ";Английский";
+                }
+                else
+                {
+                    selectedLanguage = "Английский";
+                }
+            }
             if (Ldeu_check.Checked)
-                selectedLanguage = "Немецкий";
+            {
+                if (selectedLanguage != null)
+                {
+                    selectedLanguage += ";Немецкий";
+                }
+                else
+                {
+                    selectedLanguage = "Немецкий";
+                }
+            }
             if (Lchineese_check.Checked)
-                selectedLanguage = "Китайский";
-            if (Tday_.Checked)
-                selectedTime = "1 день";
-            if (Tthreedays_check.Checked)
-                selectedTime = "до 3х дней";
-            if (Tweek_check.Checked)
-                selectedTime = "До недели";
-            if (Tmonth_check.Checked)
-                selectedTime = "До месяца";
-            if (Eonethreeyears_check.Checked)
-                selectedExperience = "1-3 года";
-            if (Eyear_check.Checked)
-                selectedExperience = "До 1 года";
-            if (Emore_check.Checked)
-                selectedExperience = "От 3х лет";
-            if (Enone_check.Checked)
-                selectedExperience = "Без опыта";
-        }
+            {
+                if (selectedLanguage != null)
+                {
+                    selectedLanguage += ";Китайский";
+                }
+                else
+                {
+                    selectedLanguage = "Китайский";
+                }
+            }
+                    if (Tday_.Checked)
+                        selectedTime = "1 день";
+                    if (Tthreedays_check.Checked)
+                        selectedTime = "до 3х дней";
+                    if (Tweek_check.Checked)
+                        selectedTime = "До недели";
+                    if (Tmonth_check.Checked)
+                        selectedTime = "До месяца";
+                    if (Eonethreeyears_check.Checked)
+                        selectedExperience = "1-3 года";
+                    if (Eyear_check.Checked)
+                        selectedExperience = "До 1 года";
+                    if (Emore_check.Checked)
+                        selectedExperience = "От 3х лет";
+                    if (Enone_check.Checked)
+                        selectedExperience = "Без опыта";
+                }
         private void savechanges_btn_Click(object sender, EventArgs e)
         {
             using (var db = new DBcontext())

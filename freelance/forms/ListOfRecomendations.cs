@@ -81,9 +81,9 @@ namespace freelance.forms
                             p.PProduct == interests.IProduct | p.PTime == interests.ITime)
                             .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
                                 + (p.PTime == interests.IExperience ? 1 : 0)
-                                + (p.PLanguage == interests.ILanguage ? 1 : 0)
+                                + (p.PLanguage.Contains(interests.ILanguage) ? 1 : 0)
                                 + (p.PSpecialization == interests.ISpecialization ? 1 : 0)
-                                + (p.PProduct == interests.IProduct ? 1 : 0))
+                                + (p.PProduct.Contains(interests.IProduct) ? 1 : 0))
                                 .ToList();
                             if (performers != null)
                             {
