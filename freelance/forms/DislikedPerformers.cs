@@ -8,9 +8,11 @@ namespace freelance.forms
         public static Logger logger = LogManager.GetCurrentClassLogger();
 
         PrivateFontCollection fonts = new PrivateFontCollection();
-        private int clientID;
-        public Dislikedperformers(int clientID)
+        private  int clientID;
+        private string file = String.Empty;
+        public Dislikedperformers(int clientID, string file)
         {
+            this.file = file;
             this.clientID = clientID;
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
@@ -21,16 +23,14 @@ namespace freelance.forms
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
             disliked_lbl.Font = new Font(fonts.Families[0], 16);
-            this.clientID = clientID;
-
             Localization.LanguageChanged += UpdateLocalization;
-
             logger.Info("Успешно открыта форма 'Dislikedperformers'");
         }
 
         //загрузка данных из БД в таблицу
         private void Dislikedperformers_Load_1(object sender, EventArgs e)
         {
+            Localization.LoadLocalizationDictionary(this, file);
             using (var db = new DBcontext())
             {
                 try
@@ -60,7 +60,7 @@ namespace freelance.forms
         //Для карточки фрилансера
         private void disliked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard(clientID);
+            var card = new PerformerCard(clientID, file);
             if (!(this.disliked_dgv.CurrentRow is null))
             {
 
@@ -100,7 +100,6 @@ namespace freelance.forms
             logger.Info("Нажата кнопка 'Назад'");
             this.Close();
         }
-
         //Локализация
         private void UpdateLocalization(object sender, EventArgs e)
         {
@@ -111,7 +110,6 @@ namespace freelance.forms
             planguage_disliked.HeaderText = Localization.GetLocalizedString("planguage_my");
             pExperience_disliked.HeaderText = Localization.GetLocalizedString("pExperience_my");
             pproduct_disliked.HeaderText = Localization.GetLocalizedString("pproduct_my");
-            disliked_lbl.Text = Localization.GetLocalizedString("disliked_lbl");
         }
     }
 }

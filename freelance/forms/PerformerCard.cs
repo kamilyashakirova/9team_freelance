@@ -17,11 +17,13 @@ namespace freelance.forms
         private string message1disliked = "Вы уже добавляли фрилансера в скрытое";
         private string message2disliked = "Добавлен в скрытое";
         private int clientID;
-        public PerformerCard(int clientID)
+        private string file = String.Empty;
+        public PerformerCard(int clientID, string file)
         {
+            this.file = file;
             this.clientID = clientID;
             InitializeComponent();
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | 
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw |
                 ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
             this.Font = new Font(fonts.Families[0], 10);
@@ -29,9 +31,7 @@ namespace freelance.forms
             {
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
-
             Localization.LanguageChanged += UpdateLocalization;
-
             logger.Info("Успешно открыта карточка фрилансера.");
         }
         private void like_btn_MouseEnter(object sender, EventArgs e)
@@ -78,20 +78,20 @@ namespace freelance.forms
                                 MessageBox.Show(message2disliked);
                             }
                             var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                                if (u != null)
-                                {
-                                    db.LikedPerformers.Remove(u);
-                                    logger.Info("Фрилансер успешно удалён из списка 'Избранное'");
-                                    db.SaveChanges();
-                                }
-                                else
-                                {
-                                    MessageBox.Show(message1);
-                                }
+                            if (u != null)
+                            {
+                                db.LikedPerformers.Remove(u);
+                                logger.Info("Фрилансер успешно удалён из списка 'Избранное'");
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                MessageBox.Show(message1);
+                            }
                         }
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                     logger.Error(ex.ToString());
@@ -120,17 +120,17 @@ namespace freelance.forms
                                 logger.Info("Фрилансер успешно добавлен в 'Избранное'");
                                 MessageBox.Show(message2liked);
                             }
-                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                                if (u != null)
-                                {
-                                    db.DislikedPerformers.Remove(u);
-                                    logger.Info("Фрилансер успешно удалён из списка 'Скрытое'");
-                                    db.SaveChanges();
-                                }
-                                else
-                                {
-                                    MessageBox.Show(message1);
-                                }
+                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            if (u != null)
+                            {
+                                db.DislikedPerformers.Remove(u);
+                                logger.Info("Фрилансер успешно удалён из списка 'Скрытое'");
+                                db.SaveChanges();
+                            }
+                            else
+                            {
+                                MessageBox.Show(message1);
+                            }
 
                         }
                     }
@@ -161,6 +161,10 @@ namespace freelance.forms
             message2liked = Localization.GetLocalizedString("message2liked_list");
             message1disliked = Localization.GetLocalizedString("message1disliked_list");
             message2disliked = Localization.GetLocalizedString("message2disliked_list");
+        }
+        private void PerformerCard_Load(object sender, EventArgs e)
+        {
+            Localization.LoadLocalizationDictionary(this, file);
         }
     }
 }

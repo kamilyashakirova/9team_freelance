@@ -3,16 +3,17 @@
     public partial class ClientProfile : Form
     {
         private string selectedFile = String.Empty;
-        private int clientID;
-        string loc = String.Empty;
-        public ClientProfile(int userID)
+        private static int clientID;
+        private static string loc = String.Empty;
+        public ClientProfile(int userID, string file)
         {
+            loc = file;
             InitializeComponent();
-            AddInfo(userID);
             Localization.LanguageChanged += UpdateLocalization;
+            AddInfo(userID);
         }
         //Загрузка данных о клиенте
-        private void AddInfo(int userID) 
+        private void AddInfo(int userID)
         {
             var client = workingwithDB.clientsloaddata(userID);
             if (client != null)
@@ -69,19 +70,19 @@
         //Кнопка "Скрытые профили"
         private void button3_Click(object sender, EventArgs e)
         {
-            var dislikedperformers = new Dislikedperformers(clientID);
+            var dislikedperformers = new Dislikedperformers(clientID, loc);
             dislikedperformers.Show();
         }
         //Кнопка "Редактировать предпочтения"
         private void button1_Click(object sender, EventArgs e)
         {
-            var customizePreferences = new CustomizePreferences(clientID);
+            var customizePreferences = new CustomizePreferences(clientID, loc);
             customizePreferences.Show();
         }
         //Кнопка "Мои заказы"
         private void button2_Click(object sender, EventArgs e)
         {
-            var myservices = new Myservices(clientID);
+            var myservices = new Myservices(clientID, loc);
             myservices.Show();
         }
         //Кнопка "Назад"
@@ -93,14 +94,10 @@
         private void UpdateLocalization(object sender, EventArgs e)
         {
             this.Text = Localization.GetLocalizedString("ClientProfile");
-            fotodownload_btn.Text = Localization.GetLocalizedString("fotodownload_btn");
-            surname_lbl.Text = Localization.GetLocalizedString("surname_lbl");
-            name_lbl.Text = Localization.GetLocalizedString("name_lbl");
-            patronomyc_lbl.Text = Localization.GetLocalizedString("patronomyc_lbl");
-            email_lbl.Text = Localization.GetLocalizedString("email_lbl");
-            customize_btn.Text = Localization.GetLocalizedString("customize_btn"); ;
-            my_btn.Text = Localization.GetLocalizedString("my_btn");
-            disliked_btn.Text = Localization.GetLocalizedString("disliked_btn");
+        }
+        private void ClientProfile_Load(object sender, EventArgs e)
+        {
+            Localization.LoadLocalizationDictionary(this, loc);
         }
     }
 }

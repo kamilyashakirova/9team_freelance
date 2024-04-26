@@ -320,6 +320,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "RegistrationForm";
             Text = "Регистрация";
+            Load += RegistrationForm_Load;
             ((System.ComponentModel.ISupportInitialize)show_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)hide_picb).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

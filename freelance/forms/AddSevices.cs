@@ -14,12 +14,14 @@ namespace freelance.forms
         private string selectedProduct = String.Empty;
 
         public static Logger logger = LogManager.GetCurrentClassLogger();
-        public AddSevices(int clientID)
+        private string file = String.Empty;
+        public AddSevices(int clientID, string file)
         {
             this.clientID = clientID;
             InitializeComponent();
-
+            Localization.LanguageChanged += UpdateLocalization;
             logger.Info("Успешно открылось форма 'AddSevices'.");
+            this.file = file;
         }
         private void GetSelectedSpecialization()
         {
@@ -111,6 +113,16 @@ namespace freelance.forms
         private void exit_btn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private void AddSevices_Load(object sender, EventArgs e)
+        {
+            Localization.LoadLocalizationDictionary(this, file);
+        }
+        //Локализация
+        private void UpdateLocalization(object sender, EventArgs e)
+        {
+            this.Text = Localization.GetLocalizedString("AddSevices");
+            name_txt.PlaceholderText = Localization.GetLocalizedString("name_txt");
         }
     }
 }

@@ -286,6 +286,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "PerformerCard";
             Text = "Карточка фрилансера";
+            Load += PerformerCard_Load;
             ((System.ComponentModel.ISupportInitialize)ppictureCard_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

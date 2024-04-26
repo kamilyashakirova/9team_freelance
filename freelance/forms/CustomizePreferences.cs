@@ -13,13 +13,13 @@ namespace freelance.forms
         private string selectedProduct = null!;
 
         public static Logger logger = LogManager.GetCurrentClassLogger();
-        public CustomizePreferences(int clientID)
+        private string file = String.Empty;
+        public CustomizePreferences(int clientID, string file)
         {
+            this.file = file;
             this.clientID = clientID;
             InitializeComponent();
-
             Localization.LanguageChanged += UpdateLocalization;
-
             logger.Info("Успешно открылось форма 'CustomizePreferences'.");
         }
         private void GetSelectedSpecialization()
@@ -75,23 +75,23 @@ namespace freelance.forms
                     selectedLanguage = "Китайский";
                 }
             }
-                    if (Tday_.Checked)
-                        selectedTime = "1 день";
-                    if (Tthreedays_check.Checked)
-                        selectedTime = "до 3х дней";
-                    if (Tweek_check.Checked)
-                        selectedTime = "До недели";
-                    if (Tmonth_check.Checked)
-                        selectedTime = "До месяца";
-                    if (Eonethreeyears_check.Checked)
-                        selectedExperience = "1-3 года";
-                    if (Eyear_check.Checked)
-                        selectedExperience = "До 1 года";
-                    if (Emore_check.Checked)
-                        selectedExperience = "От 3х лет";
-                    if (Enone_check.Checked)
-                        selectedExperience = "Без опыта";
-                }
+            if (Tday_.Checked)
+                selectedTime = "1 день";
+            if (Tthreedays_check.Checked)
+                selectedTime = "до 3х дней";
+            if (Tweek_check.Checked)
+                selectedTime = "До недели";
+            if (Tmonth_check.Checked)
+                selectedTime = "До месяца";
+            if (Eonethreeyears_check.Checked)
+                selectedExperience = "1-3 года";
+            if (Eyear_check.Checked)
+                selectedExperience = "До 1 года";
+            if (Emore_check.Checked)
+                selectedExperience = "От 3х лет";
+            if (Enone_check.Checked)
+                selectedExperience = "Без опыта";
+        }
         private void savechanges_btn_Click(object sender, EventArgs e)
         {
             using (var db = new DBcontext())
@@ -139,32 +139,10 @@ namespace freelance.forms
         private void UpdateLocalization(object sender, EventArgs e)
         {
             this.Text = Localization.GetLocalizedString("CustomizePreferences");
-            button1.Text = Localization.GetLocalizedString("button1");
-            button4.Text = Localization.GetLocalizedString("button4");
-            button3.Text = Localization.GetLocalizedString("button3");
-            button5.Text = Localization.GetLocalizedString("button5");
-            button2.Text = Localization.GetLocalizedString("button2");
-            Sweb_design_check.Text = Localization.GetLocalizedString("Sweb_design_check");
-            Stext_check.Text = Localization.GetLocalizedString("Stext_check");
-            Sgraphic_design_check.Text = Localization.GetLocalizedString("Sgraphic_design_check");
-            Sadvertisement_check.Text = Localization.GetLocalizedString("Sadvertisement_check");
-            Pwebsite_check.Text = Localization.GetLocalizedString("Pwebsite_check");
-            Padvertisement_check.Text = Localization.GetLocalizedString("Padvertisement_check");
-            Preport_check.Text = Localization.GetLocalizedString("Preport_check");
-            Ptranselate_check.Text = Localization.GetLocalizedString("Ptranselate_check");
-            Plogo_check.Text = Localization.GetLocalizedString("Plogo_check");
-            Leng_check.Text = Localization.GetLocalizedString("Leng_check");
-            Ldeu_check.Text = Localization.GetLocalizedString("Ldeu_check");
-            Lchineese_check.Text = Localization.GetLocalizedString("Lchineese_check");
-            Tday_.Text = Localization.GetLocalizedString("Tday_");
-            Tthreedays_check.Text = Localization.GetLocalizedString("Tthreedays_check");
-            Tweek_check.Text = Localization.GetLocalizedString("Tweek_check");
-            Tmonth_check.Text = Localization.GetLocalizedString("Tmonth_check");
-            Enone_check.Text = Localization.GetLocalizedString("Enone_check");
-            Eyear_check.Text = Localization.GetLocalizedString("Eyear_check");
-            Eonethreeyears_check.Text = Localization.GetLocalizedString("Eonethreeyears_check");
-            Emore_check.Text = Localization.GetLocalizedString("Emore_check");
-            savechanges_btn.Text = Localization.GetLocalizedString("savechanges_btn");
+        }
+        private void CustomizePreferences_Load(object sender, EventArgs e)
+        {
+            Localization.LoadLocalizationDictionary(this, file);
         }
     }
 }

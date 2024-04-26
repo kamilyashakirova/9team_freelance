@@ -1,0 +1,33 @@
+2024-04-26 20:45:37.0380 | ERROR | freelance.forms.ForgotpasswordForm | System.FormatException: The specified string is not in the form required for an e-mail address.
+   at System.Net.Mail.MailAddressParser.TryReadCfwsAndThrowIfIncomplete(String data, Int32 index, Int32& outIndex, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseDomain(String data, Int32& index, String& domain, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseAddress(String data, Boolean expectMultipleAddresses, Int32& index, ParseAddressInfo& parseAddressInfo, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseAddress(String data, ParseAddressInfo& parsedAddress, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddress.TryParse(String address, String displayName, Encoding displayNameEncoding, ValueTuple`4& parsedData, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddress..ctor(String address)
+   at freelance.forms.ForgotpasswordForm.sendemail(String email, String password) in C:\Users\user\Source\Repos\9team_freelanceУУ\freelance\forms\ForgotpasswordForm.cs:line 36
+2024-04-26 20:45:38.4786 | ERROR | freelance.forms.ForgotpasswordForm | System.InvalidOperationException: A recipient must be specified.
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at freelance.forms.ForgotpasswordForm.sendemail(String email, String password) in C:\Users\user\Source\Repos\9team_freelanceУУ\freelance\forms\ForgotpasswordForm.cs:line 51
+2024-04-26 20:48:13.2176 | ERROR | freelance.forms.ForgotpasswordForm | System.FormatException: The specified string is not in the form required for an e-mail address.
+   at System.Net.Mail.MailAddressParser.TryReadCfwsAndThrowIfIncomplete(String data, Int32 index, Int32& outIndex, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseDomain(String data, Int32& index, String& domain, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseAddress(String data, Boolean expectMultipleAddresses, Int32& index, ParseAddressInfo& parseAddressInfo, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseAddress(String data, ParseAddressInfo& parsedAddress, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddress.TryParse(String address, String displayName, Encoding displayNameEncoding, ValueTuple`4& parsedData, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddress..ctor(String address)
+   at freelance.forms.ForgotpasswordForm.sendemail(String email, String password) in C:\Users\user\Source\Repos\9team_freelanceУУ\freelance\forms\ForgotpasswordForm.cs:line 36
+2024-04-26 20:48:13.7957 | ERROR | freelance.forms.ForgotpasswordForm | System.InvalidOperationException: A recipient must be specified.
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at freelance.forms.ForgotpasswordForm.sendemail(String email, String password) in C:\Users\user\Source\Repos\9team_freelanceУУ\freelance\forms\ForgotpasswordForm.cs:line 51
+2024-04-26 20:49:50.7519 | ERROR | freelance.forms.ForgotpasswordForm | System.FormatException: The specified string is not in the form required for an e-mail address.
+   at System.Net.Mail.MailAddressParser.TryReadCfwsAndThrowIfIncomplete(String data, Int32 index, Int32& outIndex, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseDomain(String data, Int32& index, String& domain, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseAddress(String data, Boolean expectMultipleAddresses, Int32& index, ParseAddressInfo& parseAddressInfo, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddressParser.TryParseAddress(String data, ParseAddressInfo& parsedAddress, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddress.TryParse(String address, String displayName, Encoding displayNameEncoding, ValueTuple`4& parsedData, Boolean throwExceptionIfFail)
+   at System.Net.Mail.MailAddress..ctor(String address)
+   at freelance.forms.ForgotpasswordForm.sendemail(String email, String password) in C:\Users\user\Source\Repos\9team_freelanceУУ\freelance\forms\ForgotpasswordForm.cs:line 36
+2024-04-26 20:49:51.2951 | ERROR | freelance.forms.ForgotpasswordForm | System.InvalidOperationException: A recipient must be specified.
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at freelance.forms.ForgotpasswordForm.sendemail(String email, String password) in C:\Users\user\Source\Repos\9team_freelanceУУ\freelance\forms\ForgotpasswordForm.cs:line 51

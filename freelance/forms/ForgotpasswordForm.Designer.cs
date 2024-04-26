@@ -219,6 +219,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ForgotpasswordForm";
             Text = "восстановление пароля";
+            Load += ForgotpasswordForm_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();

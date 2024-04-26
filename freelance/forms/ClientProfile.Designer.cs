@@ -248,6 +248,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ClientProfile";
             Text = "Профиль";
+            Load += ClientProfile_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();

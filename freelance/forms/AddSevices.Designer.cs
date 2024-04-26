@@ -422,6 +422,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "AddSevices";
             Text = "Создать объявление";
+            Load += AddSevices_Load;
             ((System.ComponentModel.ISupportInitialize)foto_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);

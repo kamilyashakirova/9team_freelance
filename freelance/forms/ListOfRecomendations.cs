@@ -6,10 +6,13 @@ namespace freelance.forms
     public partial class ListOfRecomendations : Form
     {
         public int userID;
-        public int clientID;
+        public static int clientID;
+        ClientProfile profile = new ClientProfile(clientID, file);
+        Likedperformers likedPerformers = new Likedperformers(clientID, file);
         PrivateFontCollection fonts = new PrivateFontCollection();
+        PerformerCard card = new PerformerCard(clientID, file);
         public static Logger logger = LogManager.GetCurrentClassLogger();
-
+        public static string file = "Localization";
         private string dislike = "Не нравится";
         private string like = "Нравится";
         private string liked = "Избранное";
@@ -23,7 +26,6 @@ namespace freelance.forms
         public ListOfRecomendations(int userID)
         {
             InitializeComponent();
-            Localization.LanguageChanged += UpdateLocalization;
             this.userID = userID;
             var client = workingwithDB.clientsloaddata(userID);
             if (client != null)
@@ -37,7 +39,7 @@ namespace freelance.forms
             {
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
-
+            Localization.LanguageChanged += UpdateLocalization;
             logger.Info("Успешно открылось форма 'ListOfRecomendations'.");
         }
         //загрузка данных из БД в таблицу
@@ -108,7 +110,6 @@ namespace freelance.forms
         //Для карточки фрилансера
         private void listofrecs_dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard(clientID);
             if (!(this.listofrecs_dgv1.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString();
@@ -251,27 +252,33 @@ namespace freelance.forms
         }
         private void rus_change_btn_Click(object sender, EventArgs e)
         {
-            Localization.UpdateLocalizedStrings("../../../Localization/newLocalization.csv");
+            Localization.LoadLocalizationDictionary(this, "newLocalization");
+            file = "newLocalization";
+            profile = new ClientProfile(clientID, file);
+            likedPerformers = new Likedperformers(clientID, file);
+            card = new PerformerCard(clientID, file);
             rus_change_btn.Visible = false;
             tat_change_btn.Visible = true;
         }
         private void tat_change_btn_Click(object sender, EventArgs e)
         {
-            Localization.UpdateLocalizedStrings("../../../Localization/Localization.csv");
+            Localization.LoadLocalizationDictionary(this, "Localization");
+            file = "Localization";
+            profile = new ClientProfile(clientID, file);
+            likedPerformers = new Likedperformers(clientID, file);
+            card = new PerformerCard(clientID, file);
             tat_change_btn.Visible = false;
             rus_change_btn.Visible = true;
         }
         //Кнопка "Настройки"
         private void settings_btn_Click(object sender, EventArgs e)
         {
-            var p = new ClientProfile(userID);
-            p.Show();
+            profile.Show();
         }
         //Кнопка "Избранное"
         private void likedlist_btn_Click(object sender, EventArgs e)
         {
-            var likedperformers = new Likedperformers(clientID);
-            likedperformers.Show();
+            likedPerformers.Show();
         }
         //Названия кнопок высвечивающиеся при наведении
         private void settings_btn_MouseEnter(object sender, EventArgs e)
@@ -314,6 +321,7 @@ namespace freelance.forms
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
+
     }
 }
 

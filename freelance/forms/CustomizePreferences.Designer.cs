@@ -373,6 +373,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CustomizePreferences";
             Text = "Редактировать предпочтения";
+            Load += CustomizePreferences_Load;
             ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();

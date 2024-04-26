@@ -30,19 +30,6 @@ namespace freelance
                 return false;
             }
         }
-        public static bool AfterForgotPasswordForm(string login, string passw)
-        {
-            using (var db = new DBcontext())
-            {
-                var user = db.Users.FirstOrDefault(user => user.ULogin == login);
-                if (user != null)
-                {
-                    Program.LogInInfo(true, user.UId);
-                    return true;
-                }
-                return false;
-            }
-        }
         /// <summary>
         /// загрузка данных о "клиентах"
         /// </summary>

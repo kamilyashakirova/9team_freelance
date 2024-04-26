@@ -8,16 +8,18 @@ namespace freelance.forms
 
         private int clientID;
         private string message_my = "У Вас пока нет своих объявлений";
-        public Myservices(int clientID)
+        private string file = String.Empty;
+        public Myservices(int clientID, string file)
         {
             this.clientID = clientID;
             InitializeComponent();
             Localization.LanguageChanged += UpdateLocalization;
-
             logger.Info("Успешно открыта форма 'Myservices'");
+            this.file = file;
         }
         private void Myservices_Load(object sender, EventArgs e)
         {
+            Localization.LoadLocalizationDictionary(this, file);
             Update(clientID, myservices_dgv);
         }
         private void Update(int clientID, DataGridView mylist)
@@ -42,13 +44,13 @@ namespace freelance.forms
         }
         private void addservice_btn_Click(object sender, EventArgs e)
         {
-            var add = new AddSevices(clientID);
+            var add = new AddSevices(clientID, file);
             add.Show();
         }
 
         private void myservices_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard(clientID);
+            var card = new PerformerCard(clientID, file);
             if (!(this.myservices_dgv.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.myservices_dgv.CurrentRow.Cells[0].Value.ToString();
@@ -88,10 +90,10 @@ namespace freelance.forms
             logger.Info("Нажата кнопка 'Назад'");
             this.Close();
         }
+        //Локализация
         private void UpdateLocalization(object sender, EventArgs e)
         {
             this.Text = Localization.GetLocalizedString("Myservices");
-            myservices_lbl.Text = Localization.GetLocalizedString("myservices_lbl");
             pname_my.HeaderText = Localization.GetLocalizedString("pname_my");
             pspecialisation_my.HeaderText = Localization.GetLocalizedString("pspecialisation_my");
             ptime_my.HeaderText = Localization.GetLocalizedString("ptime_my");

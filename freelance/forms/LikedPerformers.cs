@@ -9,8 +9,10 @@ namespace freelance.forms
 
         PrivateFontCollection fonts = new PrivateFontCollection();
         private int clientID;
-        public Likedperformers(int clientID)
+        private string file = String.Empty;
+        public Likedperformers(int clientID, string file)
         {
+            this.file = file;
             this.clientID = clientID;
             InitializeComponent();
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
@@ -21,15 +23,14 @@ namespace freelance.forms
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
             liked_lbl.Font = new Font(fonts.Families[0], 16);
-
             Localization.LanguageChanged += UpdateLocalization;
-
             logger.Info("Успешно открыта форма 'Likedperformers'");
         }
 
         //загрузка данных из БД в таблицу
         private void likedperformers_Load(object sender, EventArgs e)
         {
+            Localization.LoadLocalizationDictionary(this, file);
             using (var db = new DBcontext())
             {
                 try
@@ -58,7 +59,7 @@ namespace freelance.forms
         //Для карточки фрилансера
         private void liked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard(clientID);
+            var card = new PerformerCard(clientID, file);
             if (!(this.liked_dgv.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.liked_dgv.CurrentRow.Cells[0].Value.ToString();
@@ -101,7 +102,6 @@ namespace freelance.forms
         private void UpdateLocalization(object sender, EventArgs e)
         {
             this.Text = Localization.GetLocalizedString("Likedperformers");
-            liked_lbl.Text = Localization.GetLocalizedString("liked_lbl");
             pname_liked.HeaderText = Localization.GetLocalizedString("pname_my");
             pspecialisation_liked.HeaderText = Localization.GetLocalizedString("pspecialisation_my");
             ptime_liked.HeaderText = Localization.GetLocalizedString("ptime_my");

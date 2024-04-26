@@ -95,6 +95,9 @@ email_lbl,E-mail
 customize_btn,Өстенлекләрне редакцияләү
 my_btn,Минем заказларым
 disliked_btn,Яшерен профильләр
+AddSevices,Белдерү ясарга
+addfoto_btn,Фотоларны йөкләү
+name_txt,Башкаручының ФИО языгыз
 like,Ошый
 dislike,Ошамый
 liked,Сайланма
@@ -118,3 +121,6 @@ message1_work,Мондый логинлы кулланучы инде бар
 message2_work,Мондый кулланучы юк
 message1_regLogin,Логин кыры буш булырга тиеш түгел.
 message1_regPassword,Серсүз кыры буш булырга тиеш түгел.
+message_fpf5,Дөрес булмаган электрон почта адресы
+message_fpf4,Дөрес булмаган логин
+message_fpf2,Мондый почта тартмасы юк

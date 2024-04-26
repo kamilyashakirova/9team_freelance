@@ -2,47 +2,45 @@
 {
     internal static class Localization
     {
-        private static Dictionary<string, string> localizedStrings = new Dictionary<string, string>();
+        private static Dictionary<string, string> localizationDictionary = new Dictionary<string, string>();
         public static event EventHandler LanguageChanged;
-        /// <summary>
-        /// Метод для перевода строки на другой язык
-        /// </summary>
-        /// <param name="filePath"></param>
-        public static void UpdateLocalizedStrings(string filePath)
+        public static void LoadLocalizationDictionary(Form form, string language)
         {
-            localizedStrings.Clear();
-            try
+            localizationDictionary.Clear();
+            string filePath = $"../../../Localization/{language}.csv";
+            if (File.Exists(filePath))
             {
-                using (StreamReader reader = new StreamReader(filePath))
+                string[] lines = File.ReadAllLines(filePath);
+                foreach (string line in lines)
                 {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
+                    string[] parts = line.Split(',');
+                    if (parts.Length == 2)
                     {
-                        string[] data = line.Split(',');
-
-                        if (data.Length >= 2)
-                        {
-                            localizedStrings[data[0]] = data[1];
-                        }
+                        localizationDictionary[parts[0]] = parts[1];
                     }
                 }
-                LanguageChanged?.Invoke(null, EventArgs.Empty);
             }
-            catch (Exception e)
+            Update(form);
+            LanguageChanged?.Invoke(null, EventArgs.Empty);
+        }
+        public static void Update (Form form)
+        {
+            foreach (Control control in form.Controls)
             {
-                Console.WriteLine("Ошибка. Файл не читается: " + e.Message);
+                if (control is Label || control is Button || control is CheckBox)
+                {
+                    if (localizationDictionary.ContainsKey(control.Name))
+                    {
+                        control.Text = localizationDictionary[control.Name];
+                    }
+                }
             }
         }
-        /// <summary>
-        /// Метод для того чтобы вернуть локализованную строку для присвоения её ключу
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
         public static string GetLocalizedString(string key)
         {
-            if (localizedStrings.ContainsKey(key))
+            if (localizationDictionary.ContainsKey(key))
             {
-                return localizedStrings[key];
+                return localizationDictionary[key];
             }
             else
             {
