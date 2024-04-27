@@ -2,7 +2,7 @@
 {
     internal static class Localization
     {
-        private static Dictionary<string, string> localizationDictionary = new Dictionary<string, string>();
+        public static Dictionary<string, string> localizationDictionary = new Dictionary<string, string>();
         public static event EventHandler LanguageChanged;
         public static void LoadLocalizationDictionary(Form form, string language)
         {
