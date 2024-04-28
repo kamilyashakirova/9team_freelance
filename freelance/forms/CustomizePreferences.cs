@@ -1,5 +1,5 @@
 ﻿using NLog;
-using System.Windows.Forms;
+using Microsoft.EntityFrameworkCore;
 
 namespace freelance.forms
 {
@@ -19,7 +19,6 @@ namespace freelance.forms
             this.file = file;
             this.clientID = clientID;
             InitializeComponent();
-            Localization.LanguageChanged += UpdateLocalization;
             logger.Info("Успешно открылось форма 'CustomizePreferences'.");
         }
         private void GetSelectedSpecialization()

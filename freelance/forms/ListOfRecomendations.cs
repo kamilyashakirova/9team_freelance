@@ -255,7 +255,7 @@ namespace freelance.forms
         {
             Localization.LoadLocalizationDictionary(this, "newLocalization");
             file = "newLocalization";
-            profile = new ClientProfile(clientID, file);
+            profile = new ClientProfile(userID, file);
             likedPerformers = new Likedperformers(clientID, file);
             card = new PerformerCard(clientID, file);
             rus_change_btn.Visible = false;
@@ -265,7 +265,7 @@ namespace freelance.forms
         {
             Localization.LoadLocalizationDictionary(this, "Localization");
             file = "Localization";
-            profile = new ClientProfile(clientID, file);
+            profile = new ClientProfile(userID, file);
             likedPerformers = new Likedperformers(clientID, file);
             card = new PerformerCard(clientID, file);
             tat_change_btn.Visible = false;
@@ -274,11 +274,13 @@ namespace freelance.forms
         //Кнопка "Настройки"
         private void settings_btn_Click(object sender, EventArgs e)
         {
+            profile = new ClientProfile(clientID, file);
             profile.Show();
         }
         //Кнопка "Избранное"
         private void likedlist_btn_Click(object sender, EventArgs e)
         {
+            likedPerformers = new Likedperformers(clientID, file);
             likedPerformers.Show();
         }
         //Названия кнопок высвечивающиеся при наведении

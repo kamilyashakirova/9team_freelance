@@ -1,16 +1,42 @@
-﻿namespace freelance.forms
+﻿using Microsoft.VisualBasic.ApplicationServices;
+
+namespace freelance.forms
 {
     public partial class ClientProfile : Form
     {
         private string selectedFile = String.Empty;
         private static int clientID;
         private static string loc = String.Empty;
+        private int userID;
         public ClientProfile(int userID, string file)
         {
             loc = file;
+            this.userID = userID;
             InitializeComponent();
-            Localization.LanguageChanged += UpdateLocalization;
             AddInfo(userID);
+            Localization.LanguageChanged += UpdateLocalization;
+            using (var db = new DBcontext())
+            {
+                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
+                if (client != null)
+                {
+                    clientID = client.ID;
+                    id_txt.Text = client.ID.ToString();
+                    cname_txt.Text = client.ClientName;
+                    csurname_txt.Text = client.ClientSurname;
+                    cpatronymic_txt.Text = client.ClientPatronomic;
+                    cemail_txt.Text = client.Email;
+                    if (client.ClientPicture != String.Empty)
+                    {
+                        Bitmap image = new Bitmap(client.ClientPicture);
+                        clientpicture.Image = image;
+                    }
+                    else
+                    {
+                        clientpicture.Image = null;
+                    }
+                }
+            }
         }
         //Загрузка данных о клиенте
         private void AddInfo(int userID)

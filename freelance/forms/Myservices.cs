@@ -9,6 +9,7 @@ namespace freelance.forms
         private int clientID;
         private string message_my = "У Вас пока нет своих объявлений";
         private string file = String.Empty;
+        PerformerCard card;
         public Myservices(int clientID, string file)
         {
             this.clientID = clientID;
@@ -50,7 +51,7 @@ namespace freelance.forms
 
         private void myservices_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard(clientID, file);
+            card = new PerformerCard(clientID, file);
             if (!(this.myservices_dgv.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.myservices_dgv.CurrentRow.Cells[0].Value.ToString();
