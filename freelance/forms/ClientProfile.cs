@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using System.Data.Entity.Core.EntityClient;
 
 namespace freelance.forms
 {
@@ -8,6 +9,9 @@ namespace freelance.forms
         private static int clientID;
         private static string loc = String.Empty;
         private int userID;
+        private static string file = String.Empty ;
+        CustomizePreferences customizePreferences = new CustomizePreferences(clientID, file);
+        Dislikedperformers dislikedperformers = new Dislikedperformers(clientID, file);
         public ClientProfile(int userID, string file)
         {
             loc = file;
@@ -96,13 +100,13 @@ namespace freelance.forms
         //Кнопка "Скрытые профили"
         private void button3_Click(object sender, EventArgs e)
         {
-            var dislikedperformers = new Dislikedperformers(clientID, loc);
+            dislikedperformers = new Dislikedperformers(clientID, loc);
             dislikedperformers.Show();
         }
         //Кнопка "Редактировать предпочтения"
         private void button1_Click(object sender, EventArgs e)
         {
-            var customizePreferences = new CustomizePreferences(clientID, loc);
+            customizePreferences = new CustomizePreferences(clientID, loc);
             customizePreferences.Show();
         }
         //Кнопка "Мои заказы"

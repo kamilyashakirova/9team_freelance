@@ -10,7 +10,6 @@ namespace freelance.forms
         PrivateFontCollection fonts = new PrivateFontCollection();
         private  int clientID;
         private string file = String.Empty;
-        PerformerCard card;
         public Dislikedperformers(int clientID, string file)
         {
             this.file = file;
@@ -31,6 +30,8 @@ namespace freelance.forms
         //загрузка данных из БД в таблицу
         private void Dislikedperformers_Load_1(object sender, EventArgs e)
         {
+
+            Localization.LoadLocalizationDictionary(this, file);
             using (var db = new DBcontext())
             {
                 try
@@ -49,7 +50,7 @@ namespace freelance.forms
                         }
                     }
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show("Ошибка.");
                     logger.Error($"Ошибка в загрузке данных из БД для формы 'Dislikedperformers'.{ex.ToString}");
@@ -60,7 +61,7 @@ namespace freelance.forms
         //Для карточки фрилансера
         private void disliked_dgv_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            card = new PerformerCard(clientID, file);
+            var card = new PerformerCard(clientID, file);
             if (!(this.disliked_dgv.CurrentRow is null))
             {
 

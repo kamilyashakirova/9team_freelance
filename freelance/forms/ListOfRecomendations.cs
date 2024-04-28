@@ -10,7 +10,7 @@ namespace freelance.forms
         ClientProfile profile = new ClientProfile(clientID, file);
         Likedperformers likedPerformers = new Likedperformers(clientID, file);
         PrivateFontCollection fonts = new PrivateFontCollection();
-        PerformerCard card;
+        PerformerCard card = new PerformerCard(clientID, file);
         public static Logger logger = LogManager.GetCurrentClassLogger();
         public static string file = "Localization";
         private string dislike = "Не нравится";
@@ -27,10 +27,13 @@ namespace freelance.forms
         {
             InitializeComponent();
             this.userID = userID;
-            var client = workingwithDB.clientsloaddata(userID);
-            if (client != null)
+            using (var db = new DBcontext())
             {
-                clientID = int.Parse(client[0]);
+                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
+                if (client != null)
+                {
+                    clientID = client.ID;
+                }
             }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
@@ -39,7 +42,6 @@ namespace freelance.forms
             {
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
-            Localization.LanguageChanged += UpdateLocalization;
             logger.Info("Успешно открылось форма 'ListOfRecomendations'.");
         }
         //загрузка данных из БД в таблицу
@@ -77,10 +79,10 @@ namespace freelance.forms
                         else
                         {
                             list.Rows.Clear();
-                            var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization |
-                            p.PExperience == interests.IExperience |
-                            p.PLanguage == interests.ILanguage |
-                            p.PProduct == interests.IProduct | p.PTime == interests.ITime)
+                            var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization ||
+                            p.PExperience == interests.IExperience ||
+                            p.PLanguage == interests.ILanguage ||
+                            p.PProduct == interests.IProduct || p.PTime == interests.ITime)
                             .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
                                 + (p.PTime == interests.IExperience ? 1 : 0)
                                 + (p.PLanguage.Contains(interests.ILanguage) ? 1 : 0)
@@ -98,7 +100,6 @@ namespace freelance.forms
                         }
                     }
                 }
-
             }
         }
         private void updatedgv_pic_Click(object sender, EventArgs e)

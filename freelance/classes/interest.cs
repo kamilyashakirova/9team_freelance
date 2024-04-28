@@ -10,11 +10,11 @@ namespace freelance
     {
         public int ID { get; set; }
         public int ClientID { get; set; }
-        public string ISpecialization { get; set; } = null!;
-        public string ITime { get; set; } = null!;
-        public string IExperience { get; set; } = null!;
-        public string ILanguage { get; set; } = null!;
-        public string IProduct{ get; set; } = null!;
+        public string ISpecialization { get; set; } = String.Empty;
+        public string ITime { get; set; } = String.Empty;
+        public string IExperience { get; set; } = String.Empty;
+        public string ILanguage { get; set; } = String.Empty;
+        public string IProduct{ get; set; }  = String.Empty;
         public virtual Client InClients { get; set; } = null!;
     }
 }
