@@ -1,5 +1,7 @@
 ﻿using freelance.forms;
+using System.Drawing.Text;
 using System.Net.Mail;
+using System.Security.Cryptography;
 namespace freelance
 {
     public static class ForUnitTests
@@ -94,66 +96,45 @@ namespace freelance
                 MessageBox.Show(message2);
             }
         }
-
-        public static void TestCheckDislikedPerformers(string message1)
+        public static string Test_Hasing(string data)
         {
-            using (var db = new DBcontext())
+            using (SHA256 sha256 = SHA256.Create())
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == "1").FirstOrDefault();
-                if (performer != null)
+                byte[] bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(data));
+                System.Text.StringBuilder builder = new System.Text.StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
                 {
-                    if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
-                    {
-                        MessageBox.Show(message1);
-                    }
+                    builder.Append(bytes[i].ToString("x2"));
                 }
-            }
-
-        }
-
-        public static void TestAddLikeIfPerformerNotLiked(string message1)
-        {
-            using (var db = new DBcontext())
-            {
-                var performer = db.Performers.Where(p => p.ID.ToString() == "2").FirstOrDefault();
-                if (performer != null)
-                    if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
-                    {
-                        MessageBox.Show(message1);
-                    }
+                return builder.ToString();
             }
         }
-
-        public static void TestAddLikedPerformers(string message1)
+        public static void Test_LogInInfo(bool allowed, int uId)
         {
-            using (var db = new DBcontext())
-            {
-                var performer = db.Performers.Where(p => p.ID.ToString() == "2").FirstOrDefault();
-                int clientID = 1;
-                if (performer != null)
-                    if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
-                    {
-                        workingwithDB.AddLike(clientID, performer.ID);
-                    }
-                    else
-                    {
-                        MessageBox.Show(message1);
-                    }
-            }
+            Program.allowed = allowed;
+            Program.uId = uId;
         }
-
-        public static void TestAddDislikeToPerformer(string message1)
+        public static Font Test_LoadingCustomFont(int fontsize)
         {
-            using (var db = new DBcontext())
+            Font? font = null;
+            try
             {
-                var performer = db.Performers.Where(p => p.ID.ToString() == "1").FirstOrDefault();
-                if (performer != null)
-                    if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
-                    {
-                        workingwithDB.AddDislike(performer.ClientID, performer.ID);
-                        MessageBox.Show(message1);
-                    }
+                var fonts = new PrivateFontCollection();
+                fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
+                font = new Font(fonts.Families[0], fontsize);
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка загрузки шрифта: " + ex.Message);
+            }
+            return font;
+        }
+        public static string TestGenerateNewPassword()
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var random = new Random();
+            var password = new string(Enumerable.Repeat(chars, 4).Select(s => s[random.Next(s.Length)]).ToArray());
+            return password;
         }
     }
 

@@ -68,44 +68,40 @@ namespace freelance
         }
 
         [TestMethod]
-        public void TestCheckDislikedPerformers()
+        public void Test_Hasing()
         {
-            //Arrange
-            string message1 = "Вы уже добавляли фрилансера в скрытое";
+            //Accert
+            string data = "dataa";
 
             //Act
-            ForUnitTests.TestCheckDislikedPerformers(message1);
+            ForUnitTests.Test_Hasing(data);
         }
 
         [TestMethod]
-        public void TestAddDislikeToPerformer()
+        public void Test_LogInInfo()
         {
-            //Arrange
-            string message1 = "Фрилансер успешно добавлен в 'Скрытое'";
+            //Accret
+            bool allowed = true;
+            int uId = 1;
 
             //Act
-            ForUnitTests.TestAddDislikeToPerformer(message1);
+            ForUnitTests.Test_LogInInfo(allowed, uId);
         }
 
         [TestMethod]
-        public void TestAddLikeIfPerformerNotLiked()
+        public void Test_LoadingCustomFont()
         {
-            //Arrange
-            string message1 = "Вы уже добавляли фрилансера в 'Избранное'";
+            //Assert
+            int fontsize = 14;
 
             //Act
-            ForUnitTests.TestAddLikedPerformers(message1);
+            ForUnitTests.Test_LoadingCustomFont(fontsize);
         }
 
         [TestMethod]
-        public void TestAddLikedPerformers()
+        public void Test_GenerateNewPassword()
         {
-            //Arrange
-            string message1 = "Фрилансер успешно добавлен в 'Избранное'";
-
-            //Act
-            ForUnitTests.TestAddDislikeToPerformer(message1);
+            ForUnitTests.TestGenerateNewPassword();
         }
     }
-
 }
