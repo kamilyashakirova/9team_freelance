@@ -10,7 +10,7 @@ namespace freelance.forms
         ClientProfile profile = new ClientProfile(clientID, file);
         Likedperformers likedPerformers = new Likedperformers(clientID, file);
         PrivateFontCollection fonts = new PrivateFontCollection();
-        PerformerCard card = new PerformerCard(clientID, file);
+        PerformerCard card;
         public static Logger logger = LogManager.GetCurrentClassLogger();
         public static string file = "Localization";
         private string dislike = "Не нравится";
@@ -110,6 +110,7 @@ namespace freelance.forms
         //Для карточки фрилансера
         private void listofrecs_dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            card = new PerformerCard(clientID, file);
             if (!(this.listofrecs_dgv1.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString();
