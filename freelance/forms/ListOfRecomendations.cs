@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore.Metadata;
 using NLog;
 using System.Data;
 using System.Drawing.Text;
@@ -7,33 +8,31 @@ namespace freelance.forms
     {
         public int userID;
         public static int clientID;
-        ClientProfile profile = new ClientProfile(clientID, file);
-        Likedperformers likedPerformers = new Likedperformers(clientID, file);
+        ClientProfile? profile;
+        Likedperformers? likedPerformers;
         PrivateFontCollection fonts = new PrivateFontCollection();
-        PerformerCard card = new PerformerCard(clientID, file);
+        PerformerCard? card;
         public static Logger logger = LogManager.GetCurrentClassLogger();
         public static string file = "Localization";
-        private string dislike = "Не нравится";
-        private string like = "Нравится";
-        private string liked = "Избранное";
-        private string settings = "Настройки";
-        private string message1liked_list = "Вы уже добавляли фрилансера в избранное";
-        private string message2liked_list = "Добавлен в избранное";
-        private string message1_list = "Ошибка.";
-        private string message2_list = "Выберите необходимую строку в таблице.";
-        private string message1disliked_list = "Вы уже добавляли фрилансера в скрытое";
-        private string message2disliked_list = "Добавлен в скрытое";
+
+        private string dislike = "РќРµ РЅСЂР°РІРёС‚СЃСЏ";
+        private string like = "РќСЂР°РІРёС‚СЃСЏ";
+        private string liked = "РР·Р±СЂР°РЅРЅРѕРµ";
+        private string settings = "РќР°СЃС‚СЂРѕР№РєРё";
+        private string message1liked_list = "Р’С‹ СѓР¶Рµ РґРѕР±Р°РІР»СЏР»Рё С„СЂРёР»Р°РЅСЃРµСЂР° РІ РёР·Р±СЂР°РЅРЅРѕРµ";
+        private string message2liked_list = "Р”РѕР±Р°РІР»РµРЅ РІ РёР·Р±СЂР°РЅРЅРѕРµ";
+        private string message1_list = "РћС€РёР±РєР°.";
+        private string message2_list = "Р’С‹Р±РµСЂРёС‚Рµ РЅРµРѕР±С…РѕРґРёРјСѓСЋ СЃС‚СЂРѕРєСѓ РІ С‚Р°Р±Р»РёС†Рµ.";
+        private string message1disliked_list = "Р’С‹ СѓР¶Рµ РґРѕР±Р°РІР»СЏР»Рё С„СЂРёР»Р°РЅСЃРµСЂР° РІ СЃРєСЂС‹С‚РѕРµ";
+        private string message2disliked_list = "Р”РѕР±Р°РІР»РµРЅ РІ СЃРєСЂС‹С‚РѕРµ";
         public ListOfRecomendations(int userID)
         {
             InitializeComponent();
             this.userID = userID;
-            using (var db = new DBcontext())
+            var client = workingwithDB.clientsloaddata(userID);
+            if (client != null)
             {
-                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
-                if (client != null)
-                {
-                    clientID = client.ID;
-                }
+                clientID = int.Parse(client[0]);
             }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
@@ -42,73 +41,150 @@ namespace freelance.forms
             {
                 ctrl.Font = new Font(fonts.Families[0], 10); ;
             }
-            logger.Info("Успешно открылось форма 'ListOfRecomendations'.");
+            Localization.LanguageChanged += UpdateLocalization;
         }
-        //загрузка данных из БД в таблицу
-        private void listOfRecomendations_Load(object sender, EventArgs e)
+        private void settings_btn_MouseEnter(object sender, EventArgs e)
         {
-            Updatelist(clientID, listofrecs_dgv1);
+            ToolTip tooltip = new ToolTip();
+            tooltip.Show(settings, settings_btn, 0, 40, 800);
         }
-        public static void Showperformers(DataGridView list)
+        private void settings_btn_MouseLeave(object sender, EventArgs e)
         {
+            ToolTip tooltip = new ToolTip();
+            tooltip.Hide((Control)sender);
+        }
+        private void likedlist_btn_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.Show(liked, likedlist_btn, 0, 40, 800);
+        }
+        private void likedlist_btn_MouseLeave(object sender, EventArgs e)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.Hide((Control)sender);
+        }
+
+        private void like_btn_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.Show(like, like_btn, 0, 60, 800);
+        }
+
+        private void like_btn_MouseLeave(object sender, EventArgs e)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.Hide((Control)sender);
+        }
+
+        private void dislike_btn_MouseEnter(object sender, EventArgs e)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.Show(dislike, dislike_btn, 0, 60, 800);
+        }
+
+        private void dislike_btn_MouseLeave(object sender, EventArgs e)
+        {
+            ToolTip tooltip = new ToolTip();
+            tooltip.Hide((Control)sender);
+        }
+
+        private void settings_btn_Click(object sender, EventArgs e)
+        {
+            profile = new ClientProfile(userID, file);
+            profile.Show();
+        }
+        private void likedlist_btn_Click(object sender, EventArgs e)
+        {
+            likedPerformers = new Likedperformers(clientID, file);
+            likedPerformers.Show();
+        }
+        private void like_btn_Click(object sender, EventArgs e)
+        {
+            logger.Info("РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° 'РќСЂР°РІРёС‚СЃСЏ'");
             using (var db = new DBcontext())
             {
-                var performers = db.Performers.ToList();
-                foreach (var performer in performers)
+                try
                 {
-                    list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                        performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
-                }
-            }
-        }
-        public static void Updatelist(int clientID, DataGridView list)
-        {
-            using (var db = new DBcontext())
-            {
-                Showperformers(list);
-                var interestss = db.Interests.Where(u => u.ClientID == clientID);
-                if (interestss != null)
-                {
-                    foreach (var interests in interestss)
+                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                    if (performer != null)
                     {
-                        if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
+                        if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            list.Rows.Clear();
-                            Showperformers(list);
+                            MessageBox.Show(message1liked_list);
                         }
                         else
                         {
-                            list.Rows.Clear();
-                            var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization ||
-                            p.PExperience == interests.IExperience ||
-                            p.PLanguage == interests.ILanguage ||
-                            p.PProduct == interests.IProduct || p.PTime == interests.ITime)
-                            .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
-                                + (p.PTime == interests.IExperience ? 1 : 0)
-                                + (p.PLanguage.Contains(interests.ILanguage) ? 1 : 0)
-                                + (p.PSpecialization == interests.ISpecialization ? 1 : 0)
-                                + (p.PProduct.Contains(interests.IProduct) ? 1 : 0))
-                                .ToList();
-                            if (performers != null)
+                            if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
-                                foreach (var performer in performers)
+                                workingwithDB.AddLike(clientID, performer.ID); 
+                                MessageBox.Show(message2liked_list);
+                            }
+                            if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                            {
+                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
                                 {
-                                    list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                    performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                                    db.DislikedPerformers.Remove(u);
+                                    db.SaveChanges();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(message1_list);
                                 }
                             }
                         }
                     }
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
         }
-        private void updatedgv_pic_Click(object sender, EventArgs e)
+        private void dislike_btn_Click(object sender, EventArgs e)
         {
-            logger.Info("Нажата кнопка 'Обновить'.");
-            listofrecs_dgv1.Rows.Clear();
-            Updatelist(clientID, listofrecs_dgv1);
+            logger.Info("РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° 'РќРµ РЅСЂР°РІРёС‚СЃСЏ'");
+            using (var db = new DBcontext())
+            {
+                try
+                {
+                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                    if (performer != null)
+                    {
+                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        {
+                            MessageBox.Show(message1disliked_list);
+                        }
+                        else
+                        {
+                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                            {
+                                workingwithDB.AddDislike(clientID, performer.ID);
+                                MessageBox.Show(message2disliked_list);
+                            }
+                            if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                            {
+                                var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
+                                {
+                                    db.LikedPerformers.Remove(u);
+                                    db.SaveChanges();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(message1_list);
+                                }
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
-        //Для карточки фрилансера
         private void listofrecs_dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             card = new PerformerCard(clientID, file);
@@ -144,94 +220,71 @@ namespace freelance.forms
                 MessageBox.Show(message2_list);
             }
         }
-        //Кнопка "Нравится"
-        private void like_btn_Click(object sender, EventArgs e)
+        private void listOfRecomendations_Load(object sender, EventArgs e)
         {
-            logger.Info("Нажата кнопка 'Нравится'");
+            Localization.LoadLocalizationDictionary(this, file);
+            Updatelist(clientID, listofrecs_dgv1);
+        }
+        public static void Showperformers(DataGridView list)
+        {
             using (var db = new DBcontext())
             {
-                try
+                var performers = db.Performers.ToList();
+                foreach (var performer in performers)
                 {
-                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
-                    if (performer != null)
+                    list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                        performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                }
+            }
+        }
+        public static void Updatelist(int clientID, DataGridView list)
+        {
+            using (var db = new DBcontext())
+            {
+                Showperformers(list);
+                var interestss = db.Interests.Where(u => u.ClientID == clientID);
+                if (interestss != null)
+                {
+                    foreach (var interests in interestss)
                     {
-                        if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
                         {
-                            MessageBox.Show(message1liked_list);
+                            list.Rows.Clear();
+                            Showperformers(list);
                         }
                         else
                         {
-                            if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                            list.Rows.Clear();
+                            var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization |
+                            p.PExperience == interests.IExperience |
+                            p.PLanguage == interests.ILanguage |
+                            p.PProduct == interests.IProduct | p.PTime == interests.ITime)
+                            .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
+                                + (p.PTime == interests.IExperience ? 1 : 0)
+                                + (p.PLanguage == interests.ILanguage ? 1 : 0)
+                                + (p.PSpecialization == interests.ISpecialization ? 1 : 0)
+                                + (p.PProduct == interests.IProduct ? 1 : 0))
+                                .ToList();
+                            if (performers != null)
                             {
-                                workingwithDB.AddLike(clientID, performer.ID);
-                                logger.Info("Фрилансер успешно добавлен в 'Избранное'");
-                                MessageBox.Show(message2liked_list);
+                                foreach (var performer in performers)
+                                {
+                                    list.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                    performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                                }
                             }
-                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                                if (u != null)
-                                {
-                                    db.DislikedPerformers.Remove(u);
-                                    logger.Info("Фрилансер успешно удалён из списка 'Скрытое'");
-                                    db.SaveChanges();
-                                }
-                                else
-                                {
-                                    MessageBox.Show(message1_list);
-                                }
+                        }
+                    }
+                }
 
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
             }
         }
-       //Кнопка "Не нравится"
-        private void dislike_btn_Click(object sender, EventArgs e)
+        private void updatedgv_pic_Click(object sender, EventArgs e)
         {
-            logger.Info("Нажата кнопка 'Не нравится'");
-            using (var db = new DBcontext())
-            {
-                try
-                {
-                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
-                    if (performer != null)
-                    {
-                        if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
-                        {
-                            MessageBox.Show(message1disliked_list);
-                        }
-                        else
-                        {
-                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
-                            {
-                                workingwithDB.AddDislike(clientID, performer.ID);
-                                logger.Info("Фрилансер успешно добавлен в 'Скрытое'");
-                                MessageBox.Show(message2disliked_list);
-                            }
-                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                                if (u != null)
-                                {
-                                    db.LikedPerformers.Remove(u);
-                                    logger.Info("Фрилансер успешно удалён из списка 'Избранное'");
-                                    db.SaveChanges();
-                                }
-                                else
-                                {
-                                    MessageBox.Show(message1_list);
-                                }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            listofrecs_dgv1.Rows.Clear();
+            Updatelist(clientID, listofrecs_dgv1);
         }
-        //Локализация
+        //Р›РѕРєР°Р»РёР·Р°С†РёСЏ
         private void UpdateLocalization(object sender, EventArgs e)
         {
             this.Text = Localization.GetLocalizedString("ListOfRecomendations");
@@ -241,6 +294,7 @@ namespace freelance.forms
             planguage_list.HeaderText = Localization.GetLocalizedString("planguage_list");
             pExperience_list.HeaderText = Localization.GetLocalizedString("pExperience_list");
             pproduct_list.HeaderText = Localization.GetLocalizedString("pproduct_list");
+
             like = Localization.GetLocalizedString("like");
             dislike = Localization.GetLocalizedString("dislike");
             liked = Localization.GetLocalizedString("liked");
@@ -262,6 +316,7 @@ namespace freelance.forms
             rus_change_btn.Visible = false;
             tat_change_btn.Visible = true;
         }
+
         private void tat_change_btn_Click(object sender, EventArgs e)
         {
             Localization.LoadLocalizationDictionary(this, "Localization");
@@ -272,60 +327,6 @@ namespace freelance.forms
             tat_change_btn.Visible = false;
             rus_change_btn.Visible = true;
         }
-        //Кнопка "Настройки"
-        private void settings_btn_Click(object sender, EventArgs e)
-        {
-            profile = new ClientProfile(clientID, file);
-            profile.Show();
-        }
-        //Кнопка "Избранное"
-        private void likedlist_btn_Click(object sender, EventArgs e)
-        {
-            likedPerformers = new Likedperformers(clientID, file);
-            likedPerformers.Show();
-        }
-        //Названия кнопок высвечивающиеся при наведении
-        private void settings_btn_MouseEnter(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Show(settings, settings_btn, 0, 40, 800);
-        }
-        private void settings_btn_MouseLeave(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Hide((Control)sender);
-        }
-        private void likedlist_btn_MouseEnter(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Show(liked, likedlist_btn, 0, 40, 800);
-        }
-        private void likedlist_btn_MouseLeave(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Hide((Control)sender);
-        }
-        private void like_btn_MouseEnter(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Show(like, like_btn, 0, 60, 800);
-        }
-        private void like_btn_MouseLeave(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Hide((Control)sender);
-        }
-        private void dislike_btn_MouseEnter(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Show(dislike, dislike_btn, 0, 60, 800);
-        }
-        private void dislike_btn_MouseLeave(object sender, EventArgs e)
-        {
-            ToolTip tooltip = new ToolTip();
-            tooltip.Hide((Control)sender);
-        }
-
     }
 }
 

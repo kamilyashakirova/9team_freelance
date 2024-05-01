@@ -20,6 +20,7 @@ namespace freelance.forms
             this.clientID = clientID;
             InitializeComponent();
             logger.Info("Успешно открылось форма 'CustomizePreferences'.");
+            Localization.LanguageChanged += UpdateLocalization;
         }
         private void GetSelectedSpecialization()
         {

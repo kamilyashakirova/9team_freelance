@@ -216,6 +216,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Enter";
             Text = "Авторизация";
+            Load += Enter_Load;
             ((System.ComponentModel.ISupportInitialize)hide_picb).EndInit();
             ((System.ComponentModel.ISupportInitialize)athoriz_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)show_pic).EndInit();

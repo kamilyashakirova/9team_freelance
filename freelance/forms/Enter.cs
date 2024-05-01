@@ -99,5 +99,10 @@ namespace freelance.forms
             message2 = Localization.GetLocalizedString("message2enter");
             message1 = Localization.GetLocalizedString("message1enter");
         }
+
+        private void Enter_Load(object sender, EventArgs e)
+        {
+            Localization.LoadLocalizationDictionary(this, locfile);
+        }
     }
 }

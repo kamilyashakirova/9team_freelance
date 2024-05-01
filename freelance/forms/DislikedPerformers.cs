@@ -30,7 +30,6 @@ namespace freelance.forms
         //загрузка данных из БД в таблицу
         private void Dislikedperformers_Load_1(object sender, EventArgs e)
         {
-
             Localization.LoadLocalizationDictionary(this, file);
             using (var db = new DBcontext())
             {
