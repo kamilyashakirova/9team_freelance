@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace freelance
 {
+    /// <summary>
+    /// Класс, описывающий интересы пользователя
+    /// </summary>
     public class Interest
     {
         public int ID { get; set; }

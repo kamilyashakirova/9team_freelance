@@ -63,31 +63,26 @@ namespace freelance.forms
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
-
         private void like_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Show(like, like_btn, 0, 60, 800);
         }
-
         private void like_btn_MouseLeave(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
-
         private void dislike_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Show(dislike, dislike_btn, 0, 60, 800);
         }
-
         private void dislike_btn_MouseLeave(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
-
         private void settings_btn_Click(object sender, EventArgs e)
         {
             profile = new ClientProfile(userID, file);
@@ -296,7 +291,7 @@ namespace freelance.forms
         {
             Localization.LoadLocalizationDictionary(this, "newLocalization");
             file = "newLocalization";
-            profile = new ClientProfile(userID, file);
+            profile = new ClientProfile(clientID, file);
             likedPerformers = new Likedperformers(clientID, file);
             card = new PerformerCard(clientID, file);
             rus_change_btn.Visible = false;
