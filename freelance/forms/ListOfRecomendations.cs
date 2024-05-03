@@ -187,7 +187,7 @@ namespace freelance.forms
         }
         private void listofrecs_dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            card = new PerformerCard(clientID, file);
+            var card = new PerformerCard(clientID, file);
             if (!(this.listofrecs_dgv1.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString();
