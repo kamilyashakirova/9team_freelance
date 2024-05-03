@@ -76,17 +76,13 @@ namespace freelance.forms
                                 workingwithDB.AddDislike(clientID, performer.ID);
                                 logger.Info("Фрилансер успешно добавлен в 'Скрытое'");
                                 MessageBox.Show(message2disliked);
-                            }
-                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                            if (u != null)
-                            {
-                                db.LikedPerformers.Remove(u);
-                                logger.Info("Фрилансер успешно удалён из списка 'Избранное'");
-                                db.SaveChanges();
-                            }
-                            else
-                            {
-                                MessageBox.Show(message1);
+                                var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
+                                {
+                                    db.LikedPerformers.Remove(u);
+                                    logger.Info("Фрилансер успешно удалён из списка 'Избранное'");
+                                    db.SaveChanges();
+                                }
                             }
                         }
                     }
@@ -119,19 +115,14 @@ namespace freelance.forms
                                 workingwithDB.AddLike(clientID, performer.ID);
                                 logger.Info("Фрилансер успешно добавлен в 'Избранное'");
                                 MessageBox.Show(message2liked);
+                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                                if (u != null)
+                                {
+                                    db.DislikedPerformers.Remove(u);
+                                    logger.Info("Фрилансер успешно удалён из списка 'Скрытое'");
+                                    db.SaveChanges();
+                                }
                             }
-                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                            if (u != null)
-                            {
-                                db.DislikedPerformers.Remove(u);
-                                logger.Info("Фрилансер успешно удалён из списка 'Скрытое'");
-                                db.SaveChanges();
-                            }
-                            else
-                            {
-                                MessageBox.Show(message1);
-                            }
-
                         }
                     }
                 }

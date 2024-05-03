@@ -116,21 +116,14 @@ namespace freelance.forms
                         {
                             if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
-                                workingwithDB.AddLike(clientID, performer.ID); 
-                                MessageBox.Show(message2liked_list);
-                            }
-                            if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
-                            {
+                                workingwithDB.AddLike(clientID, performer.ID);
                                 var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
                                 if (u != null)
                                 {
                                     db.DislikedPerformers.Remove(u);
                                     db.SaveChanges();
                                 }
-                                else
-                                {
-                                    MessageBox.Show(message1_list);
-                                }
+                                MessageBox.Show(message2liked_list);
                             }
                         }
                     }
@@ -161,20 +154,13 @@ namespace freelance.forms
                             if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
                             {
                                 workingwithDB.AddDislike(clientID, performer.ID);
-                                MessageBox.Show(message2disliked_list);
-                            }
-                            if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
-                            {
                                 var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
                                 if (u != null)
                                 {
                                     db.LikedPerformers.Remove(u);
                                     db.SaveChanges();
                                 }
-                                else
-                                {
-                                    MessageBox.Show(message1_list);
-                                }
+                                MessageBox.Show(message2disliked_list);
                             }
                         }
                     }
