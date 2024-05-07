@@ -95,7 +95,7 @@ namespace freelance.forms
                     cemail_txt.Text = client.Email;
                     if (client.ClientPicture != String.Empty)
                     {
-                        Bitmap image = new Bitmap(client.ClientPicture);
+                        Bitmap image = new Bitmap("../../../images/" + client.ClientPicture);
                         clientpicture.Image = image;
                     }
                     else

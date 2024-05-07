@@ -1,7 +1,6 @@
 ﻿using VkNet.Enums.Filters;
 using VkNet.Model;
 using VkNet;
-using VkNet.Abstractions;
 using freelance.forms;
 
 namespace freelance
