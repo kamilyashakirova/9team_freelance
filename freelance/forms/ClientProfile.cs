@@ -41,6 +41,7 @@ namespace freelance.forms
                             db.SaveChanges();
                             Bitmap image = new Bitmap("../../../images/" + fileName);
                             client.ClientPicture = fileName;
+                            db.SaveChanges();
                             clientpicture.Image = image;
                         }
                     }
