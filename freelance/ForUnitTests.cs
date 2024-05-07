@@ -109,7 +109,7 @@ namespace freelance
                 return builder.ToString();
             }
         }
-        public static void Test_LogInInfo(bool allowed, int uId)
+        public static void Test_LogInInfo(bool allowed, Guid uId)
         {
             Program.allowed = allowed;
             Program.uId = uId;

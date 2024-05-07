@@ -20,7 +20,7 @@ public partial class DBcontext : DbContext
             с.ToTable("ClientsTable");
             с.HasIndex(e => e.UserID, "IX_ClientsTable_userID").IsUnique();
             с.HasOne(e => e.InUsers).WithOne(e => e.ClientsTable).HasForeignKey<Client>(e => e.UserID).OnDelete(DeleteBehavior.ClientSetNull);
-            }); 
+        }); 
         mbuilder.Entity<Performer>(с =>
         {
             с.HasKey(e => e.ID);

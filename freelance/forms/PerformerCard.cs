@@ -16,9 +16,9 @@ namespace freelance.forms
         private string message1 = "Ошибка.";
         private string message1disliked = "Вы уже добавляли фрилансера в скрытое";
         private string message2disliked = "Добавлен в скрытое";
-        private int clientID;
+        private Guid clientID;
         private string file = String.Empty;
-        public PerformerCard(int clientID, string file)
+        public PerformerCard(Guid clientID, string file)
         {
             this.file = file;
             this.clientID = clientID;
@@ -62,7 +62,7 @@ namespace freelance.forms
             {
                 try
                 {
-                    var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
+                    var performer = db.Performers.Where(p => p.ID == Guid.Parse(ID_Card_txt.Text)).FirstOrDefault();
                     if (performer != null)
                     {
                         if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -101,7 +101,7 @@ namespace freelance.forms
             {
                 try
                 {
-                    var performer = db.Performers.Where(p => p.ID.ToString() == ID_Card_txt.Text).FirstOrDefault();
+                    var performer = db.Performers.Where(p => p.ID == Guid.Parse(ID_Card_txt.Text)).FirstOrDefault();
                     if (performer != null)
                     {
                         if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))

@@ -5,7 +5,7 @@ namespace freelance.forms
 {
     public partial class CustomizePreferences : Form
     {
-        private int clientID;
+        private Guid clientID;
         private string selectedSpecialization = String.Empty;
         private string selectedExperience = String.Empty;
         private string selectedLanguage = String.Empty;
@@ -14,7 +14,7 @@ namespace freelance.forms
 
         public static Logger logger = LogManager.GetCurrentClassLogger();
         private string file = String.Empty;
-        public CustomizePreferences(int clientID, string file)
+        public CustomizePreferences(Guid clientID, string file)
         {
             this.file = file;
             this.clientID = clientID;

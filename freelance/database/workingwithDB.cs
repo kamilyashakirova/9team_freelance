@@ -1,6 +1,6 @@
-﻿using freelance.forms;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Newtonsoft.Json.Linq;
 namespace freelance
 {
     public static class workingwithDB
@@ -30,14 +30,15 @@ namespace freelance
                 return false;
             }
         }
+        
         /// <summary>
         /// загрузка данных о "клиентах"
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
-        public static string[]? clientsloaddata(int userId)
+        public static string[]? clientsloaddata(Guid userId)
         {
-            using (var db=  new DBcontext())
+            using (var db = new DBcontext())
             {
                 var client = db.Clients.FirstOrDefault(client => client.UserID == userId);
                 if (client != null)
@@ -53,7 +54,7 @@ namespace freelance
         /// </summary>
         /// <param name="clientId"></param>
         /// <returns></returns>
-        public static string[]? interestsloaddata(int clientId)
+        public static string[]? interestsloaddata(Guid clientId)
         {
             using (var db = new DBcontext())
             {
@@ -70,14 +71,14 @@ namespace freelance
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static string[]? performersloaddata(int ID)
+        public static string[]? performersloaddata(Guid ID)
         {
             using (var db = new DBcontext())
             {
                 var performer = db.Performers.FirstOrDefault(p => p.ID == ID);
                 if (performer != null)
                 {
-                    return [performer.ClientID.ToString(), performer.ID.ToString(), performer.PName, 
+                    return [performer.ClientID.ToString(), performer.ID.ToString(), performer.PName,
                         performer.PSpecialization,performer.PTime, performer.PLanguage,performer.PExperience,
                         performer.PProduct, performer.PPicture];
                 }
@@ -89,7 +90,7 @@ namespace freelance
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public static string[]? Likedperformersloaddata(int clientId)
+        public static string[]? Likedperformersloaddata(Guid clientId)
         {
             using (var db = new DBcontext())
             {
@@ -107,7 +108,7 @@ namespace freelance
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public static string[]?Dislikedperformersloaddata(int clientId)
+        public static string[]? Dislikedperformersloaddata(Guid clientId)
         {
             using (var db = new DBcontext())
             {
@@ -150,33 +151,34 @@ namespace freelance
                 {
                     using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                     {
-                        lock(db)
-                        try
-                        {
-                            var epassw = Hashing.hash(uPassword);
-                            var user = new User { ULogin = uLogin, UPasswordHash = epassw, Email = email };
-                            db.Users.Add(user);
-                            db.SaveChanges();
-
-                            var client = new Client
+                        lock (db);
+                            try
                             {
-                                UserID = user.UId,
-                                ClientName = clientName,
-                                ClientSurname = clientSurname,
-                                ClientPatronomic = clientPatronomic,
-                                InUsers = user,
-                                Email = email,
-                                ClientPicture = String.Empty
-                            };
-                            db.Clients.Add(client);
-                            db.SaveChanges();
-                            transaction.Commit();
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.ToString());
-                            transaction.Rollback();
-                        }
+                                var epassw = Hashing.hash(uPassword);
+                                var user = new User { ULogin = uLogin, UPasswordHash = epassw, Email = email };
+                                db.Users.Add(user);
+                                db.SaveChanges();
+
+                                var client = new Client
+                                {
+                                    UserID = user.UId,
+                                    ClientName = clientName,
+                                    ClientSurname = clientSurname,
+                                    ClientPatronomic = clientPatronomic,
+                                    InUsers = user,
+                                    Email = email,
+                                    ClientPicture = String.Empty, 
+                                    VkUserID = String.Empty
+                                };
+                                db.Clients.Add(client);
+                                db.SaveChanges();
+                                transaction.Commit();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+                                transaction.Rollback();
+                            }
                     }
                 }
             }
@@ -185,18 +187,28 @@ namespace freelance
                 MessageBox.Show(message1_work);
             }
         }
-        public static void AddLike(int ClientID, int performerID)
+        public static void AddLike(Guid clientID, Guid performerID)
         {
             using (var db = new DBcontext())
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
+                    lock(db)
                     try
                     {
-                        var liked = new LikedPerformers { ClientID = ClientID, PerformerID = performerID };
-                        db.LikedPerformers.Add(liked);
-                        db.SaveChanges();
-                        transaction.Commit();
+                        var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
+                        var performer = db.Performers.FirstOrDefault(u => u.ID == performerID);
+                        if (client != null && performer != null) 
+                        {
+                            var liked = new LikedPerformers { ClientID = client.ID, PerformerID = performer.ID, InClients = client, InPerformers = performer };
+                            db.LikedPerformers.Add(liked);
+                            db.SaveChanges();
+                            transaction.Commit();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ошибка");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -206,12 +218,13 @@ namespace freelance
                 }
             }
         }
-        public static void AddDislike(int ClientID, int performerID)
+        public static void AddDislike(Guid ClientID, Guid performerID)
         {
             using (var db = new DBcontext())
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
+                    lock (db)
                     try
                     {
                         var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
@@ -227,20 +240,28 @@ namespace freelance
                 }
             }
         }
-        public static void AddInterest(int clientID, string ISpecialization, string ITime, string IExperience,
+        public static void AddInterest(Guid clientID, string ISpecialization, string ITime, string IExperience,
             string ILanguage, string IProduct)
         {
             using (var db = new DBcontext())
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
-                    try
+                    lock (db)
+                        try
                     {
                         var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
                         if (client != null)
                         {
-                            var interest = new Interest { ClientID = clientID, ISpecialization = ISpecialization, ITime = ITime,
-                                IExperience = IExperience, ILanguage = ILanguage, IProduct = IProduct };
+                            var interest = new Interest
+                            {
+                                ClientID = clientID,
+                                ISpecialization = ISpecialization,
+                                ITime = ITime,
+                                IExperience = IExperience,
+                                ILanguage = ILanguage,
+                                IProduct = IProduct
+                            };
                             db.Interests.Add(interest);
                             db.SaveChanges();
                             transaction.Commit();
@@ -255,16 +276,17 @@ namespace freelance
                         MessageBox.Show(ex.ToString());
                         transaction.Rollback();
                     }
-                }  
+                }
             }
         }
-        public static void AddPerformer(int clientID, string MyName, string MySpecialization, string MyTime, string MyExperience,
+        public static void AddPerformer(Guid clientID, string MyName, string MySpecialization, string MyTime, string MyExperience,
             string MyLanguage, string MyProduct, string MyPicture)
         {
             using (var db = new DBcontext())
             {
                 using (IDbContextTransaction transaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
                 {
+                    lock(db)
                     try
                     {
                         var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
@@ -291,7 +313,7 @@ namespace freelance
                             MessageBox.Show(message2_work);
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         MessageBox.Show(ex.ToString());
                         transaction.Rollback();

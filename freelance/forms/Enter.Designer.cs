@@ -41,9 +41,11 @@
             show_pic = new PictureBox();
             rus_change_btn = new Button();
             tat_change_btn = new Button();
+            enterWithVK_btn = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)hide_picb).BeginInit();
             ((System.ComponentModel.ISupportInitialize)athoriz_pic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)show_pic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)enterWithVK_btn).BeginInit();
             SuspendLayout();
             // 
             // login_txtb
@@ -195,12 +197,24 @@
             tat_change_btn.Visible = false;
             tat_change_btn.Click += tat_change_btn_Click;
             // 
+            // enterWithVK_btn
+            // 
+            enterWithVK_btn.Image = (Image)resources.GetObject("enterWithVK_btn.Image");
+            enterWithVK_btn.Location = new Point(50, 389);
+            enterWithVK_btn.Name = "enterWithVK_btn";
+            enterWithVK_btn.Size = new Size(273, 62);
+            enterWithVK_btn.SizeMode = PictureBoxSizeMode.Zoom;
+            enterWithVK_btn.TabIndex = 30;
+            enterWithVK_btn.TabStop = false;
+            enterWithVK_btn.Click += enterWithVK_btn_Click;
+            // 
             // Enter
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(887, 535);
+            Controls.Add(enterWithVK_btn);
             Controls.Add(rus_change_btn);
             Controls.Add(show_pic);
             Controls.Add(hide_picb);
@@ -220,6 +234,7 @@
             ((System.ComponentModel.ISupportInitialize)hide_picb).EndInit();
             ((System.ComponentModel.ISupportInitialize)athoriz_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)show_pic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)enterWithVK_btn).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -238,5 +253,7 @@
         private PictureBox show_pic;
         private Button rus_change_btn;
         private Button tat_change_btn;
+        private WebBrowser GetToken;
+        private PictureBox enterWithVK_btn;
     }
 }

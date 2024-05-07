@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientProfile));
             panel1 = new Panel();
+            vkIcon_pic = new PictureBox();
             exit_btn = new PictureBox();
             cemail_txt = new TextBox();
             email_lbl = new Label();
@@ -47,6 +48,7 @@
             disliked_btn = new Button();
             pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)vkIcon_pic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)exit_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clientpicture).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -55,6 +57,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(vkIcon_pic);
             panel1.Controls.Add(exit_btn);
             panel1.Controls.Add(cemail_txt);
             panel1.Controls.Add(email_lbl);
@@ -72,6 +75,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(350, 711);
             panel1.TabIndex = 0;
+            // 
+            // vkIcon_pic
+            // 
+            vkIcon_pic.Image = (Image)resources.GetObject("vkIcon_pic.Image");
+            vkIcon_pic.Location = new Point(239, 182);
+            vkIcon_pic.Name = "vkIcon_pic";
+            vkIcon_pic.Size = new Size(97, 83);
+            vkIcon_pic.SizeMode = PictureBoxSizeMode.Zoom;
+            vkIcon_pic.TabIndex = 30;
+            vkIcon_pic.TabStop = false;
             // 
             // exit_btn
             // 
@@ -251,6 +264,7 @@
             Load += ClientProfile_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)vkIcon_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)exit_btn).EndInit();
             ((System.ComponentModel.ISupportInitialize)clientpicture).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -276,5 +290,6 @@
         private Button disliked_btn;
         private PictureBox pictureBox1;
         private PictureBox exit_btn;
+        private PictureBox vkIcon_pic;
     }
 }

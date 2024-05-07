@@ -1,18 +1,19 @@
 using freelance.forms;
 
+
 namespace freelance
 {
     internal static class Program
     {
         public static bool allowed;
-        public static int uId;
-        public static Dictionary<string, string> localizationDictionary = new Dictionary<string, string>();
+        public static Guid uId;
+        public static string loc = "Localization";
         /// <summary>
         /// метод, для входа в аккаунт
         /// </summary>
         /// <param name="allowed"></param>
         /// <param name="uId"></param>
-        public static void LogInInfo(bool allowed, int uId)
+        public static void LogInInfo(bool allowed, Guid uId)
         {
             Program.allowed = allowed;
             Program.uId = uId;
@@ -25,11 +26,12 @@ namespace freelance
             ApplicationConfiguration.Initialize();
             do
             {
-                Application.Run(new Enter());
+                var enter = new Enter();
+                Application.Run(enter);
                 if (allowed)
                 {
                     allowed = false;
-                    Application.Run(new ListOfRecomendations(uId));
+                    Application.Run(new ListOfRecomendations(uId, enter.locfile));
                 }
             }
             while (allowed);

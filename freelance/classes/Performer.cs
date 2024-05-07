@@ -1,5 +1,8 @@
 ﻿namespace freelance
 {
+    /// <summary>
+    /// Класс, описывающий исполнителя (фрилансера)
+    /// </summary>
     public class Performer
     {
         public int ClientID { get; set; }

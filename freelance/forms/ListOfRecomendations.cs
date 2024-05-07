@@ -6,8 +6,8 @@ namespace freelance.forms
 {
     public partial class ListOfRecomendations : Form
     {
-        public int userID;
-        public static int clientID;
+        public Guid userID;
+        public static Guid clientID;
         ClientProfile? profile;
         Likedperformers? likedPerformers;
         PrivateFontCollection fonts = new PrivateFontCollection();
@@ -25,14 +25,39 @@ namespace freelance.forms
         private string message2_list = "Выберите необходимую строку в таблице.";
         private string message1disliked_list = "Вы уже добавляли фрилансера в скрытое";
         private string message2disliked_list = "Добавлен в скрытое";
-        public ListOfRecomendations(int userID)
+        public ListOfRecomendations(Guid userID, string loc)
         {
             InitializeComponent();
+            file = loc;
             this.userID = userID;
-            var client = workingwithDB.clientsloaddata(userID);
-            if (client != null)
+            using (var db = new DBcontext())
             {
-                clientID = int.Parse(client[0]);
+                var client = db.Clients.FirstOrDefault(u => u.UserID == userID);
+                if (client != null)
+                {
+                    clientID = client.ID;
+                }
+            }
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
+            this.Font = new Font(fonts.Families[0], 10);
+            foreach (Control ctrl in this.Controls)
+            {
+                ctrl.Font = new Font(fonts.Families[0], 10); ;
+            }
+            Localization.LanguageChanged += UpdateLocalization;
+        }
+        public ListOfRecomendations(string VkUserID, string loc)
+        {
+            InitializeComponent();
+            file = loc;
+            using (var db = new DBcontext())
+            {
+                var client = db.Clients.FirstOrDefault(u => u.VkUserID == VkUserID);
+                if (client != null)
+                {
+                    clientID = client.ID;
+                }
             }
             this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
@@ -63,31 +88,26 @@ namespace freelance.forms
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
-
         private void like_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Show(like, like_btn, 0, 60, 800);
         }
-
         private void like_btn_MouseLeave(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
-
         private void dislike_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Show(dislike, dislike_btn, 0, 60, 800);
         }
-
         private void dislike_btn_MouseLeave(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
             tooltip.Hide((Control)sender);
         }
-
         private void settings_btn_Click(object sender, EventArgs e)
         {
             profile = new ClientProfile(userID, file);
@@ -100,31 +120,27 @@ namespace freelance.forms
         }
         private void like_btn_Click(object sender, EventArgs e)
         {
-            logger.Info("Нажата кнопка 'Нравится'");
             using (var db = new DBcontext())
             {
                 try
                 {
-                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                    var performer = db.Performers.FirstOrDefault(p => p.ID == Guid.Parse(listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()));
                     if (performer != null)
                     {
                         if (db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
                             MessageBox.Show(message1liked_list);
                         }
-                        else
+                        else if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
                         {
-                            if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                            workingwithDB.AddLike(clientID, performer.ID);
+                            var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            if (u != null)
                             {
-                                workingwithDB.AddLike(clientID, performer.ID);
-                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                                if (u != null)
-                                {
-                                    db.DislikedPerformers.Remove(u);
-                                    db.SaveChanges();
-                                }
-                                MessageBox.Show(message2liked_list);
+                                db.DislikedPerformers.Remove(u);
+                                db.SaveChanges();
                             }
+                            MessageBox.Show(message2liked_list);
                         }
                     }
                 }
@@ -132,7 +148,7 @@ namespace freelance.forms
                 {
                     MessageBox.Show(ex.Message);
                 }
-
+                logger.Info("Нажата кнопка 'Нравится'");
             }
         }
         private void dislike_btn_Click(object sender, EventArgs e)
@@ -142,7 +158,7 @@ namespace freelance.forms
             {
                 try
                 {
-                    var performer = db.Performers.Where(p => p.ID.ToString() == this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()).FirstOrDefault();
+                    var performer = db.Performers.Where(p => p.ID == Guid.Parse(listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
                     if (performer != null)
                     {
                         if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -163,6 +179,10 @@ namespace freelance.forms
                                 MessageBox.Show(message2disliked_list);
                             }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка");
                     }
                 }
                 catch (Exception ex)
@@ -185,7 +205,7 @@ namespace freelance.forms
                 card.pproduct_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[6].Value.ToString();
                 using (var db = new DBcontext())
                 {
-                    var performer = db.Performers.Where(p => p.ID == int.Parse(card.ID_Card_txt.Text)).FirstOrDefault();
+                    var performer = db.Performers.Where(p => p.ID == Guid.Parse(card.ID_Card_txt.Text)).FirstOrDefault();
                     if (performer != null)
                     {
                         if (performer.PPicture != String.Empty)
@@ -223,7 +243,7 @@ namespace freelance.forms
                 }
             }
         }
-        public static void Updatelist(int clientID, DataGridView list)
+        public static void Updatelist(Guid clientID, DataGridView list)
         {
             using (var db = new DBcontext())
             {
@@ -296,7 +316,7 @@ namespace freelance.forms
         {
             Localization.LoadLocalizationDictionary(this, "newLocalization");
             file = "newLocalization";
-            profile = new ClientProfile(userID, file);
+            profile = new ClientProfile(clientID, file);
             likedPerformers = new Likedperformers(clientID, file);
             card = new PerformerCard(clientID, file);
             rus_change_btn.Visible = false;

@@ -4,7 +4,7 @@ namespace freelance.forms
 {
     public partial class AddSevices : Form
     {
-        private int clientID;
+        private Guid clientID;
         private string fotofile = String.Empty;
         private string fotofilepath = String.Empty;
         private string selectedSpecialization = String.Empty;
@@ -15,7 +15,7 @@ namespace freelance.forms
 
         public static Logger logger = LogManager.GetCurrentClassLogger();
         private string file = String.Empty;
-        public AddSevices(int clientID, string file)
+        public AddSevices(Guid clientID, string file)
         {
             this.clientID = clientID;
             InitializeComponent();

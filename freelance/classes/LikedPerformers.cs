@@ -1,5 +1,8 @@
 ﻿namespace freelance
 {
+    /// <summary>
+    /// Класс, описывающий исполнителя, не понравившегося пользователю
+    /// </summary>
     public class LikedPerformers
     {
         public int ID { get; set; }

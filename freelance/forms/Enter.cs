@@ -10,9 +10,9 @@ namespace freelance.forms
         public static Dictionary<string, string> localizationDictionary = new Dictionary<string, string>();
         private string message1 = "Вы успешно вошли";
         private string message2 = "Неверный логин или пароль.";
-        private static string locfile = "Localization";
-        ForgotpasswordForm forgotpasswordForm = new ForgotpasswordForm(locfile);
-        RegistrationForm registration = new RegistrationForm(locfile);
+        public string locfile = "Localization";
+        ForgotpasswordForm forgotpasswordForm;
+        RegistrationForm registration;
         public Enter()
         {
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
@@ -63,11 +63,13 @@ namespace freelance.forms
         private void forgotpassword_lbl_Click(object sender, EventArgs e)
         {
             logger.Info("Нажата кнопка 'Забыли пароль?'");
+            forgotpasswordForm = new ForgotpasswordForm(locfile);
             forgotpasswordForm.Show();
         }
         private void registration_lbl_Click(object sender, EventArgs e)
         {
             logger.Info("Нажата кнопка 'Зарегистрироваться'");
+            registration = new RegistrationForm(locfile);
             registration.Show();
         }
         //Локализация
@@ -103,6 +105,27 @@ namespace freelance.forms
         private void Enter_Load(object sender, EventArgs e)
         {
             Localization.LoadLocalizationDictionary(this, locfile);
+        }
+        private void GetToken_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            if (GetToken.Url.ToString().IndexOf("access_token=") != -1)
+            {
+                GetUserToken();
+            }
+        }
+        private void GetUserToken()
+        {
+            char[] Symbols = { '=', '&' };
+            string[] URL = GetToken.Url.ToString().Split(Symbols);
+            File.WriteAllText("UserInf.txt", URL[1] + "\n");
+            File.AppendAllText("UserInf.txt", URL[5]);
+            this.Visible = false;
+        }
+
+        private void enterWithVK_btn_Click(object sender, EventArgs e)
+        {
+            var EnterVk = new EnterWithVKForm(locfile);
+            EnterVk.ShowDialog();
         }
     }
 }

@@ -1,5 +1,8 @@
 ﻿namespace freelance
 {
+    /// <summary>
+    /// Класс, поисывающий пользователя
+    /// </summary>
     public class User
     {
         public int UId { get; set; }

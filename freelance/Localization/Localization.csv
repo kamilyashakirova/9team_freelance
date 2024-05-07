@@ -99,6 +99,9 @@ disliked_btn,Скрытые профили
 AddSevices,Создать объявление
 addfoto_btn,Загрузить фото
 name_txt,Введите ФИО исполнителя
+EnterWithVKForm, Вход с ВК
+enter_rus_lbl,Вход с VK ID
+VKlogin_txt,Телефон или email
 like,Нравится
 dislike,Не нравится
 liked,Избранное

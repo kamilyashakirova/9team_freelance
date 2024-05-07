@@ -1,29 +1,50 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+<<<<<<< HEAD
+using Newtonsoft.Json.Linq;
+=======
+using NLog;
+>>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
 using System.Data.Entity.Core.EntityClient;
-
 namespace freelance.forms
 {
     public partial class ClientProfile : Form
     {
         private string selectedFile = String.Empty;
-        private static int clientID;
+<<<<<<< HEAD
+        private static Guid clientID;
         private static string loc = String.Empty;
-        private int userID;
+        private Guid userID;
         private static string file = String.Empty ;
         CustomizePreferences customizePreferences = new CustomizePreferences(clientID, file);
         Dislikedperformers dislikedperformers = new Dislikedperformers(clientID, file);
-        public ClientProfile(int userID, string file)
+        public ClientProfile(Guid userID, string file)
+=======
+        private int clientID;
+        private int userID;
+        private static string loc = String.Empty;
+        CustomizePreferences? customizePreferences;
+        Dislikedperformers? dislikedperformers;
+        public ClientProfile(int clientID, string file)
+>>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
         {
             loc = file;
-            this.userID = userID;
+            this.clientID = clientID;
             InitializeComponent();
-            AddInfo(userID);
             Localization.LanguageChanged += UpdateLocalization;
-            using (var db = new DBcontext())
+        }
+        //Загрузка данных о клиенте
+        private void AddInfo(Guid userID)
+        {
+            using (var db = new DBcontext()) 
             {
-                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
+<<<<<<< HEAD
+                var client = db.Clients.FirstOrDefault(u => u.UserID == userID);
+=======
+                var client = db.Clients.Where(u => u.ID == clientID).FirstOrDefault();
+>>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
                 if (client != null)
                 {
+                    userID = client.UserID;
                     clientID = client.ID;
                     id_txt.Text = client.ID.ToString();
                     cname_txt.Text = client.ClientName;
@@ -39,8 +60,12 @@ namespace freelance.forms
                     {
                         clientpicture.Image = null;
                     }
+<<<<<<< HEAD
+
+=======
                 }
             }
+            AddInfo(userID);
         }
         //Загрузка данных о клиенте
         private void AddInfo(int userID)
@@ -48,20 +73,27 @@ namespace freelance.forms
             var client = workingwithDB.clientsloaddata(userID);
             if (client != null)
             {
-                clientID = int.Parse(client[0]);
                 id_txt.Text = client[0];
                 cname_txt.Text = client[1];
                 csurname_txt.Text = client[2];
                 cpatronymic_txt.Text = client[3];
                 cemail_txt.Text = client[4];
-                if (client[5] != String.Empty)
+                try
                 {
-                    Bitmap image = new Bitmap(client[5]);
-                    clientpicture.Image = image;
+                    if (client[5] != String.Empty)
+                    {
+                        Bitmap image = new Bitmap(client[5]);
+                        clientpicture.Image = image;
+                    }
+                    else
+                    {
+                        clientpicture.Image = null;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    clientpicture.Image = null;
+                    MessageBox.Show(ex.Message);
+>>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
                 }
             }
         }
@@ -81,7 +113,7 @@ namespace freelance.forms
                     userImage.Save(filePath, System.Drawing.Imaging.ImageFormat.Jpeg);
                     using (var db = new DBcontext())
                     {
-                        var client = db.Clients.FirstOrDefault(u => u.ID.ToString() == id_txt.Text);
+                        var client = db.Clients.FirstOrDefault(u => u.ID == Guid.Parse(id_txt.Text));
                         if (client != null)
                         {
                             client.ClientPicture = Path.GetFullPath(filePath);
@@ -128,6 +160,36 @@ namespace freelance.forms
         private void ClientProfile_Load(object sender, EventArgs e)
         {
             Localization.LoadLocalizationDictionary(this, loc);
+            using (var db = new DBcontext())
+            {
+                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
+                if (client != null)
+                {
+                    clientID = client.ID;
+                    id_txt.Text = client.ID.ToString();
+                    cname_txt.Text = client.ClientName;
+                    csurname_txt.Text = client.ClientSurname;
+                    cpatronymic_txt.Text = client.ClientPatronomic;
+                    cemail_txt.Text = client.Email;
+                    if (client.ClientPicture != String.Empty)
+                    {
+                        Bitmap image = new Bitmap(client.ClientPicture);
+                        clientpicture.Image = image;
+                    }
+                    else
+                    {
+                        clientpicture.Image = null;
+                    }
+                    if (client.VkUserID != String.Empty)
+                    {
+                        vkIcon_pic.Visible = true;
+                    }
+                    else 
+                    {
+                        vkIcon_pic.Visible = false;
+                    }
+                }
+            }
         }
     }
 }

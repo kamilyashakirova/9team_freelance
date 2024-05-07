@@ -6,11 +6,11 @@ namespace freelance.forms
     {
         public static Logger logger = LogManager.GetCurrentClassLogger();
 
-        private int clientID;
+        private Guid clientID;
         private string message_my = "У Вас пока нет своих объявлений";
         private string file = String.Empty;
         PerformerCard card;
-        public Myservices(int clientID, string file)
+        public Myservices(Guid clientID, string file)
         {
             this.clientID = clientID;
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace freelance.forms
             Localization.LoadLocalizationDictionary(this, file);
             Update(clientID, myservices_dgv);
         }
-        private void Update(int clientID, DataGridView mylist)
+        private void Update(Guid clientID, DataGridView mylist)
         {
             using (var db = new DBcontext())
             {
@@ -63,7 +63,7 @@ namespace freelance.forms
                 card.pproduct_txt.Text = this.myservices_dgv.CurrentRow.Cells[6].Value.ToString();
                 using (var db = new DBcontext())
                 {
-                    var performer = db.Performers.Where(p => p.ID == int.Parse(card.ID_Card_txt.Text)).FirstOrDefault();
+                    var performer = db.Performers.Where(p => p.ID == Guid.Parse(card.ID_Card_txt.Text)).FirstOrDefault();
                     if (performer != null)
                     {
                         if (performer.PPicture != String.Empty)

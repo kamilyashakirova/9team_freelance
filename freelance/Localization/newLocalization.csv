@@ -98,6 +98,9 @@ disliked_btn,Яшерен профильләр
 AddSevices,Белдерү ясарга
 addfoto_btn,Фотоларны йөкләү
 name_txt,Башкаручының ФИО языгыз
+EnterWithVKForm,ВК белән керү
+VKlogin_txt,Телефон яки email
+enter_rus_lbl,VK ID белән керү
 like,Ошый
 dislike,Ошамый
 liked,Сайланма
