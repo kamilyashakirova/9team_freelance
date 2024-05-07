@@ -1,31 +1,17 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
-<<<<<<< HEAD
-using Newtonsoft.Json.Linq;
-=======
-using NLog;
->>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
 using System.Data.Entity.Core.EntityClient;
 namespace freelance.forms
 {
     public partial class ClientProfile : Form
     {
         private string selectedFile = String.Empty;
-<<<<<<< HEAD
-        private static Guid clientID;
+        private static int clientID;
         private static string loc = String.Empty;
-        private Guid userID;
+        private int userID;
         private static string file = String.Empty ;
         CustomizePreferences customizePreferences = new CustomizePreferences(clientID, file);
         Dislikedperformers dislikedperformers = new Dislikedperformers(clientID, file);
-        public ClientProfile(Guid userID, string file)
-=======
-        private int clientID;
-        private int userID;
-        private static string loc = String.Empty;
-        CustomizePreferences? customizePreferences;
-        Dislikedperformers? dislikedperformers;
-        public ClientProfile(int clientID, string file)
->>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
+        public ClientProfile(int userID, string file)
         {
             loc = file;
             this.clientID = clientID;
@@ -37,11 +23,7 @@ namespace freelance.forms
         {
             using (var db = new DBcontext()) 
             {
-<<<<<<< HEAD
-                var client = db.Clients.FirstOrDefault(u => u.UserID == userID);
-=======
-                var client = db.Clients.Where(u => u.ID == clientID).FirstOrDefault();
->>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
+                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
                 if (client != null)
                 {
                     userID = client.UserID;
@@ -78,22 +60,14 @@ namespace freelance.forms
                 csurname_txt.Text = client[2];
                 cpatronymic_txt.Text = client[3];
                 cemail_txt.Text = client[4];
-                try
+                if (client[5] != String.Empty)
                 {
-                    if (client[5] != String.Empty)
-                    {
-                        Bitmap image = new Bitmap(client[5]);
-                        clientpicture.Image = image;
-                    }
-                    else
-                    {
-                        clientpicture.Image = null;
-                    }
+                    Bitmap image = new Bitmap(client[5]);
+                    clientpicture.Image = image;
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
->>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
+                    clientpicture.Image = null;
                 }
             }
         }

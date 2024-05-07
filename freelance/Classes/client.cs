@@ -1,12 +1,5 @@
 ﻿namespace freelance
 {
-<<<<<<< HEAD
-
-=======
-    /// <summary>
-    /// Класс, описывающий "клиента"
-    /// </summary>
->>>>>>> 625cc8a5e8236093a8226b8af0dff7a627a4b398
     public class Client
     {
         public Guid ID { get; set; }
