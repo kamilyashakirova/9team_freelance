@@ -5,72 +5,20 @@ namespace freelance.forms
     public partial class ClientProfile : Form
     {
         private string selectedFile = String.Empty;
-        private static int clientID;
+        private static Guid clientID;
         private static string loc = String.Empty;
-        private int userID;
+        private Guid userID;
         private static string file = String.Empty ;
         CustomizePreferences customizePreferences = new CustomizePreferences(clientID, file);
         Dislikedperformers dislikedperformers = new Dislikedperformers(clientID, file);
-        public ClientProfile(int userID, string file)
+        public ClientProfile(Guid userID, string file)
         {
             loc = file;
-            this.clientID = clientID;
+            this.userID = userID;
             InitializeComponent();
             Localization.LanguageChanged += UpdateLocalization;
         }
-        //Загрузка данных о клиенте
-        private void AddInfo(Guid userID)
-        {
-            using (var db = new DBcontext()) 
-            {
-                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
-                if (client != null)
-                {
-                    userID = client.UserID;
-                    clientID = client.ID;
-                    id_txt.Text = client.ID.ToString();
-                    cname_txt.Text = client.ClientName;
-                    csurname_txt.Text = client.ClientSurname;
-                    cpatronymic_txt.Text = client.ClientPatronomic;
-                    cemail_txt.Text = client.Email;
-                    if (client.ClientPicture != String.Empty)
-                    {
-                        Bitmap image = new Bitmap(client.ClientPicture);
-                        clientpicture.Image = image;
-                    }
-                    else
-                    {
-                        clientpicture.Image = null;
-                    }
-<<<<<<< HEAD
 
-=======
-                }
-            }
-            AddInfo(userID);
-        }
-        //Загрузка данных о клиенте
-        private void AddInfo(int userID)
-        {
-            var client = workingwithDB.clientsloaddata(userID);
-            if (client != null)
-            {
-                id_txt.Text = client[0];
-                cname_txt.Text = client[1];
-                csurname_txt.Text = client[2];
-                cpatronymic_txt.Text = client[3];
-                cemail_txt.Text = client[4];
-                if (client[5] != String.Empty)
-                {
-                    Bitmap image = new Bitmap(client[5]);
-                    clientpicture.Image = image;
-                }
-                else
-                {
-                    clientpicture.Image = null;
-                }
-            }
-        }
         //Загрузка фотографии
         private void fotodownload_btn_Click(object sender, EventArgs e)
         {

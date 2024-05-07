@@ -5,8 +5,8 @@
     /// </summary>
     public class Performer
     {
-        public int ClientID { get; set; }
-        public int ID { get; set; }
+        public Guid ClientID { get; set; }
+        public Guid ID { get; set; }
         public string PName { get; set; } = String.Empty;
         public string PSpecialization { get; set; } = String.Empty;
         public string PTime { get; set; } = String.Empty;    

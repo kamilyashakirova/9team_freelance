@@ -11,8 +11,8 @@ namespace freelance
     /// </summary>
     public class Interest
     {
-        public int ID { get; set; }
-        public int ClientID { get; set; }
+        public Guid ID { get; set; }
+        public Guid ClientID { get; set; }
         public string ISpecialization { get; set; } = String.Empty;
         public string ITime { get; set; } = String.Empty;
         public string IExperience { get; set; } = String.Empty;
