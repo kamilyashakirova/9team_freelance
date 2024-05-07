@@ -38,9 +38,9 @@ namespace freelance.forms
                         var client = db.Clients.FirstOrDefault(u => u.ID == Guid.Parse(id_txt.Text));
                         if (client != null)
                         {
-                            client.ClientPicture = Path.GetFullPath(filePath);
                             db.SaveChanges();
-                            Bitmap image = new Bitmap(client.ClientPicture);
+                            Bitmap image = new Bitmap("../../../images/" + fileName);
+                            client.ClientPicture = fileName;
                             clientpicture.Image = image;
                         }
                     }
