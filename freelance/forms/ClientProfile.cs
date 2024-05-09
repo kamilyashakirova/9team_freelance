@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using System.Data.Entity.Core.EntityClient;
-namespace freelance.forms
+﻿namespace freelance.forms
 {
     public partial class ClientProfile : Form
     {

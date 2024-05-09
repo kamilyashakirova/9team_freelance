@@ -82,7 +82,7 @@ namespace freelance
         {
             //Accret
             bool allowed = true;
-            int uId = 1;
+            Guid uId = new Guid();
 
             //Act
             ForUnitTests.Test_LogInInfo(allowed, uId);

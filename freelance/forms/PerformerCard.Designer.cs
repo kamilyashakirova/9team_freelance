@@ -237,7 +237,7 @@
             dislike_btn.BackColor = Color.DarkSeaGreen;
             dislike_btn.BorderStyle = BorderStyle.FixedSingle;
             dislike_btn.Image = (Image)resources.GetObject("dislike_btn.Image");
-            dislike_btn.Location = new Point(163, 391);
+            dislike_btn.Location = new Point(169, 391);
             dislike_btn.Margin = new Padding(3, 4, 3, 4);
             dislike_btn.Name = "dislike_btn";
             dislike_btn.Size = new Size(72, 53);
@@ -252,7 +252,7 @@
             // 
             ID_Card_txt.Location = new Point(48, 515);
             ID_Card_txt.Name = "ID_Card_txt";
-            ID_Card_txt.Size = new Size(125, 30);
+            ID_Card_txt.Size = new Size(79, 30);
             ID_Card_txt.TabIndex = 18;
             ID_Card_txt.Visible = false;
             // 

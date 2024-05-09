@@ -52,7 +52,8 @@
             planguage_list = new DataGridViewTextBoxColumn();
             pExperience_list = new DataGridViewTextBoxColumn();
             pproduct_list = new DataGridViewTextBoxColumn();
-            totheemail_btn = new Button();
+            mostLikedPerformers_pic = new PictureBox();
+            sendToEmail = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)settings_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)likedlist_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)like_btn).BeginInit();
@@ -62,15 +63,17 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox6).BeginInit();
             ((System.ComponentModel.ISupportInitialize)updatedgv_pic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)listofrecs_dgv1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)mostLikedPerformers_pic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sendToEmail).BeginInit();
             SuspendLayout();
             // 
             // settings_btn
             // 
             settings_btn.BackColor = Color.DarkSeaGreen;
             settings_btn.Image = (Image)resources.GetObject("settings_btn.Image");
-            settings_btn.Location = new Point(9, 17);
+            settings_btn.Location = new Point(12, 17);
             settings_btn.Name = "settings_btn";
-            settings_btn.Size = new Size(85, 55);
+            settings_btn.Size = new Size(85, 60);
             settings_btn.SizeMode = PictureBoxSizeMode.Zoom;
             settings_btn.TabIndex = 1;
             settings_btn.TabStop = false;
@@ -84,7 +87,7 @@
             likedlist_btn.Image = (Image)resources.GetObject("likedlist_btn.Image");
             likedlist_btn.Location = new Point(96, 17);
             likedlist_btn.Name = "likedlist_btn";
-            likedlist_btn.Size = new Size(85, 55);
+            likedlist_btn.Size = new Size(89, 60);
             likedlist_btn.SizeMode = PictureBoxSizeMode.Zoom;
             likedlist_btn.TabIndex = 2;
             likedlist_btn.TabStop = false;
@@ -114,7 +117,7 @@
             dislike_btn.Image = (Image)resources.GetObject("dislike_btn.Image");
             dislike_btn.Location = new Point(1007, 448);
             dislike_btn.Name = "dislike_btn";
-            dislike_btn.Size = new Size(93, 75);
+            dislike_btn.Size = new Size(93, 68);
             dislike_btn.SizeMode = PictureBoxSizeMode.Zoom;
             dislike_btn.TabIndex = 5;
             dislike_btn.TabStop = false;
@@ -154,13 +157,14 @@
             pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox6.TabIndex = 24;
             pictureBox6.TabStop = false;
+            pictureBox6.Click += mostLikedPerformers_pic_Click;
             // 
             // updatedgv_pic
             // 
             updatedgv_pic.Image = (Image)resources.GetObject("updatedgv_pic.Image");
-            updatedgv_pic.Location = new Point(530, 12);
+            updatedgv_pic.Location = new Point(521, 17);
             updatedgv_pic.Name = "updatedgv_pic";
-            updatedgv_pic.Size = new Size(89, 71);
+            updatedgv_pic.Size = new Size(72, 60);
             updatedgv_pic.SizeMode = PictureBoxSizeMode.Zoom;
             updatedgv_pic.TabIndex = 25;
             updatedgv_pic.TabStop = false;
@@ -291,15 +295,26 @@
             pproduct_list.Name = "pproduct_list";
             pproduct_list.Width = 125;
             // 
-            // totheemail_btn
+            // mostLikedPerformers_pic
             // 
-            totheemail_btn.Location = new Point(987, 593);
-            totheemail_btn.Name = "totheemail_btn";
-            totheemail_btn.Size = new Size(138, 29);
-            totheemail_btn.TabIndex = 31;
-            totheemail_btn.Text = "Отправка";
-            totheemail_btn.UseVisualStyleBackColor = true;
-            totheemail_btn.Click += button1_Click_1;
+            mostLikedPerformers_pic.Image = (Image)resources.GetObject("mostLikedPerformers_pic.Image");
+            mostLikedPerformers_pic.Location = new Point(180, 17);
+            mostLikedPerformers_pic.Name = "mostLikedPerformers_pic";
+            mostLikedPerformers_pic.Size = new Size(91, 60);
+            mostLikedPerformers_pic.SizeMode = PictureBoxSizeMode.Zoom;
+            mostLikedPerformers_pic.TabIndex = 32;
+            mostLikedPerformers_pic.TabStop = false;
+            // 
+            // sendToEmail
+            // 
+            sendToEmail.Image = (Image)resources.GetObject("sendToEmail.Image");
+            sendToEmail.Location = new Point(1007, 561);
+            sendToEmail.Name = "sendToEmail";
+            sendToEmail.Size = new Size(93, 77);
+            sendToEmail.SizeMode = PictureBoxSizeMode.Zoom;
+            sendToEmail.TabIndex = 33;
+            sendToEmail.TabStop = false;
+            sendToEmail.Click += button1_Click_1;
             // 
             // ListOfRecomendations
             // 
@@ -307,7 +322,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(1153, 712);
-            Controls.Add(totheemail_btn);
+            Controls.Add(sendToEmail);
+            Controls.Add(mostLikedPerformers_pic);
             Controls.Add(listofrecs_dgv1);
             Controls.Add(rus_change_btn);
             Controls.Add(tat_change_btn);
@@ -332,6 +348,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)updatedgv_pic).EndInit();
             ((System.ComponentModel.ISupportInitialize)listofrecs_dgv1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)mostLikedPerformers_pic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sendToEmail).EndInit();
             ResumeLayout(false);
         }
 
@@ -361,6 +379,7 @@
         private DataGridViewTextBoxColumn planguage_list;
         private DataGridViewTextBoxColumn pExperience_list;
         private DataGridViewTextBoxColumn pproduct_list;
-        private Button totheemail_btn;
+        private PictureBox mostLikedPerformers_pic;
+        private PictureBox sendToEmail;
     }
 }

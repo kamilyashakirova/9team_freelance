@@ -16,6 +16,7 @@ namespace freelance.forms
         Likedperformers? likedPerformers;
         PrivateFontCollection fonts = new PrivateFontCollection();
         PerformerCard? card;
+        MostLikedPerformersForm mostLikedPerformersForm;
         public static Logger logger = LogManager.GetCurrentClassLogger();
         public static string file = "Localization";
 
@@ -82,7 +83,7 @@ namespace freelance.forms
         }
         private void SendEmailWith(string userEmail, DataGridView dataGridView)
         {
-            MailMessage mail = new MailMessage(); 
+            MailMessage mail = new MailMessage();
             SmtpClient smtpServer = new SmtpClient("smtp.mail.ru");
             mail.From = new MailAddress("9teamfreelance@mail.ru", "freelance");
             mail.To.Add(userEmail);
@@ -201,7 +202,7 @@ namespace freelance.forms
             {
                 try
                 {
-                    var performer = db.Performers.Where(p => p.ID == Guid.Parse(listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString())).FirstOrDefault();
+                    var performer = db.Performers.FirstOrDefault(p => p.ID == Guid.Parse(listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString()));
                     if (performer != null)
                     {
                         if (db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
@@ -296,7 +297,8 @@ namespace freelance.forms
                 {
                     foreach (var interests in interestss)
                     {
-                        if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
+                        if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty 
+                            && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
                         {
                             list.Rows.Clear();
                             Showperformers(list);
@@ -390,6 +392,12 @@ namespace freelance.forms
                     "Возможно, не заполнено поле,где указана Ваша почта.\r\n" +
                     "Личную информацию можно редактировать в профиле");
             }
+        }
+
+        private void mostLikedPerformers_pic_Click(object sender, EventArgs e)
+        {
+            mostLikedPerformersForm = new MostLikedPerformersForm(clientID, file);
+            mostLikedPerformersForm.Show();
         }
     }
 }
