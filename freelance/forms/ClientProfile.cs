@@ -5,16 +5,14 @@ namespace freelance.forms
     public partial class ClientProfile : Form
     {
         private string selectedFile = String.Empty;
-        private static Guid clientID;
+        private Guid clientID;
         private static string loc = String.Empty;
-        private Guid userID;
-        private static string file = String.Empty ;
-        CustomizePreferences customizePreferences = new CustomizePreferences(clientID, file);
-        Dislikedperformers dislikedperformers = new Dislikedperformers(clientID, file);
-        public ClientProfile(Guid userID, string file)
+        CustomizePreferences customizePreferences;
+        Dislikedperformers dislikedperformers;
+        public ClientProfile(Guid clientID, string file)
         {
             loc = file;
-            this.userID = userID;
+            this.clientID = clientID;
             InitializeComponent();
             Localization.LanguageChanged += UpdateLocalization;
         }
@@ -85,10 +83,9 @@ namespace freelance.forms
             Localization.LoadLocalizationDictionary(this, loc);
             using (var db = new DBcontext())
             {
-                var client = db.Clients.Where(u => u.UserID == userID).FirstOrDefault();
+                var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
                 if (client != null)
                 {
-                    clientID = client.ID;
                     id_txt.Text = client.ID.ToString();
                     cname_txt.Text = client.ClientName;
                     csurname_txt.Text = client.ClientSurname;
@@ -107,10 +104,42 @@ namespace freelance.forms
                     {
                         vkIcon_pic.Visible = true;
                     }
-                    else 
+                    else
                     {
                         vkIcon_pic.Visible = false;
                     }
+                }
+            }
+        }
+
+        private void editprofile_btn_Click(object sender, EventArgs e)
+        {
+            csurname_txt.Enabled = true;
+            cname_txt.Enabled = true;
+            cpatronymic_txt.Enabled = true;
+            cemail_txt.Enabled = true;
+            saveprofile_btn.Visible = true;
+            editprofile_btn.Visible = false; 
+        }
+
+        private void saveprofile_btn_Click(object sender, EventArgs e)
+        {
+            saveprofile_btn.Visible = false;
+            editprofile_btn.Visible = true;
+            using (var db = new DBcontext()) 
+            { 
+                var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
+                if (client != null)
+                {
+                    client.ClientName = csurname_txt.Text;
+                    client.ClientSurname = cname_txt.Text;
+                    client.ClientPatronomic = cpatronymic_txt.Text;
+                    client.Email = cemail_txt.Text;
+                    db.SaveChanges();
+                    csurname_txt.Enabled = false;
+                    cname_txt.Enabled = false;
+                    cpatronymic_txt.Enabled = false;
+                    cemail_txt.Enabled = false;
                 }
             }
         }

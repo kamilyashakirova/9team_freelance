@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListOfRecomendations));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             settings_btn = new PictureBox();
             likedlist_btn = new PictureBox();
             like_btn = new PictureBox();
@@ -52,6 +52,7 @@
             planguage_list = new DataGridViewTextBoxColumn();
             pExperience_list = new DataGridViewTextBoxColumn();
             pproduct_list = new DataGridViewTextBoxColumn();
+            totheemail_btn = new Button();
             ((System.ComponentModel.ISupportInitialize)settings_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)likedlist_btn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)like_btn).BeginInit();
@@ -195,47 +196,47 @@
             // listofrecs_dgv1
             // 
             listofrecs_dgv1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
-            listofrecs_dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.WindowText;
+            listofrecs_dgv1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             listofrecs_dgv1.BackgroundColor = SystemColors.Window;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            listofrecs_dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            listofrecs_dgv1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             listofrecs_dgv1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             listofrecs_dgv1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, pname_list, pspecialisation_list, ptime_list, planguage_list, pExperience_list, pproduct_list });
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            listofrecs_dgv1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            listofrecs_dgv1.DefaultCellStyle = dataGridViewCellStyle8;
             listofrecs_dgv1.GridColor = Color.DarkSeaGreen;
             listofrecs_dgv1.Location = new Point(180, 160);
             listofrecs_dgv1.Name = "listofrecs_dgv1";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            listofrecs_dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            listofrecs_dgv1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             listofrecs_dgv1.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.DarkSeaGreen;
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            listofrecs_dgv1.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle10.ForeColor = Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = Color.DarkSeaGreen;
+            dataGridViewCellStyle10.SelectionForeColor = Color.Black;
+            listofrecs_dgv1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             listofrecs_dgv1.Size = new Size(775, 552);
             listofrecs_dgv1.TabIndex = 30;
             listofrecs_dgv1.CellDoubleClick += listofrecs_dgv1_CellDoubleClick;
@@ -290,12 +291,23 @@
             pproduct_list.Name = "pproduct_list";
             pproduct_list.Width = 125;
             // 
+            // totheemail_btn
+            // 
+            totheemail_btn.Location = new Point(987, 593);
+            totheemail_btn.Name = "totheemail_btn";
+            totheemail_btn.Size = new Size(138, 29);
+            totheemail_btn.TabIndex = 31;
+            totheemail_btn.Text = "Отправка";
+            totheemail_btn.UseVisualStyleBackColor = true;
+            totheemail_btn.Click += button1_Click_1;
+            // 
             // ListOfRecomendations
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(1153, 712);
+            Controls.Add(totheemail_btn);
             Controls.Add(listofrecs_dgv1);
             Controls.Add(rus_change_btn);
             Controls.Add(tat_change_btn);
@@ -349,5 +361,6 @@
         private DataGridViewTextBoxColumn planguage_list;
         private DataGridViewTextBoxColumn pExperience_list;
         private DataGridViewTextBoxColumn pproduct_list;
+        private Button totheemail_btn;
     }
 }

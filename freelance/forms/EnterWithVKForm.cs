@@ -2,7 +2,6 @@
 using VkNet.Model;
 using VkNet;
 using freelance.forms;
-
 namespace freelance
 {
     public partial class EnterWithVKForm : Form
@@ -22,14 +21,13 @@ namespace freelance
                 var api = new VkApi();
                 api.Authorize(new ApiAuthParams
                 {
-                    ApplicationId = 51918051,
+                    ApplicationId = 51920629,
                     Login = VKlogin_txt.Text,
                     Password = VKpassword_txt.Text,
                     Settings = Settings.All
                 });
                 var res = api.Groups.Get(new GroupsGetParams());
                 var client = api.Users.Get(new long[] { api.UserId.Value }).FirstOrDefault();
-                Guid ID;
                 if (client != null)
                 {
                     using (var db = new DBcontext())
@@ -43,8 +41,9 @@ namespace freelance
                                 ClientSurname = client.LastName,
                                 ClientPatronomic = String.Empty,
                                 ClientPicture = String.Empty,
-                                Email = String.Empty
-                            });
+                                Email = String.Empty,
+                                UserID = Guid.NewGuid()
+                            }) ;
                             db.SaveChanges();
                             MessageBox.Show("Вы успешно вошли.");
                         }

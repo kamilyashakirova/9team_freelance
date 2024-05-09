@@ -1,6 +1,8 @@
 ﻿using NLog;
 using NLog.Config;
+using System.Net;
 using System.Net.Mail;
+using System.Text;
 namespace freelance.forms
 {
     public partial class ForgotpasswordForm : Form
@@ -57,8 +59,9 @@ namespace freelance.forms
                 logger.Error(ex.ToString());
             }
         }
+        
 
-        private void sendpassword_btn_Click(object sender, EventArgs e)
+    private void sendpassword_btn_Click(object sender, EventArgs e)
         {
             try
             {

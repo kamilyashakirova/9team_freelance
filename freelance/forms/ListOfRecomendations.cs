@@ -2,6 +2,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using NLog;
 using System.Data;
 using System.Drawing.Text;
+using System.Net.Mail;
+using System.Net;
+using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace freelance.forms
 {
     public partial class ListOfRecomendations : Form
@@ -68,6 +72,45 @@ namespace freelance.forms
             }
             Localization.LanguageChanged += UpdateLocalization;
         }
+        private string GetUserEmail(Guid userId)
+        {
+            using (var context = new DBcontext())
+            {
+                var client = context.Clients.FirstOrDefault(c => c.UserID == userId);
+                return client.Email;
+            }
+        }
+        private void SendEmailWith(string userEmail, DataGridView dataGridView)
+        {
+            MailMessage mail = new MailMessage(); 
+            SmtpClient smtpServer = new SmtpClient("smtp.mail.ru");
+            mail.From = new MailAddress("9teamfreelance@mail.ru", "freelance");
+            mail.To.Add(userEmail);
+            mail.Subject = "Список рекомендаций";
+            mail.Body = "Список рекомендаций находится в прикрепленном файле";
+            StringBuilder sb = new StringBuilder();
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                for (int column = 1; column < dataGridView.Columns.Count; column++)
+                {
+                    sb.Append(row.Cells[column].Value.ToString() + "\t");
+                }
+                sb.Append("\n");
+            }
+            mail.Attachments.Add(new Attachment(new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString())), "ListOfPecomendations1.txt"));
+            smtpServer.Port = 587;
+            smtpServer.Credentials = new NetworkCredential("9teamfreelance@mail.ru", "BrbJHbFfsjS7SeGG8pNq");
+            smtpServer.EnableSsl = true;
+            try
+            {
+                smtpServer.Send(mail);
+                logger.Info("Пользователю успешно отправилось письмо на почту.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
         private void settings_btn_MouseEnter(object sender, EventArgs e)
         {
             ToolTip tooltip = new ToolTip();
@@ -110,7 +153,7 @@ namespace freelance.forms
         }
         private void settings_btn_Click(object sender, EventArgs e)
         {
-            profile = new ClientProfile(userID, file);
+            profile = new ClientProfile(clientID, file);
             profile.Show();
         }
         private void likedlist_btn_Click(object sender, EventArgs e)
@@ -332,6 +375,21 @@ namespace freelance.forms
             card = new PerformerCard(clientID, file);
             tat_change_btn.Visible = false;
             rus_change_btn.Visible = true;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string userEmail = GetUserEmail(userID);
+            if (userEmail != null)
+            {
+                SendEmailWith(userEmail, listofrecs_dgv1); MessageBox.Show("Письмо отправлено");
+            }
+            else
+            {
+                MessageBox.Show("Не получилось отправить письмо на почту.\r\n" +
+                    "Возможно, не заполнено поле,где указана Ваша почта.\r\n" +
+                    "Личную информацию можно редактировать в профиле");
+            }
         }
     }
 }

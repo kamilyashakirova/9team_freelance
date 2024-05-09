@@ -67,7 +67,7 @@
             password_txtb.BorderStyle = BorderStyle.None;
             password_txtb.Font = new Font("Didact Gothic", 10.8F);
             password_txtb.ForeColor = SystemColors.WindowFrame;
-            password_txtb.Location = new Point(75, 296);
+            password_txtb.Location = new Point(75, 286);
             password_txtb.Name = "password_txtb";
             password_txtb.PasswordChar = '*';
             password_txtb.PlaceholderText = "Введите пароль";
@@ -82,7 +82,7 @@
             hi_lbl.AutoSize = true;
             hi_lbl.Font = new Font("Didact Gothic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             hi_lbl.ForeColor = Color.Teal;
-            hi_lbl.Location = new Point(124, 187);
+            hi_lbl.Location = new Point(124, 3000);
             hi_lbl.Name = "hi_lbl";
             hi_lbl.Size = new Size(120, 40);
             hi_lbl.TabIndex = 2;
@@ -94,7 +94,7 @@
             enter_btn.BackColor = SystemColors.ControlLightLight;
             enter_btn.Font = new Font("Didact Gothic", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             enter_btn.ForeColor = SystemColors.WindowText;
-            enter_btn.Location = new Point(138, 344);
+            enter_btn.Location = new Point(138, 326);
             enter_btn.Name = "enter_btn";
             enter_btn.Size = new Size(94, 39);
             enter_btn.TabIndex = 3;
@@ -153,7 +153,7 @@
             // 
             entererror_lbl.AutoSize = true;
             entererror_lbl.Font = new Font("Didact Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            entererror_lbl.Location = new Point(60, 395);
+            entererror_lbl.Location = new Point(60, 362);
             entererror_lbl.Name = "entererror_lbl";
             entererror_lbl.Size = new Size(0, 28);
             entererror_lbl.TabIndex = 8;

@@ -30,11 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientProfile));
             panel1 = new Panel();
+            editprofile_btn = new Button();
+            saveprofile_btn = new Button();
             vkIcon_pic = new PictureBox();
             exit_btn = new PictureBox();
             cemail_txt = new TextBox();
             email_lbl = new Label();
-            id_txt = new TextBox();
             name_lbl = new Label();
             patronomyc_lbl = new Label();
             surname_lbl = new Label();
@@ -43,6 +44,7 @@
             cname_txt = new TextBox();
             fotodownload_btn = new Button();
             clientpicture = new PictureBox();
+            id_txt = new TextBox();
             customize_btn = new Button();
             my_btn = new Button();
             disliked_btn = new Button();
@@ -58,10 +60,11 @@
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(vkIcon_pic);
+            panel1.Controls.Add(editprofile_btn);
+            panel1.Controls.Add(saveprofile_btn);
             panel1.Controls.Add(exit_btn);
             panel1.Controls.Add(cemail_txt);
             panel1.Controls.Add(email_lbl);
-            panel1.Controls.Add(id_txt);
             panel1.Controls.Add(name_lbl);
             panel1.Controls.Add(patronomyc_lbl);
             panel1.Controls.Add(surname_lbl);
@@ -70,11 +73,33 @@
             panel1.Controls.Add(cname_txt);
             panel1.Controls.Add(fotodownload_btn);
             panel1.Controls.Add(clientpicture);
+            panel1.Controls.Add(id_txt);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(350, 711);
             panel1.TabIndex = 0;
+            // 
+            // editprofile_btn
+            // 
+            editprofile_btn.Location = new Point(13, 665);
+            editprofile_btn.Name = "editprofile_btn";
+            editprofile_btn.Size = new Size(128, 33);
+            editprofile_btn.TabIndex = 31;
+            editprofile_btn.Text = "Редактировать";
+            editprofile_btn.UseVisualStyleBackColor = true;
+            editprofile_btn.Click += editprofile_btn_Click;
+            // 
+            // saveprofile_btn
+            // 
+            saveprofile_btn.Location = new Point(13, 665);
+            saveprofile_btn.Name = "saveprofile_btn";
+            saveprofile_btn.Size = new Size(189, 33);
+            saveprofile_btn.TabIndex = 32;
+            saveprofile_btn.Text = "Сохранить изменения";
+            saveprofile_btn.UseVisualStyleBackColor = true;
+            saveprofile_btn.Visible = false;
+            saveprofile_btn.Click += saveprofile_btn_Click;
             // 
             // vkIcon_pic
             // 
@@ -85,6 +110,7 @@
             vkIcon_pic.SizeMode = PictureBoxSizeMode.Zoom;
             vkIcon_pic.TabIndex = 30;
             vkIcon_pic.TabStop = false;
+            vkIcon_pic.Visible = false;
             // 
             // exit_btn
             // 
@@ -99,6 +125,7 @@
             // 
             // cemail_txt
             // 
+            cemail_txt.Enabled = false;
             cemail_txt.Font = new Font("Didact Gothic", 10.1999989F);
             cemail_txt.Location = new Point(13, 614);
             cemail_txt.Name = "cemail_txt";
@@ -115,20 +142,11 @@
             email_lbl.TabIndex = 9;
             email_lbl.Text = "E-mail";
             // 
-            // id_txt
-            // 
-            id_txt.Font = new Font("Didact Gothic", 10.1999989F);
-            id_txt.Location = new Point(13, 676);
-            id_txt.Name = "id_txt";
-            id_txt.Size = new Size(323, 30);
-            id_txt.TabIndex = 8;
-            id_txt.Visible = false;
-            // 
             // name_lbl
             // 
             name_lbl.AutoSize = true;
             name_lbl.Font = new Font("Didact Gothic", 10.1999989F);
-            name_lbl.Location = new Point(16, 425);
+            name_lbl.Location = new Point(16, 345);
             name_lbl.Name = "name_lbl";
             name_lbl.Size = new Size(42, 25);
             name_lbl.TabIndex = 7;
@@ -148,7 +166,7 @@
             // 
             surname_lbl.AutoSize = true;
             surname_lbl.Font = new Font("Didact Gothic", 10.1999989F);
-            surname_lbl.Location = new Point(16, 348);
+            surname_lbl.Location = new Point(13, 425);
             surname_lbl.Name = "surname_lbl";
             surname_lbl.Size = new Size(81, 25);
             surname_lbl.TabIndex = 5;
@@ -156,6 +174,7 @@
             // 
             // cpatronymic_txt
             // 
+            cpatronymic_txt.Enabled = false;
             cpatronymic_txt.Font = new Font("Didact Gothic", 10.1999989F);
             cpatronymic_txt.Location = new Point(13, 536);
             cpatronymic_txt.Name = "cpatronymic_txt";
@@ -164,6 +183,7 @@
             // 
             // csurname_txt
             // 
+            csurname_txt.Enabled = false;
             csurname_txt.Font = new Font("Didact Gothic", 10.1999989F);
             csurname_txt.Location = new Point(13, 453);
             csurname_txt.Name = "csurname_txt";
@@ -172,6 +192,7 @@
             // 
             // cname_txt
             // 
+            cname_txt.Enabled = false;
             cname_txt.Font = new Font("Didact Gothic", 10.1999989F);
             cname_txt.Location = new Point(13, 373);
             cname_txt.Name = "cname_txt";
@@ -199,6 +220,15 @@
             clientpicture.SizeMode = PictureBoxSizeMode.Zoom;
             clientpicture.TabIndex = 0;
             clientpicture.TabStop = false;
+            // 
+            // id_txt
+            // 
+            id_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            id_txt.Location = new Point(277, -1);
+            id_txt.Name = "id_txt";
+            id_txt.Size = new Size(72, 30);
+            id_txt.TabIndex = 8;
+            id_txt.Visible = false;
             // 
             // customize_btn
             // 
@@ -291,5 +321,7 @@
         private PictureBox pictureBox1;
         private PictureBox exit_btn;
         private PictureBox vkIcon_pic;
+        private Button saveprofile_btn;
+        private Button editprofile_btn;
     }
 }
