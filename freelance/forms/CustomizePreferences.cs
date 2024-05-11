@@ -102,11 +102,11 @@ namespace freelance.forms
                     {
                         GetSelectedSpecialization();
                         var clientInterest = db.Interests.FirstOrDefault(u => u.ClientID == clientID);
-                        clientInterest.IExperience = selectedExperience;
-                        clientInterest.IProduct = selectedProduct;
-                        clientInterest.ILanguage = selectedLanguage;
-                        clientInterest.ITime = selectedTime;
-                        clientInterest.ISpecialization = selectedSpecialization;
+                        clientInterest.InterestExperience = selectedExperience;
+                        clientInterest.InterestProduct = selectedProduct;
+                        clientInterest.InterestLanguage = selectedLanguage;
+                        clientInterest.InterestTime = selectedTime;
+                        clientInterest.InterestSpecialization = selectedSpecialization;
                         db.SaveChanges();
                         MessageBox.Show("Ваши предпочтения успешно изменены");
                         logger.Info("Успешно изменились предпочтения пользователя.");

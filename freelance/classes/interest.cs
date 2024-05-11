@@ -13,11 +13,11 @@ namespace freelance
     {
         public Guid ID { get; set; }
         public Guid ClientID { get; set; }
-        public string ISpecialization { get; set; } = String.Empty;
-        public string ITime { get; set; } = String.Empty;
-        public string IExperience { get; set; } = String.Empty;
-        public string ILanguage { get; set; } = String.Empty;
-        public string IProduct{ get; set; }  = String.Empty;
+        public string InterestSpecialization { get; set; } = String.Empty;
+        public string InterestTime { get; set; } = String.Empty;
+        public string InterestExperience { get; set; } = String.Empty;
+        public string InterestLanguage { get; set; } = String.Empty;
+        public string InterestProduct { get; set; }  = String.Empty;
         public virtual Client InClients { get; set; } = null!;
     }
 }

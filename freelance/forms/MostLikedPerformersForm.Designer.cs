@@ -212,11 +212,12 @@
             // like_btn
             // 
             like_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
-            like_btn.BackColor = Color.DarkSeaGreen;
+            like_btn.BackColor = Color.Pink;
+            like_btn.BorderStyle = BorderStyle.FixedSingle;
             like_btn.Image = (Image)resources.GetObject("like_btn.Image");
-            like_btn.Location = new Point(891, 331);
+            like_btn.Location = new Point(917, 331);
             like_btn.Name = "like_btn";
-            like_btn.Size = new Size(142, 87);
+            like_btn.Size = new Size(101, 87);
             like_btn.SizeMode = PictureBoxSizeMode.Zoom;
             like_btn.TabIndex = 21;
             like_btn.TabStop = false;

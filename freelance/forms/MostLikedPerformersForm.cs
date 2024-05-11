@@ -1,4 +1,6 @@
-﻿namespace freelance.forms
+﻿using System.Linq;
+
+namespace freelance.forms
 {
     public partial class MostLikedPerformersForm : Form
     {
@@ -63,16 +65,20 @@
                     {
                         foreach (var like in liked)
                         {
-                            if (db.Performers.Where(u => u.ID == like.PerformerID).Count() > 5)
+                            var mostlikedperformers = db.LikedPerformers.Where(u => u.PerformerID == like.PerformerID);
+                            if (mostlikedperformers != null && mostlikedperformers.Count() > 5)
                             {
-                                var performer = db.Performers.FirstOrDefault(u => u.ID == like.PerformerID);
-                                if (performer != null)
+                                foreach(var mostlikedperformer in mostlikedperformers)
                                 {
-                                    liked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
-                                        performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                                    var performer = db.Performers.FirstOrDefault(u => u.ID == mostlikedperformer.PerformerID);
+                                    if (performer != null)
+                                    {
+                                        liked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
+                                                performer.PTime, performer.PLanguage, performer.PExperience, performer.PProduct);
+                                    }
                                 }
-
                             }
+                            
                         }
                     }
                     else

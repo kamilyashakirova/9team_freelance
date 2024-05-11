@@ -61,7 +61,7 @@ namespace freelance
                 var interest = db.Interests.FirstOrDefault(i => i.ClientID == clientId);
                 if (interest != null)
                 {
-                    return [interest.ID.ToString(), interest.ISpecialization, interest.IExperience, interest.ITime, interest.ILanguage, interest.IProduct];
+                    return [interest.ID.ToString(), interest.InterestSpecialization, interest.InterestExperience, interest.InterestTime, interest.InterestLanguage, interest.InterestProduct];
                 }
                 return null;
             }
@@ -256,11 +256,11 @@ namespace freelance
                             var interest = new Interest
                             {
                                 ClientID = clientID,
-                                ISpecialization = ISpecialization,
-                                ITime = ITime,
-                                IExperience = IExperience,
-                                ILanguage = ILanguage,
-                                IProduct = IProduct
+                                InterestSpecialization = ISpecialization,
+                                InterestTime = ITime,
+                                InterestExperience = IExperience,
+                                InterestLanguage = ILanguage,
+                                InterestProduct = IProduct
                             };
                             db.Interests.Add(interest);
                             db.SaveChanges();

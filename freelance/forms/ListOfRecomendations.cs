@@ -1,24 +1,22 @@
-using Microsoft.EntityFrameworkCore.Metadata;
 using NLog;
 using System.Data;
 using System.Drawing.Text;
 using System.Net.Mail;
 using System.Net;
 using System.Text;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 namespace freelance.forms
 {
     public partial class ListOfRecomendations : Form
     {
-        public Guid userID;
-        public static Guid clientID;
+        private Guid userID;
+        private Guid clientID;
         ClientProfile? profile;
         Likedperformers? likedPerformers;
         PrivateFontCollection fonts = new PrivateFontCollection();
         PerformerCard? card;
-        MostLikedPerformersForm mostLikedPerformersForm;
+        MostLikedPerformersForm? mostLikedPerformersForm;
         public static Logger logger = LogManager.GetCurrentClassLogger();
-        public static string file = "Localization";
+        private string file;
 
         private string dislike = "Не нравится";
         private string like = "Нравится";
@@ -26,7 +24,7 @@ namespace freelance.forms
         private string settings = "Настройки";
         private string message1liked_list = "Вы уже добавляли фрилансера в избранное";
         private string message2liked_list = "Добавлен в избранное";
-        private string message1_list = "Ошибка.";
+        private string message1_list = "Ошибка";
         private string message2_list = "Выберите необходимую строку в таблице.";
         private string message1disliked_list = "Вы уже добавляли фрилансера в скрытое";
         private string message2disliked_list = "Добавлен в скрытое";
@@ -175,7 +173,7 @@ namespace freelance.forms
                         {
                             MessageBox.Show(message1liked_list);
                         }
-                        else if (!db.LikedPerformers.Any(u => u.PerformerID == performer.ID))
+                        else
                         {
                             workingwithDB.AddLike(clientID, performer.ID);
                             var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
@@ -211,22 +209,15 @@ namespace freelance.forms
                         }
                         else
                         {
-                            if (!db.DislikedPerformers.Any(u => u.PerformerID == performer.ID))
+                            workingwithDB.AddDislike(clientID, performer.ID);
+                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
+                            if (u != null)
                             {
-                                workingwithDB.AddDislike(clientID, performer.ID);
-                                var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == performer.ID);
-                                if (u != null)
-                                {
-                                    db.LikedPerformers.Remove(u);
-                                    db.SaveChanges();
-                                }
-                                MessageBox.Show(message2disliked_list);
+                                db.LikedPerformers.Remove(u);
+                                db.SaveChanges();
                             }
+                            MessageBox.Show(message2disliked_list);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ошибка");
                     }
                 }
                 catch (Exception ex)
@@ -237,7 +228,7 @@ namespace freelance.forms
         }
         private void listofrecs_dgv1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var card = new PerformerCard(clientID, file);
+            card = new PerformerCard(clientID, file);
             if (!(this.listofrecs_dgv1.CurrentRow is null))
             {
                 card.ID_Card_txt.Text = this.listofrecs_dgv1.CurrentRow.Cells[0].Value.ToString();
@@ -265,7 +256,7 @@ namespace freelance.forms
                 }
                 card.Show();
             }
-            else if ((this.listofrecs_dgv1.CurrentRow is null))
+            else
             {
                 MessageBox.Show(message2_list);
             }
@@ -297,8 +288,8 @@ namespace freelance.forms
                 {
                     foreach (var interests in interestss)
                     {
-                        if (interests.IExperience == String.Empty && interests.ISpecialization == String.Empty && interests.ITime == String.Empty 
-                            && interests.ILanguage == String.Empty && interests.IProduct == String.Empty)
+                        if (interests.InterestExperience == String.Empty && interests.InterestSpecialization == String.Empty && interests.InterestTime == String.Empty
+                            && interests.InterestLanguage == String.Empty && interests.InterestProduct == String.Empty)
                         {
                             list.Rows.Clear();
                             Showperformers(list);
@@ -306,15 +297,15 @@ namespace freelance.forms
                         else
                         {
                             list.Rows.Clear();
-                            var performers = db.Performers.Where(p => p.PSpecialization == interests.ISpecialization |
-                            p.PExperience == interests.IExperience |
-                            p.PLanguage == interests.ILanguage |
-                            p.PProduct == interests.IProduct | p.PTime == interests.ITime)
-                            .OrderByDescending(p => (p.PSpecialization == interests.ISpecialization ? 1 : 0)
-                                + (p.PTime == interests.IExperience ? 1 : 0)
-                                + (p.PLanguage == interests.ILanguage ? 1 : 0)
-                                + (p.PSpecialization == interests.ISpecialization ? 1 : 0)
-                                + (p.PProduct == interests.IProduct ? 1 : 0))
+                            var performers = db.Performers.Where(p => p.PSpecialization == interests.InterestSpecialization |
+                            p.PExperience == interests.InterestExperience |
+                            p.PLanguage == interests.InterestLanguage |
+                            p.PProduct == interests.InterestProduct | p.PTime == interests.InterestTime)
+                            .OrderByDescending(p => (p.PSpecialization == interests.InterestSpecialization ? 1 : 0)
+                                + (p.PTime == interests.InterestExperience ? 1 : 0)
+                                + (p.PLanguage == interests.InterestLanguage ? 1 : 0)
+                                + (p.PSpecialization == interests.InterestSpecialization ? 1 : 0)
+                                + (p.PProduct == interests.InterestProduct ? 1 : 0))
                                 .ToList();
                             if (performers != null)
                             {
@@ -378,8 +369,8 @@ namespace freelance.forms
             tat_change_btn.Visible = false;
             rus_change_btn.Visible = true;
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        //Отправка письма на почту
+        private void sendmessage_Click_1(object sender, EventArgs e)
         {
             string userEmail = GetUserEmail(userID);
             if (userEmail != null)
@@ -393,8 +384,8 @@ namespace freelance.forms
                     "Личную информацию можно редактировать в профиле");
             }
         }
-
-        private void mostLikedPerformers_pic_Click(object sender, EventArgs e)
+       //Общая подборка
+        private void mostLikedPerformers_pic_Click_1(object sender, EventArgs e)
         {
             mostLikedPerformersForm = new MostLikedPerformersForm(clientID, file);
             mostLikedPerformersForm.Show();
