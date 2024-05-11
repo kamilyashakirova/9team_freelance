@@ -1,6 +1,4 @@
 ﻿using NLog;
-using Microsoft.EntityFrameworkCore;
-
 namespace freelance.forms
 {
     public partial class CustomizePreferences : Form

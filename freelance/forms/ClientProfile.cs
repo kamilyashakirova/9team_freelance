@@ -14,7 +14,6 @@
             InitializeComponent();
             Localization.LanguageChanged += UpdateLocalization;
         }
-
         //Загрузка фотографии
         private void fotodownload_btn_Click(object sender, EventArgs e)
         {

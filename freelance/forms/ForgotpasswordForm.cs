@@ -1,14 +1,13 @@
 ﻿using NLog;
 using NLog.Config;
-using System.Net;
 using System.Net.Mail;
-using System.Text;
 namespace freelance.forms
 {
     public partial class ForgotpasswordForm : Form
     {
         public static Logger logger = LogManager.GetCurrentClassLogger();
         private string file = String.Empty;
+
         private string message_fpf1 = "Введите логин";
         private string message_fpf2 = "Такого почтового ящика не существует";
         private string message_fpf3 = "Вы успешно вошли";
@@ -59,9 +58,7 @@ namespace freelance.forms
                 logger.Error(ex.ToString());
             }
         }
-        
-
-    private void sendpassword_btn_Click(object sender, EventArgs e)
+        private void sendpassword_btn_Click(object sender, EventArgs e)
         {
             try
             {
