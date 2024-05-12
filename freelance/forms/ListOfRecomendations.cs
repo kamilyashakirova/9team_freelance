@@ -69,11 +69,11 @@ namespace freelance.forms
             {
                 for (int column = 1; column < dataGridView.Columns.Count; column++)
                 {
-                    sb.Append(row.Cells[column].Value.ToString() + "\t");
+                    sb.Append(row.Cells[column].Value.ToString() + " | ");
                 }
                 sb.Append("\n");
             }
-            mail.Attachments.Add(new Attachment(new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString())), "ListOfPecomendations1.txt"));
+            mail.Attachments.Add(new Attachment(new MemoryStream(Encoding.UTF8.GetBytes(sb.ToString())), "ListOfRecomendations.txt"));
             smtpServer.Port = 587;
             smtpServer.Credentials = new NetworkCredential("9teamfreelance@mail.ru", "BrbJHbFfsjS7SeGG8pNq");
             smtpServer.EnableSsl = true;
