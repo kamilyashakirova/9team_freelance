@@ -2,17 +2,22 @@
 using VkNet.Model;
 using VkNet;
 using freelance.forms;
+using NLog;
 namespace freelance
 {
     public partial class EnterWithVKForm : Form
     {
-        ListOfRecomendations? listOfrecs;
+        private ListOfRecomendations? listOfrecs;
         private string file = String.Empty;
+
+        public static Logger logger = LogManager.GetCurrentClassLogger();
         public EnterWithVKForm(string loc)
         {
             InitializeComponent();
             file = loc;
             Localization.LanguageChanged += UpdateLocalization;
+
+            logger.Info("Успешно открыта форма 'EnterWithVKForm'");
         }
         private void enterWithVK_btn_Click(object sender, EventArgs e)
         {
@@ -27,38 +32,43 @@ namespace freelance
                     Settings = Settings.All
                 });
                 var res = api.Groups.Get(new GroupsGetParams());
-                var client = api.Users.Get(new long[] { api.UserId.Value }).FirstOrDefault();
-                if (client != null)
+                var clientVK = api.Users.Get(new long[] { api.UserId.Value }).FirstOrDefault();
+                try
                 {
-                    using (var db = new DBcontext())
+                    if (clientVK != null)
                     {
-                        if (!db.Clients.Any(u => u.VkUserID == client.Id.ToString()))
+                        using (var db = new DBcontext())
                         {
-                            db.Clients.Add(new Client
+                            if (!db.Clients.Any(u => u.VkUserID == clientVK.Id.ToString()))
                             {
-                                VkUserID = client.Id.ToString(),
-                                ClientName = client.FirstName,
-                                ClientSurname = client.LastName,
-                                ClientPatronomic = String.Empty,
-                                ClientPicture = String.Empty,
-                                Email = String.Empty,
-                                UserID = Guid.NewGuid()
-                            }) ;
-                            db.SaveChanges();
-                            MessageBox.Show("Вы успешно вошли.");
+                                var client = new Client
+                                {
+                                    VkUserID = clientVK.Id.ToString(),
+                                    ClientName = clientVK.FirstName,
+                                    ClientSurname = clientVK.LastName,
+                                    ClientPatronomic = String.Empty,
+                                    ClientPicture = String.Empty,
+                                    Email = String.Empty,
+                                    UserID = Guid.NewGuid()
+                                };
+                                db.Clients.Add(client);
+                                db.SaveChanges();
+                                listOfrecs = new ListOfRecomendations(client.ID, file);
+                                listOfrecs.Show();
+                            }
                         }
-                        listOfrecs = new ListOfRecomendations(client.Id.ToString(), file);
-                        listOfrecs.Show();
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Ошибка.");
+                    MessageBox.Show("Ошибка при авторизации через Вконтакте");
+                    logger.Info($"Ошибка при авторизации через Вконтакте. {ex}");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                logger.Info(ex);
             }
         }
         private void UpdateLocalization(object sender, EventArgs e)

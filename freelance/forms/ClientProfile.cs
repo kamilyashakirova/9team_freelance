@@ -1,18 +1,24 @@
-﻿namespace freelance.forms
+﻿using NLog;
+
+namespace freelance.forms
 {
     public partial class ClientProfile : Form
     {
         private string selectedFile = String.Empty;
         private Guid clientID;
         private static string loc = String.Empty;
-        CustomizePreferences customizePreferences;
-        Dislikedperformers dislikedperformers;
+        private CustomizePreferences? customizePreferences;
+        private Dislikedperformers? dislikedperformers;
+        private Myservices? myservices;
+
+        public static Logger logger = LogManager.GetCurrentClassLogger();
         public ClientProfile(Guid clientID, string file)
         {
             loc = file;
             this.clientID = clientID;
             InitializeComponent();
             Localization.LanguageChanged += UpdateLocalization;
+            logger.Info("Успешно открыта форма 'ClientProfile'");
         }
         //Загрузка фотографии
         private void fotodownload_btn_Click(object sender, EventArgs e)
@@ -33,11 +39,21 @@
                         var client = db.Clients.FirstOrDefault(u => u.ID == Guid.Parse(id_txt.Text));
                         if (client != null)
                         {
-                            db.SaveChanges();
-                            Bitmap image = new Bitmap("../../../images/" + fileName);
-                            client.ClientPicture = fileName;
-                            db.SaveChanges();
-                            clientpicture.Image = image;
+                            try
+                            {
+                                client.ClientPicture = fileName;
+                                db.SaveChanges();
+                                Bitmap image = new Bitmap("../../../images/" + client.ClientPicture);
+                                clientpicture.Image = image;
+
+                                logger.Info("Фотография была успешно загружена");
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+
+                                logger.Error($"Ошибка при загрузке фотографии пользователя.{ex}");
+                            }
                         }
                     }
                 }
@@ -48,21 +64,21 @@
             }
         }
         //Кнопка "Скрытые профили"
-        private void button3_Click(object sender, EventArgs e)
+        private void disliked_btn_Click(object sender, EventArgs e)
         {
             dislikedperformers = new Dislikedperformers(clientID, loc);
             dislikedperformers.Show();
         }
         //Кнопка "Редактировать предпочтения"
-        private void button1_Click(object sender, EventArgs e)
+        private void customize_btn_Click(object sender, EventArgs e)
         {
             customizePreferences = new CustomizePreferences(clientID, loc);
             customizePreferences.Show();
         }
         //Кнопка "Мои заказы"
-        private void button2_Click(object sender, EventArgs e)
+        private void my_btn_Click(object sender, EventArgs e)
         {
-            var myservices = new Myservices(clientID, loc);
+            myservices = new Myservices(clientID, loc);
             myservices.Show();
         }
         //Кнопка "Назад"
@@ -116,23 +132,31 @@
             cpatronymic_txt.Enabled = true;
             cemail_txt.Enabled = true;
             saveprofile_btn.Visible = true;
-            editprofile_btn.Visible = false; 
+            editprofile_btn.Visible = false;
         }
 
         private void saveprofile_btn_Click(object sender, EventArgs e)
         {
             saveprofile_btn.Visible = false;
             editprofile_btn.Visible = true;
-            using (var db = new DBcontext()) 
-            { 
+            using (var db = new DBcontext())
+            {
                 var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
                 if (client != null)
                 {
-                    client.ClientName = csurname_txt.Text;
-                    client.ClientSurname = cname_txt.Text;
-                    client.ClientPatronomic = cpatronymic_txt.Text;
-                    client.Email = cemail_txt.Text;
-                    db.SaveChanges();
+                    try
+                    {
+                        client.ClientName = csurname_txt.Text;
+                        client.ClientSurname = cname_txt.Text;
+                        client.ClientPatronomic = cpatronymic_txt.Text;
+                        client.Email = cemail_txt.Text;
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Ошибка с сохранением изменений данных в БД");
+                        logger.Error($"Ошибка с сохранением изменений данных пользователя в БД {ex}");   
+                    }
                     csurname_txt.Enabled = false;
                     cname_txt.Enabled = false;
                     cpatronymic_txt.Enabled = false;
@@ -140,5 +164,6 @@
                 }
             }
         }
+
     }
 }

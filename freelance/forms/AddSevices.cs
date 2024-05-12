@@ -1,5 +1,4 @@
 ﻿using NLog;
-
 namespace freelance.forms
 {
     public partial class AddSevices : Form
@@ -68,22 +67,10 @@ namespace freelance.forms
         }
         private void create_btn_Click(object sender, EventArgs e)
         {
-            try
-            {
-                GetSelectedSpecialization();
-                using (var db = new DBcontext())
-                {
-                    GetSelectedSpecialization();
-                    workingwithDB.AddPerformer(clientID, name_txt.Text, selectedSpecialization, selectedTime,
+            GetSelectedSpecialization();
+            workingwithDB.AddPerformer(clientID, name_txt.Text, selectedSpecialization, selectedTime,
                         selectedExperience, selectedLanguage, selectedProduct, fotofilepath);
-                    MessageBox.Show("Вы успешно создали объявление.");
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Не удалось создать объявление.");
-            }
-
+            MessageBox.Show("Вы успешно создали объявление");
         }
         private void addfoto_btn_Click(object sender, EventArgs e)
         {

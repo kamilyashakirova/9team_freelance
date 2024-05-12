@@ -11,8 +11,8 @@ namespace freelance.forms
         private string message1 = "Вы успешно вошли";
         private string message2 = "Неверный логин или пароль.";
         public string locfile = "Localization";
-        ForgotpasswordForm? forgotpasswordForm;
-        RegistrationForm? registration;
+        private ForgotpasswordForm? forgotpasswordForm;
+        private RegistrationForm? registration;
         public Enter()
         {
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
@@ -76,8 +76,8 @@ namespace freelance.forms
         private void rus_change_btn_Click(object sender, EventArgs e)
         {
             logger.Info("Нажата кнопка 'Русский', изменение языка на татарский");
-            Localization.LoadLocalizationDictionary(this, "newLocalization");
             locfile = "newLocalization";
+            Localization.LoadLocalizationDictionary(this, locfile);
             forgotpasswordForm = new ForgotpasswordForm(locfile);
             registration = new RegistrationForm(locfile);
             rus_change_btn.Visible = false;
@@ -86,8 +86,8 @@ namespace freelance.forms
         private void tat_change_btn_Click(object sender, EventArgs e)
         {
             logger.Info("Нажата кнопка 'Татарча', изменение языка на русский");
-            Localization.LoadLocalizationDictionary(this, "Localization");
             locfile = "Localization";
+            Localization.LoadLocalizationDictionary(this, locfile);
             forgotpasswordForm = new ForgotpasswordForm(locfile);
             registration = new RegistrationForm(locfile);
             tat_change_btn.Visible = false;

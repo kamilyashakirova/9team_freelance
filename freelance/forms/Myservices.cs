@@ -9,7 +9,7 @@ namespace freelance.forms
         private Guid clientID;
         private string message_my = "У Вас пока нет своих объявлений";
         private string file = String.Empty;
-        PerformerCard card;
+        private PerformerCard? card;
         public Myservices(Guid clientID, string file)
         {
             this.clientID = clientID;

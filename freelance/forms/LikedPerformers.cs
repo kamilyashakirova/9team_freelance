@@ -15,7 +15,8 @@ namespace freelance.forms
             this.file = file;
             this.clientID = clientID;
             InitializeComponent();
-            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw |
+                ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
             this.Font = new Font(fonts.Families[0], 10);
             foreach (Control ctrl in this.Controls)
@@ -55,7 +56,7 @@ namespace freelance.forms
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Ошибка.");
+                    MessageBox.Show("Ошибка при загрузке данных");
                     logger.Error($"Ошибка в загрузке данных из БД для формы 'Likedperformers'.{ex.ToString}");
                 }
             }

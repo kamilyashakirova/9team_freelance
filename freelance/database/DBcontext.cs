@@ -1,12 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
 namespace freelance;
+/// <summary>
+/// Класс для работы с БД
+/// </summary>
 public partial class DBcontext : DbContext
 {
+    /// <summary>
+    /// Таблица заказчиков в БД
+    /// </summary>
     public virtual DbSet<Client> Clients { get; set; }
+    /// <summary>
+    /// Таблица пользователей в БД
+    /// </summary>
     public virtual DbSet<User> Users { get; set; }
+    /// <summary>
+    /// Таблица фрилансеров в БД
+    /// </summary>
     public virtual DbSet<Performer> Performers { get; set; }
+    /// <summary>
+    /// Таблица предпочтений в БД
+    /// </summary>
     public virtual DbSet<Interest> Interests { get; set; }
+    /// <summary>
+    /// Таблица скрытых фрилансеров в БД
+    /// </summary>
     public virtual DbSet<DislikedPerformers> DislikedPerformers { get; set; }
+    /// <summary>
+    /// Таблица избранных фрилансеров в БД
+    /// </summary>
     public virtual DbSet<LikedPerformers> LikedPerformers { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder obuilder)
     {

@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClientProfile));
             panel1 = new Panel();
+            vkIcon_pic = new PictureBox();
             editprofile_btn = new Button();
             saveprofile_btn = new Button();
-            vkIcon_pic = new PictureBox();
             exit_btn = new PictureBox();
             cemail_txt = new TextBox();
             email_lbl = new Label();
@@ -80,6 +80,17 @@
             panel1.Size = new Size(350, 711);
             panel1.TabIndex = 0;
             // 
+            // vkIcon_pic
+            // 
+            vkIcon_pic.Image = (Image)resources.GetObject("vkIcon_pic.Image");
+            vkIcon_pic.Location = new Point(239, 182);
+            vkIcon_pic.Name = "vkIcon_pic";
+            vkIcon_pic.Size = new Size(97, 83);
+            vkIcon_pic.SizeMode = PictureBoxSizeMode.Zoom;
+            vkIcon_pic.TabIndex = 30;
+            vkIcon_pic.TabStop = false;
+            vkIcon_pic.Visible = false;
+            // 
             // editprofile_btn
             // 
             editprofile_btn.Location = new Point(13, 665);
@@ -100,17 +111,6 @@
             saveprofile_btn.UseVisualStyleBackColor = true;
             saveprofile_btn.Visible = false;
             saveprofile_btn.Click += saveprofile_btn_Click;
-            // 
-            // vkIcon_pic
-            // 
-            vkIcon_pic.Image = (Image)resources.GetObject("vkIcon_pic.Image");
-            vkIcon_pic.Location = new Point(239, 182);
-            vkIcon_pic.Name = "vkIcon_pic";
-            vkIcon_pic.Size = new Size(97, 83);
-            vkIcon_pic.SizeMode = PictureBoxSizeMode.Zoom;
-            vkIcon_pic.TabIndex = 30;
-            vkIcon_pic.TabStop = false;
-            vkIcon_pic.Visible = false;
             // 
             // exit_btn
             // 
@@ -240,7 +240,7 @@
             customize_btn.TabIndex = 1;
             customize_btn.Text = "Редактировать предпочтения";
             customize_btn.UseVisualStyleBackColor = false;
-            customize_btn.Click += button1_Click;
+            customize_btn.Click += customize_btn_Click;
             // 
             // my_btn
             // 
@@ -252,7 +252,7 @@
             my_btn.TabIndex = 2;
             my_btn.Text = "Мои заказы";
             my_btn.UseVisualStyleBackColor = false;
-            my_btn.Click += button2_Click;
+            my_btn.Click += my_btn_Click;
             // 
             // disliked_btn
             // 
@@ -265,7 +265,7 @@
             disliked_btn.TabIndex = 3;
             disliked_btn.Text = "Скрытые профили";
             disliked_btn.UseVisualStyleBackColor = false;
-            disliked_btn.Click += button3_Click;
+            disliked_btn.Click += disliked_btn_Click;
             // 
             // pictureBox1
             // 

@@ -4,16 +4,19 @@
     {
         public static Dictionary<string, string> localizationDictionary = new Dictionary<string, string>();
         public static event EventHandler LanguageChanged;
+        private static string? filePath;
+        private static string[]? lines;
+        private static string[]? parts;
         public static void LoadLocalizationDictionary(Form form, string language)
         {
             localizationDictionary.Clear();
-            string filePath = $"../../../Localization/{language}.csv";
+            filePath = $"../../../Localization/{language}.csv";
             if (File.Exists(filePath))
             {
-                string[] lines = File.ReadAllLines(filePath);
+                lines = File.ReadAllLines(filePath);
                 foreach (string line in lines)
                 {
-                    string[] parts = line.Split(',');
+                    parts = line.Split(',');
                     if (parts.Length == 2)
                     {
                         localizationDictionary[parts[0]] = parts[1];

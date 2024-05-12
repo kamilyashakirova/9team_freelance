@@ -38,9 +38,9 @@ namespace freelance.forms
                     var disliked = db.DislikedPerformers.Where(u => u.ClientID == clientID);
                     if (disliked != null)
                     {
-                        foreach (var dis in disliked)
+                        foreach (var dislike in disliked)
                         {
-                            var performer = db.Performers.FirstOrDefault(u => u.ID == dis.PerformerID);
+                            var performer = db.Performers.FirstOrDefault(u => u.ID == dislike.PerformerID);
                             if (performer != null)
                             {
                                 disliked_dgv.Rows.Add(performer.ID, performer.PName, performer.PSpecialization,
@@ -97,7 +97,6 @@ namespace freelance.forms
         }
         private void exit_btn_Click(object sender, EventArgs e)
         {
-            logger.Info("Нажата кнопка 'Назад'");
             this.Close();
         }
         //Локализация

@@ -2,12 +2,15 @@
 using Microsoft.EntityFrameworkCore.Storage;
 namespace freelance
 {
+    /// <summary>
+    /// Класс для работы с БД
+    /// </summary>
     public static class workingwithDB
     {
         private static string message1_work = "Пользователь с таким логином уже существует";
         private static string message2_work = "Пользователь не существует";
         /// <summary>
-        /// метод для авторизации
+        /// Метод для авторизации
         /// </summary>
         /// <param name="login"></param>
         /// <param name="passw"></param>
@@ -29,99 +32,8 @@ namespace freelance
                 return false;
             }
         }
-        
         /// <summary>
-        /// загрузка данных о "клиентах"
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public static string[]? clientsloaddata(Guid userId)
-        {
-            using (var db = new DBcontext())
-            {
-                var client = db.Clients.FirstOrDefault(client => client.UserID == userId);
-                if (client != null)
-                {
-                    return [client.ID.ToString(), client.ClientName, client.ClientSurname, client.ClientPatronomic,
-                        client.Email, client.ClientPicture.ToString()];
-                }
-                return null;
-            }
-        }
-        /// <summary>
-        /// метод для загрузки данных об интересах клиентов
-        /// </summary>
-        /// <param name="clientId"></param>
-        /// <returns></returns>
-        public static string[]? interestsloaddata(Guid clientId)
-        {
-            using (var db = new DBcontext())
-            {
-                var interest = db.Interests.FirstOrDefault(i => i.ClientID == clientId);
-                if (interest != null)
-                {
-                    return [interest.ID.ToString(), interest.InterestSpecialization, interest.InterestExperience, interest.InterestTime, interest.InterestLanguage, interest.InterestProduct];
-                }
-                return null;
-            }
-        }
-        /// <summary>
-        /// метод для загрузки данных об исполнителях
-        /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
-        public static string[]? performersloaddata(Guid ID)
-        {
-            using (var db = new DBcontext())
-            {
-                var performer = db.Performers.FirstOrDefault(p => p.ID == ID);
-                if (performer != null)
-                {
-                    return [performer.ClientID.ToString(), performer.ID.ToString(), performer.PName,
-                        performer.PSpecialization,performer.PTime, performer.PLanguage,performer.PExperience,
-                        performer.PProduct, performer.PPicture];
-                }
-                return null;
-            }
-        }
-        /// <summary>
-        /// метод для загрузки данных о понравившихся фрилансерах
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
-        public static string[]? Likedperformersloaddata(Guid clientId)
-        {
-            using (var db = new DBcontext())
-            {
-                var liked = db.LikedPerformers.FirstOrDefault(p => p.ClientID == clientId);
-                if (liked != null)
-                {
-                    return [liked.ID.ToString(), liked.ClientID.ToString(),
-                        liked.PerformerID.ToString()];
-                }
-                return null;
-            }
-        }
-        /// <summary>
-        /// метод для загрузки данных о не понравившихся фрилансерах
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
-        public static string[]? Dislikedperformersloaddata(Guid clientId)
-        {
-            using (var db = new DBcontext())
-            {
-                var disliked = db.DislikedPerformers.FirstOrDefault(p => p.ClientID == clientId);
-                if (disliked != null)
-                {
-                    return [disliked.ID.ToString(), disliked.ClientID.ToString(),
-                        disliked.PerformerID.ToString()];
-                }
-                return null;
-            }
-        }
-        /// <summary>
-        /// проверка уникальности логина
+        /// Проверка уникальности логина
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
@@ -133,7 +45,7 @@ namespace freelance
             }
         }
         /// <summary>
-        /// метод для добавления в бд новых пользователей и клиентов
+        /// Метод для добавления в БД новых пользователей и клиентов
         /// </summary>
         /// <param name="uLogin"></param>
         /// <param name="uPassword"></param>
@@ -186,6 +98,11 @@ namespace freelance
                 MessageBox.Show(message1_work);
             }
         }
+        /// <summary>
+        /// Метод для добавления фрилансера в Избранное 
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <param name="performerID"></param>
         public static void AddLike(Guid clientID, Guid performerID)
         {
             using (var db = new DBcontext())
@@ -195,19 +112,24 @@ namespace freelance
                     lock(db)
                     try
                     {
-                        var client = db.Clients.FirstOrDefault(u => u.ID == clientID);
-                        var performer = db.Performers.FirstOrDefault(u => u.ID == performerID);
-                        if (client != null && performer != null) 
-                        {
-                            var liked = new LikedPerformers { ClientID = client.ID, PerformerID = performer.ID, InClients = client, InPerformers = performer };
-                            db.LikedPerformers.Add(liked);
-                            db.SaveChanges();
-                            transaction.Commit();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Ошибка");
-                        }
+                            if (!db.LikedPerformers.Any(u => u.PerformerID == performerID))
+                            {
+                                var liked = new LikedPerformers { ClientID = clientID, PerformerID = performerID };
+                                db.LikedPerformers.Add(liked);
+                                db.SaveChanges();
+                                var u = db.DislikedPerformers.FirstOrDefault(u => u.PerformerID == liked.PerformerID);
+                                if (u != null)
+                                {
+                                    db.DislikedPerformers.Remove(u);
+                                    db.SaveChanges();
+                                }
+                                transaction.Commit();
+                                MessageBox.Show("Добавлен в избранное");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Вы уже добавляли фрилансера в 'Избранное'");
+                            }
                     }
                     catch (Exception ex)
                     {
@@ -217,6 +139,11 @@ namespace freelance
                 }
             }
         }
+        /// <summary>
+        /// Метод для добавления фрилансера в Скрытое
+        /// </summary>
+        /// <param name="ClientID"></param>
+        /// <param name="performerID"></param>
         public static void AddDislike(Guid ClientID, Guid performerID)
         {
             using (var db = new DBcontext())
@@ -226,10 +153,24 @@ namespace freelance
                     lock (db)
                     try
                     {
-                        var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
-                        db.DislikedPerformers.Add(disliked);
-                        db.SaveChanges();
-                        transaction.Commit();
+                        if (!db.DislikedPerformers.Any(u => u.PerformerID == performerID))
+                        {
+                            var disliked = new DislikedPerformers { ClientID = ClientID, PerformerID = performerID };
+                            db.DislikedPerformers.Add(disliked);
+                            db.SaveChanges();
+                            var u = db.LikedPerformers.FirstOrDefault(u => u.PerformerID == disliked.PerformerID);
+                            if (u != null)
+                            {
+                                db.LikedPerformers.Remove(u);
+                                db.SaveChanges();
+                            }
+                            transaction.Commit();
+                            MessageBox.Show("Добавлен в скрытое");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Вы уже добавляли фрилансера в 'Скрытое'");
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -239,6 +180,15 @@ namespace freelance
                 }
             }
         }
+        /// <summary>
+        /// Метод для добавления предпочтений заказчика в БД
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <param name="ISpecialization"></param>
+        /// <param name="ITime"></param>
+        /// <param name="IExperience"></param>
+        /// <param name="ILanguage"></param>
+        /// <param name="IProduct"></param>
         public static void AddInterest(Guid clientID, string ISpecialization, string ITime, string IExperience,
             string ILanguage, string IProduct)
         {
@@ -278,6 +228,17 @@ namespace freelance
                 }
             }
         }
+        /// <summary>
+        /// Метод для добавления фрилансера в БД
+        /// </summary>
+        /// <param name="clientID"></param>
+        /// <param name="MyName"></param>
+        /// <param name="MySpecialization"></param>
+        /// <param name="MyTime"></param>
+        /// <param name="MyExperience"></param>
+        /// <param name="MyLanguage"></param>
+        /// <param name="MyProduct"></param>
+        /// <param name="MyPicture"></param>
         public static void AddPerformer(Guid clientID, string MyName, string MySpecialization, string MyTime, string MyExperience,
             string MyLanguage, string MyProduct, string MyPicture)
         {
