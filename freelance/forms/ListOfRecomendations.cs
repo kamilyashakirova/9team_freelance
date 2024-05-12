@@ -80,7 +80,7 @@ namespace freelance.forms
             try
             {
                 smtpServer.Send(mail);
-                logger.Info("Пользователю успешно отправилось письмо на почту.");
+                logger.Info("Письмо было успешно отправлено пользователю на почту.");
             }
             catch (Exception ex)
             {
