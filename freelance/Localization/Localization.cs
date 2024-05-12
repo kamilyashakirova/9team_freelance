@@ -47,7 +47,7 @@
             }
             else
             {
-                return key;
+                return String.Empty;
             }
         }
     }
