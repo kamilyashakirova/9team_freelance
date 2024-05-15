@@ -90,5 +90,10 @@ namespace freelance.forms
         {
             Localization.LoadLocalizationDictionary(this, file);
         }
+
+        private void pspecializationCard_txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

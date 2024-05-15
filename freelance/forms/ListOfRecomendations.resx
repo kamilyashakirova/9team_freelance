@@ -121,7 +121,7 @@
   <data name="settings_btn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADkVSURBVHhe7d0J
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADkVSURBVHhe7d0J
         +K5T3fd/U+bM8xgZKzMZojKkTEUiyRCJ21Da1K1BSMbMZQilEKLMpAyhkBD3lswyR+ZZpp7n88HOxnfv
         /RuuYX3Xer+P43X87+f+30ftc/hd13md5zrXGo+IiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiI
         iIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiIiI
@@ -1243,7 +1243,7 @@
   <data name="dislike_btn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAD0ySURBVHhe7b0J
+        vAAADrwBlbxySQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAD0ySURBVHhe7b0J
         nCRFnbc/ciP3IQKKIo4HjMvCVmdk9/So1ZnRPbYrHiu9f9dFPF5d1/VcdfHFc5TVRdBX8Vw88F68VlZQ
         0V1YgQXBg0tEF/AAQcQZ5ujKzOphrvpH9Pw4Jivm6OmqysjM5/l8ng9Md3XVNzPiF5FVlRm5AAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -3136,7 +3136,7 @@
   <data name="sendToEmail.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0wAADdMBvdUcagAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAB6eSURBVHhe7d15
+        0AAADdABEGw9BwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAB6eSURBVHhe7d15
         uGVpVR/gnqGBhqZFGmgIMgiKoNIKEQg4TwmgqAFMVAYfNKhANCbwiDMoMcFoxAGNE4nRRBMNOIAIjhjU
         BDVNa1ABieKEraggMijk97Wnynt3LW5NZ/rWfX/P8/7Rq6qrztr7O99dde/Ze1/wrne9CwA4ZsoiANBb
         WQQAeiuLAEBvZREA6K0sAgC9lUUAoLeyCAD0VhYBgN7KIgDQW1kEAHoriwBAb2URAOitLAIAvZVFAKC3

@@ -59,15 +59,16 @@
             // liked_dgv
             // 
             liked_dgv.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.WindowText;
             liked_dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            liked_dgv.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             liked_dgv.BackgroundColor = SystemColors.Window;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.WindowText;
@@ -77,30 +78,31 @@
             liked_dgv.Columns.AddRange(new DataGridViewColumn[] { ID, pname_liked, pspecialisation_liked, ptime_liked, planguage_liked, pExperience_liked, pproduct_liked });
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
             liked_dgv.DefaultCellStyle = dataGridViewCellStyle3;
             liked_dgv.GridColor = Color.DarkSeaGreen;
-            liked_dgv.Location = new Point(1, 181);
+            liked_dgv.Location = new Point(1, 136);
+            liked_dgv.Margin = new Padding(3, 2, 3, 2);
             liked_dgv.Name = "liked_dgv";
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.WindowText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             liked_dgv.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             liked_dgv.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.Font = new Font("Didact Gothic", 10.1999989F);
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             dataGridViewCellStyle5.ForeColor = Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = Color.DarkSeaGreen;
             dataGridViewCellStyle5.SelectionForeColor = Color.Black;
             liked_dgv.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            liked_dgv.Size = new Size(799, 529);
+            liked_dgv.Size = new Size(699, 397);
             liked_dgv.TabIndex = 1;
             liked_dgv.CellContentClick += liked_dgv_CellContentClick;
             // 
@@ -158,66 +160,67 @@
             // 
             mostliked_lbl.AutoSize = true;
             mostliked_lbl.BorderStyle = BorderStyle.FixedSingle;
-            mostliked_lbl.Font = new Font("Didact Gothic", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            mostliked_lbl.Location = new Point(1, 124);
+            mostliked_lbl.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            mostliked_lbl.Location = new Point(1, 93);
             mostliked_lbl.Name = "mostliked_lbl";
-            mostliked_lbl.Size = new Size(415, 42);
+            mostliked_lbl.Size = new Size(337, 28);
             mostliked_lbl.TabIndex = 2;
             mostliked_lbl.Text = "Смотрите, что нравится другим";
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(810, 445);
-            pictureBox2.Margin = new Padding(3, 4, 3, 4);
+            pictureBox2.Location = new Point(709, 334);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(452, 403);
+            pictureBox2.Size = new Size(396, 302);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox2.TabIndex = 19;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
+            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(810, 152);
-            pictureBox3.Margin = new Padding(3, 4, 3, 4);
+            pictureBox3.Location = new Point(709, 114);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(134, 130);
+            pictureBox3.Size = new Size(117, 98);
             pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox3.TabIndex = 18;
             pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(511, -107);
-            pictureBox1.Margin = new Padding(3, 4, 3, 4);
+            pictureBox1.Location = new Point(447, -80);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(312, 242);
+            pictureBox1.Size = new Size(273, 182);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 17;
             pictureBox1.TabStop = false;
             // 
             // pictureBox4
             // 
+            pictureBox4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(943, -141);
-            pictureBox4.Margin = new Padding(3, 4, 3, 4);
+            pictureBox4.Location = new Point(825, -106);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(280, 408);
+            pictureBox4.Size = new Size(245, 306);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox4.TabIndex = 20;
             pictureBox4.TabStop = false;
             // 
             // like_btn
             // 
-            like_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            like_btn.Anchor = AnchorStyles.Left;
             like_btn.BackColor = Color.Pink;
             like_btn.BorderStyle = BorderStyle.FixedSingle;
             like_btn.Image = (Image)resources.GetObject("like_btn.Image");
-            like_btn.Location = new Point(917, 331);
+            like_btn.Location = new Point(802, 248);
+            like_btn.Margin = new Padding(3, 2, 3, 2);
             like_btn.Name = "like_btn";
-            like_btn.Size = new Size(101, 87);
+            like_btn.Size = new Size(89, 66);
             like_btn.SizeMode = PictureBoxSizeMode.Zoom;
             like_btn.TabIndex = 21;
             like_btn.TabStop = false;
@@ -225,10 +228,10 @@
             // 
             // MostLikedPerformersForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
-            ClientSize = new Size(1120, 711);
+            ClientSize = new Size(980, 533);
             Controls.Add(like_btn);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
@@ -237,6 +240,7 @@
             Controls.Add(mostliked_lbl);
             Controls.Add(liked_dgv);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MostLikedPerformersForm";
             Text = "Общая подборка";
             Load += MostLikedPerformersForm_Load;

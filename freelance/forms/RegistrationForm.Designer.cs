@@ -61,94 +61,102 @@
             // 
             // reg_lbl
             // 
+            reg_lbl.Anchor = AnchorStyles.Top;
             reg_lbl.AutoEllipsis = true;
             reg_lbl.AutoSize = true;
-            reg_lbl.Font = new Font("Didact Gothic", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            reg_lbl.Font = new Font("Microsoft Sans Serif", 17.9999981F, FontStyle.Regular, GraphicsUnit.Point, 204);
             reg_lbl.Location = new Point(191, 11);
             reg_lbl.Name = "reg_lbl";
-            reg_lbl.Size = new Size(190, 43);
+            reg_lbl.Size = new Size(164, 29);
             reg_lbl.TabIndex = 0;
             reg_lbl.Text = "Регистрация";
             // 
             // rname_txtb
             // 
-            rname_txtb.Font = new Font("Didact Gothic", 10.1999989F);
+            rname_txtb.Anchor = AnchorStyles.Top;
+            rname_txtb.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rname_txtb.Location = new Point(82, 104);
             rname_txtb.Margin = new Padding(3, 4, 3, 4);
             rname_txtb.Name = "rname_txtb";
             rname_txtb.PlaceholderText = "Имя";
-            rname_txtb.Size = new Size(417, 30);
+            rname_txtb.Size = new Size(417, 23);
             rname_txtb.TabIndex = 1;
             // 
             // rlogin_txtb
             // 
-            rlogin_txtb.Font = new Font("Didact Gothic", 10.1999989F);
+            rlogin_txtb.Anchor = AnchorStyles.Top;
+            rlogin_txtb.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rlogin_txtb.Location = new Point(82, 311);
             rlogin_txtb.Margin = new Padding(3, 4, 3, 4);
             rlogin_txtb.Name = "rlogin_txtb";
             rlogin_txtb.PlaceholderText = "Логин";
-            rlogin_txtb.Size = new Size(417, 30);
+            rlogin_txtb.Size = new Size(417, 23);
             rlogin_txtb.TabIndex = 2;
             rlogin_txtb.TextChanged += rlogin_txtb_TextChanged;
             // 
             // rpatronomic_txtb
             // 
-            rpatronomic_txtb.Font = new Font("Didact Gothic", 10.1999989F);
+            rpatronomic_txtb.Anchor = AnchorStyles.Top;
+            rpatronomic_txtb.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rpatronomic_txtb.Location = new Point(82, 241);
             rpatronomic_txtb.Margin = new Padding(3, 4, 3, 4);
             rpatronomic_txtb.Name = "rpatronomic_txtb";
             rpatronomic_txtb.PlaceholderText = "Отчество (при наличии)";
-            rpatronomic_txtb.Size = new Size(417, 30);
+            rpatronomic_txtb.Size = new Size(417, 23);
             rpatronomic_txtb.TabIndex = 3;
             rpatronomic_txtb.TextChanged += rpatronomic_txtb_TextChanged;
             // 
             // rsurname_txtb
             // 
-            rsurname_txtb.Font = new Font("Didact Gothic", 10.1999989F);
+            rsurname_txtb.Anchor = AnchorStyles.Top;
+            rsurname_txtb.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rsurname_txtb.Location = new Point(82, 172);
             rsurname_txtb.Margin = new Padding(3, 4, 3, 4);
             rsurname_txtb.Name = "rsurname_txtb";
             rsurname_txtb.PlaceholderText = "Фамилия ";
-            rsurname_txtb.Size = new Size(417, 30);
+            rsurname_txtb.Size = new Size(417, 23);
             rsurname_txtb.TabIndex = 4;
             rsurname_txtb.TextChanged += rsurname_txtb_TextChanged;
             // 
             // rpasswordrepeat_txtb
             // 
-            rpasswordrepeat_txtb.Font = new Font("Didact Gothic", 10.1999989F);
+            rpasswordrepeat_txtb.Anchor = AnchorStyles.Top;
+            rpasswordrepeat_txtb.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rpasswordrepeat_txtb.Location = new Point(82, 451);
             rpasswordrepeat_txtb.Margin = new Padding(3, 4, 3, 4);
             rpasswordrepeat_txtb.Name = "rpasswordrepeat_txtb";
             rpasswordrepeat_txtb.PasswordChar = '*';
             rpasswordrepeat_txtb.PlaceholderText = "Повторите пароль";
-            rpasswordrepeat_txtb.Size = new Size(417, 30);
+            rpasswordrepeat_txtb.Size = new Size(417, 23);
             rpasswordrepeat_txtb.TabIndex = 5;
             // 
             // rpassword_txtb
             // 
-            rpassword_txtb.Font = new Font("Didact Gothic", 10.1999989F);
+            rpassword_txtb.Anchor = AnchorStyles.Top;
+            rpassword_txtb.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rpassword_txtb.Location = new Point(82, 382);
             rpassword_txtb.Margin = new Padding(3, 4, 3, 4);
             rpassword_txtb.Name = "rpassword_txtb";
             rpassword_txtb.PasswordChar = '*';
             rpassword_txtb.PlaceholderText = "Пароль";
-            rpassword_txtb.Size = new Size(417, 30);
+            rpassword_txtb.Size = new Size(417, 23);
             rpassword_txtb.TabIndex = 6;
             // 
             // rEmail_txtb
             // 
-            rEmail_txtb.Font = new Font("Didact Gothic", 10.1999989F);
+            rEmail_txtb.Anchor = AnchorStyles.Top;
+            rEmail_txtb.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rEmail_txtb.Location = new Point(82, 522);
             rEmail_txtb.Margin = new Padding(3, 4, 3, 4);
             rEmail_txtb.Name = "rEmail_txtb";
             rEmail_txtb.PlaceholderText = "E-mail";
-            rEmail_txtb.Size = new Size(417, 30);
+            rEmail_txtb.Size = new Size(417, 23);
             rEmail_txtb.TabIndex = 7;
             rEmail_txtb.TextChanged += rEmail_txtb_TextChanged;
             // 
             // show_pic
             // 
-            show_pic.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            show_pic.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             show_pic.Image = (Image)resources.GetObject("show_pic.Image");
             show_pic.Location = new Point(505, 372);
             show_pic.Name = "show_pic";
@@ -160,7 +168,7 @@
             // 
             // hide_picb
             // 
-            hide_picb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            hide_picb.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             hide_picb.Image = (Image)resources.GetObject("hide_picb.Image");
             hide_picb.Location = new Point(505, 372);
             hide_picb.Name = "hide_picb";
@@ -172,70 +180,78 @@
             // 
             // rnae_lbl
             // 
+            rnae_lbl.Anchor = AnchorStyles.Top;
             rnae_lbl.AutoSize = true;
             rnae_lbl.BackColor = Color.DarkSeaGreen;
             rnae_lbl.Location = new Point(82, 75);
             rnae_lbl.Name = "rnae_lbl";
-            rnae_lbl.Size = new Size(106, 25);
+            rnae_lbl.Size = new Size(92, 17);
             rnae_lbl.TabIndex = 12;
             rnae_lbl.Text = "Введите имя";
             // 
             // rpasswordrepeat_lbl
             // 
+            rpasswordrepeat_lbl.Anchor = AnchorStyles.Top;
             rpasswordrepeat_lbl.AutoSize = true;
             rpasswordrepeat_lbl.Location = new Point(82, 422);
             rpasswordrepeat_lbl.Name = "rpasswordrepeat_lbl";
-            rpasswordrepeat_lbl.Size = new Size(152, 25);
+            rpasswordrepeat_lbl.Size = new Size(130, 17);
             rpasswordrepeat_lbl.TabIndex = 13;
             rpasswordrepeat_lbl.Text = "Повторите пароль";
             // 
             // rpassword_lbl
             // 
+            rpassword_lbl.Anchor = AnchorStyles.Top;
             rpassword_lbl.AutoSize = true;
             rpassword_lbl.Location = new Point(82, 353);
             rpassword_lbl.Name = "rpassword_lbl";
-            rpassword_lbl.Size = new Size(165, 25);
+            rpassword_lbl.Size = new Size(140, 17);
             rpassword_lbl.TabIndex = 14;
             rpassword_lbl.Text = "Придумайте пароль";
             // 
             // rlogin_lbl
             // 
+            rlogin_lbl.Anchor = AnchorStyles.Top;
             rlogin_lbl.AutoSize = true;
             rlogin_lbl.Location = new Point(82, 282);
             rlogin_lbl.Name = "rlogin_lbl";
-            rlogin_lbl.Size = new Size(121, 25);
+            rlogin_lbl.Size = new Size(104, 17);
             rlogin_lbl.TabIndex = 15;
             rlogin_lbl.Text = "Введите логин";
             // 
             // rpatronymic_lbl
             // 
+            rpatronymic_lbl.Anchor = AnchorStyles.Top;
             rpatronymic_lbl.AutoSize = true;
             rpatronymic_lbl.Location = new Point(82, 212);
             rpatronymic_lbl.Name = "rpatronymic_lbl";
-            rpatronymic_lbl.Size = new Size(146, 25);
+            rpatronymic_lbl.Size = new Size(127, 17);
             rpatronymic_lbl.TabIndex = 16;
             rpatronymic_lbl.Text = "Введите отчество";
             // 
             // rsurname_lbl
             // 
+            rsurname_lbl.Anchor = AnchorStyles.Top;
             rsurname_lbl.AutoSize = true;
             rsurname_lbl.Location = new Point(82, 143);
             rsurname_lbl.Name = "rsurname_lbl";
-            rsurname_lbl.Size = new Size(149, 25);
+            rsurname_lbl.Size = new Size(129, 17);
             rsurname_lbl.TabIndex = 17;
             rsurname_lbl.Text = "Введите фамилию";
             // 
             // rEmail_lbl
             // 
+            rEmail_lbl.Anchor = AnchorStyles.Top;
             rEmail_lbl.AutoSize = true;
             rEmail_lbl.Location = new Point(82, 493);
             rEmail_lbl.Name = "rEmail_lbl";
-            rEmail_lbl.Size = new Size(124, 25);
+            rEmail_lbl.Size = new Size(105, 17);
             rEmail_lbl.TabIndex = 18;
             rEmail_lbl.Text = "Введите e-mail";
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(380, 506);
             pictureBox1.Name = "pictureBox1";
@@ -246,6 +262,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(411, 36);
             pictureBox2.Name = "pictureBox2";
@@ -256,6 +273,7 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(24, 535);
             pictureBox3.Name = "pictureBox3";
@@ -266,8 +284,9 @@
             // 
             // registration_btn
             // 
+            registration_btn.Anchor = AnchorStyles.Bottom;
             registration_btn.BackColor = SystemColors.Window;
-            registration_btn.Font = new Font("Didact Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            registration_btn.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 204);
             registration_btn.Location = new Point(191, 590);
             registration_btn.Name = "registration_btn";
             registration_btn.Size = new Size(207, 45);
@@ -289,7 +308,7 @@
             // 
             // RegistrationForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(579, 740);
@@ -315,7 +334,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
             Controls.Add(hide_picb);
-            Font = new Font("Didact Gothic", 10.1999989F);
+            Font = new Font("Microsoft Sans Serif", 10.1999989F);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "RegistrationForm";

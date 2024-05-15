@@ -58,6 +58,7 @@
             // 
             // ppictureCard_pic
             // 
+            ppictureCard_pic.Anchor = AnchorStyles.Top;
             ppictureCard_pic.BorderStyle = BorderStyle.FixedSingle;
             ppictureCard_pic.Location = new Point(14, 36);
             ppictureCard_pic.Margin = new Padding(3, 4, 3, 4);
@@ -69,60 +70,68 @@
             // 
             // pnameCard_txt
             // 
-            pnameCard_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            pnameCard_txt.Anchor = AnchorStyles.Top;
+            pnameCard_txt.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             pnameCard_txt.Location = new Point(335, 57);
             pnameCard_txt.Margin = new Padding(3, 4, 3, 4);
             pnameCard_txt.Name = "pnameCard_txt";
-            pnameCard_txt.Size = new Size(580, 30);
+            pnameCard_txt.Size = new Size(580, 23);
             pnameCard_txt.TabIndex = 1;
             // 
             // pspecializationCard_txt
             // 
-            pspecializationCard_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            pspecializationCard_txt.Anchor = AnchorStyles.Top;
+            pspecializationCard_txt.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             pspecializationCard_txt.Location = new Point(335, 136);
             pspecializationCard_txt.Margin = new Padding(3, 4, 3, 4);
             pspecializationCard_txt.Name = "pspecializationCard_txt";
-            pspecializationCard_txt.Size = new Size(580, 30);
+            pspecializationCard_txt.Size = new Size(580, 23);
             pspecializationCard_txt.TabIndex = 2;
+            pspecializationCard_txt.TextChanged += pspecializationCard_txt_TextChanged;
             // 
             // ptimeCard_txt
             // 
-            ptimeCard_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            ptimeCard_txt.Anchor = AnchorStyles.Top;
+            ptimeCard_txt.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             ptimeCard_txt.Location = new Point(335, 222);
             ptimeCard_txt.Margin = new Padding(3, 4, 3, 4);
             ptimeCard_txt.Name = "ptimeCard_txt";
-            ptimeCard_txt.Size = new Size(304, 30);
+            ptimeCard_txt.Size = new Size(304, 23);
             ptimeCard_txt.TabIndex = 3;
             // 
             // planguage_txt
             // 
-            planguage_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            planguage_txt.Anchor = AnchorStyles.Top;
+            planguage_txt.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             planguage_txt.Location = new Point(335, 315);
             planguage_txt.Margin = new Padding(3, 4, 3, 4);
             planguage_txt.Name = "planguage_txt";
-            planguage_txt.Size = new Size(194, 30);
+            planguage_txt.Size = new Size(194, 23);
             planguage_txt.TabIndex = 4;
             // 
             // pproduct_txt
             // 
-            pproduct_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            pproduct_txt.Anchor = AnchorStyles.Top;
+            pproduct_txt.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             pproduct_txt.Location = new Point(335, 490);
             pproduct_txt.Margin = new Padding(3, 4, 3, 4);
             pproduct_txt.Name = "pproduct_txt";
-            pproduct_txt.Size = new Size(177, 30);
+            pproduct_txt.Size = new Size(177, 23);
             pproduct_txt.TabIndex = 5;
             // 
             // pExpipienceCard_txt
             // 
-            pExpipienceCard_txt.Font = new Font("Didact Gothic", 10.1999989F);
+            pExpipienceCard_txt.Anchor = AnchorStyles.Top;
+            pExpipienceCard_txt.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             pExpipienceCard_txt.Location = new Point(335, 401);
             pExpipienceCard_txt.Margin = new Padding(3, 4, 3, 4);
             pExpipienceCard_txt.Name = "pExpipienceCard_txt";
-            pExpipienceCard_txt.Size = new Size(177, 30);
+            pExpipienceCard_txt.Size = new Size(177, 23);
             pExpipienceCard_txt.TabIndex = 6;
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(674, 362);
             pictureBox1.Margin = new Padding(3, 4, 3, 4);
@@ -134,6 +143,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
             pictureBox2.Location = new Point(160, 474);
             pictureBox2.Margin = new Padding(3, 4, 3, 4);
@@ -145,6 +155,7 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
             pictureBox3.Location = new Point(804, 206);
             pictureBox3.Margin = new Padding(3, 4, 3, 4);
@@ -156,67 +167,73 @@
             // 
             // fio_lbl
             // 
+            fio_lbl.Anchor = AnchorStyles.Top;
             fio_lbl.AutoSize = true;
-            fio_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            fio_lbl.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             fio_lbl.Location = new Point(335, 28);
             fio_lbl.Name = "fio_lbl";
-            fio_lbl.Size = new Size(52, 25);
+            fio_lbl.Size = new Size(46, 17);
             fio_lbl.TabIndex = 10;
             fio_lbl.Text = "ФИО:";
             // 
             // spec_lbl
             // 
+            spec_lbl.Anchor = AnchorStyles.Top;
             spec_lbl.AutoSize = true;
-            spec_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            spec_lbl.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             spec_lbl.Location = new Point(335, 107);
             spec_lbl.Name = "spec_lbl";
-            spec_lbl.Size = new Size(133, 25);
+            spec_lbl.Size = new Size(116, 17);
             spec_lbl.TabIndex = 11;
             spec_lbl.Text = "Специализация:";
             // 
             // srtime_lbl
             // 
+            srtime_lbl.Anchor = AnchorStyles.Top;
             srtime_lbl.AutoSize = true;
-            srtime_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            srtime_lbl.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             srtime_lbl.Location = new Point(335, 193);
             srtime_lbl.Name = "srtime_lbl";
-            srtime_lbl.Size = new Size(286, 25);
+            srtime_lbl.Size = new Size(251, 17);
             srtime_lbl.TabIndex = 12;
             srtime_lbl.Text = "Среднее время выполнения работы:";
             // 
             // srprice_lbl
             // 
+            srprice_lbl.Anchor = AnchorStyles.Top;
             srprice_lbl.AutoSize = true;
-            srprice_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            srprice_lbl.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             srprice_lbl.Location = new Point(335, 286);
             srprice_lbl.Name = "srprice_lbl";
-            srprice_lbl.Size = new Size(126, 25);
+            srprice_lbl.Size = new Size(112, 17);
             srprice_lbl.TabIndex = 13;
             srprice_lbl.Text = "Знание языков:";
             // 
             // experiense_lbl
             // 
+            experiense_lbl.Anchor = AnchorStyles.Top;
             experiense_lbl.AutoSize = true;
-            experiense_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            experiense_lbl.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             experiense_lbl.Location = new Point(335, 372);
             experiense_lbl.Name = "experiense_lbl";
-            experiense_lbl.Size = new Size(56, 25);
+            experiense_lbl.Size = new Size(48, 17);
             experiense_lbl.TabIndex = 14;
             experiense_lbl.Text = "Опыт:";
             // 
             // rating_lbl
             // 
+            rating_lbl.Anchor = AnchorStyles.Top;
             rating_lbl.AutoSize = true;
-            rating_lbl.Font = new Font("Didact Gothic", 10.1999989F);
+            rating_lbl.Font = new Font("Microsoft Sans Serif", 10.1999989F);
             rating_lbl.Location = new Point(335, 461);
             rating_lbl.Name = "rating_lbl";
-            rating_lbl.Size = new Size(79, 25);
+            rating_lbl.Size = new Size(67, 17);
             rating_lbl.TabIndex = 15;
             rating_lbl.Text = "Продукт:";
             // 
             // like_btn
             // 
-            like_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            like_btn.Anchor = AnchorStyles.Top;
             like_btn.BackColor = Color.DarkSeaGreen;
             like_btn.BorderStyle = BorderStyle.FixedSingle;
             like_btn.Image = (Image)resources.GetObject("like_btn.Image");
@@ -233,7 +250,7 @@
             // 
             // dislike_btn
             // 
-            dislike_btn.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dislike_btn.Anchor = AnchorStyles.Top;
             dislike_btn.BackColor = Color.DarkSeaGreen;
             dislike_btn.BorderStyle = BorderStyle.FixedSingle;
             dislike_btn.Image = (Image)resources.GetObject("dislike_btn.Image");
@@ -250,15 +267,16 @@
             // 
             // ID_Card_txt
             // 
+            ID_Card_txt.Anchor = AnchorStyles.Top;
             ID_Card_txt.Location = new Point(48, 515);
             ID_Card_txt.Name = "ID_Card_txt";
-            ID_Card_txt.Size = new Size(79, 30);
+            ID_Card_txt.Size = new Size(79, 23);
             ID_Card_txt.TabIndex = 18;
             ID_Card_txt.Visible = false;
             // 
             // PerformerCard
             // 
-            AutoScaleDimensions = new SizeF(9F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkSeaGreen;
             ClientSize = new Size(970, 610);
@@ -281,7 +299,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox1);
-            Font = new Font("Didact Gothic", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Font = new Font("Microsoft Sans Serif", 10.1999989F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 4, 3, 4);
             Name = "PerformerCard";

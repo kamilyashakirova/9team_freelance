@@ -110,5 +110,10 @@ namespace freelance.forms
             var EnterVk = new EnterWithVKForm(locfile);
             EnterVk.ShowDialog();
         }
+
+        private void login_txtb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
