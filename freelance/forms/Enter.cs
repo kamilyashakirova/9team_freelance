@@ -18,7 +18,6 @@ namespace freelance.forms
             fonts.AddFontFile("../../../fonts/DidactGothic-Regular.ttf");
             InitializeComponent();
             hi_lbl.Font = new Font(fonts.Families[0], 16, FontStyle.Bold);
-            hi_lbl.Location = new Point(125, 187);
             forgotpassword_lbl.Font = new Font(fonts.Families[0], 12, FontStyle.Underline);
             LogManager.Configuration = new XmlLoggingConfiguration("../../../logg/NLog.config");
             logger.Info("Успешно открыта форма 'Enter'");
@@ -109,11 +108,7 @@ namespace freelance.forms
         {
             var EnterVk = new EnterWithVKForm(locfile);
             EnterVk.ShowDialog();
-        }
-
-        private void login_txtb_TextChanged(object sender, EventArgs e)
-        {
-
+            this.Close();   
         }
     }
 }

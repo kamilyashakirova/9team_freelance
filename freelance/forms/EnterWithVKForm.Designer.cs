@@ -33,7 +33,11 @@
             VKpassword_txt = new TextBox();
             enterWithVK_btn = new PictureBox();
             enter_rus_lbl = new Label();
+            show_pic = new PictureBox();
+            hide_picb = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)enterWithVK_btn).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)show_pic).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hide_picb).BeginInit();
             SuspendLayout();
             // 
             // VKlogin_txt
@@ -43,7 +47,7 @@
             VKlogin_txt.Margin = new Padding(4);
             VKlogin_txt.Name = "VKlogin_txt";
             VKlogin_txt.PlaceholderText = "Телефон или email";
-            VKlogin_txt.Size = new Size(326, 24);
+            VKlogin_txt.Size = new Size(325, 28);
             VKlogin_txt.TabIndex = 0;
             // 
             // VKpassword_txt
@@ -52,9 +56,11 @@
             VKpassword_txt.Location = new Point(65, 185);
             VKpassword_txt.Margin = new Padding(4);
             VKpassword_txt.Name = "VKpassword_txt";
+            VKpassword_txt.PasswordChar = '*';
             VKpassword_txt.PlaceholderText = "Пароль";
-            VKpassword_txt.Size = new Size(326, 24);
+            VKpassword_txt.Size = new Size(325, 28);
             VKpassword_txt.TabIndex = 1;
+            VKpassword_txt.TextChanged += VKpassword_txt_TextChanged;
             // 
             // enterWithVK_btn
             // 
@@ -76,16 +82,40 @@
             enter_rus_lbl.ForeColor = Color.White;
             enter_rus_lbl.Location = new Point(170, 278);
             enter_rus_lbl.Name = "enter_rus_lbl";
-            enter_rus_lbl.Size = new Size(117, 20);
+            enter_rus_lbl.Size = new Size(137, 25);
             enter_rus_lbl.TabIndex = 33;
             enter_rus_lbl.Text = "Вход с ВК ID";
             // 
+            // show_pic
+            // 
+            show_pic.Image = (Image)resources.GetObject("show_pic.Image");
+            show_pic.Location = new Point(397, 175);
+            show_pic.Name = "show_pic";
+            show_pic.Size = new Size(35, 50);
+            show_pic.SizeMode = PictureBoxSizeMode.Zoom;
+            show_pic.TabIndex = 34;
+            show_pic.TabStop = false;
+            show_pic.Click += show_pic_Click;
+            // 
+            // hide_picb
+            // 
+            hide_picb.Image = (Image)resources.GetObject("hide_picb.Image");
+            hide_picb.Location = new Point(397, 175);
+            hide_picb.Name = "hide_picb";
+            hide_picb.Size = new Size(35, 50);
+            hide_picb.SizeMode = PictureBoxSizeMode.Zoom;
+            hide_picb.TabIndex = 35;
+            hide_picb.TabStop = false;
+            hide_picb.Click += hide_picb_Click;
+            // 
             // EnterWithVKForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 17F);
+            AutoScaleDimensions = new SizeF(10F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(459, 422);
+            ClientSize = new Size(458, 421);
+            Controls.Add(show_pic);
+            Controls.Add(hide_picb);
             Controls.Add(enter_rus_lbl);
             Controls.Add(enterWithVK_btn);
             Controls.Add(VKpassword_txt);
@@ -97,6 +127,8 @@
             Text = "Вход с ВК";
             Load += EnterWithVKForm_Load;
             ((System.ComponentModel.ISupportInitialize)enterWithVK_btn).EndInit();
+            ((System.ComponentModel.ISupportInitialize)show_pic).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hide_picb).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -107,5 +139,7 @@
         private TextBox VKpassword_txt;
         private PictureBox enterWithVK_btn;
         private Label enter_rus_lbl;
+        private PictureBox show_pic;
+        private PictureBox hide_picb;
     }
 }

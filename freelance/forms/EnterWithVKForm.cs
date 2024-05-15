@@ -26,7 +26,7 @@ namespace freelance
                 var api = new VkApi();
                 api.Authorize(new ApiAuthParams
                 {
-                    ApplicationId = 51920629,
+                    ApplicationId = 51924644,
                     Login = VKlogin_txt.Text,
                     Password = VKpassword_txt.Text,
                     Settings = Settings.All
@@ -80,6 +80,25 @@ namespace freelance
         private void EnterWithVKForm_Load(object sender, EventArgs e)
         {
             Localization.LoadLocalizationDictionary(this, file);
+        }
+
+        private void VKpassword_txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void show_pic_Click(object sender, EventArgs e)
+        {
+            VKpassword_txt.PasswordChar = '\0';
+            hide_picb.Visible = true;
+            show_pic.Visible = false;
+        }
+
+        private void hide_picb_Click(object sender, EventArgs e)
+        {
+            VKpassword_txt.PasswordChar = '*';
+            hide_picb.Visible = false;
+            show_pic.Visible = true;
         }
     }
 }
