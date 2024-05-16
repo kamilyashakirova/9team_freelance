@@ -2,6 +2,7 @@
 using System.Drawing.Text;
 using System.Net.Mail;
 using System.Security.Cryptography;
+using System.Text;
 namespace freelance
 {
     public static class ForUnitTests
@@ -16,7 +17,7 @@ namespace freelance
             var res = Localization.GetLocalizedString(a);
             return res;
         }
-        public static void CheckSendEmail(string email, string message)
+        public static void CheckSendEmail(string email, string message, string filename)
         {
             MailMessage mail = new MailMessage();
             mail.From = new MailAddress("9teamfreelance@mail.ru", "freelance");
@@ -30,6 +31,7 @@ namespace freelance
             }
             mail.Subject = "frelance";
             mail.Body = message;
+            mail.Attachments.Add(new Attachment(new MemoryStream(Encoding.UTF8.GetBytes(message)), filename));
             SmtpClient smtp = new SmtpClient("smtp.mail.ru");
             smtp.Port = 587;
             smtp.EnableSsl = true;
@@ -96,7 +98,7 @@ namespace freelance
                 MessageBox.Show(message2);
             }
         }
-        public static string Test_Hasing(string data)
+        public static string Test_Hashing(string data)
         {
             using (SHA256 sha256 = SHA256.Create())
             {

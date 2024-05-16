@@ -15,13 +15,14 @@ namespace freelance
         public void TestMailMessage()
         {
             // Arrange
-            string validEmailAddress = "test@example.com";
+            string validEmailAddress = "9teamfreelance@mail.ru";
             string invalidEmailAddress = "invalid_email";
-            string message = "lhkdjhhfj";
-
+            string message = "";
+            string filename = "ListOfRecomendations.txt";
+            ;
             // Act
-            ForUnitTests.CheckSendEmail(validEmailAddress, message);
-            ForUnitTests.CheckSendEmail(invalidEmailAddress, message);
+            ForUnitTests.CheckSendEmail(validEmailAddress, message, filename);
+            ForUnitTests.CheckSendEmail(invalidEmailAddress, message, filename);
         }
 
         [TestMethod]
@@ -74,7 +75,7 @@ namespace freelance
             string data = "dataa";
 
             //Act
-            ForUnitTests.Test_Hasing(data);
+            ForUnitTests.Test_Hashing(data);
         }
 
         [TestMethod]
